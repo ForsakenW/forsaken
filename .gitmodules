@@ -1,0 +1,3 @@
+[submodule "skeleton"]
+	path = skeleton
+	url = https://github.com/ForsakenW/skeleton.git
