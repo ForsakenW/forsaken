@@ -1,6 +1,6 @@
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Includes
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #include <stdio.h>
 #include <math.h>
 #include <malloc.h>
@@ -10,9 +10,9 @@
 #include "readini.h"
 #include "XMem.h"
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     External Variables
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 extern  int     PreferredWidth, PreferredHeight;
 extern  int     ddchosen3d;
 extern  int     default_width;
@@ -36,18 +36,18 @@ extern BOOL NoCompoundSfxBuffer;
 extern  BOOL    UseSendAsync;
 extern  BOOL    ZClearsOn;
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Global Variables
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL    OptFileOnCommandline = FALSE;
 BOOL    DeviceOnCommandline = FALSE;
 
 BOOL    DontColourKey = FALSE;
 int     ScreenMemory = 0;
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Reader Routines
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 // Read DontColourKey
 static int read_DontColourKey( FILE *f, char *last_token )
 {
@@ -283,11 +283,11 @@ static int read_UVFix( FILE *f, char *last_token )
     else
         return 0;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Read in the .ini file..
     Input       :   char * Filename
     Output      :   BOOL TRUE/FALSE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 typedef int (*READINIJMP)( FILE *, char * );
 typedef struct {
     char *keyword;

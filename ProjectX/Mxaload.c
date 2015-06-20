@@ -43,9 +43,9 @@ num_frames : uint16 // number of animation frames
     }[num_groups]
 }[num_frames]
 */
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Include File... 
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #include <stdio.h>
 #include "typedefs.h"
 #include <dplay.h>
@@ -65,9 +65,9 @@ num_frames : uint16 // number of animation frames
 #include "XMem.h"
 
 #ifdef SOFTWARE_ENABLE
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Chris's Code
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void    CWExecute2( LPDIRECT3DDEVICE lpDev,
                     LPDIRECT3DEXECUTEBUFFER execbuf,
                     LPDIRECT3DVIEWPORT lpView,
@@ -76,17 +76,17 @@ extern  BOOL    SoftwareVersion;
 extern void CWScanExecuteBuffer( LPDIRECT3DEXECUTEBUFFER execbuf );
 #endif
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Defines
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #define MXA_VERSION_NUMBER  2
 
 //#define FIX_MXA_UV
 #undef FIX_MXA_UV
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Externals...    
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 void DebugPrintf( char *fmt, ... );
 extern void FixUV( LPD3DTRIANGLE Tri, LPD3DLVERTEX Vert, uint16 Tpage, LPD3DLVERTEX Orig_Vert );
@@ -114,9 +114,9 @@ extern  BOOL    PowerVR;
 
 int16       NewLevelNum;
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Globals...  
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 MXALOADHEADER MxaModelHeaders[MAXMXAMODELHEADERS];
 #if 0
 BOOL    WaterEnable = FALSE;
@@ -154,11 +154,11 @@ FixUV_MXA( uint16 vertices, MXAVERT *MXA_Vert, LPD3DLVERTEX Vert, LPD3DLVERTEX O
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Load .Mx File
     Input       :       char    *   Filename , MXALOADHEADER *
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL Mxaload( char * Filename, MXALOADHEADER * Mxaloadheader, BOOL StoreTriangles  )
 {
     D3DEXECUTEDATA          d3dExData;
@@ -441,9 +441,9 @@ BOOL Mxaload( char * Filename, MXALOADHEADER * Mxaloadheader, BOOL StoreTriangle
     // is there any vispoly info.....
     if ( *Uint16Pnt++ == 2)             // 2 means .mxa format
     {
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
  *      Particular Stuff Related Anims  
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
         Mxaloadheader->num_frames = *Uint16Pnt++;
 
         Buffer = (char * ) Uint16Pnt;
@@ -512,9 +512,9 @@ BOOL Mxaload( char * Filename, MXALOADHEADER * Mxaloadheader, BOOL StoreTriangle
         }
     }
     
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Point Direction Data
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     Uint16Pnt = (uint16 *) Buffer;
 #if 0
     if( *Uint16Pnt++ )
@@ -731,11 +731,11 @@ BOOL Mxaload( char * Filename, MXALOADHEADER * Mxaloadheader, BOOL StoreTriangle
 #pragma optimize( "gty", on )
 #endif
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Execute all group buffers for a Mxaloadheader
     Input       ;       MXALOADHEADER *
     Output      :       FLASE/TRUE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 BOOL ExecuteMxaloadHeader( MXALOADHEADER * Mxaloadheader, uint16 in_group  )
 {
@@ -772,11 +772,11 @@ BOOL ExecuteMxaloadHeader( MXALOADHEADER * Mxaloadheader, uint16 in_group  )
     }
     return TRUE;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Execute one group for an Mxaloadheader
     Input       ;       MXALOADHEADER *
     Output      :       FLASE/TRUE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 #if 0
 BOOL ExecuteSingleGroupMxaloadHeader( MXALOADHEADER * Mxaloadheader, uint16 group  )
@@ -869,11 +869,11 @@ ReleaseMxaloadheader( MXALOADHEADER * Mxaloadheader )
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Pre - Load .Mxa File
     Input       :       char    *   Filename , MXALOADHEADER *
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL PreMxaload( char * Filename, MXALOADHEADER * Mxaloadheaders, int header_num, BOOL LevelSpecific )
 {
     long            File_Size;
@@ -1008,12 +1008,12 @@ BOOL PreMxaload( char * Filename, MXALOADHEADER * Mxaloadheaders, int header_num
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Interp between frames for MXA Anim...
     Input       :       MXALOADHEADER * Mxaloadheader 
                 :       int FrameFrom, int FrameTo , float Interp
     Output      :       FLASE/TRUE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL    InterpFrames( MXALOADHEADER * Mxaloadheader , int FromFrame, int ToFrame , float Interp )
 {
     D3DEXECUTEBUFFERDESC    debDesc;
@@ -1110,16 +1110,16 @@ BOOL    InterpFrames( MXALOADHEADER * Mxaloadheader , int FromFrame, int ToFrame
 
 
 #if 0
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Do the Water Stuff...
     Input       :       Nothing
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+-------------------------------------------------------------------*/
+/*-------------------------------------------------------------------
     Procedure   :       Do the Water Stuff...
     Input       :       Nothing
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 float   WaterTime = 0.0F;
 void WaterMesh()
 {
@@ -1251,21 +1251,21 @@ void WaterMesh()
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Release the Water Stuff...
     Input       :       Nothing
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void ReleaseWaterMesh()
 {
     if( WaterExecbuf )
         XRELEASE(WaterExecbuf);
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Display the Water Stuff...
     Input       :       Nothing
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void DisplayWaterMesh()
 {
     LPDIRECTDRAW lpDD = d3dapp->lpDD;
@@ -1309,11 +1309,11 @@ void DisplayWaterMesh()
     if (lpDev->lpVtbl->SetMatrix(lpDev, hWorld, &identity) != D3D_OK)
         return;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Init the Water Stuff...
     Input       :       Nothing
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void InitWaterMesh()
 {
     int x,y;
@@ -1431,11 +1431,11 @@ void InitWaterMesh()
         return;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Collide the Water Stuff...
     Input       :       Nothing
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL WaterCollide( VECTOR *Origin, VECTOR *Offset, VECTOR *CollidePos , uint16 Damage)
 {
     float   WaterOffset;
@@ -1458,9 +1458,9 @@ BOOL WaterCollide( VECTOR *Origin, VECTOR *Offset, VECTOR *CollidePos , uint16 D
     
     WaterOffset = -DotProduct( &WaterNormal, &WaterPos );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Calculate T
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     Div = ( Offset->x * WaterNormal.x) + 
           ( Offset->y * WaterNormal.y) + 
           ( Offset->z * WaterNormal.z);
@@ -1480,9 +1480,9 @@ BOOL WaterCollide( VECTOR *Origin, VECTOR *Offset, VECTOR *CollidePos , uint16 D
     
     t = -( Num / Div );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Do Polygon collision
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
     if( t < 0.0F ) return FALSE;        /* Intersection behind origin */
     if( t > 1.0F ) return FALSE;        /* Intersection Greater then ray length */

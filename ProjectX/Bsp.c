@@ -151,9 +151,9 @@
  * 1     1/15/97 5:33p Phillipd
  */
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Include Files...    
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #include "typedefs.h"
 #include "main.h"
 #include "new3d.h"
@@ -176,17 +176,17 @@
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Externals ...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 extern  int Depth;
 extern MLOADHEADER Mloadheader;
 
 extern BOOL AmIOutsideGroup( MLOADHEADER * m, VECTOR * EndPos, uint16 EndGroup );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Globals ...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL FindCollision( BSP_NODE * node_ptr, VECTOR * start_point_ptr, VECTOR * end_point_ptr );
 void DebugPrintf( const char * format, ... );
 
@@ -391,11 +391,11 @@ static BOOL BSP_LoadPortals( char *fname )
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Load .Bsp File
     Input       :       char    *   Filename
     Output      :       BOOL    TRUE/FALSE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL Bspload( char * Filename, BSP_HEADER *Bsp_Header )
 {
 #ifdef BSP
@@ -465,11 +465,11 @@ BOOL Bspload( char * Filename, BSP_HEADER *Bsp_Header )
 
     return TRUE;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Free up the memory calloced by bspload..
     Input       :       Nothing
     Output      :       BOOL    TRUE/FALSE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void Bspfree( void )
 {
 #ifdef BSP
@@ -577,13 +577,13 @@ BOOL RayCollide( BSP_HEADER *Bsp_Header, VECTOR *StartPos, VECTOR *Dir, VECTOR *
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Define if a ray hits a solid..
     Input       :       BSP_NODE * Start node
                         VECTOR * Start Position
                         VECTOR * end Position
     Output      :       BOOL
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL FindCollision( BSP_NODE * node_ptr, VECTOR * start_point_ptr, VECTOR * end_point_ptr )
 {
     float       d1, d2;
@@ -721,11 +721,11 @@ start:
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Define if a point is inside or outside
     Input       :       VECTOR * Pos , Node *node
     Output      :       BOOL
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 BOOL PISDistRecursive( VECTOR *Pos, BSP_NODE *node)
 {

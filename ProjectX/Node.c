@@ -194,9 +194,9 @@
     }
  */
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Include File... 
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #include <stdio.h>
 #include "typedefs.h"
 #include <dplay.h>
@@ -224,23 +224,23 @@
 #include "collision.h"
 #include "XMem.h"
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Defines
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #define MAXNODES    768
 #define NOD_VERSION_NUMBER  1
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Externals...    
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 extern  LINE            Lines[ MAXLINES ];
 extern  ENEMY   *   FirstEnemyUsed;
 
 extern  int __cdecl MsgBox( int type, char *msg, ... );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Globals...  
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 NODENETWORKHEADER   NodeNetworkHeader;
 void SetNetworkDistance( void );
@@ -377,11 +377,11 @@ int DebugMathErrors( void )
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Load .Nod File
     Input       :       char    *   Filename 
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL Nodeload( char * Filename )
 {
     char        *   Buffer;
@@ -628,11 +628,11 @@ BOOL Nodeload( char * Filename )
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Release NodeHeader..
     Input       :       NOTHING
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void NodeRelease( void)
 {
     if( NodeNetworkHeader.State )
@@ -648,11 +648,11 @@ void NodeRelease( void)
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Put Enmies At Node....And draw lines for a Network
     Input       :       NOTHING
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 ENEMY * PutEnemiesAtNodes(void)
 {
     int o,i,e;
@@ -750,11 +750,11 @@ ENEMY * PutEnemiesAtNodes(void)
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       draw lines for a Network
     Input       :       NOTHING
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void ShowNodeNetwork( uint32 NetMask )
 {
     int o,i,e;
@@ -843,12 +843,12 @@ void ShowNodeNetwork( uint32 NetMask )
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Recursive Node Dsistance Find.....
     Input       :       NODE * Node
                 :       int32   Network
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 NODE * Source;
 float * NA;
 
@@ -876,12 +876,12 @@ void NodeRecurse( NODE * NodeFrom , NODE * NodeTo , float Distance )
         NodeRecurse( NodeTo , NodeTo->NodeLink[i] ,  Distance );
     }
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Set Network weight form 1 Node...
     Input       :       NODE * Node
                 :       int32   Network
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void SetNetworkDistance( void )
 {
     int e,o,v;
@@ -937,11 +937,11 @@ void SetNetworkDistance( void )
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Find the nearest node for an object using its network number..
     Input       :       OBJECT * Object
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void FindNearestNode( OBJECT * Object )
 {
     float Distance;
@@ -970,11 +970,11 @@ void FindNearestNode( OBJECT * Object )
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Update the nearest node for an object using its network number..
     Input       :       OBJECT * Object
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 void UpdateNearestNode( OBJECT * Object )
 {
@@ -1019,13 +1019,13 @@ void UpdateNearestNode( OBJECT * Object )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Which Node to aim for to get to my target Node....
     Input       :       int16 Network..Which Network...
                 :       NODE * NodeFrom ...Which node im close to..
                 :       NODE * NodeTo...Which node im trying to get to...
     Output      :       NODE * Which node to go to get to my destination quickly..
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 NODE * WhichNode( uint32 Network , NODE * NodeFrom , NODE * NodeTo )
 {
     float Distance,Temp;
@@ -1070,13 +1070,13 @@ NODE * WhichNode( uint32 Network , NODE * NodeFrom , NODE * NodeTo )
     }
     return NodeReturn;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Which Node to aim for to get to get away from my target....
     Input       :       int16 Network..Which Network...
                 :       NODE * NodeFrom ...Which node im close to..
                 :       NODE * NodeTo...Which node im trying to get to...
     Output      :       NODE * Which node to go to get to my destination quickly..
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 NODE * WhichRetreatNode( uint32 Network , NODE * NodeFrom , NODE * NodeTo )
 {
     float Distance,Temp;
@@ -1123,13 +1123,13 @@ NODE * WhichRetreatNode( uint32 Network , NODE * NodeFrom , NODE * NodeTo )
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       An Alternate root is needed so find a different node if possible..
     Input       :       int16 Network..Which Network...
                 :       NODE * NodeFrom ...Which node im close to..
                 :       NODE * NodeTo...Which node im trying to get to...
     Output      :       NODE * Which node to go to for a different path..
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 NODE * ChooseAlternateNode( uint32 Network , NODE * NodeFrom , NODE * NodeTo )
 {
     int i;
@@ -1226,11 +1226,11 @@ NODE * FindSuitableSplineNodeRandom( uint32 Network, NODE * NodeFrom , NODE *Nod
     return NodeFrom;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Special Update the nearest node for an object using its network number..
     Input       :       OBJECT * Object
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 void UpdateNearestNodeSpecial( OBJECT * Object )
 {
@@ -1283,14 +1283,14 @@ void UpdateNearestNodeSpecial( OBJECT * Object )
 
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Return Pos of nearest node to a point
     Input       :       VECTOR  *   Pos
                 :       uint16  *   Group
                 :       VECTOR  *   TopLeft
                 :       VECTOR  *   BottomRight
     Output      :       float       Distance ( -1 None )
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 float ReturnClosestNode( VECTOR * Pos, VECTOR * NearestNodePos, uint16 * Group, VECTOR * TopLeft, VECTOR * BottomRight )
 {
     int         i;

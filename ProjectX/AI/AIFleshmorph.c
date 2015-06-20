@@ -84,11 +84,11 @@ void AI_FLESHMORPH_RANDOMFIREBALL( register ENEMY * Enemy );
 
 VECTOR  FleshmorphPos;
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Fleshmorph Idle
     Input       :   ENEMY * Enemy
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void AI_FLESHMORPH_IDLE( register ENEMY * Enemy )
 {
     OBJECT * TObject;
@@ -133,11 +133,11 @@ void AI_FLESHMORPH_IDLE( register ENEMY * Enemy )
     Enemy->Timer  = RESET_IDLE_TIME;
 
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Fleshmorph MoveForward
     Input       :   ENEMY * Enemy
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void AI_FLESHMORPH_MOVEFORWARDS( register ENEMY * Enemy )
 {
 
@@ -162,11 +162,11 @@ void AI_FLESHMORPH_MOVEFORWARDS( register ENEMY * Enemy )
     Enemy->Object.AI_Mode = AIMODE_FLESHMORPH_STOPFORWARD;
     Enemy->Timer  = ONE_SECOND * 15.0F;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Fleshmorph StopForward
     Input       :   ENEMY * Enemy
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void AI_FLESHMORPH_STOPFORWARD( register ENEMY * Enemy )
 {
 //  OBJECT * TObject;
@@ -254,11 +254,11 @@ void AI_FLESHMORPH_STOPFORWARD( register ENEMY * Enemy )
 
     
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Fleshmorph MoveBackwards
     Input       :   ENEMY * Enemy
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void AI_FLESHMORPH_MOVEBACKWARDS( register ENEMY * Enemy )
 {
     AI_FLESHMORPH_RANDOMFIREBALL( Enemy );
@@ -285,11 +285,11 @@ void AI_FLESHMORPH_MOVEBACKWARDS( register ENEMY * Enemy )
     Enemy->Object.AI_Mode = AIMODE_FLESHMORPH_STOPBACKWARD;
     Enemy->Timer  = ONE_SECOND * 5.0F;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Fleshmorph StopBackward
     Input       :   ENEMY * Enemy
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void AI_FLESHMORPH_STOPBACKWARD( register ENEMY * Enemy )
 {
     if( !Enemy->Object.Animating )
@@ -321,11 +321,11 @@ void AI_FLESHMORPH_STOPBACKWARD( register ENEMY * Enemy )
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Fleshmorph Random Fireball move...
     Input       :   ENEMY * Enemy
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 VECTOR  FireDirs[4] = { { -0.7F , 0.0F , 0.3F },
                         { -0.3F , 0.0F , 0.7F },
                         {  0.3F , 0.0F , 0.7F },

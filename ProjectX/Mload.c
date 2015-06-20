@@ -87,9 +87,9 @@ num_start_points : uint16
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Include File... 
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #include "typedefs.h"
 #include "main.h"
 #include "splash.h"
@@ -109,9 +109,9 @@ num_start_points : uint16
 #include "magic.h"
 #include "Xmem.h"
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Externals...    
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #ifdef SOFTWARE_ENABLE
 extern void CWScanExecuteBuffer( LPDIRECT3DEXECUTEBUFFER execbuf );
 extern  BOOL    SoftwareVersion;
@@ -138,17 +138,17 @@ BOOL ReadGroupConnections( MLOADHEADER *m, char **pbuf );
 void FreeGroupConnections( void );
 void ReadSoundInfo( MLOADHEADER *m, char **pbuf );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Defines
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #define MXV_VERSION_NUMBER  3
 
 #define UV_FUDGE    (0.5F)
 #define SAME_UV     (2.0F)
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Globals...  
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 float   UV_Fix = UV_FUDGE;
 BOOL    AllWires = FALSE;
 uint16  num_start_positions = 0;
@@ -163,11 +163,11 @@ BOOL    TempGroups[MAXGROUPS];
 void InitSoundInfo( MLOADHEADER * Mloadheader );
 uint16  GroupTris[ MAXGROUPS ];
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Dont Know....
     Input       :       Who can tell...
     Output      :       int93???
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 static BOOL
 read_visible( MLOADHEADER * Mloadheader, VISTREE *v, uint16 group, uint16 **Uint16PntPtr )
 {
@@ -212,11 +212,11 @@ read_visible( MLOADHEADER * Mloadheader, VISTREE *v, uint16 group, uint16 **Uint
     *Uint16PntPtr = ptr;
     return ok;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Build a Gamma Correction table 
     Input       :       double GammaValue
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BYTE  Tab[256];
 void BuildGammaCorrect( double GammaValue )
 {
@@ -328,11 +328,11 @@ FixUV_Anim( POLYANIM *PolyAnim, LPD3DLVERTEX Vert, LPD3DLVERTEX Orig_Vert )
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Load .Mxv File
     Input       :       char    *   Filename , MLOADHEADER *
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL Mload( char * Filename, MLOADHEADER * Mloadheader  )
 {
     D3DEXECUTEDATA          d3dExData;
@@ -666,9 +666,9 @@ BOOL Mload( char * Filename, MLOADHEADER * Mloadheader  )
         }
 
         Uint16Pnt++;
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
  *      Particular Stuff Related To Visiploys   
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
         Buffer = ( char * ) Uint16Pnt;
 
         for( group=0 ; group<Mloadheader->num_groups; group++)
@@ -798,9 +798,9 @@ BOOL Mload( char * Filename, MLOADHEADER * Mloadheader  )
         }
         Buffer = (char *) Uint16Pnt;        
     
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
  *      End Of Visiploy Stuff   
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 #if MXV_VERSION_NUMBER >= 3
         if ( !ReadGroupConnections( Mloadheader, &Buffer ) )
@@ -808,9 +808,9 @@ BOOL Mload( char * Filename, MLOADHEADER * Mloadheader  )
         ReadSoundInfo( Mloadheader, &Buffer );
 #endif
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
  *      Start of Cell Index Stuff   
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
         Uint16Pnt = (uint16 *) Buffer;
         // is there any cell index info.....
         if ( *Uint16Pnt++ != 0)
@@ -886,9 +886,9 @@ BOOL Mload( char * Filename, MLOADHEADER * Mloadheader  )
             }
         
         }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
  *      Start of Start Pos Stuff
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
         Uint16Pnt = (uint16 *) Buffer;
         num_start_positions = *Uint16Pnt++;
         Buffer = (char *) Uint16Pnt;        
@@ -924,9 +924,9 @@ BOOL Mload( char * Filename, MLOADHEADER * Mloadheader  )
         }
         Buffer = (char *) StartPosPnt;      
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
  *      Start of group up vector Stuff
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
         Uint16Pnt = (uint16 *) Buffer;
         // is there any up vector info.....
         if ( *Uint16Pnt++ != 0)
@@ -1169,11 +1169,11 @@ BOOL Mload( char * Filename, MLOADHEADER * Mloadheader  )
 
     return( TRUE );
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Execute all group buffers for a Mloadheader
     Input       ;       MLOADHEADER *
     Output      :       FLASE/TRUE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 BOOL ExecuteMloadHeader( MLOADHEADER * Mloadheader  )
 {
@@ -1203,11 +1203,11 @@ BOOL ExecuteMloadHeader( MLOADHEADER * Mloadheader  )
     }
     return TRUE;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Execute one group for an Mloadheader
     Input       ;       MLOADHEADER *
     Output      :       FLASE/TRUE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 BOOL ExecuteSingleGroupMloadHeader( MLOADHEADER * Mloadheader, uint16 group  )
 {
@@ -1380,11 +1380,11 @@ static void Unscramble( char *buf, long size, char *fname )
 #endif // UNSCRAMBLE
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Pre - Load .Mx File
     Input       :       char    *   Filename , MLOADHEADER *
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL PreMload( char * Filename, MLOADHEADER * Mloadheader  )
 {
     long            File_Size;
@@ -1491,11 +1491,11 @@ BOOL PreMload( char * Filename, MLOADHEADER * Mloadheader  )
     return( TRUE );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Handle All Animation For an Mloadheader
     Input       :       MLOADHEADER *
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void BackGroundTextureAnimation( MLOADHEADER * Mloadheader , uint16 group )
 {
     uint16      *   Uint16Pnt;
@@ -1547,11 +1547,11 @@ void BackGroundTextureAnimation( MLOADHEADER * Mloadheader , uint16 group )
         }
     }
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Handle All Animation Commands
     Input       :       MLOADHEADER *
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint16 * HandleAnimCommands( POLYANIM * PolyAnim , uint16 * AnimData , uint16 * OrgAnimAdr)
 {
     uint16 Frame;
@@ -1596,11 +1596,11 @@ uint16 * HandleAnimCommands( POLYANIM * PolyAnim , uint16 * AnimData , uint16 * 
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Is GroupVisible recursive...
     Input       :       VISTREE * vistree , group to..
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 float IsGroupVisibleSoundInfoRecursive( MLOADHEADER * Mloadheader ,VISTREE * visible , uint16 group2 , uint16 old_group , float Distance )
 {
     int i;
@@ -1623,11 +1623,11 @@ float IsGroupVisibleSoundInfoRecursive( MLOADHEADER * Mloadheader ,VISTREE * vis
     return -1.0F;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Is GroupVisible...
     Input       :       MLOADHEADER * , group in , group to..
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 float IsGroupVisibleSoundInfo( MLOADHEADER * Mloadheader , uint16 group , uint16 group2 )
 {
     int i;
@@ -1665,11 +1665,11 @@ float IsGroupVisibleSoundInfo( MLOADHEADER * Mloadheader , uint16 group , uint16
     }
     return -1.0F;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Is GroupVisible...
     Input       :       MLOADHEADER * , group in , group to..
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 float IsGroupVisibleSoundInfo2( MLOADHEADER * Mloadheader , uint16 group , uint16 group2 )
 {
     uint16 i;
@@ -1704,11 +1704,11 @@ float IsGroupVisibleSoundInfo2( MLOADHEADER * Mloadheader , uint16 group , uint1
     return -1.0F;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Is GroupVisible...
     Input       :       MLOADHEADER * , group in , group to..
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 float IsGroupVisibleSoundInfo3( MLOADHEADER * Mloadheader , uint16 group , uint16 group2 )
 {
     uint16 i;
@@ -1749,11 +1749,11 @@ float IsGroupVisibleSoundInfo3( MLOADHEADER * Mloadheader , uint16 group , uint1
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Set up Sound Info...
     Input       :       MLOADHEADER *
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void InitSoundInfo( MLOADHEADER * Mloadheader )
 {
 #if MXV_VERSION_NUMBER <= 2
@@ -1810,13 +1810,13 @@ void ReadSoundInfo( MLOADHEADER *m, char **pbuf )
     *pbuf = (char *) buf;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Trigger Background Animation to change state...
     Input       :       uint16 * Data
                 :       first uint16 is the Polyanim index number...
                 :       the second uint16 is the state to change that anim to
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void TriggerBackgroundAnimationGo( uint16 * Data )
 {
     POLYANIM * PolyAnim;
@@ -1830,13 +1830,13 @@ void TriggerBackgroundAnimationGo( uint16 * Data )
     PolyAnim += TAnimInfoIndexPnt->PolyAnim;
     PolyAnim->State = TEXTUREANIM_Go;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Trigger Background Animation to change state...
     Input       :       uint16 * Data
                 :       first uint16 is the Polyanim index number...
                 :       the second uint16 is the state to change that anim to
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void TriggerBackgroundAnimationStop( uint16 * Data )
 {
     POLYANIM * PolyAnim;

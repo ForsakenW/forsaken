@@ -32,9 +32,9 @@ num_groups : uint16
 }[num_groups]
 mxtype : uint16 // always 0 for mx format
 */
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Include File... 
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #include <stdio.h>
 #include "typedefs.h"
 #include <dplay.h>
@@ -52,9 +52,9 @@ mxtype : uint16 // always 0 for mx format
 #include "XMem.h"
 
 #ifdef SOFTWARE_ENABLE
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Chris's Code
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void    CWExecute2( LPDIRECT3DDEVICE lpDev,
                     LPDIRECT3DEXECUTEBUFFER execbuf,
                     LPDIRECT3DVIEWPORT lpView,
@@ -63,14 +63,14 @@ extern  BOOL    SoftwareVersion;
 extern void CWScanExecuteBuffer( LPDIRECT3DEXECUTEBUFFER execbuf );
 #endif
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Defines
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #define MX_VERSION_NUMBER   2
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Externals...    
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void DebugPrintf( char *fmt, ... );
 extern  BOOL SWMonoChrome;
 extern  uint32              AnimOncePerFrame;                   // used for stuff that is displayed more than once in a single frame..
@@ -90,9 +90,9 @@ extern  GLOBALSHIP  Ships[MAX_PLAYERS];
 extern  float   framelag;
 extern  BOOL    PowerVR;
 extern  char    normdata_path[ 128 ];
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Globals...  
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 #define NUMOFPOLYSPER3DPANELITEM 2
 POLYANIM * Panel3DPolyAnims_Primary[NUMOFPOLYSPER3DPANELITEM];
@@ -105,20 +105,20 @@ void Check3DPanelPolyAnim(POLYANIM * PolyAnim );
 extern void FixUV( LPD3DTRIANGLE Tri, LPD3DLVERTEX Vert, uint16 Tpage, LPD3DLVERTEX Orig_Vert );
 extern void FixUV_Anim( POLYANIM *PolyAnim, LPD3DLVERTEX Vert, LPD3DLVERTEX Orig_Vert );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Function from title.c not #included due to dependences...   
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void TintDisc(uint16 Model);
 
 //uint8 Red = 128;
 //uint8 Green = 192;
 //uint8 Blue = 192+64;
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Load .Mx File
     Input       :       char    *   Filename , MXLOADHEADER *
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL Mxload( char * Filename, MXLOADHEADER * Mxloadheader , BOOL Panel, BOOL StoreTriangles )
 {
     D3DEXECUTEDATA          d3dExData;
@@ -626,9 +626,9 @@ BOOL Mxload( char * Filename, MXLOADHEADER * Mxloadheader , BOOL Panel, BOOL Sto
         Buffer = (char *) Uint16Pnt;
     }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Point Direction Data
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     Uint16Pnt = (uint16 *) Buffer;
 
     if( *Uint16Pnt++ )
@@ -789,12 +789,12 @@ BOOL Mxload( char * Filename, MXLOADHEADER * Mxloadheader , BOOL Panel, BOOL Sto
     Mxloadheader->state = TRUE;
     return( TRUE );
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Execute all group buffers for a Mxloadheader
     Input       ;       MXLOADHEADER *
                 :       uint16      Models[] Index
     Output      :       FLASE/TRUE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 BOOL ExecuteMxloadHeader( MXLOADHEADER * Mxloadheader, uint16 Model  )
 {
@@ -964,11 +964,11 @@ BOOL ExecuteMxloadHeader( MXLOADHEADER * Mxloadheader, uint16 Model  )
     }
     return TRUE;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Execute one group for an Mxloadheader
     Input       ;       MXLOADHEADER *
     Output      :       FLASE/TRUE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #if 0
 BOOL ExecuteSingleGroupMxloadHeader( MXLOADHEADER * Mxloadheader, uint16 group  )
 {
@@ -1090,11 +1090,11 @@ ReleaseMxloadheader( MXLOADHEADER * Mxloadheader )
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Pre - Load .Mx File
     Input       :       char    *   Filename , MXLOADHEADER *
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL PreMxload( char * Filename, MXLOADHEADER * Mxloadheader , BOOL Panel, BOOL LevelSpecific )
 {
     long            File_Size;
@@ -1214,12 +1214,12 @@ BOOL PreMxload( char * Filename, MXLOADHEADER * Mxloadheader , BOOL Panel, BOOL 
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Execute all group buffers for a Mxloadheader
     Input       ;       MXLOADHEADER *
                 :       uint16      Models[] Index
     Output      :       FLASE/TRUE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL ReallyExecuteMxloadHeader( MXLOADHEADER * Mxloadheader, uint16 Model )
 {
     int         i;
@@ -1241,11 +1241,11 @@ BOOL ReallyExecuteMxloadHeader( MXLOADHEADER * Mxloadheader, uint16 Model )
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Handle All Animation For an Mloadheader
     Input       :       MLOADHEADER *
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void ModelTextureAnimation( MXLOADHEADER * Mxloadheader  )
 {
     uint16      *   Uint16Pnt;
@@ -1295,11 +1295,11 @@ void ModelTextureAnimation( MXLOADHEADER * Mxloadheader  )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Restore the coolours for a Mxloadheader..
     Input       ;       MXLOADHEADER *
     Output      :       FLASE/TRUE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 BOOL RestoreColourMxloadHeader( MXLOADHEADER * Mxloadheader1 )
 {
@@ -1340,11 +1340,11 @@ BOOL RestoreColourMxloadHeader( MXLOADHEADER * Mxloadheader1 )
     }
     return TRUE;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       CheckFor 3d Panel PolyAnims..
     Input       ;       POLYANIM * PolyAnim
     Output      :       NOTHING
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void Check3DPanelPolyAnim(POLYANIM * PolyAnim )
 {
     int j;

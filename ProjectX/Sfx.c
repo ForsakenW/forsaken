@@ -3122,11 +3122,11 @@ void StopCompoundSfx( void )
     LeaveCriticalSection( &CompoundSfxKey );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Destroy all sound fx...
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void DestroySound( int flags )
 {
     int i, j;
@@ -4032,13 +4032,13 @@ void SetBufferFreq( IDirectSoundBuffer *Buffer, float Freq )
 
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Play Panned Sfx
     Input       :   int16   Sfx Number
                 :   MATRIX * Matrix
                 :   VECTOR * Pos
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void SetPannedBufferParams( IDirectSoundBuffer *pDSB, IDirectSound3DBuffer *pDSB3D, VECTOR *SfxPos, float Freq, VECTOR *Temp, float Distance, long Volume, uint16 Effects )
 {
     VECTOR  Temp2;
@@ -4274,13 +4274,13 @@ BOOL Init_SoundGlobals(void)
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Set the position velocity and direction of the Listner..
     Input       :   VECTOR * Pos
                 :   VECTOR * Velocity
                 :   MATRIX * Matrix
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL SetPosVelDir_Listner( VECTOR * Pos , VECTOR * Velocity , MATRIX * Mat )
 {
     VECTOR UpVector;
@@ -4303,14 +4303,14 @@ BOOL SetPosVelDir_Listner( VECTOR * Pos , VECTOR * Velocity , MATRIX * Mat )
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Update 3D Sfx
     Input       :   int16   Sfx Number
                 :   MATRIX * Matrix
                 :   VECTOR * Pos
     Output      :   Nothing
     Notes       :   Use to trace 3D moving sound sources. (A3D-Addition.)
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void Update3DSfx(int16 Sfx, uint16 Group , VECTOR * SfxPos , VECTOR * SfxVel )
 {
 #if 0
@@ -4337,12 +4337,12 @@ void Update3DSfx(int16 Sfx, uint16 Group , VECTOR * SfxPos , VECTOR * SfxVel )
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   SetRezManMode
     Input       :   DWORD flag indicating mode to set. (Usually make this DYNAMIC.)
     Output      :   Error-code integer. < 0 indicates error condition.
     Notes       :   Use to set resource-management mode if A3D is present.
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #ifdef USE_A3D
 int SetRezManMode( DWORD dwRMMode )
 {
@@ -4363,12 +4363,12 @@ int SetRezManMode( DWORD dwRMMode )
 #endif
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   A3DCleanup
     Input       :   none.
     Output      :   none.
     Notes       :   Use to cleanup the A3D interface if you queried it at startup.
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #ifdef USE_A3D
 void A3DCleanup( void )
 {

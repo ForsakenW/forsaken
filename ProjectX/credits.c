@@ -1,6 +1,6 @@
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Includes
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -23,9 +23,9 @@
 #include "local.h"
 #include "XMem.h"
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Defines
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #define     BIGFONT_YSIZE       22
 #define     BIGFONT_CHAR_GAP    2
 #define     BIGFONT_SPACESIZE   12
@@ -39,9 +39,9 @@
 #define     SMALLFONT           1
 #define     FORSAKEN_OFFSET     0
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     External Variables
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 extern  float           framelag;
 extern  VECTOR          Forward;
 extern  VECTOR          Backward;
@@ -55,9 +55,9 @@ extern  FRAME_INFO  *   CreditsFont_Header;
 extern  CAMERA          CurrentCamera;
 extern  int             GameCompleted;
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Global Variables
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 uint8   CharTable[] = {
 
@@ -89,49 +89,49 @@ uint8   CharTable[] = {
     0, 0, 0, 0, 0, 0,                   // 250 - 255
 };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Programming Credits
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 CREDIT  ProbeTitle = { "PROBE DEVELOPMENT TEAM", 1, NULL };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Programming Credits
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * ProgrammingNames[] = { "Dave Collins", "Dan Phillips", "Oliver Castle", "Phil Yard" };
 PAGE    ProgrammingPages[] = { { 4, &ProgrammingNames[ 0 ] } };
 CREDIT  Programming = { "PROGRAMMING", 1, &ProgrammingPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Software Programming Credit
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * SoftwareProgrammingNames[] = { "Chris Walsh" };
 PAGE    SoftwareProgrammingPages[] = { { 1, &SoftwareProgrammingNames[ 0 ] } };
 CREDIT  SoftwareProgramming = { "SOFTWARE RENDERER", 1, &SoftwareProgrammingPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Development Director Credit
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * DevelopmentDirectorNames[] = { "Tony Beckwith" };
 PAGE    DevelopmentDirectorPages[] = { { 1, &DevelopmentDirectorNames[ 0 ] } };
 CREDIT  DevelopmentDirector = { "DEVELOPMENT DIRECTOR", 1, &DevelopmentDirectorPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Project Manager Credit
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * ProjectManagerNames[] = { "James Stewart" };
 PAGE    ProjectManagerPages[] = { { 1, &ProjectManagerNames[ 0 ] } };
 CREDIT  ProjectManager = { "PROJECT MANAGER", 1, &ProjectManagerPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Artwork
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * ArtworkNames[] = { "Ned Langman", "Anthony Rosbottom", "Daniel Burke" };
 PAGE    ArtworkPages[] = { { 3, &ArtworkNames[ 0 ] } };
 CREDIT  Artwork = { "ARTWORK", 1, &ArtworkPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Level Creation
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * LevelCreationkNames1[] = { "Nick Baynes", "Errol Gale", "Ned Langman", "Paul Sinton" };
 uint8 * LevelCreationkNames2[] = { "Chris Baker", "Nick McGee", "Ian Hudson", "Neil Gartell" };
 uint8 * LevelCreationkNames3[] = { "Tom Geddes", "Alec Prenter", "Kevin Row", "Andy Williams" };
@@ -145,113 +145,113 @@ PAGE    LevelCreationPages[] = {
 
 CREDIT  LevelCreation = { "LEVEL CREATION", 4, &LevelCreationPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Concept Artwork
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * ConceptArtworkNames[] = { "Jeremy Elford", "Alex Lawrence" };
 PAGE    ConceptArtworkPages[] = { { 2, &ConceptArtworkNames[ 0 ] } };
 CREDIT  ConceptArtwork = { "CONCEPT ARTWORK", 1, &ConceptArtworkPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Music
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * MusicNames[] = { "\"The Swarm\"", "Stephen Root", "Dominic Glynn" };
 PAGE    MusicPages[] = { { 3, &MusicNames[ 0 ] } };
 CREDIT  Music = { "MUSIC CREATED BY", 1, &MusicPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     SFX Design
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * SFX_DesignNames[] = { "Andy Brock" };
 PAGE    SFX_DesignPages[] = { { 1, &SFX_DesignNames[ 0 ] } };
 CREDIT  SFX_Design = { "SFX DESIGN", 1, &SFX_DesignPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     FMV Audio
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * SFX_FMVAudioNames[] = { "Stephen Root", "Andy Brock", "Simon Robertson" };
 PAGE    SFX_FMVAudioPages[] = { { 3, &SFX_FMVAudioNames[ 0 ] } };
 CREDIT  SFX_FMVAudio = { "FMV AUDIO", 1, &SFX_FMVAudioPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Probe Voice Talents
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * ProbeVoicesNames[] = { "Brenda O'Farrell as \"BRENDA\"", "Kate O'Rourke as \"LEPRACOM\"" };
 PAGE    ProbeVoicesPages[] = { { 2, &ProbeVoicesNames[ 0 ] } };
 CREDIT  ProbeVoices = { "VOICE TALENTS", 1, &ProbeVoicesPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Voice Processing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * VoiceProcessingNames[] = { "Andy Brock" };
 PAGE    VoiceProcessingPages[] = { { 1, &VoiceProcessingNames[ 0 ] } };
 CREDIT  VoiceProcessing = { "VOICE PROCESSING", 1, &VoiceProcessingPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Habitat
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * HabitatNames[] = { "Paul Sinnet", "Bob Armour", "Harvey Gilpin" };
 PAGE    HabitatPages[] = { { 3, &HabitatNames[ 0 ] } };
 CREDIT  Habitat = { "WORLD TOOL \"HABITAT\"", 1, &HabitatPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Tools
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * ToolsNames[] = { "Oliver Castle", "Tony Monkton", "Dave Collins" };
 PAGE    ToolsPages[] = { { 3, &ToolsNames[ 0 ] } };
 CREDIT  Tools = { "TOOLS", 1, &ToolsPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     QA Manager
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * QA_ManagerNames[] = { "Clifford Ramsey" };
 PAGE    QA_ManagerPages[] = { { 1, &QA_ManagerNames[ 0 ] } };
 CREDIT  QA_Manager = { "QA MANAGER", 1, &QA_ManagerPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     QA Department
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * QA_DepartmentNames[] = { "Richard Foster", "Mitchell Slater", "Scott Priestly",
                                  "Geoff Cullen", "Andy Aish" };
 PAGE    QA_DepartmentPages[] = { { 5, &QA_DepartmentNames[ 0 ] } };
 CREDIT  QA_Department = { "QA DEPARTMENT", 1, &QA_DepartmentPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Special Thanks
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * SpecialThanksNames[] = { "Greg Michael", "Tony Monckton", "Mark Fisher", "James Hawkins", "Emma Denson" };
 PAGE    SpecialThanksPages[] = { { 5, &SpecialThanksNames[ 0 ] } };
 CREDIT  SpecialThanks = { "SPECIAL THANKS", 1, &SpecialThanksPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Title
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 CREDIT  AcclaimTitle = { "ACCLAIM PRODUCT DEVELOPMENT", 1, NULL };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Producer
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccProducerNames[] = { "Shawn David Rosen" };
 PAGE    AccProducerPages[] = { { 1, &AccProducerNames[ 0 ] } };
 CREDIT  AccProducer = { "PRODUCER", 1, &AccProducerPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Lead Analysts
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccLeadAnalystsNames[] = { "James \"China White\" Craddock", "Michael \"Lenin\" Patterson" };
 PAGE    AccLeadAnalystsPages[] = { { 2, &AccLeadAnalystsNames[ 0 ] } };
 CREDIT  AccLeadAnalysts = { "LEAD ANALYSTS", 1, &AccLeadAnalystsPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Project Leads
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccProjectLeadsNames[] = { "Jeremy \"Silkworm\" Pope", "Matt \"Daddy\" Canonico" };
 PAGE    AccProjectLeadsPages[] = { { 2, &AccProjectLeadsNames[ 0 ] } };
 CREDIT  AccProjectLeads = { "PROJECT LEADS", 1, &AccProjectLeadsPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Testers
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccTestersNames1[] = { "Russell \"Nani\" Ballenger", "Paul \"Wasabi\" DiCarlo", "James \"Velvets\" Ackermann", "Joe \"Redwing\" Howell" }; 
 uint8 * AccTestersNames2[] = { "Mark \"Gyoza\" Garone", "Sue \"Saucy\" Elliot", "Bonchi \"Ill\" Martinez", "Matthew \"Coach\" McEnerney" }; 
 uint8 * AccTestersNames3[] = { "Ted Kaplan", "Dan \"X\" Badilla", "Mike \"Sideshow\" Sterzel", "Jen \"Dr. Evil\" Walka" }; 
@@ -259,122 +259,122 @@ uint8 * AccTestersNames4[] = { "Adam \"YTYTY\" Rosen", "Martin \"Razor\" Glantz"
 PAGE    AccTestersPages[] = { { 4, &AccTestersNames1[ 0 ] }, { 4, &AccTestersNames2[ 0 ] }, { 4, &AccTestersNames3[ 0 ] }, { 5, &AccTestersNames4[ 0 ] } };
 CREDIT  AccTesters = { "TESTERS", 4, &AccTestersPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Marketing Product Manager
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccMarketingProductManagerNames[] = { "Donald Jackson" };
 PAGE    AccMarketingProductManagerPages[] = { { 1, &AccMarketingProductManagerNames[ 0 ] } };
 CREDIT  AccMarketingProductManager = { "MARKETING PRODUCT MANAGER", 1, &AccMarketingProductManagerPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Assistant Product Manager
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccAssistantProductManagerNames[] = { "Ed Fortune" };
 PAGE    AccAssistantProductManagerPages[] = { { 1, &AccAssistantProductManagerNames[ 0 ] } };
 CREDIT  AccAssistantProductManager = { "ASSISTANT PRODUCT MANAGER", 1, &AccAssistantProductManagerPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim UK Marketing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccUKMarketingNames[] = { "Frank Sagnier", "Theresa Noonam", "Ned Browning", "Vincent Mercier", "Rainer Zipp" };
 PAGE    AccUKMarketingPages[] = { { 5, &AccUKMarketingNames[ 0 ] } };
 CREDIT  AccUKMarketing = { "UK MARKETING", 1, &AccUKMarketingPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Creative Services
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccCreativeServicesNames[] = { "Scott Jenkins", "Lenny O'Donnell", "Beth Pawluk" };
 PAGE    AccCreativeServicesPages[] = { { 3, &AccCreativeServicesNames[ 0 ] } };
 CREDIT  AccCreativeServices = { "CREATIVE SERVICES", 1, &AccCreativeServicesPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Manager Internet Services
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccInternetManagerNames[] = { "Ben Fischbach" };
 PAGE    AccInternetManagerPages[] = { { 1, &AccInternetManagerNames[ 0 ] } };
 CREDIT  AccInternetManager = { "INTERNET SERVICES MANAGER", 1, &AccInternetManagerPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim WebMaster
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccWebmasterNames[] = { "Bobby Saha" };
 PAGE    AccWebmasterPages[] = { { 1, &AccWebmasterNames[ 0 ] } };
 CREDIT  AccWebmaster = { "WEBMASTER", 1, &AccWebmasterPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Forsaken Manuals
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccForsakenManualsNames[] = { "Bill Dickson" };
 PAGE    AccForsakenManualsPages[] = { { 1, &AccForsakenManualsNames[ 0 ] } };
 CREDIT  AccForsakenManuals = { "MANUALS", 1, &AccForsakenManualsPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim PC Tech Supplement
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccPCTechSupplementNames[] = { "Howard Perlman", "David Pollick" };
 PAGE    AccPCTechSupplementPages[] = { { 2, &AccPCTechSupplementNames[ 0 ] } };
 CREDIT  AccPCTechSupplement = { "PC TECH SUPPLEMENT", 1, &AccPCTechSupplementPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Forsaken Strategy Guide
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccStrategyGuideNames1[] = { "Jeff Gomez", "Joe Caponsacco", "Alana Zdinak", "Dan Garcia" };
 uint8 * AccStrategyGuideNames2[] = { "Matthew Canonico", "Jeremy Pope", "Alex Glass" };
 PAGE    AccStrategyGuidePages[] = { { 4, &AccStrategyGuideNames1[ 0 ] }, { 3, &AccStrategyGuideNames2[ 0 ] } };
 CREDIT  AccStrategyGuide = { "STRATEGY GUIDES", 2, &AccStrategyGuidePages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Forskan Public Relations
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccPublicRelationsNames[] = { "Kathryn Morris", "Michael Meyers" };
 PAGE    AccPublicRelationsPages[] = { { 2, &AccPublicRelationsNames[ 0 ] } };
 CREDIT  AccPublicRelations = { "PUBLIC RELATIONS", 1, &AccPublicRelationsPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim UK Public Relations
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccUKPublicRelationsNames1[] = { "Simon Smith-Wright", "Reza Memari", "Sigfrido Buttner-Garcia" };
 uint8 * AccUKPublicRelationsNames2[] = { "Alex Ward", "Stefan Luludes", "Stephanie Bolla" };
 PAGE    AccUKPublicRelationsPages[] = { { 3, &AccUKPublicRelationsNames1[ 0 ] }, { 3, &AccUKPublicRelationsNames2[ 0 ] } };
 CREDIT  AccUKPublicRelations = { "UK PUBLIC RELATIONS", 2, &AccUKPublicRelationsPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Translations
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccTranslationsNames[] = { "Reza Memari", "Vincent Mercier", "Phil Brannelly", "Sigfrido Buttner-Garcia" };
 PAGE    AccTranslationsPages[] = { { 4, &AccTranslationsNames[ 0 ] } };
 CREDIT  AccTranslations = { "TRANSLATIONS", 1, &AccTranslationsPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim European Product Coordinator
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccEuroProductCoordinatorNames[] = { "Harvey Elliott" };
 PAGE    AccEuroProductCoordinatorPages[] = { { 1, &AccEuroProductCoordinatorNames[ 0 ] } };
 CREDIT  AccEuroProductCoordinator = { "EUROPEAN PRODUCT COORDINATOR", 1, &AccEuroProductCoordinatorPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Technical Support Group
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccTSGNames1[] = { "Harry \"FilthyEars\" Reimer", "Howard \"Ex-Kane\" Perlman", "Kevin Denehy", "Robert \"Moish\" Coffey", "Andrew Fullaytor" };
 uint8 * AccTSGNames2[] = { "Greg \"BigDaddy\" McGovern", "Ulises \"Pana-san\" Batalla", "David \"HooVooLoo\" Pollick", "Leigh \"Frodo\" Busch", "Andy Scalka" };
 PAGE    AccTSGPages[] = { { 5, &AccTSGNames1[ 0 ] }, { 5, &AccTSGNames2[ 0 ] } };
 CREDIT  AccTSG = { "TECHNICAL SUPPORT GROUP", 2, &AccTSGPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Translations
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccPCSoftwareEngineerNames[] = { "Angel Cordero" };
 PAGE    AccPCSoftwareEngineerPages[] = { { 1, &AccPCSoftwareEngineerNames[ 0 ] } };
 CREDIT  AccPCSoftwareEngineer = { "PC SOFTWARE ENGINEER", 1, &AccPCSoftwareEngineerPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Voice Talents
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 CREDIT  AccVoices = { "VOICE TALENTS", 1, NULL };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Voice Talents of ProMotions
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccProMotionNames1[] = { "Lani Minella as", "",
                                 "Nubia, Nim Soo Sun,",
                                 "Lokasenna, Flygirl,",
@@ -411,9 +411,9 @@ PAGE    AccProMotionPages[] = { { 6, &AccProMotionNames1[ 0 ] },
 
 CREDIT  AccProMotion = { "PRO MOTIONS PRODUCTIONS", 6, &AccProMotionPages[ 0 ] };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Acclaim Special Thanks
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * AccSpecialThanksNames1[] = { "Angel Cordero", "Col Stone", "Brett Gow", "Paul Eibler", "Roger Booth" };
 uint8 * AccSpecialThanksNames2[] = { "Carol Caracciolo", "Jeff Rosa", "Dale Taylor", "Mike \"Descentile\" Vitelli", "Roberto \"R2D298\" Toledo" };
 uint8 * AccSpecialThanksNames3[] = { "Don \"DrDon\" Tulloch", "Chris \"Glock21\" Cacioppo", "Jim \"Xciter\" Springer", "Andrew \"Peartman\" Peart", "Ron \"Vipe!\" Darge" };
@@ -482,9 +482,9 @@ CREDIT  *   Credits[] = {
     NULL
 };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Game Complete Messages ( Without All Crystals )
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * GameComplete1Names1[] = { GAME_COMPLETE2, GAME_COMPLETE3 };
 uint8 * GameComplete1Names2[] = { COMPLETE_NOT_ALL_CRYSTALS1, COMPLETE_NOT_ALL_CRYSTALS2 };
 uint8 * GameComplete1Names3[] = { COMPLETE_NOT_ALL_CRYSTALS3, COMPLETE_NOT_ALL_CRYSTALS4,
@@ -500,9 +500,9 @@ CREDIT  *   Credits1[] = {
     NULL
 };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Game Complete Messages ( With All Crystals )
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * GameComplete2Names1[] = { GAME_COMPLETE2, GAME_COMPLETE3 };
 uint8 * GameComplete2Names2[] = { COMPLETE_ALL_CRYSTALS1, COMPLETE_ALL_CRYSTALS2 };
 uint8 * GameComplete2Names3[] = { COMPLETE_ALL_CRYSTALS3, "\"Flygirl\".",
@@ -518,9 +518,9 @@ CREDIT  *   Credits2[] = {
     NULL
 };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Game Complete Messages ( With All Crystals except last )
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint8 * GameComplete3Names1[] = { COMPLETE_ALLBUT1_CRYSTALS1, COMPLETE_ALLBUT1_CRYSTALS2 };
 uint8 * GameComplete3Names2[] = { COMPLETE_ALLBUT1_CRYSTALS3, COMPLETE_ALLBUT1_CRYSTALS4, COMPLETE_ALLBUT1_CRYSTALS5 };
 PAGE    GameComplete3Pages[] = { { 2, &GameComplete3Names1[ 0 ] }, { 3, &GameComplete3Names2[ 0 ] } };
@@ -548,11 +548,11 @@ static  float   PageBlue = 0.0F;
 static  float   PageTrans = 0.0F;
 static  BOOL    CreditsEnabled = FALSE;
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Setup Credits
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void SetupCredits( void )
 {
     CreditsEnabled = TRUE;
@@ -587,11 +587,11 @@ void SetupCredits( void )
 #endif
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Setup Credits
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void SetupGameCompleteCredits( void )
 {
     CreditsEnabled = TRUE;
@@ -625,11 +625,11 @@ void SetupGameCompleteCredits( void )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display Credits
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void DisplayCredits( void )
 {
     PAGE    *   FirstPage;
@@ -825,22 +825,22 @@ void DisplayCredits( void )
 #endif
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Setup ForsakenAnyKey functions
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void SetupForsakenAnyKey( void )
 {
     Delay = ( 3.0F * ANIM_SECOND );
     CreditMode = CREDIT_INITIALPAUSE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display Credits
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void DisplayForsakenAnyKey( void )
 {
     int16       Xpos, Ypos;
@@ -982,22 +982,22 @@ void DisplayForsakenAnyKey( void )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Release Credits
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void ReleaseCredits( void )
 {
     CreditsEnabled = FALSE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Fade Colour to wanted colour (float)
     Input       :   float   *   Colour
                 :   float       Wanted Colour
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void FadeColourFloat( float * Colour, float WantedColour, float Step )
 {                                                        
     float   WanCol, CurCol;
@@ -1020,12 +1020,12 @@ void FadeColourFloat( float * Colour, float WantedColour, float Step )
     *Colour = CurCol;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Get String Length
     Input       :   uint8   *   String
                 :   int16       Font
     Output      :   int16       String Length
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 int16 GetStringLength( uint8 * String, int16 Font )
 {
     BIT_INFO    *   Bit_Ptr;
@@ -1087,13 +1087,13 @@ int16 GetStringLength( uint8 * String, int16 Font )
     return( StringLength );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display Forsaken Logo
     Input       :   int16       X Position
                 :   int16       Y Position
                 :   uint8       Red, Green, Blue, Trans
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void DisplayForsaken( int16 Xpos, int16 Ypos, uint8 Red, uint8 Green, uint8 Blue, uint8 Trans )
 {
     uint16          i;
@@ -1120,7 +1120,7 @@ void DisplayForsaken( int16 Xpos, int16 Ypos, uint8 Red, uint8 Green, uint8 Blue
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display String in center
     Input       :   int16       Font
                 :   int16       X Position
@@ -1128,7 +1128,7 @@ void DisplayForsaken( int16 Xpos, int16 Ypos, uint8 Red, uint8 Green, uint8 Blue
                 :   uint8   *   String
                 :   uint8       Red, Green, Blue, Trans
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void CenterPrintString( int16 Font, int16 Xpos, int16 Ypos, uint8 * String, uint8 Red, uint8 Green, uint8 Blue, uint8 Trans )
 {
     BIT_INFO    *   Bit_Ptr;
@@ -1212,11 +1212,11 @@ void CenterPrintString( int16 Font, int16 Xpos, int16 Ypos, uint8 * String, uint
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Setup Trans Table
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void SetupCharTransTable( void )
 {
     CharTable[(uint8)'à'] = -SMALLFONT_OFFSET + 57;

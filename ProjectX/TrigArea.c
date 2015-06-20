@@ -134,9 +134,9 @@ num_zones : uint16
 */
  
  
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Include Files...    
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #define WIN32_EXTRA_LEAN
 #include "typedefs.h"
 #include <stdio.h>
@@ -164,9 +164,9 @@ num_zones : uint16
 #include "XMem.h"
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Externals ...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 extern  BOOL            ShowTrigZones;
 extern  BYTE            WhoIAm;
 extern  GLOBALSHIP      Ships[ MAX_PLAYERS ];
@@ -176,9 +176,9 @@ BOOL RayToHull( TRIGGER_ZONE * StartSide , VECTOR * StartPos , VECTOR * EndPos ,
 extern TRIGGERMOD   *   TrigMods;
 void TriggerAreaProcess( VECTOR * OldPos , VECTOR * NewPos , TRIGGER_AREA * Area );
 extern  float framelag;
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Globals ...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint16  NumZones;
 TRIGGER_AREA * Zones = NULL;
 
@@ -187,16 +187,16 @@ TRIGGER_AREA * GroupTriggerArea_player_shoots[MAXGROUPS];
 TRIGGER_AREA * GroupTriggerArea_enemy[MAXGROUPS];
 TRIGGER_AREA * GroupTriggerArea_enemy_shoots[MAXGROUPS];
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Defines
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #define ZON_VERSION_NUMBER  2
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Load .zon File
     Input       :       char    *   Filename
     Output      :       BOOL    TRUE/FALSE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL TriggerAreaload( char * Filename )
 {
     long            File_Size;
@@ -429,11 +429,11 @@ BOOL TriggerAreaload( char * Filename )
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Free any memory taken up with zone loading..
     Input       :       void
     Output      :       void
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void ReleaseTriggerArea( void )
 {
     int         i;
@@ -460,11 +460,11 @@ void ReleaseTriggerArea( void )
 BOOL    Entry;
 BOOL    Exit;
 BOOL    In;
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Check Player...
     Input       :       void
     Output      :       void
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL    TriggerAreaPlayerCheck( VECTOR * OldPos , VECTOR * NewPos , uint16 Group )
 {
     TRIGGER_AREA * Area;
@@ -498,7 +498,7 @@ BOOL    TriggerAreaPlayerCheck( VECTOR * OldPos , VECTOR * NewPos , uint16 Group
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Check Player's shot hits trigger area...
     Input       :       VECTOR  *   Old Position 
                 :       VECTOR  *   New Position 
@@ -506,7 +506,7 @@ BOOL    TriggerAreaPlayerCheck( VECTOR * OldPos , VECTOR * NewPos , uint16 Group
                 :       uint8       Weapon Type
                 :       uint8       Weapon
     Output      :       BOOL        TRUE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL    TriggerAreaPlayerShootsCheck( VECTOR * OldPos , VECTOR * NewPos , uint16 Group, uint8 WeaponType, uint8 Weapon )
 {
     TRIGGER_AREA * Area;
@@ -560,11 +560,11 @@ BOOL    TriggerAreaPlayerShootsCheck( VECTOR * OldPos , VECTOR * NewPos , uint16
     }
     return TRUE;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Check Enemy...
     Input       :       void
     Output      :       void
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL    TriggerAreaEnemyCheck( VECTOR * OldPos , VECTOR * NewPos , uint16 Group )
 {
     TRIGGER_AREA * Area;
@@ -598,7 +598,7 @@ BOOL    TriggerAreaEnemyCheck( VECTOR * OldPos , VECTOR * NewPos , uint16 Group 
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Check Enemy's shot hits trigger area...
     Input       :       VECTOR  *   Old Position 
                 :       VECTOR  *   New Position 
@@ -606,7 +606,7 @@ BOOL    TriggerAreaEnemyCheck( VECTOR * OldPos , VECTOR * NewPos , uint16 Group 
                 :       uint8       Weapon Type
                 :       uint8       Weapon
     Output      :       BOOL        TRUE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL    TriggerAreaEnemyShootsCheck( VECTOR * OldPos , VECTOR * NewPos , uint16 Group, uint8 WeaponType, uint8 Weapon )
 {
     TRIGGER_AREA * Area;
@@ -662,7 +662,7 @@ BOOL    TriggerAreaEnemyShootsCheck( VECTOR * OldPos , VECTOR * NewPos , uint16 
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Check Ray to Col Zone
     Input       :       VECTOR  *   StartPos
                 :       VECTOR  *   EndPos
@@ -672,7 +672,7 @@ BOOL    TriggerAreaEnemyShootsCheck( VECTOR * OldPos , VECTOR * NewPos , uint16 
                 :       ZONESIDE ** Intersection Side ( TBFI )
                 :       float       Collision Radius
     Output      :       void
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL RayToHull( TRIGGER_ZONE * StartSide , VECTOR * StartPos , VECTOR * EndPos , uint16 StartNumSides )
 {
     float       d1, d2;
@@ -733,13 +733,13 @@ BOOL RayToHull( TRIGGER_ZONE * StartSide , VECTOR * StartPos , VECTOR * EndPos ,
     return( FALSE );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Is point inside convex shape?
     Input       :       VECTOR  *   Pos
                 :       ZONESIDE *  Sides
                 :       int16       NumSides
     Output      :       BOOL        TRUE/FALSE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL ClassifyPointInHull( VECTOR * Pos, TRIGGER_ZONE * Sides, int16 NumSides, int16 Side )
 {
     float       d1;
@@ -757,11 +757,11 @@ BOOL ClassifyPointInHull( VECTOR * Pos, TRIGGER_ZONE * Sides, int16 NumSides, in
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Process and clasify 2 positions with an area..
     Input       :       void
     Output      :       void
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 void TriggerAreaProcess( VECTOR * OldPos , VECTOR * NewPos , TRIGGER_AREA * Area )
 {
@@ -801,11 +801,11 @@ void TriggerAreaProcess( VECTOR * OldPos , VECTOR * NewPos , TRIGGER_AREA * Area
 
 */
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Display all trigger areas in group
     Input       :       uint16  Group
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void DispGroupTriggerAreas( uint16 Group )
 {
     TRIGGER_AREA * Area;
@@ -927,11 +927,11 @@ void DispGroupTriggerAreas( uint16 Group )
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Enable trigger area
     Input       :       uint16  * Data
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void EnableTriggerArea( uint16 * Data )
 {
     TRIGGER_AREA * AreaPnt;
@@ -943,11 +943,11 @@ void EnableTriggerArea( uint16 * Data )
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Disable trigger area
     Input       :       uint16  * Data
     Output      :       Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void DisableTriggerArea( uint16 * Data )
 {
     TRIGGER_AREA * AreaPnt;
@@ -957,11 +957,11 @@ void DisableTriggerArea( uint16 * Data )
     AreaPnt += *Data;
     AreaPnt->state = TRIGGER_AREA_STATE_Off;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :       Check Enemy...
     Input       :       void
     Output      :       void
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void ProcessTriggerAreas( void )
 {
     TRIGGER_AREA * Area;
@@ -984,11 +984,11 @@ void ProcessTriggerAreas( void )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Save TriggerAreas arrays & Connected Global Variables
     Input       :   FILE    *   File Pointer
     Output      :   FILE    *   Updated File Pointer
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 FILE * SaveTriggerAreas( FILE * fp )
 {
     int             i;
@@ -1010,11 +1010,11 @@ FILE * SaveTriggerAreas( FILE * fp )
     return( fp );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Load TriggerAreas Arrays & Connected Global Variables
     Input       :   FILE    *   File Pointer
     Output      :   FILE    *   Updated File Pointer
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 FILE * LoadTriggerAreas( FILE * fp )
 {
     int             i;

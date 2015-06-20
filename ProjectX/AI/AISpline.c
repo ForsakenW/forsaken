@@ -80,11 +80,11 @@ extern  VECTOR  SlideUp;
 extern  LINE            Lines[ MAXLINES ];
 extern  NODENETWORKHEADER   NodeNetworkHeader;
 extern  MLOADHEADER Mloadheader;
-/*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
+/*-------------------------------------------------------------------
     Procedure   :   AI Spline Movement....
     Input       :   ENEMY * Enemy
     Output      :   Nothing
-컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
+-------------------------------------------------------------------*/
 void AI_SPLINE_FOLLOWPATH( register ENEMY * Enemy )
 {
     NODE * TNode;

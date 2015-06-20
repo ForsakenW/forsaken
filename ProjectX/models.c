@@ -1116,10 +1116,10 @@
 #define FAST_RGB_CLAMP
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
 *   m o d e l s . c
 *   All routines to do with 3d Model Objects
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #include <stdio.h>
 #include "typedefs.h"
 #include <dplay.h>
@@ -1156,9 +1156,9 @@
 #pragma optimize( "gty", on )
 #endif
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Externals ...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 extern VECTOR HoloRot;
 extern  MLOADHEADER     Mloadheader;
 extern  MCLOADHEADER    MCloadheader;
@@ -1244,9 +1244,9 @@ void RefreshModel( uint16 model );
 extern  BOOL    SoftwareVersion;
 #endif
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Globals
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void CheckModelLinkList( void );
 void UpdateTracker( void );
 void CreateTracker( void );
@@ -1268,9 +1268,9 @@ MXLOADHEADER ModelHeaders[MAXMODELHEADERS];
 void GetRealLightAmbient( VECTOR * Pos , float * Red , float * Green , float * Blue );
 BOOL    ENVMxa( MXALOADHEADER * Mxaloadheader , MATRIX * Mat ,VECTOR * Pos);
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     In game models
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 MODELNAME   ModelNames[MAXMODELHEADERS] ={  
 
     { "heat.mx" , 1 , FALSE, MODELTYPE_Static, 0, DISCARD_POLYS,  LOAD_TPAGES_VIDMEM, NOT_LEVEL_SPECIFIC, DO_LOAD },            // Heatseaker missile
@@ -1795,9 +1795,9 @@ MODELNAME   ModelNames[MAXMODELHEADERS] ={
     { "" , 0 , FALSE, MODELTYPE_Static, 0, FALSE, DONTLOAD_TPAGES, NOT_LEVEL_SPECIFIC, DO_LOAD }
 };
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Title screen models
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 MODELNAME *TitleModelSet;
 
 MODELNAME   TitleModelNames[ MAXMODELHEADERS ] ={   
@@ -1884,9 +1884,9 @@ MODELNAME   SplashModelNames[ MAXMODELHEADERS ] ={
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
 *       Set up 2d exec buff etc...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void OnceOnlyInitModel( void )
 {
     int i;
@@ -1936,12 +1936,12 @@ void OnceOnlyInitModel( void )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Pre-Init models
     Input       :   LPDIRECT3DDEVICE    Direct 3D Device
                 :   MODELNAME   *       Current Model Name
     Output      :   BOOL                TRUE/FALSE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL PreInitModel( LPDIRECT3DDEVICE lpDev , MODELNAME * NamePnt )
 {
     int         i;
@@ -2005,12 +2005,12 @@ BOOL PreInitModel( LPDIRECT3DDEVICE lpDev , MODELNAME * NamePnt )
     return  TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Init models
     Input       :   LPDIRECT3DDEVICE    Direct 3D Device
                 :   MODELNAME   *       Current Model Name
     Output      :   BOOL                TRUE/FALSE
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL InitModel( LPDIRECT3DDEVICE lpDev , MODELNAME * NamePnt)
 {
     int i;
@@ -2070,12 +2070,12 @@ BOOL InitModel( LPDIRECT3DDEVICE lpDev , MODELNAME * NamePnt)
     return  TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Find a free Model and move it from the free list to
                     the used list
     Input       :   nothing
     Output      :   uint16 number of Model free....
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint16  FindFreeModel()
 {
     uint16 i;
@@ -2121,12 +2121,12 @@ uint16  FindFreeModel()
     return i ;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Kill a used Model and move it from the used list to
                     the free list
     Input       :   uint16 number of Model free....
     Output      :   nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void    KillUsedModel( uint16 i )
 {
     uint16      its_prev;
@@ -2173,11 +2173,11 @@ void    KillUsedModel( uint16 i )
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Kill Attached SFX still playing
     Input       :   uint16  number of Model
     Output      :   nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void KillAttachedSoundFX( uint16 i )
 {
     int16       Count;
@@ -2236,11 +2236,11 @@ void KillAttachedSoundFX( uint16 i )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Kill Attached Spot still playing
     Input       :   uint16  number of Model
     Output      :   nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void KillAttachedSpotFX( uint16 i )
 {
     int16       Count;
@@ -2291,9 +2291,9 @@ void KillAttachedSpotFX( uint16 i )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
 *       display all active Models...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL ModelDisp( uint16 group, LPDIRECT3DDEVICE lpDev, MODELNAME * NamePnt  )
 {
     D3DMATRIX TempWorld;
@@ -2682,9 +2682,9 @@ BOOL ModelDisp( uint16 group, LPDIRECT3DDEVICE lpDev, MODELNAME * NamePnt  )
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
 *       Set up 2d exec buff etc...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL ReleaseTitleModels( )
 {
     int i;
@@ -2710,9 +2710,9 @@ BOOL ReleaseTitleModels( )
     return  TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
 *       Set up 2d exec buff etc...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL ReleaseModels( )
 {
     int i;
@@ -2738,11 +2738,11 @@ BOOL ReleaseModels( )
     return  TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Process Models
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 VECTOR BloodOffsets[] = {
 
     { 0.0F, -1.0F, 0.0F }, { 0.0F, -25.0F, 0.0F },                  // Head Dir, Offsets
@@ -3938,7 +3938,7 @@ void ProcessModels( void )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Create SpotFX Fire Primary
     Input       :   VECTOR  *   Position
                 :   VECTOR  *   Direction
@@ -3948,7 +3948,7 @@ void ProcessModels( void )
                 :   uint16      ModelIndex
                 :   uint16      SpotFXIndex
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void CreateModelSpotFXFirePrimary( VECTOR * Pos, VECTOR * Dir, VECTOR * Up,
                                 uint16 Group, uint8 Weapon, uint16 ModelIndex, uint16 SpotFXIndex )
 {
@@ -3967,7 +3967,7 @@ void CreateModelSpotFXFirePrimary( VECTOR * Pos, VECTOR * Dir, VECTOR * Up,
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Process model
     Input       :   uint16  Model Number
                 :   float   Scale
@@ -3976,7 +3976,7 @@ void CreateModelSpotFXFirePrimary( VECTOR * Pos, VECTOR * Dir, VECTOR * Up,
                 :   int8    G
                 :   int8    B
     Output      :   BOOL    True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL ProcessModel( MXLOADHEADER * DstMloadheader, float Scale, float MaxScale, int8 R, int8 G, int8 B )
 {
     D3DEXECUTEBUFFERDESC    DstDebDesc;
@@ -4048,7 +4048,7 @@ BOOL ProcessModel( MXLOADHEADER * DstMloadheader, float Scale, float MaxScale, i
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Process model scaling original gouraud
     Input       :   uint16  Model Number
                 :   float   Scale
@@ -4057,7 +4057,7 @@ BOOL ProcessModel( MXLOADHEADER * DstMloadheader, float Scale, float MaxScale, i
                 :   int8    G
                 :   int8    B
     Output      :   BOOL    True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL ProcessModel2( MXLOADHEADER * DstMloadheader, float Scale, float MaxScale, int8 R, int8 G, int8 B )
 {
     D3DEXECUTEBUFFERDESC    DstDebDesc;
@@ -4132,7 +4132,7 @@ BOOL ProcessModel2( MXLOADHEADER * DstMloadheader, float Scale, float MaxScale, 
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Process model
     Input       :   LPDIRECT3DEXECUTEBUFFER lpExBuf
                 :   int16   NumVerts
@@ -4142,7 +4142,7 @@ BOOL ProcessModel2( MXLOADHEADER * DstMloadheader, float Scale, float MaxScale, 
                 :   int8    G
                 :   int8    B
     Output      :   BOOL    True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL ProcessModelExec( LPDIRECT3DEXECUTEBUFFER lpExBuf, int16 NumVerts, float Scale, float MaxScale, int8 R, int8 G, int8 B )
 {
     D3DEXECUTEBUFFERDESC    DstDebDesc;
@@ -4202,7 +4202,7 @@ BOOL ProcessModelExec( LPDIRECT3DEXECUTEBUFFER lpExBuf, int16 NumVerts, float Sc
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Process Sphere Zone model
     Input       :   LPDIRECT3DEXECUTEBUFFER lpExBuf
                 :   int16   NumVerts
@@ -4210,7 +4210,7 @@ BOOL ProcessModelExec( LPDIRECT3DEXECUTEBUFFER lpExBuf, int16 NumVerts, float Sc
                 :   uint8   G
                 :   uint8   B
     Output      :   BOOL    True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL ProcessSphereZoneModelExec( LPDIRECT3DEXECUTEBUFFER lpExBuf, int16 NumVerts, uint8 R, uint8 G, uint8 B )
 {
     D3DEXECUTEBUFFERDESC    DstDebDesc;
@@ -4254,11 +4254,11 @@ BOOL ProcessSphereZoneModelExec( LPDIRECT3DEXECUTEBUFFER lpExBuf, int16 NumVerts
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Create Tracker
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void UpdateTracker( void )
 {
     VECTOR  Pos;
@@ -4306,11 +4306,11 @@ void UpdateTracker( void )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Create Tracker
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void CreateTracker( void )
 {
     uint16  Model;
@@ -4381,12 +4381,12 @@ void CreateTracker( void )
 
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Light model
     Input       :   uint16      Model Number
                 :   float       R,G,B,Trans
     Output      :   BOOL        True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL TintModel( uint16 Model, float RF, float GF, float BF, float TF )
 {
     D3DEXECUTEBUFFERDESC    DstDebDesc;
@@ -4428,12 +4428,12 @@ BOOL TintModel( uint16 Model, float RF, float GF, float BF, float TF )
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Light model
     Input       :   uint16      Model Number
                 :   float       R,G,B,Trans
     Output      :   BOOL        True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL TintMxaModel( MXALOADHEADER * DstMloadheader, float RF, float GF, float BF, float TF )
 {
     D3DEXECUTEBUFFERDESC    DstDebDesc;
@@ -4472,11 +4472,11 @@ BOOL TintMxaModel( MXALOADHEADER * DstMloadheader, float RF, float GF, float BF,
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Update Colours
     Input       :   MXALOADHEADER   ModelHeader
     Output      :   BOOL    True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL UpdateMxaModel( MXALOADHEADER * MXAloadheader )
 {
     LPD3DLVERTEX    lpPointer;
@@ -4521,12 +4521,12 @@ BOOL UpdateMxaModel( MXALOADHEADER * MXAloadheader )
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Ambient Light model
     Input       :   uint16      Model Number
                 :   float       R,G,B,Trans
     Output      :   BOOL        True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL AmbientLightMxaModel( MXALOADHEADER * DstMloadheader, int R, int G, int B, int A , float rp , float gp , float bp)
 {
     D3DEXECUTEBUFFERDESC    DstDebDesc;
@@ -4654,12 +4654,12 @@ __asm
     }
     return TRUE;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Ambient Light MX model
     Input       :   uint16      Model Number
                 :   float       R,G,B,Trans
     Output      :   BOOL        True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL AmbientLightMxModel( MXLOADHEADER * DstMloadheader, int R, int G, int B, int A , float rp , float gp , float bp)
 {
     D3DEXECUTEBUFFERDESC    DstDebDesc;
@@ -4792,14 +4792,14 @@ __asm
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Light model
     Input       :   uint16      Model Number
                 :   MATRIX  *   Matrix
                 :   float       Z Translation
                 :   float       Range
     Output      :   BOOL        True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL ShadeModel( uint16 Model, MATRIX * Matrix, float ZTrans, float Range )
 {
     D3DEXECUTEBUFFERDESC    DstDebDesc;
@@ -4862,13 +4862,13 @@ BOOL ShadeModel( uint16 Model, MATRIX * Matrix, float ZTrans, float Range )
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Light model
     Input       :   uint16      Model Number
                 :   MATRIX  *   Matrix
                 :   VECTOR  *   Pos
     Output      :   BOOL    True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL LightModel( uint16 Model, VECTOR * Pos )
 {
     XLIGHT * LightPnt;
@@ -4944,13 +4944,13 @@ BOOL LightModel( uint16 Model, VECTOR * Pos )
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Light model
     Input       :   uint16      Model Number
                 :   MATRIX  *   Matrix
                 :   VECTOR  *   Pos
     Output      :   BOOL    True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL LightModel2( uint16 Model, VECTOR * Pos )
 {
     XLIGHT * LightPnt;
@@ -5026,7 +5026,7 @@ BOOL LightModel2( uint16 Model, VECTOR * Pos )
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Light MX model
     Input       :   uint16      Model Number
                 :   MATRIX  *   Matrix
@@ -5036,7 +5036,7 @@ BOOL LightModel2( uint16 Model, VECTOR * Pos )
                 :   float       Starting BLUE ( 0-255 )
                 :   float       Starting TRANSPARANCY ( 0-255 )
     Output      :   BOOL    True/False ( Visible/Not )
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL LightMxModel( uint16 Model, VECTOR * Pos, float RF, float GF, float BF, float TF )
 {
     XLIGHT * LightPnt;
@@ -5110,7 +5110,7 @@ BOOL LightMxModel( uint16 Model, VECTOR * Pos, float RF, float GF, float BF, flo
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Light MXA model
     Input       :   uint16      Model Number
                 :   MATRIX  *   Matrix
@@ -5120,7 +5120,7 @@ BOOL LightMxModel( uint16 Model, VECTOR * Pos, float RF, float GF, float BF, flo
                 :   float       Starting BLUE ( 0-255 )
                 :   float       Starting TRANSPARANCY ( 0-255 )
     Output      :   BOOL    True/False ( Visible/Not )
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL LightMxaModel( uint16 Model, VECTOR * Pos, float RF, float GF, float BF, float TF )
 {
     XLIGHT * LightPnt;
@@ -5213,7 +5213,7 @@ BOOL DoesLightEffectGroup( MLOADHEADER * Mloadheader , VECTOR * Pos , float size
     return FALSE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Shock Wave Damage to Ships and Mines.
     Input       :   VECTOR  *   Position
                 :   float       Radius
@@ -5223,7 +5223,7 @@ BOOL DoesLightEffectGroup( MLOADHEADER * Mloadheader , VECTOR * Pos , float size
                 :   uint16      Group
                 :   BYTE        Weapon
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void ShockWave( VECTOR * Pos, float Radius, uint16 OwnerType, uint16 Owner, float Center_Damage, uint16 Group, BYTE Weapon, uint16 model )
 {
 //  int16       Count;
@@ -5491,9 +5491,9 @@ void ShockWave( VECTOR * Pos, float Radius, uint16 OwnerType, uint16 Owner, floa
             break;
     }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Shockwave hitting any mines?
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     i = FirstSecBullUsed;
 
     while( i != (uint16) -1 )
@@ -5537,9 +5537,9 @@ void ShockWave( VECTOR * Pos, float Radius, uint16 OwnerType, uint16 Owner, floa
         i = Next;
     }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Shockwave hitting any Enemies?
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     Enemy = FirstEnemyUsed;
 
     while( Enemy != NULL )
@@ -5594,7 +5594,7 @@ void ShockWave( VECTOR * Pos, float Radius, uint16 OwnerType, uint16 Owner, floa
 
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Gravity Wave Damage to me
     Input       :   VECTOR  *   Position
                 :   float       Radius
@@ -5602,7 +5602,7 @@ void ShockWave( VECTOR * Pos, float Radius, uint16 OwnerType, uint16 Owner, floa
                 :   float       Damage at center
                 :   uint16      Group
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void GravityWave( VECTOR * Pos, float Radius, uint16 Owner, float Center_Grav, uint16 Group )
 {
     int16   Gravity;
@@ -5642,9 +5642,9 @@ void GravityWave( VECTOR * Pos, float Radius, uint16 Owner, float Center_Grav, u
         }
     }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     GravityWave effecting any Enemies?
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     Enemy = FirstEnemyUsed;
 
     while( Enemy != NULL )
@@ -5684,11 +5684,11 @@ void GravityWave( VECTOR * Pos, float Radius, uint16 Owner, float Center_Grav, u
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Check if within range of gravgon
     Input       :   VECTOR  *   Pos
     Output      :   BOOL        True/False ( True if collision )
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL CheckForGravgons( VECTOR * Pos )
 {
     uint16      i;
@@ -5726,11 +5726,11 @@ BOOL CheckForGravgons( VECTOR * Pos )
     return FALSE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Throw Rider toward all players
     Input       :   uint16      Ship
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void ThrowOutRider( uint16 Ship )
 {
     VECTOR  Dir;
@@ -5745,11 +5745,11 @@ void ThrowOutRider( uint16 Ship )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Explode Body into Bits
     Input       :   uint16      Ship
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void ExplodeBody( VECTOR * Pos, VECTOR * Dir, uint16 Group )
 {
     CreateBodyPart( Pos, Dir, Group, MODEL_Brain );
@@ -5760,12 +5760,12 @@ void ExplodeBody( VECTOR * Pos, VECTOR * Dir, uint16 Group )
     CreateBodyPart( Pos, Dir, Group, MODEL_Leg );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Create Body Part
     Input       :   VECTOR  *   Pos
                 :   uint16      Group
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void CreateBodyPart( VECTOR * Pos, VECTOR * Dir, uint16 Group, uint16 ModelNum )
 {
     uint16  Model;
@@ -5811,12 +5811,12 @@ void CreateBodyPart( VECTOR * Pos, VECTOR * Dir, uint16 Group, uint16 ModelNum )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Create Tom Cruise
     Input       :   VECTOR  *   Pos
                 :   uint16      Group
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void CreateTomCruise( VECTOR * Pos, uint16 Group )
 {
 #if !defined( SELF_PLAY ) && !defined( SHAREWARE ) && !defined ( WIN98SHAREWARE ) && !defined ( GATEWAY )
@@ -5878,7 +5878,7 @@ void CreateTomCruise( VECTOR * Pos, uint16 Group )
 #endif
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Missile Shock Wave Damage to Ships and Mines.
     Input       :   VECTOR  *   Position
                 :   float       Radius
@@ -5887,7 +5887,7 @@ void CreateTomCruise( VECTOR * Pos, uint16 Group )
                 :   uint16      Group
                 :   BYTE        Weapon
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void MissileShockWave( VECTOR * Pos, float Radius, uint16 Owner, float Center_Damage, uint16 Group, BYTE Weapon )
 {
     int16       Count;
@@ -6091,9 +6091,9 @@ void MissileShockWave( VECTOR * Pos, float Radius, uint16 Owner, float Center_Da
             break;
     }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Shockwave hitting any mines?
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #if 0
     i = FirstSecBullUsed;
 
@@ -6135,9 +6135,9 @@ void MissileShockWave( VECTOR * Pos, float Radius, uint16 Owner, float Center_Da
         i = Next;
     }
 #endif
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Shockwave hitting any Enemies?
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     Enemy = FirstEnemyUsed;
 
     while( Enemy != NULL )
@@ -6185,7 +6185,7 @@ void MissileShockWave( VECTOR * Pos, float Radius, uint16 Owner, float Center_Da
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Hit me
     Input       :   uint16      OwnerType
                 :   uint16      OwnerID
@@ -6193,7 +6193,7 @@ void MissileShockWave( VECTOR * Pos, float Radius, uint16 Owner, float Center_Da
                 :   uint16      WeaponType
                 :   uint16      Weapon
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void HitMe( uint16 OwnerType, uint16 OwnerID, float Damage, uint8 WeaponType, uint8 Weapon )
 {
     char    methodstr[256];
@@ -6253,11 +6253,11 @@ void HitMe( uint16 OwnerType, uint16 OwnerID, float Damage, uint8 WeaponType, ui
     }
 }
     
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Create Orbit Pulsar
     Input       :   uint16      Ship
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void CreateOrbitPulsar( uint16 Ship )
 {
     float   Rot;
@@ -6323,13 +6323,13 @@ void CreateOrbitPulsar( uint16 Ship )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Create Body Part
     Input       :   VECTOR  *   Pos
                 :   VECTOR  *   UpVector
                 :   uint16      Group
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void CreateExplosionDonut( VECTOR * Pos, VECTOR * Up, uint16 Group )
 {
     uint16  Model;
@@ -6363,7 +6363,7 @@ void CreateExplosionDonut( VECTOR * Pos, VECTOR * Up, uint16 Group )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Create Line
     Input       :   float       x1
                 :   float       y1
@@ -6373,7 +6373,7 @@ void CreateExplosionDonut( VECTOR * Pos, VECTOR * Up, uint16 Group )
                 :   float       z2
                 :   uint16      Group
     Output      :   uint16      Line Index
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint16 CreateLine( float x1, float y1, float z1, float x2, float y2, float z2, uint16 Group )
 {
     uint16  line;
@@ -6401,7 +6401,7 @@ uint16 CreateLine( float x1, float y1, float z1, float x2, float y2, float z2, u
     return( line );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Get .MX File Bouning Box
     Input       :   MXLOADHEADER * DstMloadheader
                 :   MATRIX  *   Matrix
@@ -6409,7 +6409,7 @@ uint16 CreateLine( float x1, float y1, float z1, float x2, float y2, float z2, u
                 :   VECTOR  *   TopLeft
                 :   VECTOR  *   BottomRight
     Output      :   BOOL        True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL GetMXBoundingBox( MXLOADHEADER * DstMloadheader, MATRIX * Matrix, VECTOR * Pos, VECTOR * TopLeft,
                        VECTOR * BottomRight )
 {
@@ -6468,7 +6468,7 @@ BOOL GetMXBoundingBox( MXLOADHEADER * DstMloadheader, MATRIX * Matrix, VECTOR * 
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Get .MXA File Bouning Box
     Input       :   MXALOADHEADER * DstMloadheader
                 :   MATRIX  *   Matrix
@@ -6476,7 +6476,7 @@ BOOL GetMXBoundingBox( MXLOADHEADER * DstMloadheader, MATRIX * Matrix, VECTOR * 
                 :   VECTOR  *   TopLeft
                 :   VECTOR  *   BottomRight
     Output      :   BOOL    True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL GetMXABoundingBox( MXALOADHEADER * DstMloadheader, MATRIX * Matrix, VECTOR * Pos, VECTOR * TopLeft,
                         VECTOR * BottomRight )
 {
@@ -6536,7 +6536,7 @@ BOOL GetMXABoundingBox( MXALOADHEADER * DstMloadheader, MATRIX * Matrix, VECTOR 
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Create .MX File Bouning Box ( Lines )
     Input       :   MXLOADHEADER * DstMloadheader
                 :   MATRIX  *   Matrix
@@ -6544,7 +6544,7 @@ BOOL GetMXABoundingBox( MXALOADHEADER * DstMloadheader, MATRIX * Matrix, VECTOR 
                 :   uint16  *   Line Array
                 :   uint16      Group
     Output      :   BOOL        True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL CreateMXBoundingBox( MXLOADHEADER * DstMloadheader, MATRIX * Matrix, VECTOR * Pos, uint16 * LineArray, uint16 Group2 )
 {
     D3DEXECUTEBUFFERDESC    DstDebDesc;
@@ -6608,7 +6608,7 @@ BOOL CreateMXBoundingBox( MXLOADHEADER * DstMloadheader, MATRIX * Matrix, VECTOR
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Create .MXA File Bouning Box ( Lines )
     Input       :   MXALOADHEADER * DstMloadheader
                 :   MATRIX  *   Matrix
@@ -6616,7 +6616,7 @@ BOOL CreateMXBoundingBox( MXLOADHEADER * DstMloadheader, MATRIX * Matrix, VECTOR
                 :   uint16  *   Line Array
                 :   uint16      Group
     Output      :   BOOL    True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL CreateMXABoundingBox( MXALOADHEADER * DstMloadheader, MATRIX * Matrix, VECTOR * Pos, uint16 * LineArray, uint16 Group2 )
 {
     D3DEXECUTEBUFFERDESC    DstDebDesc;
@@ -6681,11 +6681,11 @@ BOOL CreateMXABoundingBox( MXALOADHEADER * DstMloadheader, MATRIX * Matrix, VECT
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Setup Model SpotFX
     Input       :   uint16      ModelIndex
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void SetupModelSpotFX( uint16 i )
 {
     int16       Count;
@@ -6733,11 +6733,11 @@ void SetupModelSpotFX( uint16 i )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Update Ship Model
     Input       :   uint16      Ship
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 //#define   PHIL_TESTSFX
 
 void UpdateShipModel( uint16 Ship )
@@ -6959,11 +6959,11 @@ void UpdateShipModel( uint16 Ship )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Get Ambient Colour for Object
     Input       :   OBJECT * Object
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void UpdateObjectAmbientColour( OBJECT * Object )
 {
     D3DCOLOR    Col;
@@ -7017,12 +7017,12 @@ void UpdateObjectAmbientColour( OBJECT * Object )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Get An Overall Light level for a Position...Based on
                 :   Real lights...
     Input       :   VECTOR * Pos , float * Red , float * Green , float * Blue
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void GetRealLightAmbient( VECTOR * Pos , float * Red , float * Green , float * Blue )
 {
     VECTOR                  DistVector;
@@ -7138,14 +7138,14 @@ void InitShipSpeeds( void )
     memset( SpeedStore, 0, sizeof( SpeedStore ) );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Update SFX for Ships/Enemies
     Input       :   uint16      OwnerType
                 :   uint16      OwenID
                 :   uint32      SoundFX ID
                 :   float       Speed
     Output      :   uint32      New SoundFX ID
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint32 EngineCode( uint16 OwnerType, uint16 OwnerID, uint32 SoundFX_ID, float Speed )
 {
     float fracspeed, newfreq;
@@ -7270,11 +7270,11 @@ uint32 EngineCode( uint16 OwnerType, uint16 OwnerID, uint32 SoundFX_ID, float Sp
     return( SoundFX_ID );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Save Models Array & Connected Global Variables
     Input       :   FILE    *   File Pointer
     Output      :   FILE    *   Updated File Pointer
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 FILE * SaveModels( FILE * fp )
 {
     uint16 i;
@@ -7347,11 +7347,11 @@ FILE * SaveModels( FILE * fp )
     return( fp );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Load Models Array & Connected Global Variables
     Input       :   FILE    *   File Pointer
     Output      :   FILE    *   Updated File Pointer
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 FILE * LoadModels( FILE * fp )
 {
     uint16  i;
@@ -7438,11 +7438,11 @@ FILE * LoadModels( FILE * fp )
     return( fp );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Reinitialise Sound FX on Models
     Input       :   uint16      Model Index
     Output      :   BOOL        True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL ReinitSpotFXSFX( uint16 i )
 {
     int16       Count;
@@ -7492,11 +7492,11 @@ BOOL ReinitSpotFXSFX( uint16 i )
     return( TRUE );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Set Ship Display/Not depending on camera
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void SetShipsVisibleFlag( void )
 {
     int16   Ship;
@@ -7551,12 +7551,12 @@ void SetShipsVisibleFlag( void )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Enable and Disable Models dependant on
                 :   Level/Game mode
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void EnableRelavantModels( MODELNAME * ModelNamesPtr )
 {
     if( !ModelNamesPtr ) return;
@@ -7644,11 +7644,11 @@ void CheckModelLinkList( void )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Kill all bike engine sound
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void KillAllBikeEngines( void )
 {
     uint16      NumSpotFX;
@@ -7719,11 +7719,11 @@ void KillAllBikeEngines( void )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Check if bike engine enabled and is ship if so then
                 :   return TRUE else return FALSE
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL EngineEnabled( uint16 OwnerType, uint16 Owner )
 {
     if( BikeEnginesOn ) return( TRUE );
@@ -7731,9 +7731,9 @@ BOOL EngineEnabled( uint16 OwnerType, uint16 Owner )
     return( FALSE );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         True EnviroMent Mapping for an Mxaloadheader...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL    ENVMxa( MXALOADHEADER * Mxloadheader , MATRIX * Mat ,VECTOR * Pos)
 {
     VECTOR Temp;

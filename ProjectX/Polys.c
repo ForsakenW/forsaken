@@ -1,7 +1,7 @@
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
 *   p o l y s . c
 *   All routines to do with 3d user defined polygons...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #include <stdio.h>
 #include "typedefs.h"
 #include <dplay.h>
@@ -25,20 +25,20 @@
 #endif
 
 #ifdef SOFTWARE_ENABLE
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Chris's Code
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void    CWExecute2( LPDIRECT3DDEVICE lpDev,
                     LPDIRECT3DEXECUTEBUFFER execbuf,
                     LPDIRECT3DVIEWPORT lpView,
                     WORD cwFlags);
 extern  BOOL    SoftwareVersion;
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+/*-----------------------------------------------------------------*/
 #endif
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Externs
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 extern  CAMERA          CurrentCamera;
 extern  MLOADHEADER     Mloadheader;
 extern  MCLOADHEADER    MCloadheader;
@@ -72,20 +72,20 @@ extern  BYTE            GameStatus[MAX_PLAYERS];
 
 void DebugPrintf( const char * format, ... );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Globals
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 POLY        Polys[ MAXPOLYS ];
 uint16      FirstPolyUsed;
 uint16      FirstPolyFree;
 uint32      TotalPolysInUse = 0;
 TPAGEINFO   PolyTPages[ MAXTPAGESPERTLOAD + 1 ];
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Init poly structures
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void InitPolys( void )
 {
     int i;
@@ -109,12 +109,12 @@ void InitPolys( void )
     InitPolyTPages();
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Find a free Poly and move it from the free list
                 :   to the used list
     Input       :   Nothing
     Output      :   uint16  Number of the free Poly
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 uint16 FindFreePoly( void )
 {
     uint16 i;
@@ -133,12 +133,12 @@ uint16 FindFreePoly( void )
 
     return i ;
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Kill a used Poly and move it from the used list
                 :   to the free list
     Input       :   uint16      Number of Poly to free....
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void KillUsedPoly( uint16 i )
 {
     uint16  its_prev;
@@ -161,11 +161,11 @@ void KillUsedPoly( uint16 i )
     FirstPolyFree = i;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Process Poly's
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 VECTOR  ShieldVerts[ 4 ] = {
             { ( -128.0F * GLOBAL_SCALE ), ( -128.0F * GLOBAL_SCALE ), ( 300.0F * GLOBAL_SCALE ) },
             { ( +128.0F * GLOBAL_SCALE ), ( -128.0F * GLOBAL_SCALE ), ( 300.0F * GLOBAL_SCALE ) },
@@ -388,11 +388,11 @@ void ProcessPolys( void )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Create Afterburner Effect
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #define MAX_AFTERBURNER_LENGTH  ( 512.0F * GLOBAL_SCALE )
 #define AFTERBURNER_INC         ( 30.0F * GLOBAL_SCALE )
 
@@ -538,12 +538,12 @@ void DoAfterBurnerEffects( void )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display All Faceme Polygons for PowerVR
     Input       :   uint16                  Group
                 :   uint16  *   Next Poly to Display (Updated)
     Output      :   True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL PVR_PolyDispGroup( uint16 Group, uint16 * Next )
 {
     LPD3DLVERTEX    PolyVertPnt;
@@ -558,9 +558,9 @@ BOOL PVR_PolyDispGroup( uint16 Group, uint16 * Next )
 
     specular = RGB_MAKE( 0, 0, 0 );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Copy Verts into execution list
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     i = *Next;
     TotalVertCount = 0;
 
@@ -662,11 +662,11 @@ BOOL PVR_PolyDispGroup( uint16 Group, uint16 * Next )
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Init Poly TPage Groups
     Input       :   Nothing
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void InitPolyTPages( void )
 {
     uint16  i;
@@ -677,12 +677,12 @@ void InitPolyTPages( void )
     }
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Add Poly To TPage Link List
     Input       :   uint16      Poly Index
                 :   uint16      TPage to add to
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void AddPolyToTPage( uint16 i, int16 TPage )
 {
     if( TPage == -1 ) TPage = MAXTPAGESPERTLOAD;
@@ -698,12 +698,12 @@ void AddPolyToTPage( uint16 i, int16 TPage )
     PolyTPages[ TPage ].FirstPoly = i;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Remove Poly From TPage Link List
     Input       :   uint16      Poly Index
                 :   uint16      TPage to add to
     Output      :   Nothing
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 void RemovePolyFromTPage( uint16 i, int16 TPage )
 {
     if( TPage == -1 ) TPage = MAXTPAGESPERTLOAD;
@@ -727,14 +727,14 @@ void RemovePolyFromTPage( uint16 i, int16 TPage )
 }
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display all group clipped Polys
     Input       :   LPDIRECT3DEXECUTEBUFFER     Execute Buffer
                 :   uint16                      Group
                 :   LPDIRECT3DDEVICE            D3D Device
                 :   LPDIRECT3DVIEWPORT          D3D ViewPort
     Output      :   True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL DisplayGroupClippedPolys( LPDIRECT3DEXECUTEBUFFER ExecBuff, uint16 Group,
                                 LPDIRECT3DDEVICE D3D_Device, LPDIRECT3DVIEWPORT D3D_ViewPort )
 {
@@ -765,13 +765,13 @@ BOOL DisplayGroupClippedPolys( LPDIRECT3DEXECUTEBUFFER ExecBuff, uint16 Group,
     return( FALSE );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display all non group clipped Polys
     Input       :   LPDIRECT3DEXECUTEBUFFER     Execute Buffer
                 :   LPDIRECT3DDEVICE            D3D Device
                 :   LPDIRECT3DVIEWPORT          D3D ViewPort
     Output      :   True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL DisplayGroupUnclippedPolys( LPDIRECT3DEXECUTEBUFFER ExecBuff,
                                    LPDIRECT3DDEVICE D3D_Device, LPDIRECT3DVIEWPORT D3D_ViewPort )
 {
@@ -802,14 +802,14 @@ BOOL DisplayGroupUnclippedPolys( LPDIRECT3DEXECUTEBUFFER ExecBuff,
     return( FALSE );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display All Faceme Polygons in specific group
     Input       :   uint16                      Group
                 :   LPDIRECT3DEXECUTEBUFFER     Execute Buffer
                 :   int16   *                   Current TPage List
                 :   uint16  *                   Current Poly
     Output      :   True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL PolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, uint16 * NextPoly )
 {
     uint16          i;
@@ -829,9 +829,9 @@ BOOL PolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer, int
     LPD3DTRIANGLE   PolyFacePnt;
     LPVOID          lpBufStart, lpInsStart, lpPointer;
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Find out how may verts involved in Exec Buffer
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     TotalVerts = 0;
 
     for( Count = *TPage; Count < MAXTPAGESPERTLOAD; Count++ )
@@ -877,9 +877,9 @@ BOOL PolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer, int
     if(d3dapp->CurrDriver != 0) Specular = RGB_MAKE( 255, 255, 255 );
     else Specular = RGB_MAKE( 128, 128, 128 );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Lock Exec Buffer and get ready to fill in...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     memset( &ExecBuffer_debdesc, 0, sizeof(D3DEXECUTEBUFFERDESC) );
     ExecBuffer_debdesc.dwSize = sizeof(D3DEXECUTEBUFFERDESC);
         
@@ -896,9 +896,9 @@ BOOL PolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer, int
             STATE_DATA( D3DRENDERSTATE_CULLMODE, D3DCULL_NONE, lpPointer );
     }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Fill in Exec Buffer ( Verts and Faces Simultaneously )
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     for( Count = *TPage; Count < MAXTPAGESPERTLOAD; Count++ )
     {
         StartVert = PolyTPages[ Count ].StartVert;
@@ -1156,9 +1156,9 @@ BOOL PolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer, int
 
     OP_EXIT( lpPointer );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         UnLock Exec Buffer and set data description
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     if( ExecBuffer->lpVtbl->Unlock( ExecBuffer ) != D3D_OK ) return( FALSE );
 
     memset( &ExecBuffer_d3dexdata, 0, sizeof(D3DEXECUTEDATA) );
@@ -1174,13 +1174,13 @@ BOOL PolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer, int
     return( TRUE );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display All Faceme Polygons in specific group
     Input       :   LPDIRECT3DEXECUTEBUFFER     Execute Buffer
                 :   int16   *                   Current TPage List
                 :   uint16  *                   Current Poly
     Output      :   True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL PolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, uint16 * NextPoly )
 {
     uint16          i;
@@ -1200,9 +1200,9 @@ BOOL PolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, 
     LPD3DTRIANGLE   PolyFacePnt;
     LPVOID          lpBufStart, lpInsStart, lpPointer;
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Find out how may verts involved in Exec Buffer
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     TotalVerts = 0;
 
     for( Count = *TPage; Count < MAXTPAGESPERTLOAD; Count++ )
@@ -1248,9 +1248,9 @@ BOOL PolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, 
     if(d3dapp->CurrDriver != 0) Specular = RGB_MAKE( 255, 255, 255 );
     else Specular = RGB_MAKE( 128, 128, 128 );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Lock Exec Buffer and get ready to fill in...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     memset( &ExecBuffer_debdesc, 0, sizeof(D3DEXECUTEBUFFERDESC) );
     ExecBuffer_debdesc.dwSize = sizeof(D3DEXECUTEBUFFERDESC);
         
@@ -1267,9 +1267,9 @@ BOOL PolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, 
             STATE_DATA( D3DRENDERSTATE_CULLMODE, D3DCULL_NONE, lpPointer );
     }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Fill in Exec Buffer ( Verts and Faces Simultaneously )
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     for( Count = *TPage; Count < MAXTPAGESPERTLOAD; Count++ )
     {
         StartVert = PolyTPages[ Count ].StartVert;
@@ -1527,9 +1527,9 @@ BOOL PolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, 
 
     OP_EXIT( lpPointer );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         UnLock Exec Buffer and set data description
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     if( ExecBuffer->lpVtbl->Unlock( ExecBuffer ) != D3D_OK ) return( FALSE );
 
     memset( &ExecBuffer_d3dexdata, 0, sizeof(D3DEXECUTEDATA) );
@@ -1545,14 +1545,14 @@ BOOL PolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, 
     return( TRUE );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display all solid group clipped Polys
     Input       :   LPDIRECT3DEXECUTEBUFFER     Execute Buffer
                 :   uint16                      Group
                 :   LPDIRECT3DDEVICE            D3D Device
                 :   LPDIRECT3DVIEWPORT          D3D ViewPort
     Output      :   True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL DisplaySolidGroupClippedPolys( LPDIRECT3DEXECUTEBUFFER ExecBuff, uint16 Group,
                                 LPDIRECT3DDEVICE D3D_Device, LPDIRECT3DVIEWPORT D3D_ViewPort )
 {
@@ -1583,13 +1583,13 @@ BOOL DisplaySolidGroupClippedPolys( LPDIRECT3DEXECUTEBUFFER ExecBuff, uint16 Gro
     return( FALSE );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display all solid non group clipped Polys
     Input       :   LPDIRECT3DEXECUTEBUFFER     Execute Buffer
                 :   LPDIRECT3DDEVICE            D3D Device
                 :   LPDIRECT3DVIEWPORT          D3D ViewPort
     Output      :   True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL DisplaySolidGroupUnclippedPolys( LPDIRECT3DEXECUTEBUFFER ExecBuff,
                                    LPDIRECT3DDEVICE D3D_Device, LPDIRECT3DVIEWPORT D3D_ViewPort )
 {
@@ -1620,14 +1620,14 @@ BOOL DisplaySolidGroupUnclippedPolys( LPDIRECT3DEXECUTEBUFFER ExecBuff,
     return( FALSE );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display All Faceme Polygons in specific group
     Input       :   uint16                      Group
                 :   LPDIRECT3DEXECUTEBUFFER     Execute Buffer
                 :   int16   *                   Current TPage List
                 :   uint16  *                   Current Poly
     Output      :   True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL SolidPolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, uint16 * NextPoly )
 {
     uint16          i;
@@ -1647,9 +1647,9 @@ BOOL SolidPolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer
     LPD3DTRIANGLE   PolyFacePnt;
     LPVOID          lpBufStart, lpInsStart, lpPointer;
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Find out how may verts involved in Exec Buffer
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     TotalVerts = 0;
 
     for( Count = *TPage; Count < MAXTPAGESPERTLOAD; Count++ )
@@ -1695,9 +1695,9 @@ BOOL SolidPolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer
     if(d3dapp->CurrDriver != 0) Specular = RGB_MAKE( 255, 255, 255 );
     else Specular = RGB_MAKE( 128, 128, 128 );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Lock Exec Buffer and get ready to fill in...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     memset( &ExecBuffer_debdesc, 0, sizeof(D3DEXECUTEBUFFERDESC) );
     ExecBuffer_debdesc.dwSize = sizeof(D3DEXECUTEBUFFERDESC);
         
@@ -1714,9 +1714,9 @@ BOOL SolidPolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer
             STATE_DATA( D3DRENDERSTATE_CULLMODE, D3DCULL_NONE, lpPointer );
     }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Fill in Exec Buffer ( Verts and Faces Simultaneously )
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     for( Count = *TPage; Count < MAXTPAGESPERTLOAD; Count++ )
     {
         StartVert = PolyTPages[ Count ].StartVert;
@@ -1974,9 +1974,9 @@ BOOL SolidPolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer
 
     OP_EXIT( lpPointer );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         UnLock Exec Buffer and set data description
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     if( ExecBuffer->lpVtbl->Unlock( ExecBuffer ) != D3D_OK ) return( FALSE );
 
     memset( &ExecBuffer_d3dexdata, 0, sizeof(D3DEXECUTEDATA) );
@@ -1992,13 +1992,13 @@ BOOL SolidPolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer
     return( TRUE );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Display All Faceme Polygons in specific group
     Input       :   LPDIRECT3DEXECUTEBUFFER     Execute Buffer
                 :   int16   *                   Current TPage List
                 :   uint16  *                   Current Poly
     Output      :   True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL SolidPolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, uint16 * NextPoly )
 {
     uint16          i;
@@ -2018,9 +2018,9 @@ BOOL SolidPolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TP
     LPD3DTRIANGLE   PolyFacePnt;
     LPVOID          lpBufStart, lpInsStart, lpPointer;
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Find out how may verts involved in Exec Buffer
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     TotalVerts = 0;
 
     for( Count = *TPage; Count < MAXTPAGESPERTLOAD; Count++ )
@@ -2066,9 +2066,9 @@ BOOL SolidPolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TP
     if(d3dapp->CurrDriver != 0) Specular = RGB_MAKE( 255, 255, 255 );
     else Specular = RGB_MAKE( 128, 128, 128 );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Lock Exec Buffer and get ready to fill in...
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     memset( &ExecBuffer_debdesc, 0, sizeof(D3DEXECUTEBUFFERDESC) );
     ExecBuffer_debdesc.dwSize = sizeof(D3DEXECUTEBUFFERDESC);
         
@@ -2085,9 +2085,9 @@ BOOL SolidPolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TP
             STATE_DATA( D3DRENDERSTATE_CULLMODE, D3DCULL_NONE, lpPointer );
     }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Fill in Exec Buffer ( Verts and Faces Simultaneously )
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     for( Count = *TPage; Count < MAXTPAGESPERTLOAD; Count++ )
     {
         StartVert = PolyTPages[ Count ].StartVert;
@@ -2344,9 +2344,9 @@ BOOL SolidPolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TP
 
     OP_EXIT( lpPointer );
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         UnLock Exec Buffer and set data description
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
     if( ExecBuffer->lpVtbl->Unlock( ExecBuffer ) != D3D_OK ) return( FALSE );
 
     memset( &ExecBuffer_d3dexdata, 0, sizeof(D3DEXECUTEDATA) );
@@ -2362,11 +2362,11 @@ BOOL SolidPolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TP
     return( TRUE );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Save Polys Array & Connected Global Variables
     Input       :   FILE    *   File Pointer
     Output      :   FILE    *   Updated File Pointer
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 FILE * SavePolys( FILE * fp )
 {
     uint16  i;
@@ -2430,11 +2430,11 @@ FILE * SavePolys( FILE * fp )
     return( fp );
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Load Polys Array & Connected Global Variables
     Input       :   FILE    *   File Pointer
     Output      :   FILE    *   Updated File Pointer
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 FILE * LoadPolys( FILE * fp )
 {
     uint16  i;

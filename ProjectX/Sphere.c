@@ -65,9 +65,9 @@
  * 
  */                                             
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
         Include File... 
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 #include "typedefs.h"
 #include "sphere.h"
 
@@ -204,7 +204,7 @@ float   x_min;
 
 
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Perform ray to sphere intersection
     Input       :   VECTOR * sphere_pos
                 :   float radius
@@ -212,7 +212,7 @@ float   x_min;
                 :   VECTOR * ray_dir
     Output      :   float how far from the ray_org the sphere was
                 :   intersected...0.0F if none < 0.0F if there is one
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 
 float RaytoSphere(VECTOR * sphere_pos, float radius , VECTOR * ray_org, VECTOR * ray_dir)
 {
@@ -302,7 +302,7 @@ BOOL RaytoSphere2( VECTOR * sorigin, float radius, VECTOR * rorigin, VECTOR * rd
     return TRUE;
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Ray To Sphere Collision
     Input       :   VECTOR *    SphereCenter
                 :   float       Radius
@@ -310,7 +310,7 @@ BOOL RaytoSphere2( VECTOR * sorigin, float radius, VECTOR * rorigin, VECTOR * rd
                 :   VECTOR *    RayEnd
                 :   VECTOR *    IntPoint
     Output      :   int16       Type Collision
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 int16 RaytoSphere3( VECTOR * SphereCenter, float Radius, VECTOR * RayStart,
                     VECTOR * RayEnd, VECTOR * IntPoint )
 {
@@ -353,7 +353,7 @@ int16 RaytoSphere3( VECTOR * SphereCenter, float Radius, VECTOR * RayStart,
     return( R2S_COLLISION );                                // Collided!
 }
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+/*-------------------------------------------------------------------
     Procedure   :   Ray To Sphere Short
     Input       :   VECTOR *    SphereCenter
                 :   float       Radius
@@ -361,7 +361,7 @@ int16 RaytoSphere3( VECTOR * SphereCenter, float Radius, VECTOR * RayStart,
                 :   VECTOR *    RayDirection
                 :   float       RayLength
     Output      :   BOOL        True/False
-ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+-------------------------------------------------------------------*/
 BOOL RaytoSphereShort( VECTOR * sorigin, float radius, VECTOR * rorigin, VECTOR * rdir, float rlength )
 {
     float       v;
