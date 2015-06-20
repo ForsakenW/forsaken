@@ -42,9 +42,9 @@
  * pointers will not be thunked.
  */
 typedef enum {
-	OE_UNDEFINED,
-	OE_16,
-	OE_32,
+    OE_UNDEFINED,
+    OE_16,
+    OE_32,
 } R4_OS_ENVIRONMENT;
 
 
@@ -55,13 +55,13 @@ typedef enum {
  * to initialize variables to an "undefined" state.
  */
 typedef enum {
-	MT_UNDEFINED,
-	MT_DECODE_FRAME_DEFAULT,
-	MT_DECODE_FRAME_VALUE,
-	MT_DECODE_SEQ_DEFAULT,
-	MT_DECODE_SEQ_VALUE,
-	MT_ENCODE_SEQ_DEFAULT,
-	MT_ENCODE_SEQ_VALUE
+    MT_UNDEFINED,
+    MT_DECODE_FRAME_DEFAULT,
+    MT_DECODE_FRAME_VALUE,
+    MT_DECODE_SEQ_DEFAULT,
+    MT_DECODE_SEQ_VALUE,
+    MT_ENCODE_SEQ_DEFAULT,
+    MT_ENCODE_SEQ_VALUE
 } R4_MESSAGE_TYPE;
 
 /*
@@ -87,10 +87,10 @@ typedef R4_FLAG FAR * PTR_R4_FLAG;
 /* Rectangle - The following structure is used to describe a rectangle.
  */
 typedef struct {
-	DWORD dwX;
-	DWORD dwY;
-	DWORD dwWidth;
-	DWORD dwHeight;
+    DWORD dwX;
+    DWORD dwY;
+    DWORD dwWidth;
+    DWORD dwHeight;
 } R4_RECT, FAR * PTR_R4_RECT;
 
 
@@ -110,9 +110,9 @@ typedef BYTE FAR * PTR_R4_BITMASK;
  * hardware.
  */
 typedef enum {
-	PP_LOW,
-	PP_MEDIUM,
-	PP_HIGH,
+    PP_LOW,
+    PP_MEDIUM,
+    PP_HIGH,
 } R4_PLAYBACK_PLATFORM;
 
 
@@ -120,12 +120,12 @@ typedef enum {
  * methods. The enumeration specifies the transparency method.
  */
 typedef enum {
-	TM_UNDEFINED,
-	TM_NONE,
-	TM_RANGE,
-	TM_BITMASK,
-	TM_FRAME,
-	TM_ALPHA_CHANNEL                /* XRGB color formats only */
+    TM_UNDEFINED,
+    TM_NONE,
+    TM_RANGE,
+    TM_BITMASK,
+    TM_FRAME,
+    TM_ALPHA_CHANNEL                /* XRGB color formats only */
 } R4_TRANS_METHOD;
 
 
@@ -134,13 +134,13 @@ typedef enum {
  * (inclusive) is considered transparent.
  */
 typedef struct {
-	WORD  u16Reserved;
-	UCHAR u8BlueLow;
-	UCHAR u8BlueHigh;
-	UCHAR u8GreenLow;
-	UCHAR u8GreenHigh;
-	UCHAR u8RedLow;
-	UCHAR u8RedHigh;
+    WORD  u16Reserved;
+    UCHAR u8BlueLow;
+    UCHAR u8BlueHigh;
+    UCHAR u8GreenLow;
+    UCHAR u8GreenHigh;
+    UCHAR u8RedLow;
+    UCHAR u8RedHigh;
 } R4_RANGE, FAR * PTR_R4_RANGE;
 
 
@@ -148,12 +148,12 @@ typedef struct {
  * to each of the data structures that follows.
  */
 typedef struct {
-	DWORD   dwSize;
-	DWORD   dwFourCC;
-	DWORD   dwVersion;
-	LONG    mtType; 
-	LONG    oeEnvironment;
-	DWORD   dwFlags;
+    DWORD   dwSize;
+    DWORD   dwFourCC;
+    DWORD   dwVersion;
+    LONG    mtType; 
+    LONG    oeEnvironment;
+    DWORD   dwFlags;
 } R4_HEADER, FAR * PTR_R4_HEADER;
 /* The structure header size is enough room for dwSize, dwFourCC,
  * dwVersion, dwType, dwEnvironment, and dwFlags
@@ -176,22 +176,22 @@ typedef struct {
 #define DECFRAME_VALID                  (1UL<<31)
 
 typedef struct {
-	DWORD dwSize;
-	DWORD dwFourCC;
-	DWORD dwVersion;
-	LONG mtType;    
-	LONG oeEnvironment;
-	DWORD dwFlags;
+    DWORD dwSize;
+    DWORD dwFourCC;
+    DWORD dwVersion;
+    LONG mtType;    
+    LONG oeEnvironment;
+    DWORD dwFlags;
 
-	DWORD dwTimeLimit;                                              /* version 1.0 */
-	R4_RECT rDecodeRect;                                    /* version 1.0 */
-	R4_RECT rViewRect;                                              /* version 1.0 */
-	PTR_R4_RECT prBoundingRect;                             /* version 1.0 */
-	PTR_R4_BITMASK pbmTransparencyBitmask;  /* version 1.0 */
-	PTR_R4_FLAG pfUpdatedTransparencyBitmask; /* version 1.0 */
-	LONG lBrightness;                                               /* version 1.0 */
-	LONG lSaturation;                                               /* version 1.0 */
-	LONG lContrast;                                                 /* version 1.0 */
+    DWORD dwTimeLimit;                                              /* version 1.0 */
+    R4_RECT rDecodeRect;                                    /* version 1.0 */
+    R4_RECT rViewRect;                                              /* version 1.0 */
+    PTR_R4_RECT prBoundingRect;                             /* version 1.0 */
+    PTR_R4_BITMASK pbmTransparencyBitmask;  /* version 1.0 */
+    PTR_R4_FLAG pfUpdatedTransparencyBitmask; /* version 1.0 */
+    LONG lBrightness;                                               /* version 1.0 */
+    LONG lSaturation;                                               /* version 1.0 */
+    LONG lContrast;                                                 /* version 1.0 */
 } R4_DEC_FRAME_DATA, FAR * PTR_R4_DEC_FRAME_DATA;
 
 
@@ -207,18 +207,18 @@ typedef struct {
 #define DECSEQ_VALID                    (1UL<<31)
 
 typedef struct {
-	DWORD dwSize;
-	DWORD dwFourCC;
-	DWORD dwVersion;
-	LONG mtType;
-	LONG oeEnvironment;
-	DWORD dwFlags;
+    DWORD dwSize;
+    DWORD dwFourCC;
+    DWORD dwVersion;
+    LONG mtType;
+    LONG oeEnvironment;
+    DWORD dwFlags;
 
-	DWORD dwKey;                                                    /* version 1.0 */
-	R4_FLAG fEnabledKey;                                    /* version 1.0 */
-	R4_FLAG fScalability;                                   /* version 1.0 */
-	R4_FLAG fFillTransparentPixels;                 /* version 1.0 */
-	R4_FLAG fAltLine;                                               /* version 1.1 */
+    DWORD dwKey;                                                    /* version 1.0 */
+    R4_FLAG fEnabledKey;                                    /* version 1.0 */
+    R4_FLAG fScalability;                                   /* version 1.0 */
+    R4_FLAG fFillTransparentPixels;                 /* version 1.0 */
+    R4_FLAG fAltLine;                                               /* version 1.1 */
 } R4_DEC_SEQ_DATA, FAR * PTR_R4_DEC_SEQ_DATA;
 
 
@@ -239,27 +239,27 @@ typedef struct {
 #define ENCSEQ_VALID                            (1UL<<31)
 
 typedef struct {
-	DWORD dwSize;
-	DWORD dwFourCC;
-	DWORD dwVersion;
-	LONG mtType;    
-	LONG oeEnvironment;
-	DWORD dwFlags;
+    DWORD dwSize;
+    DWORD dwFourCC;
+    DWORD dwVersion;
+    LONG mtType;    
+    LONG oeEnvironment;
+    DWORD dwFlags;
 
-	DWORD dwKey;                                                    /* version 1.0 */
-	DWORD dwMinViewportWidth;                               /* version 1.0 */
-	DWORD dwMinViewportHeight;                              /* version 1.0 */
-	R4_RANGE rngTransparencyRange;                  /* version 1.0 */
-	PTR_R4_BITMASK pbmTransparencyBitmask;  /* version 1.0 */
-	LONG tmTransparencyMethod;                              /* version 1.0 */
-	R4_FLAG fEnabledKey;                                    /* version 1.0 */
-	R4_FLAG fScalability;                                   /* version 1.0 */
-	R4_FLAG fBiDirPrediction;                               /* version 1.0 */
-	R4_FLAG fRandomKeyAndBiDir;                             /* version 1.0 */
-	DWORD dwPlaybackPlatform;                               /* version 1.0 */
-	WORD wFrameLatency;                                             /* version 1.0 */
-	WORD wDeadFrames;                                               /* version 1.0 */
-	R4_FLAG fQuickCompress;                                 /* version 1.1 */
+    DWORD dwKey;                                                    /* version 1.0 */
+    DWORD dwMinViewportWidth;                               /* version 1.0 */
+    DWORD dwMinViewportHeight;                              /* version 1.0 */
+    R4_RANGE rngTransparencyRange;                  /* version 1.0 */
+    PTR_R4_BITMASK pbmTransparencyBitmask;  /* version 1.0 */
+    LONG tmTransparencyMethod;                              /* version 1.0 */
+    R4_FLAG fEnabledKey;                                    /* version 1.0 */
+    R4_FLAG fScalability;                                   /* version 1.0 */
+    R4_FLAG fBiDirPrediction;                               /* version 1.0 */
+    R4_FLAG fRandomKeyAndBiDir;                             /* version 1.0 */
+    DWORD dwPlaybackPlatform;                               /* version 1.0 */
+    WORD wFrameLatency;                                             /* version 1.0 */
+    WORD wDeadFrames;                                               /* version 1.0 */
+    R4_FLAG fQuickCompress;                                 /* version 1.1 */
 } R4_ENC_SEQ_DATA, FAR * PTR_R4_ENC_SEQ_DATA;
 
 

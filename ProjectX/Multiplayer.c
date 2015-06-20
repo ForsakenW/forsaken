@@ -867,17 +867,17 @@
 #include "dpthread.h"
 
 // required version of Direct Play is 6.0 (4.6.0.318)
-#define DPLAY_VERSION_HI	(4)
-#define DPLAY_VERSION_LO	(6)
-#define DPLAY_REVISION_HI	(0)
-#define DPLAY_REVISION_LO	(318)
+#define DPLAY_VERSION_HI    (4)
+#define DPLAY_VERSION_LO    (6)
+#define DPLAY_REVISION_HI   (0)
+#define DPLAY_REVISION_LO   (318)
 
 /*
  * Externals
  */
 extern BOOL OKToProcessKeys;
-extern SLIDER	MaxServerPlayersSlider;
-extern BOOL	OKToJoinSession;
+extern SLIDER   MaxServerPlayersSlider;
+extern BOOL OKToJoinSession;
 extern int OldPPSValue;
 
 extern char host_ip[];
@@ -893,10 +893,10 @@ BOOL bTCP = FALSE;
 
 extern uint8 QuickStart;
 
-extern	BOOL	HarmTeamMates;
-extern	BOOL ServerRendering;
-extern BOOL	BrightShips;
-extern BOOL	BikeExhausts;
+extern  BOOL    HarmTeamMates;
+extern  BOOL ServerRendering;
+extern BOOL BrightShips;
+extern BOOL BikeExhausts;
 extern int32 ColPerspective;
 
 extern HKEY ghCondemnedKey;     // Condemned registry key handle
@@ -904,8 +904,8 @@ extern LONG RegGet(LPCTSTR lptszName, LPBYTE lpData, LPDWORD lpdwDataSize);
 extern LONG RegSet(LPCTSTR lptszName, CONST BYTE * lpData, DWORD dwSize);
 extern LONG RegSetA(LPCTSTR lptszName, CONST BYTE * lpData, DWORD dwSize);
 
-extern	uint32	BIGPACKETBUFFERSIZE;
-extern	uint32	SERVERPACKETBUFFERSIZE;
+extern  uint32  BIGPACKETBUFFERSIZE;
+extern  uint32  SERVERPACKETBUFFERSIZE;
 
 extern char cd_path[];
 extern BOOL NoMenuBack;
@@ -919,133 +919,133 @@ extern SLIDER CTFSlider;
 
 extern BOOL IsLobbyLaunched;
 
-extern	BOOL	UseShortPackets;
-extern	BOOL	BigPackets;
+extern  BOOL    UseShortPackets;
+extern  BOOL    BigPackets;
 
 extern char *DemoFileName( char *demoname );
 extern char *DemoName( char *demofilename );
 extern void SetMultiplayerPrefs( void );
 
 extern BOOL LimitedLoad;
-extern LIST	MySessionsList;
-extern BOOL	Panel;
+extern LIST MySessionsList;
+extern BOOL Panel;
 extern BOOL PreAttractModePanel;
-extern	BOOL	RecordDemoToRam;
+extern  BOOL    RecordDemoToRam;
 
 extern MENUITEM TeamGameHostMenuItem;
-extern BYTE	PreSynchupStatus;
+extern BYTE PreSynchupStatus;
 extern int CurrentLoadingStep;
 extern BOOL DemoShipInit[];
-extern	float DPlayUpdateInterval;
-extern	BOOL	BrightShips;
-extern	BOOL	MyBrightShips;
+extern  float DPlayUpdateInterval;
+extern  BOOL    BrightShips;
+extern  BOOL    MyBrightShips;
 
 extern float Pulse;
 extern char *EmptyString;
 #if defined (SELF_PLAY) || defined(ECTS)
-extern	LIST	BikeList;
+extern  LIST    BikeList;
 #endif
 
-extern	BOOL                    IsServer;
-extern	BOOL					IsHost;   // is the user hosting/joining a game
-extern	DPID					dcoID;    // player id
-extern	int16					Lives;
+extern  BOOL                    IsServer;
+extern  BOOL                    IsHost;   // is the user hosting/joining a game
+extern  DPID                    dcoID;    // player id
+extern  int16                   Lives;
 
-extern	BOOL	BountyHunt;
-extern	BOOL	CaptureTheFlag;
-extern	BOOL	CTF;
-extern	BOOL	BombTag;
-extern	TEXT	DemoGameName;
-extern	BOOL	RecordDemo;
-extern	LIST	ServiceProvidersList;
-extern	LIST	PlayersList;
-extern	LIST	LevelList;
-extern	LIST	TeamList[MAX_TEAMS];
-extern	MENUITEM	TeamItem;
-extern	MENUITEM	NewTeamItem;
-extern	BOOL	TeamGame;
-extern	BYTE	TeamNumber[MAX_PLAYERS];
-extern	SLIDER	TimeLimit;
-extern	SLIDER	DemoSpeed;
-extern	SLIDER	MaxPlayersSlider;
-extern	SLIDER	MaxKillsSlider;
-extern	int16	MaxKills;
+extern  BOOL    BountyHunt;
+extern  BOOL    CaptureTheFlag;
+extern  BOOL    CTF;
+extern  BOOL    BombTag;
+extern  TEXT    DemoGameName;
+extern  BOOL    RecordDemo;
+extern  LIST    ServiceProvidersList;
+extern  LIST    PlayersList;
+extern  LIST    LevelList;
+extern  LIST    TeamList[MAX_TEAMS];
+extern  MENUITEM    TeamItem;
+extern  MENUITEM    NewTeamItem;
+extern  BOOL    TeamGame;
+extern  BYTE    TeamNumber[MAX_PLAYERS];
+extern  SLIDER  TimeLimit;
+extern  SLIDER  DemoSpeed;
+extern  SLIDER  MaxPlayersSlider;
+extern  SLIDER  MaxKillsSlider;
+extern  int16   MaxKills;
 
-extern	TEXT	MultiPlayerGameName;
-extern	char	biker_name[256];
-extern	float	framelag;
+extern  TEXT    MultiPlayerGameName;
+extern  char    biker_name[256];
+extern  float   framelag;
 extern char MyName[];
 extern char NickName[];
-extern	BYTE					Current_Camera_View;		// which object is currently using the camera view....
-extern	BYTE                    WhoIAm;
-extern	GLOBALSHIP              Ships[MAX_PLAYERS];
-extern	int16					StatsStatus;
-extern	int16					Stats[MAX_PLAYERS+1][MAX_PLAYERS+1];
-extern	int16					StatsCount;
-extern	SHORTNAMETYPE			Names;	// all the players short Names....
-extern	int16	SelectedBike;
-extern	SLIDER	NumOfPlayersSlider;
-extern	int MenuStackLevel;
-extern	BYTE	GameStatus[];	// Game Status for every Ship...
-extern	SLIDER  PacketsSlider;
+extern  BYTE                    Current_Camera_View;        // which object is currently using the camera view....
+extern  BYTE                    WhoIAm;
+extern  GLOBALSHIP              Ships[MAX_PLAYERS];
+extern  int16                   StatsStatus;
+extern  int16                   Stats[MAX_PLAYERS+1][MAX_PLAYERS+1];
+extern  int16                   StatsCount;
+extern  SHORTNAMETYPE           Names;  // all the players short Names....
+extern  int16   SelectedBike;
+extern  SLIDER  NumOfPlayersSlider;
+extern  int MenuStackLevel;
+extern  BYTE    GameStatus[];   // Game Status for every Ship...
+extern  SLIDER  PacketsSlider;
 
-extern	LPDPSESSIONDESC2                    glpdpSD;
+extern  LPDPSESSIONDESC2                    glpdpSD;
 
-extern	LPDIRECTPLAY4A                       glpDP;				// directplay object pointer
-extern	LPDIRECTPLAYLOBBY2A					lpDPlayLobby;		//Lobby stuff...
-extern	LPDPLCONNECTION						glpdplConnection;	// connection settings
-extern	TEXT TCPAddress;
+extern  LPDIRECTPLAY4A                       glpDP;             // directplay object pointer
+extern  LPDIRECTPLAYLOBBY2A                 lpDPlayLobby;       //Lobby stuff...
+extern  LPDPLCONNECTION                     glpdplConnection;   // connection settings
+extern  TEXT TCPAddress;
 
-extern	DPID	dcoID;
+extern  DPID    dcoID;
 
-extern	WORD	Version;
-extern	BOOL	CountDownOn;
+extern  WORD    Version;
+extern  BOOL    CountDownOn;
 
-extern	float	GetPlayerNumCount1;
-extern	float	GetPlayerNumCount2;
-extern	int		GetPlayerNumCount;
-extern	FILE	*	DemoFp;
-extern	FILE	*	DemoFpClean;
+extern  float   GetPlayerNumCount1;
+extern  float   GetPlayerNumCount2;
+extern  int     GetPlayerNumCount;
+extern  FILE    *   DemoFp;
+extern  FILE    *   DemoFpClean;
 BOOL ChangeLevel( void );
 BOOL InitLevels( char *levels_list );
-extern	int16		LevelNum;
-extern	int16		NewLevelNum;
-extern	BOOL	PlayDemo;
-extern	LONGLONG	GameStartedTime;		// when the game started
-extern	LONGLONG	GameElapsedTime;		// when the game started
-extern	LONGLONG	TempGameElapsedTime;		// when the game started
-extern	LIST	DemoList;
-extern	float Demoframelag;
-extern	LONGLONG	DemoTimeSoFar;
-extern	BOOL	AutoDetail;
+extern  int16       LevelNum;
+extern  int16       NewLevelNum;
+extern  BOOL    PlayDemo;
+extern  LONGLONG    GameStartedTime;        // when the game started
+extern  LONGLONG    GameElapsedTime;        // when the game started
+extern  LONGLONG    TempGameElapsedTime;        // when the game started
+extern  LIST    DemoList;
+extern  float Demoframelag;
+extern  LONGLONG    DemoTimeSoFar;
+extern  BOOL    AutoDetail;
 void SetOurRenderStates( MENUITEM *item );
-extern	MENUITEM	JoinItem;
-extern	MENUITEM	NewJoinItem;
-extern  MENUITEM	WatchTeamSelectionItem;
+extern  MENUITEM    JoinItem;
+extern  MENUITEM    NewJoinItem;
+extern  MENUITEM    WatchTeamSelectionItem;
 extern int CameraStatus;
-extern	BYTE					OverallGameStatus;
+extern  BYTE                    OverallGameStatus;
 extern char *CurrentLevelsList;
-extern	int16	PreferedMaxPlayers;
+extern  int16   PreferedMaxPlayers;
 
-extern	LIST	SessionsList;
-extern	BOOL AutoSelectConnection;
-extern	LONGLONG	Freq;
+extern  LIST    SessionsList;
+extern  BOOL AutoSelectConnection;
+extern  LONGLONG    Freq;
 extern  MENUSTATE MenuState;
 extern  char TeamCurrentScore[MAX_TEAMS][64];
 
-extern	LONGLONG	DemoStartedTime;		// when the game started
-extern	LONGLONG	DemoEndedTime;		// when the game started
-extern	int32		DemoGameLoops;
+extern  LONGLONG    DemoStartedTime;        // when the game started
+extern  LONGLONG    DemoEndedTime;      // when the game started
+extern  int32       DemoGameLoops;
 
 extern BOOL PreventFlips;
-extern	int		GameType;
-extern	uint16		Seed1;
-extern	uint16		Seed2;
-extern	uint16		CopyOfSeed1;
-extern	uint16		CopyOfSeed2;
-extern	BOOL		RandomPickups;
-extern	BOOL	PolygonText;
-extern	BOOL	NoSFX;
+extern  int     GameType;
+extern  uint16      Seed1;
+extern  uint16      Seed2;
+extern  uint16      CopyOfSeed1;
+extern  uint16      CopyOfSeed2;
+extern  BOOL        RandomPickups;
+extern  BOOL    PolygonText;
+extern  BOOL    NoSFX;
 
 /*
  * Globals to this module
@@ -1054,50 +1054,50 @@ extern	BOOL	NoSFX;
 BOOL ServiceProviderSet = FALSE;
 
 BOOL IPAddressExists = FALSE;
-BOOL	E3DemoHost = FALSE;
-BOOL	E3DemoClient = FALSE;
+BOOL    E3DemoHost = FALSE;
+BOOL    E3DemoClient = FALSE;
 
-uint32	IPAddress = 0;
+uint32  IPAddress = 0;
 char    IPAddressText[16];
-DPSESSIONDESC2			Old_Session;
+DPSESSIONDESC2          Old_Session;
  
-DPCAPS					ServiceProviderCaps;
-DWORD					SugestedEnumSessionsTimeout = 0;
+DPCAPS                  ServiceProviderCaps;
+DWORD                   SugestedEnumSessionsTimeout = 0;
 
 
 DWORD                   Old_WhoIAm = (DWORD) -1;
-DWORD					Old_Kills = 0;
-DWORD					Old_Deaths = 0;
-DWORD					Old_TeamNumber = 0;
-char					Old_Name[256] = { 0 };
-BOOL					Rejoining = FALSE;
+DWORD                   Old_Kills = 0;
+DWORD                   Old_Deaths = 0;
+DWORD                   Old_TeamNumber = 0;
+char                    Old_Name[256] = { 0 };
+BOOL                    Rejoining = FALSE;
 
-DPID					PlayerIDs[MAX_PLAYERS];
-DPID					LobbyPlayerIDs[MAX_PLAYERS];
-uint16					NumLobbyPlayers;
+DPID                    PlayerIDs[MAX_PLAYERS];
+DPID                    LobbyPlayerIDs[MAX_PLAYERS];
+uint16                  NumLobbyPlayers;
 
-DPID					TeamIDs[MAX_TEAMS][MAX_PLAYERS];
-int						TeamMembers[MAX_TEAMS];
+DPID                    TeamIDs[MAX_TEAMS][MAX_PLAYERS];
+int                     TeamMembers[MAX_TEAMS];
 
-MENU  *				GetPlayerNumMenu;
-float	Bodge	= 1.0F;
+MENU  *             GetPlayerNumMenu;
+float   Bodge   = 1.0F;
 
-GUID	ServiceProvidersGuids[MAXSERVICEPROVIDERS];
+GUID    ServiceProvidersGuids[MAXSERVICEPROVIDERS];
 
-DPSESSIONDESC2	Sessions[MAXSESSIONS];
+DPSESSIONDESC2  Sessions[MAXSESSIONS];
 char SessionNames[ MAXSESSIONS ][ 128 ];
 
-DPSESSIONDESC2	SessionsCopy[MAXSESSIONS];
-LIST	SessionsListCopy;
+DPSESSIONDESC2  SessionsCopy[MAXSESSIONS];
+LIST    SessionsListCopy;
 
 
-BOOL	SessionsRefresh[MAXSESSIONS];
-BOOL	SessionsRefreshActive = FALSE;
-GUID	gSPGuid;            // currently selected service provider guid
+BOOL    SessionsRefresh[MAXSESSIONS];
+BOOL    SessionsRefreshActive = FALSE;
+GUID    gSPGuid;            // currently selected service provider guid
 
-BOOL	Modem2Modem = FALSE;
+BOOL    Modem2Modem = FALSE;
 
-uint16	RandomStartPosModify = 0;							
+uint16  RandomStartPosModify = 0;                           
 
 void DebugPrintf( const char * format, ... );
 void DrawLoadingBox( int current_loading_step, int current_substep, int total_substeps );
@@ -1105,7 +1105,7 @@ void InitMySessionsList(void);
 static int DirectPlayOK( LPGUID lpServiceProvider_guid );
 void DrawFlatMenuItem( MENUITEM *Item );
 void GetLevelName( char *buf, int bufsize, int level );
-							
+                            
 /*
  * IsEqualGuid
  *
@@ -1125,1033 +1125,1033 @@ void RestoreDemoSettings( void );
 void GetMultiplayerPrefs( void );
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Get a List of Service Providers
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   Get a List of Service Providers
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 
 void GetServiceProviders( MENU *Menu )
 {
-	DWORD size;
-	static GUID last_service_provider;
-	LPVOID *ptr;
-	MENUITEM *item;
-	char sp_guidtext[ 256 ];
+    DWORD size;
+    static GUID last_service_provider;
+    LPVOID *ptr;
+    MENUITEM *item;
+    char sp_guidtext[ 256 ];
 
-	if ( Menu )
-	{
-		for ( item = Menu->Item; item->x >= 0; item++ )
-		{
-			if ( item->FuncSelect == SelectQuit )
-			{
-				if ( QuickStart )
-				{
-					item->FuncDraw = DrawFlatMenuItem;
-					item->highlightflags &= ~TEXTFLAG_Unselectable;
-				}else
-				{
-					item->FuncDraw = NULL;
-					item->highlightflags |= TEXTFLAG_Unselectable;
-				}
-			}
-		}
-	}
+    if ( Menu )
+    {
+        for ( item = Menu->Item; item->x >= 0; item++ )
+        {
+            if ( item->FuncSelect == SelectQuit )
+            {
+                if ( QuickStart )
+                {
+                    item->FuncDraw = DrawFlatMenuItem;
+                    item->highlightflags &= ~TEXTFLAG_Unselectable;
+                }else
+                {
+                    item->FuncDraw = NULL;
+                    item->highlightflags |= TEXTFLAG_Unselectable;
+                }
+            }
+        }
+    }
 
-	SetOurRenderStates( NULL );
-	
-	GetLastGameInfo();
-	ServiceProvidersList.items = 0;
+    SetOurRenderStates( NULL );
+    
+    GetLastGameInfo();
+    ServiceProvidersList.items = 0;
 
-	ServiceProvidersList.top_item = 0;
-	ServiceProviderSet = FALSE;
+    ServiceProvidersList.top_item = 0;
+    ServiceProviderSet = FALSE;
 
-	if (CameraStatus != CAMERA_AtStart)
-		ServiceProvidersList.display_items = 8;
-	else
-		ServiceProvidersList.display_items = 8;
+    if (CameraStatus != CAMERA_AtStart)
+        ServiceProvidersList.display_items = 8;
+    else
+        ServiceProvidersList.display_items = 8;
 
-	ServiceProvidersList.FuncInfo = NULL;
+    ServiceProvidersList.FuncInfo = NULL;
 
-	DPlayCreateLobby();
+    DPlayCreateLobby();
 
-	ptr = NULL;
-	if ( ghCondemnedKey )
-	{
-		if ( !bTCP )	// if we are not forcing TCP service provider...
-		{
-			size = sizeof( sp_guidtext );
-			if ( RegGet( "ServiceProvider", (LPBYTE)&sp_guidtext, &size ) == ERROR_SUCCESS)
-			{
-		 		// convert to GUID
-				if ( GUIDFromString( sp_guidtext, &last_service_provider ) != S_OK )
-				{
-					DebugPrintf("unable to convert session guid from string\n");
-				}else
-				{
-					ptr = (LPVOID) &last_service_provider;
-				}
-			}
-		}else
-		{
-			ptr = (LPVOID) &DPSPGUID_TCPIP;
-		}
+    ptr = NULL;
+    if ( ghCondemnedKey )
+    {
+        if ( !bTCP )    // if we are not forcing TCP service provider...
+        {
+            size = sizeof( sp_guidtext );
+            if ( RegGet( "ServiceProvider", (LPBYTE)&sp_guidtext, &size ) == ERROR_SUCCESS)
+            {
+                // convert to GUID
+                if ( GUIDFromString( sp_guidtext, &last_service_provider ) != S_OK )
+                {
+                    DebugPrintf("unable to convert session guid from string\n");
+                }else
+                {
+                    ptr = (LPVOID) &last_service_provider;
+                }
+            }
+        }else
+        {
+            ptr = (LPVOID) &DPSPGUID_TCPIP;
+        }
 
-		if ( !bTCP )
-		{
-			size = sizeof( TCPAddress.text );
-			RegGet("TCPIP", (LPBYTE)&TCPAddress.text[0],&size);
-		}
-	}
-	ServiceProvidersList.selected_item = 0;
-	DirectPlayEnumerate( EnumServiceProviders, ptr );
-	GetMultiplayerPrefs();
-	GetServerPrefs();
+        if ( !bTCP )
+        {
+            size = sizeof( TCPAddress.text );
+            RegGet("TCPIP", (LPBYTE)&TCPAddress.text[0],&size);
+        }
+    }
+    ServiceProvidersList.selected_item = 0;
+    DirectPlayEnumerate( EnumServiceProviders, ptr );
+    GetMultiplayerPrefs();
+    GetServerPrefs();
 }
 
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	DirectPlayEnumerate callback. Stores the service provider information.
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   DirectPlayEnumerate callback. Stores the service provider information.
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 BOOL WINAPI EnumServiceProviders(LPGUID lpGuid, LPTSTR lpSpName, DWORD dwMajorVersion,
-						         DWORD dwMinorVersion, LPVOID lpv)
+                                 DWORD dwMinorVersion, LPVOID lpv)
 {
 #ifdef SHAREWARE
-	if (IsEqualGUID( lpGuid, &DPSPGUID_TCPIP) )
-	{
-		return TRUE;
-	}
+    if (IsEqualGUID( lpGuid, &DPSPGUID_TCPIP) )
+    {
+        return TRUE;
+    }
 #endif
-	
-	if( ServiceProvidersList.items < MAXSERVICEPROVIDERS )
-	{
-		strncpy( ServiceProvidersList.item[ServiceProvidersList.items] , lpSpName , sizeof(ServiceProvidersList.item[0])  );
-		ServiceProvidersGuids[ServiceProvidersList.items] = *lpGuid;
-		if ( lpv && IsEqualGUID( lpGuid, (LPGUID) lpv ) )
-		{
-			ServiceProvidersList.selected_item = ServiceProvidersList.items;
-			ServiceProviderSet = TRUE;
-		}
+    
+    if( ServiceProvidersList.items < MAXSERVICEPROVIDERS )
+    {
+        strncpy( ServiceProvidersList.item[ServiceProvidersList.items] , lpSpName , sizeof(ServiceProvidersList.item[0])  );
+        ServiceProvidersGuids[ServiceProvidersList.items] = *lpGuid;
+        if ( lpv && IsEqualGUID( lpGuid, (LPGUID) lpv ) )
+        {
+            ServiceProvidersList.selected_item = ServiceProvidersList.items;
+            ServiceProviderSet = TRUE;
+        }
 
-		if( strlen(lpSpName ) >= sizeof(ServiceProvidersList.item[0]) && (CameraStatus == CAMERA_AtStart))
-		{
-			strcpy( ServiceProvidersList.item[ServiceProvidersList.items] + sizeof(ServiceProvidersList.item[0]) - 4 , "..." );
-		}
-		ServiceProvidersList.items++;
-	}
+        if( strlen(lpSpName ) >= sizeof(ServiceProvidersList.item[0]) && (CameraStatus == CAMERA_AtStart))
+        {
+            strcpy( ServiceProvidersList.item[ServiceProvidersList.items] + sizeof(ServiceProvidersList.item[0]) - 4 , "..." );
+        }
+        ServiceProvidersList.items++;
+    }
     return(TRUE);
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	A Provider has been chosen create a directplay object
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   A Provider has been chosen create a directplay object
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 
 BOOL ExitProviderChosen ( MENUITEM * Item )
 {
-	HRESULT hr;
+    HRESULT hr;
     LPGUID  lpGuid;
-	char sp_guidtext[ 256 ];
+    char sp_guidtext[ 256 ];
 
-	// release any previously created Dplay Objects...
-	DPlayRelease();
+    // release any previously created Dplay Objects...
+    DPlayRelease();
 
-	// used to determine whether to display IP address on VDU;
-	IPAddressExists = FALSE;
+    // used to determine whether to display IP address on VDU;
+    IPAddressExists = FALSE;
 
-	// get a pointer to the guid
-	lpGuid = (LPGUID ) &ServiceProvidersGuids[ServiceProvidersList.selected_item];
+    // get a pointer to the guid
+    lpGuid = (LPGUID ) &ServiceProvidersGuids[ServiceProvidersList.selected_item];
 
 
-	// Check for modem
-	Modem2Modem = FALSE;
-	if (IsEqualGUID( lpGuid, &DPSPGUID_MODEM) )
-		Modem2Modem = TRUE;
+    // Check for modem
+    Modem2Modem = FALSE;
+    if (IsEqualGUID( lpGuid, &DPSPGUID_MODEM) )
+        Modem2Modem = TRUE;
 
-	// Check for acceptable version of Direct Play
-	if ( CheckDirectPlayVersion && !DirectPlayOK( lpGuid ) )
-	{
-		PrintErrorMessage ( YOU_NEED_TO_INSATLL_THE_DIRECT_PLAY_50A_UPDATE, 2, NULL, ERROR_USE_MENUFUNCS );
-		return FALSE;
-	}
-	
-	
-	// remember the selection
-	gSPGuid = *lpGuid;
+    // Check for acceptable version of Direct Play
+    if ( CheckDirectPlayVersion && !DirectPlayOK( lpGuid ) )
+    {
+        PrintErrorMessage ( YOU_NEED_TO_INSATLL_THE_DIRECT_PLAY_50A_UPDATE, 2, NULL, ERROR_USE_MENUFUNCS );
+        return FALSE;
+    }
+    
+    
+    // remember the selection
+    gSPGuid = *lpGuid;
 
-	if ((hr = OnceServiceProviderChosen( &ServiceProvidersGuids[ServiceProvidersList.selected_item] , lpDPlayLobby, &glpDP , &TCPAddress.text[0])) != DP_OK)
-	{
-		PrintErrorMessage ( CONNECTION_INITIALIZATION_ERROR, 2, NULL, ERROR_USE_MENUFUNCS );
-		return FALSE;
-	}
+    if ((hr = OnceServiceProviderChosen( &ServiceProvidersGuids[ServiceProvidersList.selected_item] , lpDPlayLobby, &glpDP , &TCPAddress.text[0])) != DP_OK)
+    {
+        PrintErrorMessage ( CONNECTION_INITIALIZATION_ERROR, 2, NULL, ERROR_USE_MENUFUNCS );
+        return FALSE;
+    }
 
-	if (IsEqualGUID( lpGuid, &DPSPGUID_TCPIP) )
-	{
-		if (GetIPAdd())
-			IPAddressExists = TRUE;
-	}
+    if (IsEqualGUID( lpGuid, &DPSPGUID_TCPIP) )
+    {
+        if (GetIPAdd())
+            IPAddressExists = TRUE;
+    }
 
-//	if ( !CheckLegalIP() )
-//	{
-//		DPlayRelease();
-//		MenuBack();
-//		return FALSE;
-//	}
+//  if ( !CheckLegalIP() )
+//  {
+//      DPlayRelease();
+//      MenuBack();
+//      return FALSE;
+//  }
 
-	ZeroMemory(&ServiceProviderCaps,sizeof(ServiceProviderCaps));
+    ZeroMemory(&ServiceProviderCaps,sizeof(ServiceProviderCaps));
     ServiceProviderCaps.dwSize = sizeof(DPCAPS);
 
-	hr = IDirectPlayX_GetCaps( glpDP , &ServiceProviderCaps , 0);
-	if( hr != DP_OK )
-	{
-		PrintErrorMessage ( COULDNT_GET_SERVICE_PROVIDER_CAPS, 2, NULL, ERROR_USE_MENUFUNCS );
-		return FALSE;
-	}
-	SugestedEnumSessionsTimeout = ServiceProviderCaps.dwTimeout * 2;
+    hr = IDirectPlayX_GetCaps( glpDP , &ServiceProviderCaps , 0);
+    if( hr != DP_OK )
+    {
+        PrintErrorMessage ( COULDNT_GET_SERVICE_PROVIDER_CAPS, 2, NULL, ERROR_USE_MENUFUNCS );
+        return FALSE;
+    }
+    SugestedEnumSessionsTimeout = ServiceProviderCaps.dwTimeout * 2;
 
 
-	if( ServiceProviderCaps.dwMaxBufferSize < MAXBIGPACKETBUFFERSIZE )
-	{
-		BIGPACKETBUFFERSIZE = ServiceProviderCaps.dwMaxBufferSize;
-	}else{
-		BIGPACKETBUFFERSIZE = MAXBIGPACKETBUFFERSIZE;
-	}
-	if( ServiceProviderCaps.dwMaxBufferSize < MAXBIGPACKETBUFFERSIZE )
-	{
-		SERVERPACKETBUFFERSIZE = ServiceProviderCaps.dwMaxBufferSize;
-	}else{
-		SERVERPACKETBUFFERSIZE = MAXBIGPACKETBUFFERSIZE;
-	}
+    if( ServiceProviderCaps.dwMaxBufferSize < MAXBIGPACKETBUFFERSIZE )
+    {
+        BIGPACKETBUFFERSIZE = ServiceProviderCaps.dwMaxBufferSize;
+    }else{
+        BIGPACKETBUFFERSIZE = MAXBIGPACKETBUFFERSIZE;
+    }
+    if( ServiceProviderCaps.dwMaxBufferSize < MAXBIGPACKETBUFFERSIZE )
+    {
+        SERVERPACKETBUFFERSIZE = ServiceProviderCaps.dwMaxBufferSize;
+    }else{
+        SERVERPACKETBUFFERSIZE = MAXBIGPACKETBUFFERSIZE;
+    }
 
-	
-	
-//	if (!AutoSelectConnection)
-//		MenuChange ( Item );
+    
+    
+//  if (!AutoSelectConnection)
+//      MenuChange ( Item );
 
-	if ( (CameraStatus == CAMERA_AtStart) && Item )
-		MenuChange ( Item );
+    if ( (CameraStatus == CAMERA_AtStart) && Item )
+        MenuChange ( Item );
 
 
-	if( Modem2Modem )
-	{
-		MaxPlayersSlider.value = 2;
-		MaxPlayersSlider.max = 2;
-	}else{
-		MaxPlayersSlider.max = MAX_PLAYERS;
-		MaxPlayersSlider.value = PreferedMaxPlayers;
-	}
+    if( Modem2Modem )
+    {
+        MaxPlayersSlider.value = 2;
+        MaxPlayersSlider.max = 2;
+    }else{
+        MaxPlayersSlider.max = MAX_PLAYERS;
+        MaxPlayersSlider.value = PreferedMaxPlayers;
+    }
 
-	// convert guid to string...
-	if ( StringFromGUID( &gSPGuid, sp_guidtext ) )
-	{
-		RegSetA( "ServiceProvider",  (LPBYTE)&sp_guidtext,  sizeof( sp_guidtext ) );
-	}
+    // convert guid to string...
+    if ( StringFromGUID( &gSPGuid, sp_guidtext ) )
+    {
+        RegSetA( "ServiceProvider",  (LPBYTE)&sp_guidtext,  sizeof( sp_guidtext ) );
+    }
 
     RegSetA("TCPIP", (CONST BYTE *)&TCPAddress.text[0], sizeof(TCPAddress.text));
 
-	return TRUE;
+    return TRUE;
 }
 
 BOOL RefreshDPlay ( void )
 {
-	HRESULT hr;
+    HRESULT hr;
     LPGUID  lpGuid;
 
-	// release any previously created Dplay Objects...
-	DPlayRelease();
+    // release any previously created Dplay Objects...
+    DPlayRelease();
 
-	// get a pointer to the guid
-	lpGuid = (LPGUID ) &ServiceProvidersGuids[ServiceProvidersList.selected_item];
+    // get a pointer to the guid
+    lpGuid = (LPGUID ) &ServiceProvidersGuids[ServiceProvidersList.selected_item];
 
 
-	if ((hr = OnceServiceProviderChosen( &ServiceProvidersGuids[ServiceProvidersList.selected_item] , lpDPlayLobby, &glpDP , &TCPAddress.text[0])) != DP_OK)
-	{
-		PrintErrorMessage ( CONNECTION_INITIALIZATION_ERROR, 2, NULL, ERROR_USE_MENUFUNCS );
-		return FALSE;
-	}
+    if ((hr = OnceServiceProviderChosen( &ServiceProvidersGuids[ServiceProvidersList.selected_item] , lpDPlayLobby, &glpDP , &TCPAddress.text[0])) != DP_OK)
+    {
+        PrintErrorMessage ( CONNECTION_INITIALIZATION_ERROR, 2, NULL, ERROR_USE_MENUFUNCS );
+        return FALSE;
+    }
 
-	ZeroMemory(&ServiceProviderCaps,sizeof(ServiceProviderCaps));
+    ZeroMemory(&ServiceProviderCaps,sizeof(ServiceProviderCaps));
     ServiceProviderCaps.dwSize = sizeof(DPCAPS);
 
-	hr = IDirectPlayX_GetCaps( glpDP , &ServiceProviderCaps , 0);
-	if( hr != DP_OK )
-	{
-		PrintErrorMessage ( COULDNT_GET_SERVICE_PROVIDER_CAPS, 2, NULL, ERROR_USE_MENUFUNCS );
-		return FALSE;
-	}
-	SugestedEnumSessionsTimeout = ServiceProviderCaps.dwTimeout * 2;
+    hr = IDirectPlayX_GetCaps( glpDP , &ServiceProviderCaps , 0);
+    if( hr != DP_OK )
+    {
+        PrintErrorMessage ( COULDNT_GET_SERVICE_PROVIDER_CAPS, 2, NULL, ERROR_USE_MENUFUNCS );
+        return FALSE;
+    }
+    SugestedEnumSessionsTimeout = ServiceProviderCaps.dwTimeout * 2;
 
 
-	if( ServiceProviderCaps.dwMaxBufferSize < MAXBIGPACKETBUFFERSIZE )
-	{
-		BIGPACKETBUFFERSIZE = ServiceProviderCaps.dwMaxBufferSize;
-	}else{
-		BIGPACKETBUFFERSIZE = MAXBIGPACKETBUFFERSIZE;
-	}
-	if( ServiceProviderCaps.dwMaxBufferSize < MAXBIGPACKETBUFFERSIZE )
-	{
-		SERVERPACKETBUFFERSIZE = ServiceProviderCaps.dwMaxBufferSize;
-	}else{
-		SERVERPACKETBUFFERSIZE = MAXBIGPACKETBUFFERSIZE;
-	}
+    if( ServiceProviderCaps.dwMaxBufferSize < MAXBIGPACKETBUFFERSIZE )
+    {
+        BIGPACKETBUFFERSIZE = ServiceProviderCaps.dwMaxBufferSize;
+    }else{
+        BIGPACKETBUFFERSIZE = MAXBIGPACKETBUFFERSIZE;
+    }
+    if( ServiceProviderCaps.dwMaxBufferSize < MAXBIGPACKETBUFFERSIZE )
+    {
+        SERVERPACKETBUFFERSIZE = ServiceProviderCaps.dwMaxBufferSize;
+    }else{
+        SERVERPACKETBUFFERSIZE = MAXBIGPACKETBUFFERSIZE;
+    }
 
-	return TRUE;
+    return TRUE;
 }
 
 void SetUpGameSubType( int type )
 {
-	switch ( CTFSlider.value )
-	{
-	case CTF_MUST_CARRY:
-		NeedFlagAtHome			= TRUE;
-		OwnFlagTeleportsHome	= FALSE;
-		CanCarryOwnFlag			= TRUE;
-		break;
-	case CTF_CAN_CARRY:
-		NeedFlagAtHome			= FALSE;
-		OwnFlagTeleportsHome	= FALSE;
-		CanCarryOwnFlag			= TRUE;
-		break;
-	case CTF_ONE_TOUCH:
-		NeedFlagAtHome			= FALSE;
-		OwnFlagTeleportsHome	= TRUE;
-		CanCarryOwnFlag			= FALSE;
-		break;
-	case CTF_NO_RETURN:
-		NeedFlagAtHome			= FALSE;
-		OwnFlagTeleportsHome	= FALSE;
-		CanCarryOwnFlag			= FALSE;
-		break;
-	case CTF_STANDARD:
-	default:
-		NeedFlagAtHome			= TRUE;
-		OwnFlagTeleportsHome	= TRUE;
-		CanCarryOwnFlag			= FALSE;
-	}
+    switch ( CTFSlider.value )
+    {
+    case CTF_MUST_CARRY:
+        NeedFlagAtHome          = TRUE;
+        OwnFlagTeleportsHome    = FALSE;
+        CanCarryOwnFlag         = TRUE;
+        break;
+    case CTF_CAN_CARRY:
+        NeedFlagAtHome          = FALSE;
+        OwnFlagTeleportsHome    = FALSE;
+        CanCarryOwnFlag         = TRUE;
+        break;
+    case CTF_ONE_TOUCH:
+        NeedFlagAtHome          = FALSE;
+        OwnFlagTeleportsHome    = TRUE;
+        CanCarryOwnFlag         = FALSE;
+        break;
+    case CTF_NO_RETURN:
+        NeedFlagAtHome          = FALSE;
+        OwnFlagTeleportsHome    = FALSE;
+        CanCarryOwnFlag         = FALSE;
+        break;
+    case CTF_STANDARD:
+    default:
+        NeedFlagAtHome          = TRUE;
+        OwnFlagTeleportsHome    = TRUE;
+        CanCarryOwnFlag         = FALSE;
+    }
 }
 
 void SetUpGameType( int type ) 
 {
-	TeamGame = FALSE;
-	BombTag = FALSE;
-	CTF = FALSE;
-	NeedFlagAtHome			= FALSE;
-	OwnFlagTeleportsHome	= FALSE;
-	CanCarryOwnFlag			= FALSE;
-	CaptureTheFlag = FALSE;
-	BountyHunt = FALSE;
-	
-	switch ( type )
-	{
-	case GAME_Normal:
-		break;
-	case GAME_Team:
-		TeamGame = TRUE;
-		break;
-	case GAME_Tag:
-		BombTag = TRUE;
-		break;
-	case GAME_CTF:
-		CTF = TRUE;
-		TeamGame = TRUE;
+    TeamGame = FALSE;
+    BombTag = FALSE;
+    CTF = FALSE;
+    NeedFlagAtHome          = FALSE;
+    OwnFlagTeleportsHome    = FALSE;
+    CanCarryOwnFlag         = FALSE;
+    CaptureTheFlag = FALSE;
+    BountyHunt = FALSE;
+    
+    switch ( type )
+    {
+    case GAME_Normal:
+        break;
+    case GAME_Team:
+        TeamGame = TRUE;
+        break;
+    case GAME_Tag:
+        BombTag = TRUE;
+        break;
+    case GAME_CTF:
+        CTF = TRUE;
+        TeamGame = TRUE;
 
-		SetUpGameSubType( CTFSlider.value );
+        SetUpGameSubType( CTFSlider.value );
 
-		break;
-	case GAME_CaptureFlag:
-		CaptureTheFlag = TRUE;
-		TeamGame = TRUE;
-		break;
-	case GAME_BountyHunt:
-		BountyHunt = TRUE;
-		break;
-	case GAME_TeamBounty:
-		BountyHunt = TRUE;
-		TeamGame = TRUE;
-		break;
-	}
+        break;
+    case GAME_CaptureFlag:
+        CaptureTheFlag = TRUE;
+        TeamGame = TRUE;
+        break;
+    case GAME_BountyHunt:
+        BountyHunt = TRUE;
+        break;
+    case GAME_TeamBounty:
+        BountyHunt = TRUE;
+        TeamGame = TRUE;
+        break;
+    }
 }
 
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Hosting a session...
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   Hosting a session...
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 BOOL StartAHostSession ( MENUITEM * Item )
 {
-	HRESULT hr;
-	int i;
-	DWORD		Temp;
-	BYTE		msg;
-	int			size;
-	LONGLONG	TempTime;
-	uint32		Seed;
-	uint32		PackedInfo[ MAX_PICKUPFLAGS ];
+    HRESULT hr;
+    int i;
+    DWORD       Temp;
+    BYTE        msg;
+    int         size;
+    LONGLONG    TempTime;
+    uint32      Seed;
+    uint32      PackedInfo[ MAX_PICKUPFLAGS ];
 
-	IsServer = FALSE;
-	IsServerGame = FALSE;
+    IsServer = FALSE;
+    IsServerGame = FALSE;
 
-	if ( MaxPlayersSlider.max != 2 )
-		PreferedMaxPlayers = MaxPlayersSlider.value;
-	SetMultiplayerPrefs();
+    if ( MaxPlayersSlider.max != 2 )
+        PreferedMaxPlayers = MaxPlayersSlider.value;
+    SetMultiplayerPrefs();
 
-	Seed = timeGetTime();
-	Seed1 = (uint16) ( ( Seed >> 16 ) & 0xffff );
-	Seed2 = (uint16) ( Seed & 0xffff );
-	CopyOfSeed1 = Seed1;
-	CopyOfSeed2 = Seed2;
+    Seed = timeGetTime();
+    Seed1 = (uint16) ( ( Seed >> 16 ) & 0xffff );
+    Seed2 = (uint16) ( Seed & 0xffff );
+    CopyOfSeed1 = Seed1;
+    CopyOfSeed2 = Seed2;
 
-	PlayDemo = FALSE;
-	IsHost = TRUE;
+    PlayDemo = FALSE;
+    IsHost = TRUE;
 
-	TeamGame = FALSE;
-	BombTag = FALSE;
-	CaptureTheFlag = FALSE;
-	BountyHunt = FALSE;
-	CTF = FALSE;
+    TeamGame = FALSE;
+    BombTag = FALSE;
+    CaptureTheFlag = FALSE;
+    BountyHunt = FALSE;
+    CTF = FALSE;
 
-	SetUpGameType( GameType );
+    SetUpGameType( GameType );
 
-	SetBikeMods( 0 );
+    SetBikeMods( 0 );
 
-	MaxKills = MaxKillsSlider.value;
+    MaxKills = MaxKillsSlider.value;
 
-	QueryPerformanceCounter((LARGE_INTEGER *) &TempTime);
-	RandomStartPosModify = (uint16) ( ( TempTime * 71.42857143 ) / Freq );
+    QueryPerformanceCounter((LARGE_INTEGER *) &TempTime);
+    RandomStartPosModify = (uint16) ( ( TempTime * 71.42857143 ) / Freq );
 
-	if ( !IsLobbyLaunched )
-	{
-		if ( !E3DemoClient && !E3DemoHost )
-			d3dappi.lpDD->lpVtbl->FlipToGDISurface(d3dappi.lpDD);
+    if ( !IsLobbyLaunched )
+    {
+        if ( !E3DemoClient && !E3DemoHost )
+            d3dappi.lpDD->lpVtbl->FlipToGDISurface(d3dappi.lpDD);
 
-		// E3demo Must have a 5 minute limit....
-		if ( E3DemoClient || E3DemoHost )
-			TimeLimit.value = 5;
+        // E3demo Must have a 5 minute limit....
+        if ( E3DemoClient || E3DemoHost )
+            TimeLimit.value = 5;
 
-		// create session
-		if ((hr = DPlayCreateSession( &MultiPlayerGameName.text[0])) != DP_OK)
-		{
-			return FALSE;
-		}
-	
-		// create player
+        // create session
+        if ((hr = DPlayCreateSession( &MultiPlayerGameName.text[0])) != DP_OK)
+        {
+            return FALSE;
+        }
+    
+        // create player
 #ifdef ECTS
-		if ((hr = DPlayCreatePlayer(&dcoID, BikeList.item[0], NULL, NULL, 0)) != DP_OK)
+        if ((hr = DPlayCreatePlayer(&dcoID, BikeList.item[0], NULL, NULL, 0)) != DP_OK)
 #else
-		if ((hr = DPlayCreatePlayer(&dcoID, &biker_name[0], NULL, NULL, 0)) != DP_OK)
+        if ((hr = DPlayCreatePlayer(&dcoID, &biker_name[0], NULL, NULL, 0)) != DP_OK)
 #endif
-		{
-		    return FALSE;
-		}
-	}else
-	{
-		// ammend session name to include level name...
-		DPlayGetSessionDesc();
-		glpdpSD->dwMaxPlayers = MaxPlayersSlider.value;
-		DPlaySetSessionDesc( 1 );
+        {
+            return FALSE;
+        }
+    }else
+    {
+        // ammend session name to include level name...
+        DPlayGetSessionDesc();
+        glpdpSD->dwMaxPlayers = MaxPlayersSlider.value;
+        DPlaySetSessionDesc( 1 );
 
-		UpdateSessionName( MultiPlayerGameName.text );
-	}
+        UpdateSessionName( MultiPlayerGameName.text );
+    }
 
-	DPlayUpdateInterval	= 60.0F / PacketsSlider.value;
-	OldPPSValue = PacketsSlider.value;
-	
-	SetupDplayGame();
-	
-	DPlayGetSessionDesc();
-	
+    DPlayUpdateInterval = 60.0F / PacketsSlider.value;
+    OldPPSValue = PacketsSlider.value;
+    
+    SetupDplayGame();
+    
+    DPlayGetSessionDesc();
+    
 
-	for( i = 0 ; i < MAX_PLAYERS ; i++ )
-	{
-		GameStatus[i] = STATUS_Null;
-	}
-	
-	WhoIAm = 0;								// I was the first to join...
-	Ships[WhoIAm].dcoID = dcoID;
+    for( i = 0 ; i < MAX_PLAYERS ; i++ )
+    {
+        GameStatus[i] = STATUS_Null;
+    }
+    
+    WhoIAm = 0;                             // I was the first to join...
+    Ships[WhoIAm].dcoID = dcoID;
 
-	if ( TeamGame )
-		MenuChange( &NewTeamItem );
-	else
-		MenuChange( Item );
+    if ( TeamGame )
+        MenuChange( &NewTeamItem );
+    else
+        MenuChange( Item );
 
-	MyGameStatus = STATUS_StartingMultiplayer;
-	
-	Current_Camera_View = 0;				// set camera to that view
-//	Ships[WhoIAm].enable = 1;
-	Ships[WhoIAm].Pickups = 0;
-	Ships[WhoIAm].RegenSlots = 0;
-	Ships[WhoIAm].Mines = 0;
-	Ships[WhoIAm].Triggers = 0;
-	Ships[WhoIAm].TrigVars = 0;
-	StatsStatus = 1;						// I started it so the Stats Are Valid...
-	
-	memset(&Names, 0, sizeof(SHORTNAMETYPE) );
+    MyGameStatus = STATUS_StartingMultiplayer;
+    
+    Current_Camera_View = 0;                // set camera to that view
+//  Ships[WhoIAm].enable = 1;
+    Ships[WhoIAm].Pickups = 0;
+    Ships[WhoIAm].RegenSlots = 0;
+    Ships[WhoIAm].Mines = 0;
+    Ships[WhoIAm].Triggers = 0;
+    Ships[WhoIAm].TrigVars = 0;
+    StatsStatus = 1;                        // I started it so the Stats Are Valid...
+    
+    memset(&Names, 0, sizeof(SHORTNAMETYPE) );
 #ifdef ECTS
-	for( i = 0 ; i < 7 ; i++ )
-	{
-		// force player to use same name as his bike
-		Names[WhoIAm][i] = BikeList.item[WhoIAm % MAXBIKETYPES][i];
-	}
-	Names[WhoIAm][7] = 0;
-	Ships[WhoIAm].BikeNum = (int16) WhoIAm % MAXBIKETYPES;
+    for( i = 0 ; i < 7 ; i++ )
+    {
+        // force player to use same name as his bike
+        Names[WhoIAm][i] = BikeList.item[WhoIAm % MAXBIKETYPES][i];
+    }
+    Names[WhoIAm][7] = 0;
+    Ships[WhoIAm].BikeNum = (int16) WhoIAm % MAXBIKETYPES;
 #else
     strncpy( (char*) &Names[WhoIAm][0] , &biker_name[0] , 7 );
-	Names[WhoIAm][7] = 0;
-	Ships[ WhoIAm ].BikeNum = ( SelectedBike % MAXBIKETYPES );
+    Names[WhoIAm][7] = 0;
+    Ships[ WhoIAm ].BikeNum = ( SelectedBike % MAXBIKETYPES );
 #endif
-	
-	NewLevelNum = LevelList.selected_item;	// I Select Which Level We Start on...
+    
+    NewLevelNum = LevelList.selected_item;  // I Select Which Level We Start on...
 
 #ifndef SHAREWARE
-	if( TimeLimit.value )
-	{
-		CountDownOn = TRUE;
-	}
-	else
-	{
-		CountDownOn = FALSE;
-	}
+    if( TimeLimit.value )
+    {
+        CountDownOn = TRUE;
+    }
+    else
+    {
+        CountDownOn = FALSE;
+    }
 #else
-	CountDownOn = TRUE;
-	if ( !TimeLimit.value )
-		TimeLimit.value = TimeLimit.max;
+    CountDownOn = TRUE;
+    if ( !TimeLimit.value )
+        TimeLimit.value = TimeLimit.max;
 #endif
-	
+    
 
-	if( RecordDemo || RecordDemoToRam )
-	{
-		uint32 mp_version = MULTIPLAYER_VERSION;
-		uint32 flags;
-		time_t now_time;
-		struct tm *now;
+    if( RecordDemo || RecordDemoToRam )
+    {
+        uint32 mp_version = MULTIPLAYER_VERSION;
+        uint32 flags;
+        time_t now_time;
+        struct tm *now;
 
-		RecordDemo = TRUE;
-		time( &now_time );
-		now = localtime( &now_time );
+        RecordDemo = TRUE;
+        time( &now_time );
+        now = localtime( &now_time );
 #ifndef HOST_CHOOSES_DEMO_NAME
-		if ( now )
-		{
-			sprintf( DemoGameName.text, "%s's Demo %d.%02d %d-%d-%d",
-				biker_name,
-				now->tm_hour, now->tm_min,
+        if ( now )
+        {
+            sprintf( DemoGameName.text, "%s's Demo %d.%02d %d-%d-%d",
+                biker_name,
+                now->tm_hour, now->tm_min,
 #ifdef MARKET_USA
-				1 + now->tm_mon, now->tm_mday,
+                1 + now->tm_mon, now->tm_mday,
 #else
-				now->tm_mday, 1 + now->tm_mon,
+                now->tm_mday, 1 + now->tm_mon,
 #endif
-				1900 + now->tm_year );
-		}
-		else
-		{
-			sprintf( DemoGameName.text, "%s's Demo",
-				biker_name );
-		}
+                1900 + now->tm_year );
+        }
+        else
+        {
+            sprintf( DemoGameName.text, "%s's Demo",
+                biker_name );
+        }
 #endif
-		DemoFp = fopen( DemoFileName( DemoGameName.text ) , "wb" );
-		setvbuf( DemoFp, NULL, _IONBF , 0 );		// size of stream buffer...
+        DemoFp = fopen( DemoFileName( DemoGameName.text ) , "wb" );
+        setvbuf( DemoFp, NULL, _IONBF , 0 );        // size of stream buffer...
 
-		Demo_fwrite( &mp_version, sizeof( mp_version ), 1, DemoFp );
-		flags = 0;
-		if( TeamGame )
-			flags |= TeamGameBit;
-		if( BombTag )
-			flags |= BombGameBit;
-		if( CTF )
-			flags |= CTFGameBit;
-		if( CaptureTheFlag )
-			flags |= FlagGameBit;
-		if ( BountyHunt )
-			flags |= BountyGameBit;
+        Demo_fwrite( &mp_version, sizeof( mp_version ), 1, DemoFp );
+        flags = 0;
+        if( TeamGame )
+            flags |= TeamGameBit;
+        if( BombTag )
+            flags |= BombGameBit;
+        if( CTF )
+            flags |= CTFGameBit;
+        if( CaptureTheFlag )
+            flags |= FlagGameBit;
+        if ( BountyHunt )
+            flags |= BountyGameBit;
 
-		Demo_fwrite( &CopyOfSeed1, sizeof( CopyOfSeed1 ), 1, DemoFp );
-		Demo_fwrite( &CopyOfSeed2, sizeof( CopyOfSeed2 ), 1, DemoFp );
-		Demo_fwrite( &RandomPickups, sizeof( RandomPickups ), 1, DemoFp );
-		PackPickupInfo( &PackedInfo[ 0 ] );
-		Demo_fwrite( &PackedInfo[ 0 ], sizeof( PackedInfo ), 1, DemoFp );
+        Demo_fwrite( &CopyOfSeed1, sizeof( CopyOfSeed1 ), 1, DemoFp );
+        Demo_fwrite( &CopyOfSeed2, sizeof( CopyOfSeed2 ), 1, DemoFp );
+        Demo_fwrite( &RandomPickups, sizeof( RandomPickups ), 1, DemoFp );
+        PackPickupInfo( &PackedInfo[ 0 ] );
+        Demo_fwrite( &PackedInfo[ 0 ], sizeof( PackedInfo ), 1, DemoFp );
 
-		Demo_fwrite( &flags, sizeof( flags ), 1, DemoFp );
-		Demo_fwrite( &RandomStartPosModify, sizeof( RandomStartPosModify ), 1, DemoFp );
-		for( i = 0 ; i < 256 ; i++ )
-		{
-			Demo_fwrite( &ShortLevelNames[NewLevelNum][i], sizeof(char), 1, DemoFp );
-			if( ShortLevelNames[NewLevelNum][i] == 0 )
-			{
-				break;
-			}
-		}
+        Demo_fwrite( &flags, sizeof( flags ), 1, DemoFp );
+        Demo_fwrite( &RandomStartPosModify, sizeof( RandomStartPosModify ), 1, DemoFp );
+        for( i = 0 ; i < 256 ; i++ )
+        {
+            Demo_fwrite( &ShortLevelNames[NewLevelNum][i], sizeof(char), 1, DemoFp );
+            if( ShortLevelNames[NewLevelNum][i] == 0 )
+            {
+                break;
+            }
+        }
 
-		// Best way I can Think of to send the Host Name to the demo file...
-		Temp = 1;
-		TempTime = 1;
-		Demo_fwrite( &TempTime, sizeof(LONGLONG), 1, DemoFp );
-		size = sizeof( NAMEMSG );
-		Demo_fwrite( &size, sizeof(int), 1, DemoFp );
-		Demo_fwrite( &Temp, sizeof(DWORD), 1, DemoFp );
-		msg = MSG_NAME;
-		Demo_fwrite( &msg, sizeof(BYTE), 1, DemoFp );
-		msg = 0;
-		Demo_fwrite( &msg, sizeof(BYTE), 1, DemoFp );				// Whos Name it is..
-		Demo_fwrite( &biker_name[0], 7, 1, DemoFp );
-		msg = 0;
-		Demo_fwrite( &msg, sizeof(BYTE), 1, DemoFp );				// terminator for name..
-	}
-	
-	BrightShips = MyBrightShips;
+        // Best way I can Think of to send the Host Name to the demo file...
+        Temp = 1;
+        TempTime = 1;
+        Demo_fwrite( &TempTime, sizeof(LONGLONG), 1, DemoFp );
+        size = sizeof( NAMEMSG );
+        Demo_fwrite( &size, sizeof(int), 1, DemoFp );
+        Demo_fwrite( &Temp, sizeof(DWORD), 1, DemoFp );
+        msg = MSG_NAME;
+        Demo_fwrite( &msg, sizeof(BYTE), 1, DemoFp );
+        msg = 0;
+        Demo_fwrite( &msg, sizeof(BYTE), 1, DemoFp );               // Whos Name it is..
+        Demo_fwrite( &biker_name[0], 7, 1, DemoFp );
+        msg = 0;
+        Demo_fwrite( &msg, sizeof(BYTE), 1, DemoFp );               // terminator for name..
+    }
+    
+    BrightShips = MyBrightShips;
 
-	
-	if ( IsLobbyLaunched )
-	{
-		ContinueLobbyLaunch();
-	}
+    
+    if ( IsLobbyLaunched )
+    {
+        ContinueLobbyLaunch();
+    }
 
-	tracker_addr = 0;
-	DPStartThread();
+    tracker_addr = 0;
+    DPStartThread();
 
-	return TRUE;
+    return TRUE;
 }
 
 void StartAPseudoHostSession( MENUITEM *Item )
 {
-	SetMultiplayerPrefs();
-	
-	SetUpGameType( GameType );
+    SetMultiplayerPrefs();
+    
+    SetUpGameType( GameType );
 
-	SendGameMessage(MSG_GAMEPARAMETERS, 0, 0, 0, 0);
+    SendGameMessage(MSG_GAMEPARAMETERS, 0, 0, 0, 0);
 
-	MyGameStatus = STATUS_PseudoHostWaitingForAck;
-	MenuChangeEx( &MENU_NEW_PseudoHostWaitingForAck );
+    MyGameStatus = STATUS_PseudoHostWaitingForAck;
+    MenuChangeEx( &MENU_NEW_PseudoHostWaitingForAck );
 }
 
 
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Get a List of Current Sessions
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   Get a List of Current Sessions
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 
 void GetCurrentSessions( MENU *Menu )
 {
-	int i;
-	IsHost = FALSE;
-	IsPseudoHost = FALSE;
-	SessionsList.items = 0;
-	SessionsList.top_item = 0;
-	SessionsList.display_items = 8;
-	SessionsList.selected_item = -1;
+    int i;
+    IsHost = FALSE;
+    IsPseudoHost = FALSE;
+    SessionsList.items = 0;
+    SessionsList.top_item = 0;
+    SessionsList.display_items = 8;
+    SessionsList.selected_item = -1;
 
-	PlayersList.items = 0;
-	PlayersList.top_item = 0;
-	PlayersList.display_items = 16;
-	PlayersList.selected_item = -1;
+    PlayersList.items = 0;
+    PlayersList.top_item = 0;
+    PlayersList.display_items = 16;
+    PlayersList.selected_item = -1;
 
 
-	SessionsRefreshActive = TRUE;
+    SessionsRefreshActive = TRUE;
 
-	for( i = 0 ; i < MAXSESSIONS ; i++ )
-	{
-		SessionsRefresh[i] = FALSE;
-	}
-	
-	if ( !E3DemoClient && !E3DemoHost )
-		d3dappi.lpDD->lpVtbl->FlipToGDISurface(d3dappi.lpDD);
+    for( i = 0 ; i < MAXSESSIONS ; i++ )
+    {
+        SessionsRefresh[i] = FALSE;
+    }
+    
+    if ( !E3DemoClient && !E3DemoHost )
+        d3dappi.lpDD->lpVtbl->FlipToGDISurface(d3dappi.lpDD);
 
-	// enum sessions and we will decide the timeout
-	DPlayEnumSessions(SugestedEnumSessionsTimeout, EnumSessions, (LPVOID) NULL, DPENUMSESSIONS_AVAILABLE | DPENUMSESSIONS_ASYNC);
-//	DPlayEnumSessions(SugestedEnumSessionsTimeout, EnumSessions, (LPVOID) NULL, DPENUMSESSIONS_ALL | DPENUMSESSIONS_ASYNC);
+    // enum sessions and we will decide the timeout
+    DPlayEnumSessions(SugestedEnumSessionsTimeout, EnumSessions, (LPVOID) NULL, DPENUMSESSIONS_AVAILABLE | DPENUMSESSIONS_ASYNC);
+//  DPlayEnumSessions(SugestedEnumSessionsTimeout, EnumSessions, (LPVOID) NULL, DPENUMSESSIONS_ALL | DPENUMSESSIONS_ASYNC);
 
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Get a List of Current Sessions	Again..
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   Get a List of Current Sessions  Again..
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 
 void GetCurrentSessions_ReScan( MENUITEM *Item )
 {
-	int i;
-	if( !SessionsRefreshActive )
-	{
-		SessionsRefreshActive = TRUE;
-		
-		for( i = 0 ; i < MAXSESSIONS ; i++ )
-		{
-			SessionsRefresh[i] = FALSE;
-		}
+    int i;
+    if( !SessionsRefreshActive )
+    {
+        SessionsRefreshActive = TRUE;
+        
+        for( i = 0 ; i < MAXSESSIONS ; i++ )
+        {
+            SessionsRefresh[i] = FALSE;
+        }
  
-		// enum sessions and we will decide the timeout
-		DPlayEnumSessions(SugestedEnumSessionsTimeout, EnumSessions, (LPVOID) NULL, DPENUMSESSIONS_AVAILABLE | DPENUMSESSIONS_ASYNC);
-//		DPlayEnumSessions(SugestedEnumSessionsTimeout, EnumSessions, (LPVOID) NULL, DPENUMSESSIONS_ALL | DPENUMSESSIONS_ASYNC);
-	}
+        // enum sessions and we will decide the timeout
+        DPlayEnumSessions(SugestedEnumSessionsTimeout, EnumSessions, (LPVOID) NULL, DPENUMSESSIONS_AVAILABLE | DPENUMSESSIONS_ASYNC);
+//      DPlayEnumSessions(SugestedEnumSessionsTimeout, EnumSessions, (LPVOID) NULL, DPENUMSESSIONS_ALL | DPENUMSESSIONS_ASYNC);
+    }
 }
 
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	EnumSessions callback. Inserts session description information in the Sessions List
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   EnumSessions callback. Inserts session description information in the Sessions List
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 
 
 BOOL WINAPI EnumSessions(LPCDPSESSIONDESC2 lpDPSessionDesc, LPDWORD lpdwTimeOut, DWORD dwFlags, 
                         LPVOID lpContext)
 {
-	int i;
-	GUID	tempGuid;
+    int i;
+    GUID    tempGuid;
     if(dwFlags & DPESC_TIMEDOUT)
-	{
-		SessionsRefreshActive = FALSE;
+    {
+        SessionsRefreshActive = FALSE;
 
-		SessionsListCopy.items = 0;
-		SessionsListCopy.top_item = 0;
-		SessionsListCopy.display_items = 8;
-		SessionsListCopy.selected_item = -1;
+        SessionsListCopy.items = 0;
+        SessionsListCopy.top_item = 0;
+        SessionsListCopy.display_items = 8;
+        SessionsListCopy.selected_item = -1;
 
-		for( i = 0 ; i < SessionsList.items ; i ++ )
-		{
-			if( SessionsRefresh[i] )
-			{
-				memcpy(&SessionsCopy[SessionsListCopy.items] ,&Sessions[i] , sizeof(DPSESSIONDESC2) );
-				memcpy(&SessionsListCopy.item[SessionsListCopy.items] ,&SessionsList.item[i] , sizeof(SessionsList.item[i]) );
+        for( i = 0 ; i < SessionsList.items ; i ++ )
+        {
+            if( SessionsRefresh[i] )
+            {
+                memcpy(&SessionsCopy[SessionsListCopy.items] ,&Sessions[i] , sizeof(DPSESSIONDESC2) );
+                memcpy(&SessionsListCopy.item[SessionsListCopy.items] ,&SessionsList.item[i] , sizeof(SessionsList.item[i]) );
 
-				if( i == SessionsList.selected_item )
-				{
-					SessionsListCopy.selected_item = SessionsListCopy.items;
-				}
-				SessionsListCopy.items++;
-			}
-		}
-		memcpy(&Sessions ,&SessionsCopy , sizeof(Sessions) );
-		memcpy(&SessionsList ,&SessionsListCopy , sizeof(SessionsList) );
-		for( i = 0 ; i < SessionsList.items ; i ++ )
-		{
-			SessionsRefresh[i] = TRUE;
-		}
-		return FALSE;       // don't try again
-	}
+                if( i == SessionsList.selected_item )
+                {
+                    SessionsListCopy.selected_item = SessionsListCopy.items;
+                }
+                SessionsListCopy.items++;
+            }
+        }
+        memcpy(&Sessions ,&SessionsCopy , sizeof(Sessions) );
+        memcpy(&SessionsList ,&SessionsListCopy , sizeof(SessionsList) );
+        for( i = 0 ; i < SessionsList.items ; i ++ )
+        {
+            SessionsRefresh[i] = TRUE;
+        }
+        return FALSE;       // don't try again
+    }
 
-	tempGuid = lpDPSessionDesc->guidInstance;
-	for( i = 0 ; i < SessionsList.items ; i++ )
-	{
-		if(	IsEqualGuid( &tempGuid, &Sessions[i].guidInstance) )
-		{
-			SessionsRefresh[ i ] = TRUE;
-			// allready in the list...
-			return TRUE;
-		}
-	}
+    tempGuid = lpDPSessionDesc->guidInstance;
+    for( i = 0 ; i < SessionsList.items ; i++ )
+    {
+        if( IsEqualGuid( &tempGuid, &Sessions[i].guidInstance) )
+        {
+            SessionsRefresh[ i ] = TRUE;
+            // allready in the list...
+            return TRUE;
+        }
+    }
 
-	if( ( lpDPSessionDesc->dwUser4 & 0xffff ) == Version )
-	{
-		if( SessionsList.items < MAXSESSIONS )
-		{
-	
-			// store away its guid...
-			Sessions[SessionsList.items] = *lpDPSessionDesc;
-			strncpy( SessionNames[ SessionsList.items ], lpDPSessionDesc->lpszSessionNameA, sizeof( SessionNames[ SessionsList.items ] ) );
-	
+    if( ( lpDPSessionDesc->dwUser4 & 0xffff ) == Version )
+    {
+        if( SessionsList.items < MAXSESSIONS )
+        {
+    
+            // store away its guid...
+            Sessions[SessionsList.items] = *lpDPSessionDesc;
+            strncpy( SessionNames[ SessionsList.items ], lpDPSessionDesc->lpszSessionNameA, sizeof( SessionNames[ SessionsList.items ] ) );
+    
 #ifdef UNICODE
-			strncpy( SessionsList.item[SessionsList.items] , lpDPSessionDesc->lpszSessionName , sizeof(SessionsList.item[0])  );
+            strncpy( SessionsList.item[SessionsList.items] , lpDPSessionDesc->lpszSessionName , sizeof(SessionsList.item[0])  );
 #else
-			strncpy( SessionsList.item[SessionsList.items] , lpDPSessionDesc->lpszSessionNameA , sizeof(SessionsList.item[0])  );
+            strncpy( SessionsList.item[SessionsList.items] , lpDPSessionDesc->lpszSessionNameA , sizeof(SessionsList.item[0])  );
 #endif
-	
+    
 #ifdef UNICODE
-			if( strlen(lpDPSessionDesc->lpszSessionName ) >= sizeof(SessionsList.item[0]) )
+            if( strlen(lpDPSessionDesc->lpszSessionName ) >= sizeof(SessionsList.item[0]) )
 #else
-			if( strlen(lpDPSessionDesc->lpszSessionNameA ) >= sizeof(SessionsList.item[0]) )
+            if( strlen(lpDPSessionDesc->lpszSessionNameA ) >= sizeof(SessionsList.item[0]) )
 #endif
-			{
-				strcpy( SessionsList.item[SessionsList.items] + sizeof(SessionsList.item[0]) - 4 , "..." );
-			}
-			SessionsRefresh[SessionsList.items] = TRUE;
+            {
+                strcpy( SessionsList.item[SessionsList.items] + sizeof(SessionsList.item[0]) - 4 , "..." );
+            }
+            SessionsRefresh[SessionsList.items] = TRUE;
 
-			SessionsList.items++;
-		}
-	}
+            SessionsList.items++;
+        }
+    }
 
     return(TRUE);
 }
 
 void GetSessionInfo ( LPDPSESSIONDESC2 sd )
 {
-	int32	Time;
+    int32   Time;
 
-	// new additions ( previously in MSG_INIT )
-	if( sd->dwUser3 & HarmTeamMatesBit )
-	{
-		HarmTeamMates = TRUE;
-	}else{
-		HarmTeamMates = FALSE;
-	}
-	if( sd->dwUser3 & BrightShipsBit )
-	{
-		BrightShips = TRUE;
-	}else{
-		BrightShips = FALSE;
-	}
-	if( sd->dwUser3 & ResetKillsPerLevelBit )
-	{
-		ResetKillsPerLevel = TRUE;
-	}else{
-		ResetKillsPerLevel = FALSE;
-	}
-	
-	if( sd->dwUser3 & BikeExhaustBit )
-	{
-		BikeExhausts = TRUE;
-	}else{
-		BikeExhausts = FALSE;
-	}
-	   
-	// if we are going to be the pseudohost, we must be responsible for setting collision type
-	if ( ( sd->dwUser3 & ServerGameStateBits ) != SERVER_STATE_NeedHost )
-	{
-		ColPerspective = ( sd->dwUser3 & CollisionTypeBits ) >> Collision_Type_BitShift;
-	}
+    // new additions ( previously in MSG_INIT )
+    if( sd->dwUser3 & HarmTeamMatesBit )
+    {
+        HarmTeamMates = TRUE;
+    }else{
+        HarmTeamMates = FALSE;
+    }
+    if( sd->dwUser3 & BrightShipsBit )
+    {
+        BrightShips = TRUE;
+    }else{
+        BrightShips = FALSE;
+    }
+    if( sd->dwUser3 & ResetKillsPerLevelBit )
+    {
+        ResetKillsPerLevel = TRUE;
+    }else{
+        ResetKillsPerLevel = FALSE;
+    }
+    
+    if( sd->dwUser3 & BikeExhaustBit )
+    {
+        BikeExhausts = TRUE;
+    }else{
+        BikeExhausts = FALSE;
+    }
+       
+    // if we are going to be the pseudohost, we must be responsible for setting collision type
+    if ( ( sd->dwUser3 & ServerGameStateBits ) != SERVER_STATE_NeedHost )
+    {
+        ColPerspective = ( sd->dwUser3 & CollisionTypeBits ) >> Collision_Type_BitShift;
+    }
 
-	Time = ( ( sd->dwUser3 & GameTimeBit ) >> GameTimeBit_Shift );
+    Time = ( ( sd->dwUser3 & GameTimeBit ) >> GameTimeBit_Shift );
 
-	if( Time )
-	{
-		TimeLimit.value = Time;
-		CountDownOn = TRUE;
-	}
-	else
-	{
-		CountDownOn = FALSE;
-	}
+    if( Time )
+    {
+        TimeLimit.value = Time;
+        CountDownOn = TRUE;
+    }
+    else
+    {
+        CountDownOn = FALSE;
+    }
 
-	RandomStartPosModify = (WORD) (sd->dwUser2 & 0xffff);
-	
-	if( sd->dwUser3 & TeamGameBit )
-	{
-		TeamGame = TRUE;
-	}else{
-		TeamGame = FALSE;
-	}
-	if( sd->dwUser3 & BombGameBit )
-	{
-		BombTag = TRUE;
-	}else{
-		BombTag = FALSE;
-	}
-	if( sd->dwUser3 & FlagGameBit )
-	{
-		CaptureTheFlag = TRUE;
-	}else{
-		CaptureTheFlag = FALSE;
-	}
+    RandomStartPosModify = (WORD) (sd->dwUser2 & 0xffff);
+    
+    if( sd->dwUser3 & TeamGameBit )
+    {
+        TeamGame = TRUE;
+    }else{
+        TeamGame = FALSE;
+    }
+    if( sd->dwUser3 & BombGameBit )
+    {
+        BombTag = TRUE;
+    }else{
+        BombTag = FALSE;
+    }
+    if( sd->dwUser3 & FlagGameBit )
+    {
+        CaptureTheFlag = TRUE;
+    }else{
+        CaptureTheFlag = FALSE;
+    }
 
-	// check if any server bits are set
-	// server could be in one of 3 states ( see main.h )
-	if( sd->dwUser3 & ServerGameStateBits )
-	{
-		IsServerGame = TRUE;
-	}else{
-		IsServerGame = FALSE;
-	}
+    // check if any server bits are set
+    // server could be in one of 3 states ( see main.h )
+    if( sd->dwUser3 & ServerGameStateBits )
+    {
+        IsServerGame = TRUE;
+    }else{
+        IsServerGame = FALSE;
+    }
 
-	CTF = ( sd->dwUser3 & CTFGameBit ) ? TRUE : FALSE;
-	
-	// new addition ( previously in MSG_INIT )
-	if ( CTF )
-	{
-		SetUpGameSubType( CTF_Type_Decode( sd->dwUser3 ) );
-	}
+    CTF = ( sd->dwUser3 & CTFGameBit ) ? TRUE : FALSE;
+    
+    // new addition ( previously in MSG_INIT )
+    if ( CTF )
+    {
+        SetUpGameSubType( CTF_Type_Decode( sd->dwUser3 ) );
+    }
 
-	BountyHunt = ( sd->dwUser3 & BountyGameBit ) ? TRUE : FALSE;
+    BountyHunt = ( sd->dwUser3 & BountyGameBit ) ? TRUE : FALSE;
 
-	UseShortPackets = ( sd->dwUser3 & ShortPacketsBit ) ? TRUE : FALSE;
-	BigPackets = ( sd->dwUser3 & BigPacketsBit ) ? TRUE : FALSE;
+    UseShortPackets = ( sd->dwUser3 & ShortPacketsBit ) ? TRUE : FALSE;
+    BigPackets = ( sd->dwUser3 & BigPacketsBit ) ? TRUE : FALSE;
 
-	MaxKills = (int16)( ( sd->dwUser2 & MaxKillsBits ) >> MaxKills_Shift );
+    MaxKills = (int16)( ( sd->dwUser2 & MaxKillsBits ) >> MaxKills_Shift );
 }
 
 BOOL JoinASessionEx ( MENU *Menu )
 {
-	MENUITEM item;
+    MENUITEM item;
 
-	memset( &item, 0, sizeof( MENUITEM ) );
-	item.Value = Menu;
-	return JoinASession( &item );
+    memset( &item, 0, sizeof( MENUITEM ) );
+    item.Value = Menu;
+    return JoinASession( &item );
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Join a Session...
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   Join a Session...
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 BOOL JoinASession ( MENUITEM * Item )
 {
-	HRESULT hr;
+    HRESULT hr;
     LPGUID  lpGuid;
-	DPSESSIONDESC2 temp_sd;
+    DPSESSIONDESC2 temp_sd;
 
-	PlayDemo = FALSE;
-	IsServer = FALSE;
-	IsServerGame = FALSE;
-	TrackerOveride = FALSE;
+    PlayDemo = FALSE;
+    IsServer = FALSE;
+    IsServerGame = FALSE;
+    TrackerOveride = FALSE;
 
-	SetBikeMods( 0 );
+    SetBikeMods( 0 );
 
 #ifdef MANUAL_SESSIONDESC_PROPAGATE
-	// ensure any SD copy is cleared, so that the first SD we get is the actual one ( not a manually propagated version )
-	if ( glpdpSD_copy )
-	{
-		free( glpdpSD_copy );
-		glpdpSD_copy = NULL;
-	}
+    // ensure any SD copy is cleared, so that the first SD we get is the actual one ( not a manually propagated version )
+    if ( glpdpSD_copy )
+    {
+        free( glpdpSD_copy );
+        glpdpSD_copy = NULL;
+    }
 #endif
 
-	if ( !IsLobbyLaunched )
-	{
-		switch( Sessions[ SessionsList.selected_item ].dwUser3 & ServerGameStateBits )
-		{
-		case SERVER_STATE_HostChoosing:	
-			return TRUE;
-		default:
-			break;
-		}
-		
-		// get a pointer to the guid
-		lpGuid = (LPGUID ) &Sessions[SessionsList.selected_item].guidInstance;
+    if ( !IsLobbyLaunched )
+    {
+        switch( Sessions[ SessionsList.selected_item ].dwUser3 & ServerGameStateBits )
+        {
+        case SERVER_STATE_HostChoosing: 
+            return TRUE;
+        default:
+            break;
+        }
+        
+        // get a pointer to the guid
+        lpGuid = (LPGUID ) &Sessions[SessionsList.selected_item].guidInstance;
 
-		// open session
-		if ((hr = DPlayOpenSession( lpGuid)) != DP_OK)
-		{
-			PrintErrorMessage ( COULDNT_OPEN_SESSION, 1, NULL, ERROR_USE_MENUFUNCS );
-			return FALSE;
-		}
-		// create player
-		if ((hr = DPlayCreatePlayer(&dcoID, &biker_name[0], NULL, NULL, 0)) != DP_OK)
-		{
-			PrintErrorMessage ( COULDNT_CREATE_PLAYER, 1, NULL, ERROR_USE_MENUFUNCS );
-			return FALSE;
-		}
-	}
+        // open session
+        if ((hr = DPlayOpenSession( lpGuid)) != DP_OK)
+        {
+            PrintErrorMessage ( COULDNT_OPEN_SESSION, 1, NULL, ERROR_USE_MENUFUNCS );
+            return FALSE;
+        }
+        // create player
+        if ((hr = DPlayCreatePlayer(&dcoID, &biker_name[0], NULL, NULL, 0)) != DP_OK)
+        {
+            PrintErrorMessage ( COULDNT_CREATE_PLAYER, 1, NULL, ERROR_USE_MENUFUNCS );
+            return FALSE;
+        }
+    }
 
 
-	DPlayGetSessionDesc();
+    DPlayGetSessionDesc();
 
-	GetSessionInfo( glpdpSD );
+    GetSessionInfo( glpdpSD );
 
-	SetupDplayGame();
+    SetupDplayGame();
 
-	Rejoining = FALSE;
+    Rejoining = FALSE;
 
-	temp_sd = Sessions[SessionsList.selected_item];
+    temp_sd = Sessions[SessionsList.selected_item];
 
-	// zero Some stuff cos they might have changed..or they might be pointers...
-	temp_sd.dwCurrentPlayers = 0;
-	Old_Session.dwCurrentPlayers = 0;
-	temp_sd.lpszSessionNameA = 0;
-	Old_Session.lpszSessionNameA = 0;
-	temp_sd.lpszPasswordA = 0;
-	Old_Session.lpszPasswordA = 0;
+    // zero Some stuff cos they might have changed..or they might be pointers...
+    temp_sd.dwCurrentPlayers = 0;
+    Old_Session.dwCurrentPlayers = 0;
+    temp_sd.lpszSessionNameA = 0;
+    Old_Session.lpszSessionNameA = 0;
+    temp_sd.lpszPasswordA = 0;
+    Old_Session.lpszPasswordA = 0;
 
-	temp_sd.dwFlags = 0;
-	Old_Session.dwFlags = 0;
-	temp_sd.dwSize = 0;
-	Old_Session.dwSize = 0;
-	temp_sd.dwMaxPlayers = 0;
-	Old_Session.dwMaxPlayers = 0;
-	temp_sd.dwReserved1 = 0;
-	Old_Session.dwReserved1 = 0;
-	temp_sd.dwReserved2 = 0;
-	Old_Session.dwReserved2 = 0;
+    temp_sd.dwFlags = 0;
+    Old_Session.dwFlags = 0;
+    temp_sd.dwSize = 0;
+    Old_Session.dwSize = 0;
+    temp_sd.dwMaxPlayers = 0;
+    Old_Session.dwMaxPlayers = 0;
+    temp_sd.dwReserved1 = 0;
+    Old_Session.dwReserved1 = 0;
+    temp_sd.dwReserved2 = 0;
+    Old_Session.dwReserved2 = 0;
 
-	temp_sd.dwUser2 = 0;
-	Old_Session.dwUser2 = 0;
-	temp_sd.dwUser3 = 0;
-	Old_Session.dwUser3 = 0;
+    temp_sd.dwUser2 = 0;
+    Old_Session.dwUser2 = 0;
+    temp_sd.dwUser3 = 0;
+    Old_Session.dwUser3 = 0;
 
-	if ( !IsServerGame )
-	{	
-		if( ( Mymemcmp( (BYTE*) &Old_Session , (BYTE*) &temp_sd , sizeof(DPSESSIONDESC2 ) ) == TRUE ) &&
-			( _stricmp( (char*) &biker_name[0], (char*) &Old_Name[0] ) == 0 ) )
-		{
-		   	Rejoining = TRUE;
-		}
-	}
-	
-	WhoIAm = 0xff;
+    if ( !IsServerGame )
+    {   
+        if( ( Mymemcmp( (BYTE*) &Old_Session , (BYTE*) &temp_sd , sizeof(DPSESSIONDESC2 ) ) == TRUE ) &&
+            ( _stricmp( (char*) &biker_name[0], (char*) &Old_Name[0] ) == 0 ) )
+        {
+            Rejoining = TRUE;
+        }
+    }
+    
+    WhoIAm = 0xff;
 
-	MyGameStatus = STATUS_GetPlayerNum;
+    MyGameStatus = STATUS_GetPlayerNum;
 
-	GetPlayerNumCount1 = 0.0F;
-	GetPlayerNumCount2 = 60.0F * 30.0F;	// 30 Seconds...
-	GetPlayerNumCount = 0;
+    GetPlayerNumCount1 = 0.0F;
+    GetPlayerNumCount2 = 60.0F * 30.0F; // 30 Seconds...
+    GetPlayerNumCount = 0;
 
-	if ( TeamGame )
-		GetPlayerNumMenu = &MENU_NEW_WatchTeamSelect;
-	else
-		GetPlayerNumMenu = (MENU*) Item->Value;
+    if ( TeamGame )
+        GetPlayerNumMenu = &MENU_NEW_WatchTeamSelect;
+    else
+        GetPlayerNumMenu = (MENU*) Item->Value;
 
-	// Stops us going straight in to the game....
-	OverallGameStatus = STATUS_Null;
+    // Stops us going straight in to the game....
+    OverallGameStatus = STATUS_Null;
 
-	return TRUE;
+    return TRUE;
 }
 
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Select a Session and show players in it..
-	Input		:	MENUITEM * Item
-	Output		:	nothing
+    Procedure   :   Select a Session and show players in it..
+    Input       :   MENUITEM * Item
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 void SelectSession( MENUITEM *Item )
 {
-	
-	if ((CameraStatus == CAMERA_AtLeftVDU) || (CameraStatus == CAMERA_AtRightVDU))
-	{
-		JoinASession (&NewJoinItem);
-	}
-	else
-	{
-		JoinASession ( &JoinItem );
-	}
+    
+    if ((CameraStatus == CAMERA_AtLeftVDU) || (CameraStatus == CAMERA_AtRightVDU))
+    {
+        JoinASession (&NewJoinItem);
+    }
+    else
+    {
+        JoinASession ( &JoinItem );
+    }
 }
 
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	EnumeratePlayer callback. Inserts player information into the PlayersList
-	Input		:	MENUITEM * Item
-	Output		:	nothing
+    Procedure   :   EnumeratePlayer callback. Inserts player information into the PlayersList
+    Input       :   MENUITEM * Item
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 BOOL WINAPI EnumPlayers(DPID pidID, DWORD dwPlayerType, LPCDPNAME lpName,
     DWORD dwFlags, LPVOID lpContext)
 {
 
-	if( PlayersList.items < MAX_PLAYERS )
-	{
-		PlayerIDs[PlayersList.items] = pidID;
+    if( PlayersList.items < MAX_PLAYERS )
+    {
+        PlayerIDs[PlayersList.items] = pidID;
 
 #ifdef ECTS
-		strncpy( PlayersList.item[PlayersList.items] , BikeList.item[ PlayersList.items ] , sizeof(PlayersList.item[0])  );
-		if( strlen( BikeList.item[ PlayersList.items ] ) >= sizeof(PlayersList.item[0]) )
+        strncpy( PlayersList.item[PlayersList.items] , BikeList.item[ PlayersList.items ] , sizeof(PlayersList.item[0])  );
+        if( strlen( BikeList.item[ PlayersList.items ] ) >= sizeof(PlayersList.item[0]) )
 #else
 #ifdef UNICODE
-		strncpy( PlayersList.item[PlayersList.items] , lpName->lpszShortName , sizeof(PlayersList.item[0])  );
+        strncpy( PlayersList.item[PlayersList.items] , lpName->lpszShortName , sizeof(PlayersList.item[0])  );
 #else
-		strncpy( PlayersList.item[PlayersList.items] , lpName->lpszShortNameA , sizeof(PlayersList.item[0])  );
+        strncpy( PlayersList.item[PlayersList.items] , lpName->lpszShortNameA , sizeof(PlayersList.item[0])  );
 #endif
 
 #ifdef UNICODE
-		if( strlen(lpName->lpszShortName ) >= sizeof(PlayersList.item[0]) )
+        if( strlen(lpName->lpszShortName ) >= sizeof(PlayersList.item[0]) )
 #else
-		if( strlen(lpName->lpszShortNameA ) >= sizeof(PlayersList.item[0]) )
+        if( strlen(lpName->lpszShortNameA ) >= sizeof(PlayersList.item[0]) )
 #endif
 #endif
-		{
-			strcpy( PlayersList.item[PlayersList.items] + sizeof(PlayersList.item[0]) - 4 , "..." );
-		}
-		PlayersList.items++;
-	}
+        {
+            strcpy( PlayersList.item[PlayersList.items] + sizeof(PlayersList.item[0]) - 4 , "..." );
+        }
+        PlayersList.items++;
+    }
     return(TRUE);
 }
 
@@ -2159,1168 +2159,1168 @@ BOOL WINAPI EnumLobbyPlayers(DPID pidID, DWORD dwPlayerType, LPCDPNAME lpName,
     DWORD dwFlags, LPVOID lpContext)
 {
 
-	if( NumLobbyPlayers < MAX_PLAYERS )
-	{
-		LobbyPlayerIDs[ NumLobbyPlayers++ ] = pidID;
-	}
+    if( NumLobbyPlayers < MAX_PLAYERS )
+    {
+        LobbyPlayerIDs[ NumLobbyPlayers++ ] = pidID;
+    }
     return(TRUE);
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Get The Players In the Current Session...
-	Input		:	MENUITEM * Item
-	Output		:	nothing
+    Procedure   :   Get The Players In the Current Session...
+    Input       :   MENUITEM * Item
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 void GetPlayersInCurrentSession( MENUITEM *Item )
 {
-	int i;
+    int i;
 #ifdef DEBUG_ENUM_PLAYERS
-	char buf[ 128 ];
+    char buf[ 128 ];
 #endif
-	
-	//Bodge -= framelag;
-	//if( Bodge <= 0.0F )
-	{
+    
+    //Bodge -= framelag;
+    //if( Bodge <= 0.0F )
+    {
 #ifdef ENUM_PLAYERS_ON_TITLES
-		DPlayGetSessionDesc();
+        DPlayGetSessionDesc();
 
-		NumOfPlayersSlider.value = (int) glpdpSD->dwCurrentPlayers;
+        NumOfPlayersSlider.value = (int) glpdpSD->dwCurrentPlayers;
 
-		if (NumOfPlayersSlider.value != NumOfPlayersSlider.oldvalue)
-		{	
-//		 	NumOfPlayersSlider.oldvalue = NumOfPlayersSlider.value;
-			NumOfPlayersSlider.redraw_req = TRUE;
-		}
-		
-		PlayersList.items = 0;
-		PlayersList.top_item = 0;
-		PlayersList.selected_item = -1;
-		DPlayEnumPlayers( NULL, EnumPlayers, (LPVOID) NULL, 0);
+        if (NumOfPlayersSlider.value != NumOfPlayersSlider.oldvalue)
+        {   
+//          NumOfPlayersSlider.oldvalue = NumOfPlayersSlider.value;
+            NumOfPlayersSlider.redraw_req = TRUE;
+        }
+        
+        PlayersList.items = 0;
+        PlayersList.top_item = 0;
+        PlayersList.selected_item = -1;
+        DPlayEnumPlayers( NULL, EnumPlayers, (LPVOID) NULL, 0);
 #else
-		PlayersList.items = 0;
-		PlayersList.top_item = 0;
-		PlayersList.selected_item = -1;
-		
-		NumOfPlayersSlider.value = 0;
+        PlayersList.items = 0;
+        PlayersList.top_item = 0;
+        PlayersList.selected_item = -1;
+        
+        NumOfPlayersSlider.value = 0;
 
-		for ( i = 0; i < MAX_PLAYERS; i++ )
-		{
+        for ( i = 0; i < MAX_PLAYERS; i++ )
+        {
 #ifdef DEBUG_ENUM_PLAYERS
-			sprintf( buf, "player %d status %x", i, GameStatus[ i ] );
-			Print4x5Text( buf, 10, 10 * i + 50, 2 );
+            sprintf( buf, "player %d status %x", i, GameStatus[ i ] );
+            Print4x5Text( buf, 10, 10 * i + 50, 2 );
 #endif
-			if ( IsServerGame )
-			{
-				if ( !i )
-				{
-					continue;	// don't add server name to list of players
-				}
-			}
-			
-			if( ( GameStatus[ i ] == MyGameStatus ) || ( i == WhoIAm ) )
-			{
-				NumOfPlayersSlider.value++;
-				strcpy( PlayersList.item[ PlayersList.items++ ], Names[ i ] );
-			}
-		}
+            if ( IsServerGame )
+            {
+                if ( !i )
+                {
+                    continue;   // don't add server name to list of players
+                }
+            }
+            
+            if( ( GameStatus[ i ] == MyGameStatus ) || ( i == WhoIAm ) )
+            {
+                NumOfPlayersSlider.value++;
+                strcpy( PlayersList.item[ PlayersList.items++ ], Names[ i ] );
+            }
+        }
 
-		if (NumOfPlayersSlider.value != NumOfPlayersSlider.oldvalue)
-		{	
-			NumOfPlayersSlider.redraw_req = TRUE;
-		}
+        if (NumOfPlayersSlider.value != NumOfPlayersSlider.oldvalue)
+        {   
+            NumOfPlayersSlider.redraw_req = TRUE;
+        }
 #endif
-		Bodge = 30.0F;
-	}
+        Bodge = 30.0F;
+    }
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	The host has waited for everyone now the game will init and start..
-	Input		:	MENUITEM * Item
-	Output		:	nothing
+    Procedure   :   The host has waited for everyone now the game will init and start..
+    Input       :   MENUITEM * Item
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 void GoToSynchup ( MENUITEM * Item )
 {
 
-	if( TeamGame )
-	{
-		if (CameraStatus == CAMERA_AtStart)
-		{
-			MenuChange( &TeamItem );
-		}else
-		{
-			MenuChange( &NewTeamItem );
-		}
-	}else{
+    if( TeamGame )
+    {
+        if (CameraStatus == CAMERA_AtStart)
+        {
+            MenuChange( &TeamItem );
+        }else
+        {
+            MenuChange( &NewTeamItem );
+        }
+    }else{
 
-		if (CameraStatus != CAMERA_AtStart)
-		{	
-			LastMenu = CurrentMenu;
-			VduClear();
-		}
+        if (CameraStatus != CAMERA_AtStart)
+        {   
+            LastMenu = CurrentMenu;
+            VduClear();
+        }
 
-		CurrentMenu = NULL;
-		CurrentMenuItem = NULL;
-		MenuStackLevel = 0;
-	}
+        CurrentMenu = NULL;
+        CurrentMenuItem = NULL;
+        MenuStackLevel = 0;
+    }
 
 }
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	The host has waited for everyone now the game will init and start..
-	Input		:	MENUITEM * Item
-	Output		:	nothing
+    Procedure   :   The host has waited for everyone now the game will init and start..
+    Input       :   MENUITEM * Item
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 void TeamGoToSynchup ( MENUITEM * Item )
 {
-	/*
-	// put there team numbers backin..
-	//ReAssembleTeamNumbers();
-	LastMenu = CurrentMenu;
-	VduClear();
-	MenuAbort();
-	*/
-	PreSynchupStatus = MyGameStatus;
-	MyGameStatus = STATUS_WaitingToStartTeamGame;
-	MenuChangeEx( &MENU_NEW_GeneralLoading );
-	MenuDraw( CurrentMenu );	// because menu processing will not be done when MyGameStatus changes
+    /*
+    // put there team numbers backin..
+    //ReAssembleTeamNumbers();
+    LastMenu = CurrentMenu;
+    VduClear();
+    MenuAbort();
+    */
+    PreSynchupStatus = MyGameStatus;
+    MyGameStatus = STATUS_WaitingToStartTeamGame;
+    MenuChangeEx( &MENU_NEW_GeneralLoading );
+    MenuDraw( CurrentMenu );    // because menu processing will not be done when MyGameStatus changes
 
 }
 
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Bail out of a multiplayer game before it starts...
-	Input		:	MENU * Menu
-	Output		:	nothing
+    Procedure   :   Bail out of a multiplayer game before it starts...
+    Input       :   MENU * Menu
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 void BailMultiplayer( MENU * Menu )
 {
-	MyGameStatus = STATUS_Left;
+    MyGameStatus = STATUS_Left;
     if ( ( glpDP != NULL ) && ( dcoID != 0 ) && ( WhoIAm < MAX_PLAYERS ) )
     {
-		SendGameMessage(MSG_STATUS, 0, 0, 0, 0);
-	}
+        SendGameMessage(MSG_STATUS, 0, 0, 0, 0);
+    }
 
-	ChangeServiceProvider( Menu );
+    ChangeServiceProvider( Menu );
 }
 
 void BailMultiplayerFrontEnd( MENU *Menu )
 {
-	int selected_item;
+    int selected_item;
 
-	// if launched from lobby, player has option to quit - service provider etc. is all pre chosen
-	if ( IsLobbyLaunched )
-		return;
-	
-	selected_item = ServiceProvidersList.selected_item;
+    // if launched from lobby, player has option to quit - service provider etc. is all pre chosen
+    if ( IsLobbyLaunched )
+        return;
+    
+    selected_item = ServiceProvidersList.selected_item;
 
-	BailMultiplayer( Menu );
+    BailMultiplayer( Menu );
 
-	GetServiceProviders( NULL );
-	ServiceProvidersList.selected_item = selected_item;
+    GetServiceProviders( NULL );
+    ServiceProvidersList.selected_item = selected_item;
 
-	ExitProviderChosen( NULL );
+    ExitProviderChosen( NULL );
 
-	SessionsList.selected_item = -1;
-	InitMySessionsList();
+    SessionsList.selected_item = -1;
+    InitMySessionsList();
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Changeing Service Provider...
-	Input		:	MENU * Menu
-	Output		:	nothing
+    Procedure   :   Changeing Service Provider...
+    Input       :   MENU * Menu
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 void ChangeServiceProvider( MENU * Menu )
 {
-	// cannot change service provider if lobby launched
-	if ( IsLobbyLaunched )
-		return;
-					 
-	if( dcoID )
-	{
-		DPlayDestroyPlayer(dcoID);
-		dcoID = 0;
-	}
-	DPlayRelease();
-	MyGameStatus = STATUS_Title;
+    // cannot change service provider if lobby launched
+    if ( IsLobbyLaunched )
+        return;
+                     
+    if( dcoID )
+    {
+        DPlayDestroyPlayer(dcoID);
+        dcoID = 0;
+    }
+    DPlayRelease();
+    MyGameStatus = STATUS_Title;
 
-	ServiceProvidersList.selected_item = -1;
+    ServiceProvidersList.selected_item = -1;
 }
 
 void ExitServerSetup( MENU *Menu )
 {
-	MenuBackSpecific( &MENU_NEW_ChooseServerGameType, FALSE );
-	ChangeServiceProvider( NULL );
+    MenuBackSpecific( &MENU_NEW_ChooseServerGameType, FALSE );
+    ChangeServiceProvider( NULL );
 }
 
 void ChangeServiceProviderPseudoHost( MENU * Menu )
 {
-	MenuBackSpecific( &MENU_NEW_CreateGamePseudoHost, FALSE );	// ignore exit menu funcs
-	
-	if( dcoID )
-	{
-		DPlayDestroyPlayer(dcoID);
-		dcoID = 0;
-	}
+    MenuBackSpecific( &MENU_NEW_CreateGamePseudoHost, FALSE );  // ignore exit menu funcs
+    
+    if( dcoID )
+    {
+        DPlayDestroyPlayer(dcoID);
+        dcoID = 0;
+    }
 
-	DPlayRelease();
-	MyGameStatus = STATUS_Title;
+    DPlayRelease();
+    MyGameStatus = STATUS_Title;
 
-	RefreshDPlay();
+    RefreshDPlay();
 
-	OKToJoinSession = FALSE;
+    OKToJoinSession = FALSE;
 }
 
 void InitTeamLists( MENU *Menu )
 {
-	int i;
+    int i;
 
-	TeamList[0] = PlayersList;
-	TeamList[0].selected_item = -1;
-	TeamList[0].display_items = 12;
-	TeamMembers[0] = PlayersList.items;
-	
-	for (i = 1; i < MAX_TEAMS; i++)
-	{
-		TeamList[i].items = 0;
-		TeamList[i].top_item = 0;
-		TeamList[i].display_items = 12;			// hard wired in because MAX_PLAYERS will increase
-		TeamList[i].selected_item = -1;
+    TeamList[0] = PlayersList;
+    TeamList[0].selected_item = -1;
+    TeamList[0].display_items = 12;
+    TeamMembers[0] = PlayersList.items;
+    
+    for (i = 1; i < MAX_TEAMS; i++)
+    {
+        TeamList[i].items = 0;
+        TeamList[i].top_item = 0;
+        TeamList[i].display_items = 12;         // hard wired in because MAX_PLAYERS will increase
+        TeamList[i].selected_item = -1;
 
-		TeamMembers[i] = 0;
-	}
+        TeamMembers[i] = 0;
+    }
 
-	for ( i = 0; i < MAX_PLAYERS; i++ )
-		PlayerReady[ i ] = FALSE;
+    for ( i = 0; i < MAX_PLAYERS; i++ )
+        PlayerReady[ i ] = FALSE;
 }
 
 void InitExistingGameJoin( MENU *Menu )
 {
-	int i;
+    int i;
 
-	AllowQuitForLobby( Menu );
-	
-	InitTeamLists( NULL );
+    AllowQuitForLobby( Menu );
+    
+    InitTeamLists( NULL );
 
-	for (i = 0; i < MAX_TEAMS; i++)
-	{
-		strcpy(TeamCurrentScore[i], ": 0");
-	}
+    for (i = 0; i < MAX_TEAMS; i++)
+    {
+        strcpy(TeamCurrentScore[i], ": 0");
+    }
 
-	InitTitleMessaging();
+    InitTitleMessaging();
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Set the Team player lists..
-	Input		:	MENU * Menu
-	Output		:	nothing
+    Procedure   :   Set the Team player lists..
+    Input       :   MENU * Menu
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 void InitTeamSelection( MENU *Menu )
 {
-	int i, j;
-	MENUITEM *item;
+    int i, j;
+    MENUITEM *item;
 
-	AllowQuitForLobby( Menu );
+    AllowQuitForLobby( Menu );
 
-	if ( IsLobbyLaunched )
-		NoMenuBack = TRUE;
+    if ( IsLobbyLaunched )
+        NoMenuBack = TRUE;
 
-	InitTeamLists( NULL );
+    InitTeamLists( NULL );
 
-	for( item = Menu->Item; item->x >=0; item++ )
-	{
-		if ( item->FuncDraw == DrawReadyButton )
-		{
-			
-			if ( IsServer )
-			{
-				item->FuncSelect = NULL;
-				PlayerReady[ WhoIAm ] = TRUE;
-			}else
-			{
-				item->FuncSelect = PlayerConfirm;
-			}
-			
-		}
+    for( item = Menu->Item; item->x >=0; item++ )
+    {
+        if ( item->FuncDraw == DrawReadyButton )
+        {
+            
+            if ( IsServer )
+            {
+                item->FuncSelect = NULL;
+                PlayerReady[ WhoIAm ] = TRUE;
+            }else
+            {
+                item->FuncSelect = PlayerConfirm;
+            }
+            
+        }
 
-		if 	( ( item->Variable == &TeamList[0] ) ||
-		    ( item->Variable == &TeamList[1] ) ||
-		    ( item->Variable == &TeamList[2] ) ||
-		    ( item->Variable == &TeamList[3] ) ) 
-		{
-			if( IsServer )
-			{
-				item->FuncSelect = NULL;
-			}else
-			{
-				item->FuncSelect = SelectTeamList;
-			}
-		}
-	}
+        if  ( ( item->Variable == &TeamList[0] ) ||
+            ( item->Variable == &TeamList[1] ) ||
+            ( item->Variable == &TeamList[2] ) ||
+            ( item->Variable == &TeamList[3] ) ) 
+        {
+            if( IsServer )
+            {
+                item->FuncSelect = NULL;
+            }else
+            {
+                item->FuncSelect = SelectTeamList;
+            }
+        }
+    }
 
-	for( i = 0 ; i < MAX_PLAYERS ; i++ )
-	{
-		TeamIDs[0][i] = PlayerIDs[i];
+    for( i = 0 ; i < MAX_PLAYERS ; i++ )
+    {
+        TeamIDs[0][i] = PlayerIDs[i];
 
-		for (j = 1; j < MAX_TEAMS; j++) 
-		{
-			TeamIDs[j][i] = 0;
-		}
-		if( IsHost )
-			TeamNumber[i] = 255;
-	}
+        for (j = 1; j < MAX_TEAMS; j++) 
+        {
+            TeamIDs[j][i] = 0;
+        }
+        if( IsHost )
+            TeamNumber[i] = 255;
+    }
 
-//	for (i = 0; i < TeamList[0].items; i++)
-//		TeamNumber[i] = 0;
+//  for (i = 0; i < TeamList[0].items; i++)
+//      TeamNumber[i] = 0;
 
-	TeamNumber[WhoIAm] = 0;		// start myself off in team 0
+    TeamNumber[WhoIAm] = 0;     // start myself off in team 0
 
-	// if we went into this menu automatically (ie. we are not the host), Menustate
-	// will still be in whatever state it was in in the last menu, so reset...
-	MenuState = MENUSTATE_Select;
+    // if we went into this menu automatically (ie. we are not the host), Menustate
+    // will still be in whatever state it was in in the last menu, so reset...
+    MenuState = MENUSTATE_Select;
 
-	InitTitleMessaging();
+    InitTitleMessaging();
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Swap a list item from 1 list to another....
-	Input		:	MENUITEM * Item
-	Output		:	nothing
+    Procedure   :   Swap a list item from 1 list to another....
+    Input       :   MENUITEM * Item
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 void SwapListItem( LIST * Source , LIST * Dest )
 {
-	int i;
-	char TempItem[32];
-	LIST	TempList;
+    int i;
+    char TempItem[32];
+    LIST    TempList;
 
-	if( ( Source->selected_item != -1) && ( Source->items != 0 ) )
-	{
-		TempList.items = 0;
-		TempList.top_item = 0;
-		TempList.display_items = MAX_PLAYERS;
-		TempList.selected_item = -1;
-	
+    if( ( Source->selected_item != -1) && ( Source->items != 0 ) )
+    {
+        TempList.items = 0;
+        TempList.top_item = 0;
+        TempList.display_items = MAX_PLAYERS;
+        TempList.selected_item = -1;
+    
 
-		strcpy( &TempItem[0] , Source->item[Source->selected_item] );
-		
-		for( i = 0 ; i < Source->items ; i++ )
-		{
-			if( i != Source->selected_item )
-			{
-				strcpy( &TempList.item[TempList.items][0] , Source->item[i]);
-				TempList.items++;
-			}
-		}
-		for( i = 0 ; i < TempList.items ; i++ )
-		{
-			strcpy( Source->item[i] , &TempList.item[i][0]);
-		}
-		Source->items = TempList.items;
-		Source->top_item = 0;
-		Source->display_items = MAX_PLAYERS;
-		Source->selected_item = -1;
+        strcpy( &TempItem[0] , Source->item[Source->selected_item] );
+        
+        for( i = 0 ; i < Source->items ; i++ )
+        {
+            if( i != Source->selected_item )
+            {
+                strcpy( &TempList.item[TempList.items][0] , Source->item[i]);
+                TempList.items++;
+            }
+        }
+        for( i = 0 ; i < TempList.items ; i++ )
+        {
+            strcpy( Source->item[i] , &TempList.item[i][0]);
+        }
+        Source->items = TempList.items;
+        Source->top_item = 0;
+        Source->display_items = MAX_PLAYERS;
+        Source->selected_item = -1;
 
-		//strcpy( Dest->item[Dest->items] , &TempItem[0]);
-		//Dest->items++;
+        //strcpy( Dest->item[Dest->items] , &TempItem[0]);
+        //Dest->items++;
 
-		// *** changed to put new item at top of list, so it is always visible ***
+        // *** changed to put new item at top of list, so it is always visible ***
 
-		TempList = *Dest;
+        TempList = *Dest;
 
-		Dest->items = 0;
-		Dest->top_item = 0;
-		Dest->selected_item = 0;
+        Dest->items = 0;
+        Dest->top_item = 0;
+        Dest->selected_item = 0;
 
-		strcpy( Dest->item[Dest->items++], &TempItem[0]);
+        strcpy( Dest->item[Dest->items++], &TempItem[0]);
 
-		for (i = 0; i < TempList.items; i++ )
-		{
-			strcpy( Dest->item[Dest->items++], TempList.item[i]);
-		}
-	}
+        for (i = 0; i < TempList.items; i++ )
+        {
+            strcpy( Dest->item[Dest->items++], TempList.item[i]);
+        }
+    }
 
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Swap a Teasm id from 1 list to another..
-	Input		:	MENUITEM * Item
-	Output		:	nothing
+    Procedure   :   Swap a Teasm id from 1 list to another..
+    Input       :   MENUITEM * Item
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 void SwapTeamIDs( LIST * Source , LIST * Dest )
 {
-	int i,e, sourceteam, destteam;
-	DPID	TempID;
-	DPID	TempIDs[MAX_PLAYERS];
-	DPID	*SourceIDs;
-	DPID	*DestIDs;
+    int i,e, sourceteam, destteam;
+    DPID    TempID;
+    DPID    TempIDs[MAX_PLAYERS];
+    DPID    *SourceIDs;
+    DPID    *DestIDs;
 
-	for( i = 0 ; i < MAX_PLAYERS ; i++ )
-	{
-		TempIDs[i] = 0;
-	}
+    for( i = 0 ; i < MAX_PLAYERS ; i++ )
+    {
+        TempIDs[i] = 0;
+    }
 
-	sourceteam = 0;
-	destteam = 0;
-	
-	for (i = 0; i < MAX_TEAMS; i++)
-	{
-		if (Source == &TeamList[i])
-		{
-			SourceIDs = TeamIDs[i];
-			sourceteam = i;
-		}
-		if (Dest == &TeamList[i])
-		{
-			DestIDs = TeamIDs[i];
-			destteam = i;
-		}
-	}
+    sourceteam = 0;
+    destteam = 0;
+    
+    for (i = 0; i < MAX_TEAMS; i++)
+    {
+        if (Source == &TeamList[i])
+        {
+            SourceIDs = TeamIDs[i];
+            sourceteam = i;
+        }
+        if (Dest == &TeamList[i])
+        {
+            DestIDs = TeamIDs[i];
+            destteam = i;
+        }
+    }
 
-	TempID = SourceIDs[Source->selected_item];
+    TempID = SourceIDs[Source->selected_item];
 
-	e = 0;
-	for( i = 0 ; i < TeamMembers[sourceteam]; i++ )
-	{
-		if( i != Source->selected_item )
-		{
-			TempIDs[e] = SourceIDs[i];
-			e++;
-		}
-	}
-	for( i = 0 ; i < e ; i++ )
-	{
-		SourceIDs[i] = TempIDs[i];
-	}
+    e = 0;
+    for( i = 0 ; i < TeamMembers[sourceteam]; i++ )
+    {
+        if( i != Source->selected_item )
+        {
+            TempIDs[e] = SourceIDs[i];
+            e++;
+        }
+    }
+    for( i = 0 ; i < e ; i++ )
+    {
+        SourceIDs[i] = TempIDs[i];
+    }
 
-	e = 0;
-	DestIDs[TeamMembers[destteam]] = TempID;
+    e = 0;
+    DestIDs[TeamMembers[destteam]] = TempID;
 
-	TeamMembers[sourceteam]--;
-	TeamMembers[destteam]++;
+    TeamMembers[sourceteam]--;
+    TeamMembers[destteam]++;
 
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Re Assemble Team Numbers...
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   Re Assemble Team Numbers...
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 void ReAssembleTeamNumbers(int *dummy)
 {
-	int i,e, team;
+    int i,e, team;
 
-	UpdateSessions( NULL );
+    UpdateSessions( NULL );
 
-	for (team = 0; team < MAX_TEAMS; team++)
-	{
- 		for( i = 0 ; i < TeamMembers[team] ; i++ )
-		{
-			for( e = 0 ; e < MAX_PLAYERS ; e ++ )
-			{
-				if (e != WhoIAm)
-				{
-					if( PlayerIDs[e] == TeamIDs[team][i] )
-					{
-						TeamNumber[e] = team;
-					}
-				}
-			}
-		}
-	}
+    for (team = 0; team < MAX_TEAMS; team++)
+    {
+        for( i = 0 ; i < TeamMembers[team] ; i++ )
+        {
+            for( e = 0 ; e < MAX_PLAYERS ; e ++ )
+            {
+                if (e != WhoIAm)
+                {
+                    if( PlayerIDs[e] == TeamIDs[team][i] )
+                    {
+                        TeamNumber[e] = team;
+                    }
+                }
+            }
+        }
+    }
 
-	DistributeTeamsToLists( NULL );
+    DistributeTeamsToLists( NULL );
 }
 
 void CheckForMenuChange(int *dummy)
 {
-	if (TeamNumber[0] != 255)
-		MenuChange( &WatchTeamSelectionItem );
+    if (TeamNumber[0] != 255)
+        MenuChange( &WatchTeamSelectionItem );
 
-	GetPlayersInCurrentSession ( NULL );
+    GetPlayersInCurrentSession ( NULL );
 }
 
 void DistributeTeamsToLists(int *dummy)
 {
-	int team, player, num_players;
-	BOOL OkayToStart = TRUE;
-	int16 TeamScore[MAX_TEAMS];
+    int team, player, num_players;
+    BOOL OkayToStart = TRUE;
+    int16 TeamScore[MAX_TEAMS];
 
-	UpdateSessions( NULL );
-	memset(&TeamScore, 0, sizeof(int16) * MAX_TEAMS);
+    UpdateSessions( NULL );
+    memset(&TeamScore, 0, sizeof(int16) * MAX_TEAMS);
 
-	for (team = 0; team < MAX_TEAMS; team++)
-	{
-		TeamList[team].items = 0;
-		TeamList[team].top_item = 0;
-		TeamList[team].display_items = 12;
-	}
+    for (team = 0; team < MAX_TEAMS; team++)
+    {
+        TeamList[team].items = 0;
+        TeamList[team].top_item = 0;
+        TeamList[team].display_items = 12;
+    }
 
-	num_players = 0;
-	
-	for ( player = ( IsServerGame ? 1 : 0 ); player < MAX_PLAYERS; player++ )	// server dosn't count as player
-	{
-		// player has left, therefore reset their team number...
-		if ((GameStatus[player] == STATUS_Left) || (GameStatus[player] == STATUS_LeftCrashed))
-		{
-			TeamNumber[player] = 255;
-		}
+    num_players = 0;
+    
+    for ( player = ( IsServerGame ? 1 : 0 ); player < MAX_PLAYERS; player++ )   // server dosn't count as player
+    {
+        // player has left, therefore reset their team number...
+        if ((GameStatus[player] == STATUS_Left) || (GameStatus[player] == STATUS_LeftCrashed))
+        {
+            TeamNumber[player] = 255;
+        }
 
-		team = TeamNumber[player];
-		if (team < MAX_TEAMS)
-		{
-			if ( ( player == WhoIAm ) || ( GameStatus[ player ] == STATUS_StartingMultiplayer ) || ( GameStatus[ player ] == STATUS_Normal ) )
-			{
-				num_players++;
-				
-				if ( !PlayerReady[player] && ( GameStatus[ player ] != STATUS_Normal ) )
-				{
-					if (Pulse >= 0.5F)			 
-					{
-						TeamList[team].item[TeamList[team].items++][0] = 0;
-					}
-					else
-					{
-						strcpy(&TeamList[team].item[TeamList[team].items++][0], &Names[player][0]);
-					}
+        team = TeamNumber[player];
+        if (team < MAX_TEAMS)
+        {
+            if ( ( player == WhoIAm ) || ( GameStatus[ player ] == STATUS_StartingMultiplayer ) || ( GameStatus[ player ] == STATUS_Normal ) )
+            {
+                num_players++;
+                
+                if ( !PlayerReady[player] && ( GameStatus[ player ] != STATUS_Normal ) )
+                {
+                    if (Pulse >= 0.5F)           
+                    {
+                        TeamList[team].item[TeamList[team].items++][0] = 0;
+                    }
+                    else
+                    {
+                        strcpy(&TeamList[team].item[TeamList[team].items++][0], &Names[player][0]);
+                    }
 
-					OkayToStart = FALSE;
-				}else
-				{
-					strcpy(&TeamList[team].item[TeamList[team].items++][0], &Names[player][0]);
-				}
-			}
-		}
+                    OkayToStart = FALSE;
+                }else
+                {
+                    strcpy(&TeamList[team].item[TeamList[team].items++][0], &Names[player][0]);
+                }
+            }
+        }
 
-		if (TeamNumber[player] < MAX_TEAMS)
-		{
-			TeamScore[TeamNumber[player]] += Ships[player].Kills;
-  		}
-	}
+        if (TeamNumber[player] < MAX_TEAMS)
+        {
+            TeamScore[TeamNumber[player]] += Ships[player].Kills;
+        }
+    }
 
-	if ( IsHost && OkayToStart && num_players )
-	{
-		TeamGoToSynchup(NULL);
-	}
+    if ( IsHost && OkayToStart && num_players )
+    {
+        TeamGoToSynchup(NULL);
+    }
 
-	for (team = 0; team < MAX_TEAMS; team++)
-	{
-		sprintf(TeamCurrentScore[team], ": %d",TeamScore[team]);
-	}
+    for (team = 0; team < MAX_TEAMS; team++)
+    {
+        sprintf(TeamCurrentScore[team], ": %d",TeamScore[team]);
+    }
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	My Memory Compare...
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   My Memory Compare...
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 BOOL Mymemcmp( BYTE * buf1 , BYTE * buf2 , int size )
 {
-	while( size--)
-	{
-		if( *buf1++ != *buf2++ )
-		{
-			return FALSE;
-		}
-	}
-	return TRUE;
+    while( size--)
+    {
+        if( *buf1++ != *buf2++ )
+        {
+            return FALSE;
+        }
+    }
+    return TRUE;
 }
 
 int CheckLegalIP( void )
 {
 #ifndef DISABLE_IP_CHECKING
 #if 0
-	int error;
-	struct hostent *hp;
-	static char hname[1024];
+    int error;
+    struct hostent *hp;
+    static char hname[1024];
 #endif
-	struct
-	{
-		uint32 mask, addr;
-	} allowed_ip_address[] =
-	{
-		{ 0x00FFFFFFL, 0x001281C2L },	// Probe's local IP domain
-		{ 0x00FFFFFFL, 0x00006A64L },	/* Probe internal 100.106.0.?? */
+    struct
+    {
+        uint32 mask, addr;
+    } allowed_ip_address[] =
+    {
+        { 0x00FFFFFFL, 0x001281C2L },   // Probe's local IP domain
+        { 0x00FFFFFFL, 0x00006A64L },   /* Probe internal 100.106.0.?? */
 #ifdef EXTRA_IP
-		EXTRA_IP
+        EXTRA_IP
 #endif
-		0, 0						// end of list
-	};
-	int j;
-	uint32 LoBytes = 0x000000FF;
+        0, 0                        // end of list
+    };
+    int j;
+    uint32 LoBytes = 0x000000FF;
 
 #if 0
-	if ( error = gethostname( hname, sizeof( hname ) ) )
-	{
+    if ( error = gethostname( hname, sizeof( hname ) ) )
+    {
 
-		error = WSAGetLastError();
-		switch( error )
-		{
-		case WSAEFAULT:
-			break;
-		case WSANOTINITIALISED:
-			break;
-		case WSAENETDOWN:
-			break;
-		case WSAEINPROGRESS:
-			break;
-		default:
-			break;
-		}
-		
-		return 0;
-	}
+        error = WSAGetLastError();
+        switch( error )
+        {
+        case WSAEFAULT:
+            break;
+        case WSANOTINITIALISED:
+            break;
+        case WSAENETDOWN:
+            break;
+        case WSAEINPROGRESS:
+            break;
+        default:
+            break;
+        }
+        
+        return 0;
+    }
 
-	hp = gethostbyname ( hname );	
-	if ( !hp )
-		return 0;
-	IPAddress = *(uint32 *) *hp->h_addr_list;
-	sprintf(IPAddressText, "%d.%d.%d.%d", IPAddress & LoBytes, (IPAddress >> 8) & LoBytes, (IPAddress >> 16) & LoBytes, (IPAddress >> 24) & LoBytes);
+    hp = gethostbyname ( hname );   
+    if ( !hp )
+        return 0;
+    IPAddress = *(uint32 *) *hp->h_addr_list;
+    sprintf(IPAddressText, "%d.%d.%d.%d", IPAddress & LoBytes, (IPAddress >> 8) & LoBytes, (IPAddress >> 16) & LoBytes, (IPAddress >> 24) & LoBytes);
 #endif
 
-	if(!IPAddressExists )
-		return 0;
-	for ( j = 0; allowed_ip_address[ j ].mask; j++ )
-	{
-		if ( ( IPAddress & allowed_ip_address[ j ].mask ) == allowed_ip_address[ j ].addr )
-			break;
-	}
-	if ( !allowed_ip_address[ j ].mask )
-		return 0; // invalid
+    if(!IPAddressExists )
+        return 0;
+    for ( j = 0; allowed_ip_address[ j ].mask; j++ )
+    {
+        if ( ( IPAddress & allowed_ip_address[ j ].mask ) == allowed_ip_address[ j ].addr )
+            break;
+    }
+    if ( !allowed_ip_address[ j ].mask )
+        return 0; // invalid
 #endif
-	return 1;
+    return 1;
 }
 
 int GetIPAdd( void )
 {
-	int error;
-	static char hname[1024];
-	struct hostent *hp;
-	uint32 LoBytes = 0x000000FF;
-	uint32 prefIPAddress;
-	uint32 ip1, ip2, ip3, ip4;
+    int error;
+    static char hname[1024];
+    struct hostent *hp;
+    uint32 LoBytes = 0x000000FF;
+    uint32 prefIPAddress;
+    uint32 ip1, ip2, ip3, ip4;
 
-	if ( error = gethostname( hname, sizeof( hname ) ) )
-	{
+    if ( error = gethostname( hname, sizeof( hname ) ) )
+    {
 
-		error = WSAGetLastError();
-		switch( error )
-		{
-		case WSAEFAULT:
-			DebugPrintf("WSAEFAULT\n");
-			break;
-		case WSANOTINITIALISED:
-			DebugPrintf("WSANOTINITIALISED\n");
-			break;
-		case WSAENETDOWN:
-			DebugPrintf("WSAENETDOWN\n");
-			break;
-		case WSAEINPROGRESS:
-			DebugPrintf("WSAEINPROGRESS\n");
-			break;
-		default:
-			DebugPrintf("default\n");
-			break;
-		}
-		
-		return 0;
-	}
+        error = WSAGetLastError();
+        switch( error )
+        {
+        case WSAEFAULT:
+            DebugPrintf("WSAEFAULT\n");
+            break;
+        case WSANOTINITIALISED:
+            DebugPrintf("WSANOTINITIALISED\n");
+            break;
+        case WSAENETDOWN:
+            DebugPrintf("WSAENETDOWN\n");
+            break;
+        case WSAEINPROGRESS:
+            DebugPrintf("WSAEINPROGRESS\n");
+            break;
+        default:
+            DebugPrintf("default\n");
+            break;
+        }
+        
+        return 0;
+    }
 
-	hp = gethostbyname ( hname );	
-	if ( !hp )
-		return 0;
+    hp = gethostbyname ( hname );   
+    if ( !hp )
+        return 0;
 
-	// if preferred address was specified in heartbeat.txt, verify
-	if ( sscanf( host_ip, " %d.%d.%d.%d", &ip1, &ip2, &ip3, &ip4 ) == 4 )
-	{
-		char FAR * FAR *add; 
+    // if preferred address was specified in heartbeat.txt, verify
+    if ( sscanf( host_ip, " %d.%d.%d.%d", &ip1, &ip2, &ip3, &ip4 ) == 4 )
+    {
+        char FAR * FAR *add; 
 
-		prefIPAddress = ip1 | ( ip2 << 8 ) | ( ip3 << 16 ) | ( ip4 << 24 );
+        prefIPAddress = ip1 | ( ip2 << 8 ) | ( ip3 << 16 ) | ( ip4 << 24 );
 
-		add = hp->h_addr_list;
-		while ( *add )
-		{
-			IPAddress = *(uint32 *) *add;
-			if ( IPAddress == prefIPAddress )
-			{
-				sprintf(IPAddressText, "%d.%d.%d.%d", IPAddress & LoBytes, (IPAddress >> 8) & LoBytes, (IPAddress >> 16) & LoBytes, (IPAddress >> 24) & LoBytes);
-				return 1;
-			}
-			add++;
-		}
-	}
+        add = hp->h_addr_list;
+        while ( *add )
+        {
+            IPAddress = *(uint32 *) *add;
+            if ( IPAddress == prefIPAddress )
+            {
+                sprintf(IPAddressText, "%d.%d.%d.%d", IPAddress & LoBytes, (IPAddress >> 8) & LoBytes, (IPAddress >> 16) & LoBytes, (IPAddress >> 24) & LoBytes);
+                return 1;
+            }
+            add++;
+        }
+    }
 
-	// if we get here, just use 1st IP address in list
-	IPAddress = *(uint32 *) *hp->h_addr_list;
-	sprintf(IPAddressText, "%d.%d.%d.%d", IPAddress & LoBytes, (IPAddress >> 8) & LoBytes, (IPAddress >> 16) & LoBytes, (IPAddress >> 24) & LoBytes);
+    // if we get here, just use 1st IP address in list
+    IPAddress = *(uint32 *) *hp->h_addr_list;
+    sprintf(IPAddressText, "%d.%d.%d.%d", IPAddress & LoBytes, (IPAddress >> 8) & LoBytes, (IPAddress >> 16) & LoBytes, (IPAddress >> 24) & LoBytes);
 
-	return 1;
+    return 1;
 }
 
 
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	We Are About to Start a Demo Playback...
-	Input		:	MENUITEM * Item
-	Output		:	nothing
+    Procedure   :   We Are About to Start a Demo Playback...
+    Input       :   MENUITEM * Item
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 void StartDemoPlayback( MENUITEM * Item )
 {
-	char buf[256];
-	int i;
-	uint32 mp_version;
-	uint32 flags;
-	uint32 PackedInfo[ MAX_PICKUPFLAGS ];
+    char buf[256];
+    int i;
+    uint32 mp_version;
+    uint32 flags;
+    uint32 PackedInfo[ MAX_PICKUPFLAGS ];
 
-	TeamGame = FALSE;
-	CountDownOn = FALSE;
-	IsServer = FALSE;
-	IsServerGame = FALSE;
+    TeamGame = FALSE;
+    CountDownOn = FALSE;
+    IsServer = FALSE;
+    IsServerGame = FALSE;
 
 
-	if( DemoList.item[0][0] == 0 )
-	{
-		// there are no demos...
-		return;
-	}
-	LevelNum = -1;
-	NewLevelNum = -1;
-
-	for ( i = 0; i < MAX_PLAYERS; i++ )
-		DemoShipInit[ i ] = FALSE;
-	DemoShipInit[ MAX_PLAYERS ] = TRUE;
-	memset (TeamNumber, 255, sizeof(BYTE) * MAX_PLAYERS);
-
-	DemoFp = fopen( DemoFileName( DemoList.item[DemoList.selected_item] ) , "rb" );
-#ifdef FINAL_RELEASE
-	if ( !DemoFp )
-	{
-		static char demopath[ MAX_PATH ];
-		
-		sprintf( demopath, "%s%s", cd_path, DemoFileName( DemoList.item[ DemoList.selected_item ] ) );
-		DemoFp = fopen( demopath, "rb" );
-	}
-#endif
-//	DemoFp = CreateFile( 
-//		&DemoList.item[DemoList.selected_item][0], // pointer to name of the file 
-//		GENERIC_READ , // access (read-write) mode 
-//		FILE_SHARE_READ , // share mode 
-//		NULL, // pointer to security attributes 
-//		OPEN_EXISTING , // how to create 
-//		FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN , // file attributes 
-//		NULL // handle to file with attributes to copy 
-//		); 	
-
-//	setvbuf( DemoFp, NULL, _IOFBF , 32768 );		// size of stream buffer...
-
-	if( !DemoFp )
-	{
-		// Couldnt find the selected demo...
-		return;
-	}
-
-	setvbuf( DemoFp, NULL, _IONBF , 0 );		// size of stream buffer...
-	
-
-	fread( &mp_version, sizeof( mp_version ), 1, DemoFp );
-	if ( (mp_version > MULTIPLAYER_VERSION) || (mp_version < DEMO_MULTIPLAYER_VERSION) )
-	{
-		// incompatible multiplayer version
-		fclose( DemoFp );
-		return;
-	}
-
-	fread( &CopyOfSeed1, sizeof( CopyOfSeed1 ), 1, DemoFp );
-	fread( &CopyOfSeed2, sizeof( CopyOfSeed2 ), 1, DemoFp );
-	fread( &RandomPickups, sizeof( RandomPickups ), 1, DemoFp );
-	fread( &PackedInfo[ 0 ], sizeof( PackedInfo ), 1, DemoFp );
-	UnpackPickupInfo( &PackedInfo[ 0 ] );
-
-	fread( &flags, sizeof( flags ), 1, DemoFp );
-	TeamGame = ( flags & TeamGameBit ) ? TRUE : FALSE;
-	BombTag = ( flags & BombGameBit ) ? TRUE : FALSE;
-	CTF = ( flags & CTFGameBit ) ? TRUE : FALSE;
-	CaptureTheFlag = ( flags & FlagGameBit ) ? TRUE : FALSE;
-	BountyHunt = ( flags & BountyGameBit ) ? TRUE : FALSE;
-
-	fread( &RandomStartPosModify, sizeof( RandomStartPosModify ), 1, DemoFp );
-
-	for( i = 0 ; i < 256 ; i++ )
-	{
-		fread( &buf[i], sizeof(char), 1, DemoFp );
-		if( buf[i] == 0 )
-		{
-			break;
-		}
-	}
-	
-    for (i = 0; i < NumLevels; i++)
-	{
-
-		if( _stricmp( (char*) &ShortLevelNames[i][0] , (char*) &buf[0] ) == 0 ) 
-		{
-			NewLevelNum = i;
-			break;
-		}
+    if( DemoList.item[0][0] == 0 )
+    {
+        // there are no demos...
+        return;
     }
-	
-	if( ( NewLevelNum == -1 ) || ( i == 256 ) )
-	{
-		fclose( DemoFp );
-		return;
-	}
-	MenuAbort();
-	ReleaseView();
-	DestroySound( DESTROYSOUND_All );	// ReleaseView will not do a DestroySound if MyGameStatus == STATUS_Title
+    LevelNum = -1;
+    NewLevelNum = -1;
 
-	PlayDemo = TRUE;
+    for ( i = 0; i < MAX_PLAYERS; i++ )
+        DemoShipInit[ i ] = FALSE;
+    DemoShipInit[ MAX_PLAYERS ] = TRUE;
+    memset (TeamNumber, 255, sizeof(BYTE) * MAX_PLAYERS);
 
-	MyGameStatus = STATUS_ChangeLevelPostPlayingDemo;
-	WhoIAm = MAX_PLAYERS;
+    DemoFp = fopen( DemoFileName( DemoList.item[DemoList.selected_item] ) , "rb" );
+#ifdef FINAL_RELEASE
+    if ( !DemoFp )
+    {
+        static char demopath[ MAX_PATH ];
+        
+        sprintf( demopath, "%s%s", cd_path, DemoFileName( DemoList.item[ DemoList.selected_item ] ) );
+        DemoFp = fopen( demopath, "rb" );
+    }
+#endif
+//  DemoFp = CreateFile( 
+//      &DemoList.item[DemoList.selected_item][0], // pointer to name of the file 
+//      GENERIC_READ , // access (read-write) mode 
+//      FILE_SHARE_READ , // share mode 
+//      NULL, // pointer to security attributes 
+//      OPEN_EXISTING , // how to create 
+//      FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN , // file attributes 
+//      NULL // handle to file with attributes to copy 
+//      );  
 
-//	RandomStartPosModify = 0;
-	SetupDplayGame();
+//  setvbuf( DemoFp, NULL, _IOFBF , 32768 );        // size of stream buffer...
 
-	ChangeLevel();
+    if( !DemoFp )
+    {
+        // Couldnt find the selected demo...
+        return;
+    }
+
+    setvbuf( DemoFp, NULL, _IONBF , 0 );        // size of stream buffer...
+    
+
+    fread( &mp_version, sizeof( mp_version ), 1, DemoFp );
+    if ( (mp_version > MULTIPLAYER_VERSION) || (mp_version < DEMO_MULTIPLAYER_VERSION) )
+    {
+        // incompatible multiplayer version
+        fclose( DemoFp );
+        return;
+    }
+
+    fread( &CopyOfSeed1, sizeof( CopyOfSeed1 ), 1, DemoFp );
+    fread( &CopyOfSeed2, sizeof( CopyOfSeed2 ), 1, DemoFp );
+    fread( &RandomPickups, sizeof( RandomPickups ), 1, DemoFp );
+    fread( &PackedInfo[ 0 ], sizeof( PackedInfo ), 1, DemoFp );
+    UnpackPickupInfo( &PackedInfo[ 0 ] );
+
+    fread( &flags, sizeof( flags ), 1, DemoFp );
+    TeamGame = ( flags & TeamGameBit ) ? TRUE : FALSE;
+    BombTag = ( flags & BombGameBit ) ? TRUE : FALSE;
+    CTF = ( flags & CTFGameBit ) ? TRUE : FALSE;
+    CaptureTheFlag = ( flags & FlagGameBit ) ? TRUE : FALSE;
+    BountyHunt = ( flags & BountyGameBit ) ? TRUE : FALSE;
+
+    fread( &RandomStartPosModify, sizeof( RandomStartPosModify ), 1, DemoFp );
+
+    for( i = 0 ; i < 256 ; i++ )
+    {
+        fread( &buf[i], sizeof(char), 1, DemoFp );
+        if( buf[i] == 0 )
+        {
+            break;
+        }
+    }
+    
+    for (i = 0; i < NumLevels; i++)
+    {
+
+        if( _stricmp( (char*) &ShortLevelNames[i][0] , (char*) &buf[0] ) == 0 ) 
+        {
+            NewLevelNum = i;
+            break;
+        }
+    }
+    
+    if( ( NewLevelNum == -1 ) || ( i == 256 ) )
+    {
+        fclose( DemoFp );
+        return;
+    }
+    MenuAbort();
+    ReleaseView();
+    DestroySound( DESTROYSOUND_All );   // ReleaseView will not do a DestroySound if MyGameStatus == STATUS_Title
+
+    PlayDemo = TRUE;
+
+    MyGameStatus = STATUS_ChangeLevelPostPlayingDemo;
+    WhoIAm = MAX_PLAYERS;
+
+//  RandomStartPosModify = 0;
+    SetupDplayGame();
+
+    ChangeLevel();
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Clean up A demo File...
-	Input		:	MENUITEM * Item
-	Output		:	nothing
+    Procedure   :   Clean up A demo File...
+    Input       :   MENUITEM * Item
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 void StartDemoCleaning( MENUITEM * Item )
 {
-	char buf[256];
-	int i;
-	uint32 mp_version;
-	uint32 flags;
-	char *clean_name;
-	uint16	TempSeed1, TempSeed2;
-	BOOL	TempRandomPickups;
-	uint32	TempPackedInfo[ MAX_PICKUPFLAGS ];
+    char buf[256];
+    int i;
+    uint32 mp_version;
+    uint32 flags;
+    char *clean_name;
+    uint16  TempSeed1, TempSeed2;
+    BOOL    TempRandomPickups;
+    uint32  TempPackedInfo[ MAX_PICKUPFLAGS ];
 
-	NewLevelNum = -1;
+    NewLevelNum = -1;
 
-	memset (TeamNumber, 255, sizeof(BYTE) * MAX_PLAYERS);
-	DemoFp = fopen( DemoFileName( DemoList.item[DemoList.selected_item] ) , "rb" );
-	if ( !DemoFp )
-	{
-		// can't open file
-		return;
-	}
-
-	setvbuf( DemoFp, NULL, _IONBF , 0 );		// size of stream buffer...
-	
-	fread( &mp_version, sizeof( mp_version ), 1, DemoFp );
-	if ( (mp_version > MULTIPLAYER_VERSION) || (mp_version < DEMO_MULTIPLAYER_VERSION) )
-	{
-		// incompatible multiplayer version
-		fclose( DemoFp );
-		return;
-	}
-
-	fread( &TempSeed1, sizeof( TempSeed1 ), 1, DemoFp );
-	fread( &TempSeed2, sizeof( TempSeed2 ), 1, DemoFp );
-	fread( &TempRandomPickups, sizeof( TempRandomPickups ), 1, DemoFp );
-	fread( &TempPackedInfo[ 0 ], sizeof( TempPackedInfo ), 1, DemoFp );
-
-	fread( &flags, sizeof( flags ), 1, DemoFp );
-	TeamGame = ( flags & TeamGameBit ) ? TRUE : FALSE;
-	BombTag = ( flags & BombGameBit ) ? TRUE : FALSE;
-	CTF = ( flags & CTFGameBit ) ? TRUE : FALSE;
-	CaptureTheFlag = ( flags & FlagGameBit ) ? TRUE : FALSE;
-	BountyHunt = ( flags & BountyGameBit ) ? TRUE : FALSE;
-
-	fread( &RandomStartPosModify, sizeof( RandomStartPosModify ), 1, DemoFp );
-
-	for( i = 0 ; i < 256 ; i++ )
-	{
-		fread( &buf[i], sizeof(char), 1, DemoFp );
-		if( buf[i] == 0 )
-		{
-			break;
-		}
-	}
-	
-    for (i = 0; i < NumLevels; i++)
-	{
-
-		if( _stricmp( (char*) &ShortLevelNames[i][0] , (char*) &buf[0] ) == 0 )
-		{
-			NewLevelNum = i;
-			break;
-		}
+    memset (TeamNumber, 255, sizeof(BYTE) * MAX_PLAYERS);
+    DemoFp = fopen( DemoFileName( DemoList.item[DemoList.selected_item] ) , "rb" );
+    if ( !DemoFp )
+    {
+        // can't open file
+        return;
     }
-	
-	if( ( NewLevelNum == -1 ) || ( i == 256 ) )
-	{
-		fclose( DemoFp );
-		return;
-	}
 
-	clean_name = _tempnam( ".", "dmo" );
-	if ( !clean_name )
-	{
-		// unable to create unique temporary filename
-		return;
-	}
-	DebugPrintf( "temp demo clean name = %s\n", clean_name );
-//	DemoFpClean = fopen( DemoFileName( DemoGameName.text ) , "wbc" );
-	DemoFpClean = fopen( clean_name , "wbc" );
-	setvbuf( DemoFpClean, NULL, _IONBF , 0 );		// size of stream buffer...
+    setvbuf( DemoFp, NULL, _IONBF , 0 );        // size of stream buffer...
+    
+    fread( &mp_version, sizeof( mp_version ), 1, DemoFp );
+    if ( (mp_version > MULTIPLAYER_VERSION) || (mp_version < DEMO_MULTIPLAYER_VERSION) )
+    {
+        // incompatible multiplayer version
+        fclose( DemoFp );
+        return;
+    }
 
-	fwrite( &mp_version, sizeof( mp_version ), 1, DemoFpClean );
+    fread( &TempSeed1, sizeof( TempSeed1 ), 1, DemoFp );
+    fread( &TempSeed2, sizeof( TempSeed2 ), 1, DemoFp );
+    fread( &TempRandomPickups, sizeof( TempRandomPickups ), 1, DemoFp );
+    fread( &TempPackedInfo[ 0 ], sizeof( TempPackedInfo ), 1, DemoFp );
 
-	fwrite( &TempSeed1, sizeof( TempSeed1 ), 1, DemoFpClean );
-	fwrite( &TempSeed2, sizeof( TempSeed2 ), 1, DemoFpClean );
-	fwrite( &TempRandomPickups, sizeof( TempRandomPickups ), 1, DemoFpClean );
-	fwrite( &TempPackedInfo[ 0 ], sizeof( TempPackedInfo ), 1, DemoFpClean );
+    fread( &flags, sizeof( flags ), 1, DemoFp );
+    TeamGame = ( flags & TeamGameBit ) ? TRUE : FALSE;
+    BombTag = ( flags & BombGameBit ) ? TRUE : FALSE;
+    CTF = ( flags & CTFGameBit ) ? TRUE : FALSE;
+    CaptureTheFlag = ( flags & FlagGameBit ) ? TRUE : FALSE;
+    BountyHunt = ( flags & BountyGameBit ) ? TRUE : FALSE;
 
-	fwrite( &flags, sizeof( flags ), 1, DemoFpClean );
-	fwrite( &RandomStartPosModify, sizeof( RandomStartPosModify ), 1, DemoFpClean );
-	for( i = 0 ; i < 256 ; i++ )
-	{
-		fwrite( &buf[i], sizeof(char), 1, DemoFpClean );
-		if( buf[i] == 0 )
-		{
-			break;
-		}
-	}
+    fread( &RandomStartPosModify, sizeof( RandomStartPosModify ), 1, DemoFp );
 
-	DemoClean();
-	
-	fclose( DemoFp );
-	fclose( DemoFpClean );
-	if ( !DeleteFile( DemoFileName( DemoList.item[DemoList.selected_item] ) ) )
-	{
-		DebugPrintf( "DeleteFile( %s ) failed\n", DemoFileName( DemoList.item[DemoList.selected_item] ) );
-		DebugLastError();
-	}
-	if ( !MoveFile( clean_name, DemoFileName( DemoList.item[DemoList.selected_item] ) ) )
-	{
-		DebugPrintf( "MoveFile( %s, %s ) failed\n",
-			clean_name, DemoFileName( DemoList.item[DemoList.selected_item] ) );
-		DebugLastError();
-	}
-	free( clean_name );
+    for( i = 0 ; i < 256 ; i++ )
+    {
+        fread( &buf[i], sizeof(char), 1, DemoFp );
+        if( buf[i] == 0 )
+        {
+            break;
+        }
+    }
+    
+    for (i = 0; i < NumLevels; i++)
+    {
 
-	if (CameraStatus != CAMERA_AtStart)
-		MenuBack();
-	else
-		MenuExit();
+        if( _stricmp( (char*) &ShortLevelNames[i][0] , (char*) &buf[0] ) == 0 )
+        {
+            NewLevelNum = i;
+            break;
+        }
+    }
+    
+    if( ( NewLevelNum == -1 ) || ( i == 256 ) )
+    {
+        fclose( DemoFp );
+        return;
+    }
+
+    clean_name = _tempnam( ".", "dmo" );
+    if ( !clean_name )
+    {
+        // unable to create unique temporary filename
+        return;
+    }
+    DebugPrintf( "temp demo clean name = %s\n", clean_name );
+//  DemoFpClean = fopen( DemoFileName( DemoGameName.text ) , "wbc" );
+    DemoFpClean = fopen( clean_name , "wbc" );
+    setvbuf( DemoFpClean, NULL, _IONBF , 0 );       // size of stream buffer...
+
+    fwrite( &mp_version, sizeof( mp_version ), 1, DemoFpClean );
+
+    fwrite( &TempSeed1, sizeof( TempSeed1 ), 1, DemoFpClean );
+    fwrite( &TempSeed2, sizeof( TempSeed2 ), 1, DemoFpClean );
+    fwrite( &TempRandomPickups, sizeof( TempRandomPickups ), 1, DemoFpClean );
+    fwrite( &TempPackedInfo[ 0 ], sizeof( TempPackedInfo ), 1, DemoFpClean );
+
+    fwrite( &flags, sizeof( flags ), 1, DemoFpClean );
+    fwrite( &RandomStartPosModify, sizeof( RandomStartPosModify ), 1, DemoFpClean );
+    for( i = 0 ; i < 256 ; i++ )
+    {
+        fwrite( &buf[i], sizeof(char), 1, DemoFpClean );
+        if( buf[i] == 0 )
+        {
+            break;
+        }
+    }
+
+    DemoClean();
+    
+    fclose( DemoFp );
+    fclose( DemoFpClean );
+    if ( !DeleteFile( DemoFileName( DemoList.item[DemoList.selected_item] ) ) )
+    {
+        DebugPrintf( "DeleteFile( %s ) failed\n", DemoFileName( DemoList.item[DemoList.selected_item] ) );
+        DebugLastError();
+    }
+    if ( !MoveFile( clean_name, DemoFileName( DemoList.item[DemoList.selected_item] ) ) )
+    {
+        DebugPrintf( "MoveFile( %s, %s ) failed\n",
+            clean_name, DemoFileName( DemoList.item[DemoList.selected_item] ) );
+        DebugLastError();
+    }
+    free( clean_name );
+
+    if (CameraStatus != CAMERA_AtStart)
+        MenuBack();
+    else
+        MenuExit();
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	We Are About to Start a Demo Playback In Attract Mode...
-	Input		:	MENUITEM * Item
-	Output		:	nothing
+    Procedure   :   We Are About to Start a Demo Playback In Attract Mode...
+    Input       :   MENUITEM * Item
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 
 // demo playback as splash screen...
 BOOL StartSplashDemo( char *demofile, char *levels )
 {
-	char buf[256];
-	int i;
-	char *old_levels_list;
-	uint32 mp_version;
-	uint32 flags;
-	uint32 PackedInfo[ MAX_PICKUPFLAGS ];
+    char buf[256];
+    int i;
+    char *old_levels_list;
+    uint32 mp_version;
+    uint32 flags;
+    uint32 PackedInfo[ MAX_PICKUPFLAGS ];
 
-	RestoreDemoSettings();
+    RestoreDemoSettings();
 
-	TeamGame = FALSE;
-	CountDownOn = FALSE;
-	IsServer = FALSE;
-	IsServerGame = FALSE;
+    TeamGame = FALSE;
+    CountDownOn = FALSE;
+    IsServer = FALSE;
+    IsServerGame = FALSE;
 
 
-	old_levels_list = CurrentLevelsList;
+    old_levels_list = CurrentLevelsList;
 
-	if ( !InitLevels( levels ) )
-	{
-		//Msg( "No splash levels" );
-		return FALSE;
-	}
-
-	LevelNum = -1;
-	NewLevelNum = -1;
-
-	CurrentLevelsList = old_levels_list;	// CurrentLevelsList was changed by InitLevels
-
-	for ( i = 0; i < MAX_PLAYERS; i++ )
-		DemoShipInit[ i ] = FALSE;
-	DemoShipInit[ MAX_PLAYERS ] = TRUE;
-	memset (TeamNumber, 255, sizeof(BYTE) * MAX_PLAYERS);
-	
-	// Choose the appropriate demo...
-	DemoFp = fopen( demofile , "rb" );
-	if ( !DemoFp )
-	{
-		return FALSE;
-	}
-
-//	setvbuf( DemoFp, NULL, _IOFBF , 32768 );		// size of stream buffer...
-	setvbuf( DemoFp, NULL, _IONBF , 0 );		// size of stream buffer...
-
-	fread( &mp_version, sizeof( mp_version ), 1, DemoFp );
-	if ( (mp_version > MULTIPLAYER_VERSION) || (mp_version < DEMO_MULTIPLAYER_VERSION) )
-	{
-		return FALSE;
-	}
-
-	fread( &CopyOfSeed1, sizeof( CopyOfSeed1 ), 1, DemoFp );
-	fread( &CopyOfSeed2, sizeof( CopyOfSeed2 ), 1, DemoFp );
-	fread( &RandomPickups, sizeof( RandomPickups ), 1, DemoFp );
-	fread( &PackedInfo[ 0 ], sizeof( PackedInfo ), 1, DemoFp );
-	UnpackPickupInfo( &PackedInfo[ 0 ] );
-
-	fread( &flags, sizeof( flags ), 1, DemoFp );
-	TeamGame = ( flags & TeamGameBit ) ? TRUE : FALSE;
-	BombTag = ( flags & BombGameBit ) ? TRUE : FALSE;
-	CTF = ( flags & CTFGameBit ) ? TRUE : FALSE;
-	CaptureTheFlag = ( flags & FlagGameBit ) ? TRUE : FALSE;
-	BountyHunt = ( flags & BountyGameBit ) ? TRUE : FALSE;
-
-	fread( &RandomStartPosModify, sizeof( RandomStartPosModify ), 1, DemoFp );
-
-	for( i = 0 ; i < 256 ; i++ )
-	{
-		fread( &buf[i], sizeof(char), 1, DemoFp );
-		if( buf[i] == 0 )
-		{
-			break;
-		}
-	}
-	
-    for (i = 0; i < NumLevels; i++)
-	{
-
-		if( _stricmp( (char*) &ShortLevelNames[i][0] , (char*) &buf[0] ) == 0 ) 
-		{
-			NewLevelNum = i;
-			break;
-		}
+    if ( !InitLevels( levels ) )
+    {
+        //Msg( "No splash levels" );
+        return FALSE;
     }
-	
-	if( ( NewLevelNum == -1 ) || ( i == 256 ) )
-	{
-		fclose( DemoFp );
-		return FALSE;
-	}
-	CurrentMenu = NULL;
-	CurrentMenuItem = NULL;
-	MenuStackLevel = 0;
 
-	PlayDemo = TRUE;
+    LevelNum = -1;
+    NewLevelNum = -1;
+
+    CurrentLevelsList = old_levels_list;    // CurrentLevelsList was changed by InitLevels
+
+    for ( i = 0; i < MAX_PLAYERS; i++ )
+        DemoShipInit[ i ] = FALSE;
+    DemoShipInit[ MAX_PLAYERS ] = TRUE;
+    memset (TeamNumber, 255, sizeof(BYTE) * MAX_PLAYERS);
+    
+    // Choose the appropriate demo...
+    DemoFp = fopen( demofile , "rb" );
+    if ( !DemoFp )
+    {
+        return FALSE;
+    }
+
+//  setvbuf( DemoFp, NULL, _IOFBF , 32768 );        // size of stream buffer...
+    setvbuf( DemoFp, NULL, _IONBF , 0 );        // size of stream buffer...
+
+    fread( &mp_version, sizeof( mp_version ), 1, DemoFp );
+    if ( (mp_version > MULTIPLAYER_VERSION) || (mp_version < DEMO_MULTIPLAYER_VERSION) )
+    {
+        return FALSE;
+    }
+
+    fread( &CopyOfSeed1, sizeof( CopyOfSeed1 ), 1, DemoFp );
+    fread( &CopyOfSeed2, sizeof( CopyOfSeed2 ), 1, DemoFp );
+    fread( &RandomPickups, sizeof( RandomPickups ), 1, DemoFp );
+    fread( &PackedInfo[ 0 ], sizeof( PackedInfo ), 1, DemoFp );
+    UnpackPickupInfo( &PackedInfo[ 0 ] );
+
+    fread( &flags, sizeof( flags ), 1, DemoFp );
+    TeamGame = ( flags & TeamGameBit ) ? TRUE : FALSE;
+    BombTag = ( flags & BombGameBit ) ? TRUE : FALSE;
+    CTF = ( flags & CTFGameBit ) ? TRUE : FALSE;
+    CaptureTheFlag = ( flags & FlagGameBit ) ? TRUE : FALSE;
+    BountyHunt = ( flags & BountyGameBit ) ? TRUE : FALSE;
+
+    fread( &RandomStartPosModify, sizeof( RandomStartPosModify ), 1, DemoFp );
+
+    for( i = 0 ; i < 256 ; i++ )
+    {
+        fread( &buf[i], sizeof(char), 1, DemoFp );
+        if( buf[i] == 0 )
+        {
+            break;
+        }
+    }
+    
+    for (i = 0; i < NumLevels; i++)
+    {
+
+        if( _stricmp( (char*) &ShortLevelNames[i][0] , (char*) &buf[0] ) == 0 ) 
+        {
+            NewLevelNum = i;
+            break;
+        }
+    }
+    
+    if( ( NewLevelNum == -1 ) || ( i == 256 ) )
+    {
+        fclose( DemoFp );
+        return FALSE;
+    }
+    CurrentMenu = NULL;
+    CurrentMenuItem = NULL;
+    MenuStackLevel = 0;
+
+    PlayDemo = TRUE;
  
-	MyGameStatus = STATUS_ChangeLevelPostAttractMode;
-	WhoIAm = MAX_PLAYERS;
-	
-//	RandomStartPosModify = 0;
-	SetupDplayGame();
-	ChangeLevel();
+    MyGameStatus = STATUS_ChangeLevelPostAttractMode;
+    WhoIAm = MAX_PLAYERS;
+    
+//  RandomStartPosModify = 0;
+    SetupDplayGame();
+    ChangeLevel();
 
-	PreAttractModePanel = Panel;
-	Panel = FALSE;
+    PreAttractModePanel = Panel;
+    Panel = FALSE;
 
-	return TRUE;
+    return TRUE;
 }
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Starting a Single Player Game...
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   Starting a Single Player Game...
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 BOOL StartASinglePlayerGame( MENUITEM * Item )
 {
-	int i;
-	LONGLONG	TempTime;
+    int i;
+    LONGLONG    TempTime;
 
-	PlayDemo = FALSE;
-	IsHost = TRUE;
-	AutoDetail = TRUE;
-	// reset all bollocks...
-	BombTag = FALSE;
-	TeamGame = FALSE;
-	CaptureTheFlag = FALSE;
-	CTF = FALSE;
-	IsServer = FALSE;
-	IsServerGame = FALSE;
+    PlayDemo = FALSE;
+    IsHost = TRUE;
+    AutoDetail = TRUE;
+    // reset all bollocks...
+    BombTag = FALSE;
+    TeamGame = FALSE;
+    CaptureTheFlag = FALSE;
+    CTF = FALSE;
+    IsServer = FALSE;
+    IsServerGame = FALSE;
 
-	QueryPerformanceCounter((LARGE_INTEGER *) &TempTime);
-	RandomStartPosModify = 0;
+    QueryPerformanceCounter((LARGE_INTEGER *) &TempTime);
+    RandomStartPosModify = 0;
 
-	SetBikeMods( (uint16) (SelectedBike+2) );
+    SetBikeMods( (uint16) (SelectedBike+2) );
 
-	SetupDplayGame();
-	
-	for( i = 0 ; i < MAX_PLAYERS ; i++ )
-	{
-		GameStatus[i] = STATUS_Null;
-	}
-	
-	WhoIAm = 0;								// I was the first to join...
+    SetupDplayGame();
+    
+    for( i = 0 ; i < MAX_PLAYERS ; i++ )
+    {
+        GameStatus[i] = STATUS_Null;
+    }
+    
+    WhoIAm = 0;                             // I was the first to join...
 
-	Ships[WhoIAm].dcoID = 0;
-	Current_Camera_View = 0;				// set camera to that view
-	Ships[WhoIAm].enable = 1;
-	StatsStatus = 1;						// I started it so the Stats Are Valid...
-	
-	memset(&Names, 0, sizeof(SHORTNAMETYPE) );
+    Ships[WhoIAm].dcoID = 0;
+    Current_Camera_View = 0;                // set camera to that view
+    Ships[WhoIAm].enable = 1;
+    StatsStatus = 1;                        // I started it so the Stats Are Valid...
+    
+    memset(&Names, 0, sizeof(SHORTNAMETYPE) );
     strncpy( (char*) &Names[WhoIAm][0] , &biker_name[0] , 7 );
-	Names[WhoIAm][7] = 0;																
-	Ships[ WhoIAm ].BikeNum = ( SelectedBike % MAXBIKETYPES );
-	
-	CountDownOn = FALSE;
+    Names[WhoIAm][7] = 0;                                                               
+    Ships[ WhoIAm ].BikeNum = ( SelectedBike % MAXBIKETYPES );
+    
+    CountDownOn = FALSE;
 
-	MyGameStatus = STATUS_StartingSinglePlayer;
+    MyGameStatus = STATUS_StartingSinglePlayer;
 
-	return TRUE;
+    return TRUE;
 }
 
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Starting a Single Player Game...
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   Starting a Single Player Game...
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 BOOL LoadASinglePlayerGame( MENUITEM * Item )
 {
-	int i;
-	LONGLONG	TempTime;
+    int i;
+    LONGLONG    TempTime;
 
-	IsServer = FALSE;
-	IsServerGame = FALSE;
-	PlayDemo = FALSE;
-	IsHost = TRUE;
-	QueryPerformanceCounter((LARGE_INTEGER *) &TempTime);
-	RandomStartPosModify = 0;
-	SetBikeMods( (uint16) (SelectedBike+2) );
-	SetupDplayGame();
-	for( i = 0 ; i < MAX_PLAYERS ; i++ )
-	{
-		GameStatus[i] = STATUS_Null;
-	}
-	WhoIAm = 0;								// I was the first to join...
-	Ships[WhoIAm].dcoID = 0;
-	Current_Camera_View = 0;				// set camera to that view
-	Ships[WhoIAm].enable = 1;
-	StatsStatus = 1;						// I started it so the Stats Are Valid...
-	memset(&Names, 0, sizeof(SHORTNAMETYPE) );
+    IsServer = FALSE;
+    IsServerGame = FALSE;
+    PlayDemo = FALSE;
+    IsHost = TRUE;
+    QueryPerformanceCounter((LARGE_INTEGER *) &TempTime);
+    RandomStartPosModify = 0;
+    SetBikeMods( (uint16) (SelectedBike+2) );
+    SetupDplayGame();
+    for( i = 0 ; i < MAX_PLAYERS ; i++ )
+    {
+        GameStatus[i] = STATUS_Null;
+    }
+    WhoIAm = 0;                             // I was the first to join...
+    Ships[WhoIAm].dcoID = 0;
+    Current_Camera_View = 0;                // set camera to that view
+    Ships[WhoIAm].enable = 1;
+    StatsStatus = 1;                        // I started it so the Stats Are Valid...
+    memset(&Names, 0, sizeof(SHORTNAMETYPE) );
     strncpy( (char*) &Names[WhoIAm][0] , &biker_name[0] , 7 );
-	Names[WhoIAm][7] = 0;																
-	Ships[ WhoIAm ].BikeNum = ( SelectedBike % MAXBIKETYPES );
-	
+    Names[WhoIAm][7] = 0;                                                               
+    Ships[ WhoIAm ].BikeNum = ( SelectedBike % MAXBIKETYPES );
+    
 
-	NewLevelNum = -1;
-	PreInGameLoad( Item );
+    NewLevelNum = -1;
+    PreInGameLoad( Item );
 
-	if( NewLevelNum == -1 )
-		return FALSE;
+    if( NewLevelNum == -1 )
+        return FALSE;
 
-	CountDownOn = FALSE;
+    CountDownOn = FALSE;
 
-	MyGameStatus = STATUS_TitleLoadGameStartingSinglePlayer;
+    MyGameStatus = STATUS_TitleLoadGameStartingSinglePlayer;
 
-	return TRUE;
+    return TRUE;
 }
 
 
@@ -3328,75 +3328,75 @@ int16 InGameLoadGameLevelNum;
 
 BOOL InGameLoadASinglePlayerGame( MENUITEM * Item )
 {
-	int16 OldNewLevelNum;
+    int16 OldNewLevelNum;
 
-	IsServer = FALSE;
-	IsServerGame = FALSE;
-	OldNewLevelNum = NewLevelNum;
-	WhoIAm = 0;								// I was the first to join...
-	NewLevelNum = -1;
-	PreInGameLoad( Item );
+    IsServer = FALSE;
+    IsServerGame = FALSE;
+    OldNewLevelNum = NewLevelNum;
+    WhoIAm = 0;                             // I was the first to join...
+    NewLevelNum = -1;
+    PreInGameLoad( Item );
 
-	if( NewLevelNum == -1 )
-	{
-		NewLevelNum = OldNewLevelNum;
-		return FALSE;
-	}
-	InGameLoadGameLevelNum = NewLevelNum;
-	NewLevelNum = OldNewLevelNum;
+    if( NewLevelNum == -1 )
+    {
+        NewLevelNum = OldNewLevelNum;
+        return FALSE;
+    }
+    InGameLoadGameLevelNum = NewLevelNum;
+    NewLevelNum = OldNewLevelNum;
 
-	CountDownOn = FALSE;
-	MyGameStatus = STATUS_InGameLoadGameStartingSinglePlayer;
-	return TRUE;
+    CountDownOn = FALSE;
+    MyGameStatus = STATUS_InGameLoadGameStartingSinglePlayer;
+    return TRUE;
 }
 
 
 
 
-#define VERSION_INFO			(TEXT( "\\" ))
+#define VERSION_INFO            (TEXT( "\\" ))
 
 static LONGLONG FileGetVersion( char *fname )
 {
-	DWORD infosize, dummy;
-	LPVOID info;
-	VS_FIXEDFILEINFO *inf;
-	int len;
-	union {
-		struct {
-			DWORD revision;
-			DWORD version;
-		};
-		LONGLONG version_revision;
-	} fileversion = { 0, 0 };
+    DWORD infosize, dummy;
+    LPVOID info;
+    VS_FIXEDFILEINFO *inf;
+    int len;
+    union {
+        struct {
+            DWORD revision;
+            DWORD version;
+        };
+        LONGLONG version_revision;
+    } fileversion = { 0, 0 };
 
-	infosize = GetFileVersionInfoSize( fname, &dummy );
-	if ( infosize )
-	{
-		info = malloc( infosize );
-		if ( GetFileVersionInfo( fname, 0, infosize, info ) )
-		{
-			if ( VerQueryValue( info, VERSION_INFO, &inf, &len ) )
-			{
-				fileversion.version = inf->dwFileVersionMS;
-				fileversion.revision = inf->dwFileVersionLS;
-			}
-			else
-			{
-				DebugPrintf( "VerQueryValue( %s ) failed\n", fname );
-			}
-		}
-		else
-		{
-			DebugPrintf( "GetFileVersioInfo( %s ) failed\n", fname );
-		}
-		free ( info );
-	}
-	else
-	{
-		DebugPrintf( "GetFileVersioInfoSize( %s ) failed\n", fname );
-	}
+    infosize = GetFileVersionInfoSize( fname, &dummy );
+    if ( infosize )
+    {
+        info = malloc( infosize );
+        if ( GetFileVersionInfo( fname, 0, infosize, info ) )
+        {
+            if ( VerQueryValue( info, VERSION_INFO, &inf, &len ) )
+            {
+                fileversion.version = inf->dwFileVersionMS;
+                fileversion.revision = inf->dwFileVersionLS;
+            }
+            else
+            {
+                DebugPrintf( "VerQueryValue( %s ) failed\n", fname );
+            }
+        }
+        else
+        {
+            DebugPrintf( "GetFileVersioInfo( %s ) failed\n", fname );
+        }
+        free ( info );
+    }
+    else
+    {
+        DebugPrintf( "GetFileVersioInfoSize( %s ) failed\n", fname );
+    }
 
-	return fileversion.version_revision;
+    return fileversion.version_revision;
 }
 
 
@@ -3412,7 +3412,7 @@ static LONGLONG FileGetVersion( char *fname )
 // we use ansi strings here, since guids won't get internationalized
 static int GetDigit(LPSTR lpstr)
 {
-	char ch = *lpstr;
+    char ch = *lpstr;
     
     if (ch >= '0' && ch <= '9')
         return(ch - '0');
@@ -3427,24 +3427,24 @@ static int GetDigit(LPSTR lpstr)
 // or left to right as indicated by fRightToLeft
 static void ConvertField(LPBYTE lpByte,LPSTR * ppStr,int iFieldSize,BOOL fRightToLeft)
 {
-	int i;
+    int i;
 
-	for (i=0;i<iFieldSize ;i++ )
-	{
-		// don't barf on the field separators
-		if ('-' == **ppStr) (*ppStr)++; 
-		if (fRightToLeft == TRUE)
-		{
-			// work from right to left within the byte stream
-			*(lpByte + iFieldSize - (i+1)) = 16*GetDigit(*ppStr) + GetDigit((*ppStr)+1);
-		} 
-		else 
-		{
-			// work from  left to right within the byte stream
-			*(lpByte + i) = 16*GetDigit(*ppStr) + GetDigit((*ppStr)+1);
-		}
-		*ppStr+=2; // get next two digit pair
-	}
+    for (i=0;i<iFieldSize ;i++ )
+    {
+        // don't barf on the field separators
+        if ('-' == **ppStr) (*ppStr)++; 
+        if (fRightToLeft == TRUE)
+        {
+            // work from right to left within the byte stream
+            *(lpByte + iFieldSize - (i+1)) = 16*GetDigit(*ppStr) + GetDigit((*ppStr)+1);
+        } 
+        else 
+        {
+            // work from  left to right within the byte stream
+            *(lpByte + i) = 16*GetDigit(*ppStr) + GetDigit((*ppStr)+1);
+        }
+        *ppStr+=2; // get next two digit pair
+    }
 } // ConvertField
 
 
@@ -3453,387 +3453,387 @@ static void ConvertField(LPBYTE lpByte,LPSTR * ppStr,int iFieldSize,BOOL fRightT
 // passed string
 HRESULT GUIDFromString( char *lpStr, GUID * pGuid)
 {
-	BYTE * lpByte; // byte index into guid
-	int iFieldSize; // size of current field we're converting
-	// since its a guid, we can do a "brute force" conversion
-	
-	// make sure we have a {xxxx-...} type guid
-	if ('{' !=  *lpStr) return E_FAIL;
-	lpStr++;
-	
-	lpByte = (BYTE *)pGuid;
-	// data 1
-	iFieldSize = sizeof(unsigned long);
-	ConvertField(lpByte,&lpStr,iFieldSize,TRUE);
-	lpByte += iFieldSize;
+    BYTE * lpByte; // byte index into guid
+    int iFieldSize; // size of current field we're converting
+    // since its a guid, we can do a "brute force" conversion
+    
+    // make sure we have a {xxxx-...} type guid
+    if ('{' !=  *lpStr) return E_FAIL;
+    lpStr++;
+    
+    lpByte = (BYTE *)pGuid;
+    // data 1
+    iFieldSize = sizeof(unsigned long);
+    ConvertField(lpByte,&lpStr,iFieldSize,TRUE);
+    lpByte += iFieldSize;
 
-	// data 2
-	iFieldSize = sizeof(unsigned short);
-	ConvertField(lpByte,&lpStr,iFieldSize,TRUE);
-	lpByte += iFieldSize;
+    // data 2
+    iFieldSize = sizeof(unsigned short);
+    ConvertField(lpByte,&lpStr,iFieldSize,TRUE);
+    lpByte += iFieldSize;
 
-	// data 3
-	iFieldSize = sizeof(unsigned short);
-	ConvertField(lpByte,&lpStr,iFieldSize,TRUE);
-	lpByte += iFieldSize;
+    // data 3
+    iFieldSize = sizeof(unsigned short);
+    ConvertField(lpByte,&lpStr,iFieldSize,TRUE);
+    lpByte += iFieldSize;
 
-	// data 4
-	iFieldSize = 8*sizeof(unsigned char);
-	ConvertField(lpByte,&lpStr,iFieldSize,FALSE);
-	lpByte += iFieldSize;
+    // data 4
+    iFieldSize = 8*sizeof(unsigned char);
+    ConvertField(lpByte,&lpStr,iFieldSize,FALSE);
+    lpByte += iFieldSize;
 
-	// make sure we ended in the right place
-	if ('}' != *lpStr) 
-	{
-		memset(pGuid,0,sizeof(GUID));
-		return E_FAIL;
-	}
+    // make sure we ended in the right place
+    if ('}' != *lpStr) 
+    {
+        memset(pGuid,0,sizeof(GUID));
+        return E_FAIL;
+    }
 
-	return S_OK;
+    return S_OK;
 }// GUIDFromString
 
 
-#define REGISTRY_DIRECTPLAY_SERVICEPROVIDERS_KEY	(TEXT("Software\\Microsoft\\DirectPlay\\Service Providers"))
+#define REGISTRY_DIRECTPLAY_SERVICEPROVIDERS_KEY    (TEXT("Software\\Microsoft\\DirectPlay\\Service Providers"))
 
-#define	GUID_NAME				(TEXT( "Guid" ))
-#define	PATH_NAME				(TEXT( "Path" ))
+#define GUID_NAME               (TEXT( "Guid" ))
+#define PATH_NAME               (TEXT( "Path" ))
 
-#define MAX_SERVICEPROVIDER_NAME	(256)
-#define MAX_GUIDTEXT				(256)
+#define MAX_SERVICEPROVIDER_NAME    (256)
+#define MAX_GUIDTEXT                (256)
 
 
 static int DirectPlayOK( LPGUID lpServiceProvider_guid )
 {
-	HKEY DP_ServiceProviders, DP_ServiceProvider;
-	int errs = 0;
-	int service_providers;
-	FILETIME filetime;
-	static char sp_name[ MAX_SERVICEPROVIDER_NAME ];
-	static char sp_fname[ MAX_SERVICEPROVIDER_NAME ];
-	static char sp_guidtext[ MAX_GUIDTEXT ];
-	DWORD sp_len;
-	GUID sp_guid;
-	DWORD len;
-	int old = 0;
-	union {
-		uint16 ver[ 4 ];
-		LONGLONG version;
-	} current, required = { DPLAY_REVISION_LO, DPLAY_REVISION_HI, DPLAY_VERSION_LO, DPLAY_VERSION_HI }, comp;
+    HKEY DP_ServiceProviders, DP_ServiceProvider;
+    int errs = 0;
+    int service_providers;
+    FILETIME filetime;
+    static char sp_name[ MAX_SERVICEPROVIDER_NAME ];
+    static char sp_fname[ MAX_SERVICEPROVIDER_NAME ];
+    static char sp_guidtext[ MAX_GUIDTEXT ];
+    DWORD sp_len;
+    GUID sp_guid;
+    DWORD len;
+    int old = 0;
+    union {
+        uint16 ver[ 4 ];
+        LONGLONG version;
+    } current, required = { DPLAY_REVISION_LO, DPLAY_REVISION_HI, DPLAY_VERSION_LO, DPLAY_VERSION_HI }, comp;
 
-	if (   !IsEqualGUID( &DPSPGUID_MODEM,	lpServiceProvider_guid )
-		&& !IsEqualGUID( &DPSPGUID_SERIAL,	lpServiceProvider_guid )
-		&& !IsEqualGUID( &DPSPGUID_TCPIP,	lpServiceProvider_guid )
-		&& !IsEqualGUID( &DPSPGUID_IPX,		lpServiceProvider_guid ) )
-	{
-		// not a recognised standard DirectPlay serviceprovider -- have to assume it's OK...
-		return 1;
-	}
+    if (   !IsEqualGUID( &DPSPGUID_MODEM,   lpServiceProvider_guid )
+        && !IsEqualGUID( &DPSPGUID_SERIAL,  lpServiceProvider_guid )
+        && !IsEqualGUID( &DPSPGUID_TCPIP,   lpServiceProvider_guid )
+        && !IsEqualGUID( &DPSPGUID_IPX,     lpServiceProvider_guid ) )
+    {
+        // not a recognised standard DirectPlay serviceprovider -- have to assume it's OK...
+        return 1;
+    }
 
-	if ( RegOpenKeyEx( REGISTRY_ROOT_KEY, REGISTRY_DIRECTPLAY_SERVICEPROVIDERS_KEY,
-			0, KEY_ENUMERATE_SUB_KEYS, &DP_ServiceProviders )
-		== ERROR_SUCCESS )
-	{
-		service_providers = 0;
-		sp_len = sizeof( sp_name );
-		while ( RegEnumKeyEx( DP_ServiceProviders, service_providers, sp_name, &sp_len, NULL, NULL, NULL, &filetime ) 
-			== ERROR_SUCCESS )
-		{
-			if ( RegOpenKeyEx( DP_ServiceProviders, sp_name,
-				0, KEY_QUERY_VALUE, &DP_ServiceProvider )
-				== ERROR_SUCCESS )
-			{
-				len = sizeof( sp_guidtext );
-				if ( RegQueryValueEx( DP_ServiceProvider, GUID_NAME,
-					NULL, NULL, sp_guidtext, &len )
-					== ERROR_SUCCESS )
-				{
-					if ( GUIDFromString( sp_guidtext, &sp_guid ) == S_OK )
-					{
-						if ( IsEqualGuid( &sp_guid, lpServiceProvider_guid ) )
-						{
-							len = sizeof( sp_fname );
-							if ( RegQueryValueEx( DP_ServiceProvider, PATH_NAME,
-								NULL, NULL, sp_fname, &len )
-								== ERROR_SUCCESS )
-							{
-								if ( current.version = FileGetVersion( sp_fname ) )
-								{
-									comp.version = current.version - required.version;
-									DebugPrintf( "%s (%s) version is %hd.%hd.%hd.%hd %s\n",
-										sp_name, sp_fname,
-										current.ver[ 3 ], current.ver[ 2 ], current.ver[ 1 ], current.ver[ 0 ],
-										( comp.version >= 0 ) ? "OK" : "out of date" );
-									if ( comp.version < 0 )
-										old++;
-								}
-								else
-								{
-									DebugPrintf( "FileGetVersion( %s ) failed\n", sp_fname );
-									errs++;
-								}
-							}
-							else
-							{
-								DebugPrintf( "RegQueryValueEx( %s\\%s ) failed\n", sp_name, PATH_NAME );
-								errs++;
-							}
-						}
-					}
-					else
-					{
-						DebugPrintf( "GUIDFromString( %s ) failed for %s\n", sp_guidtext, sp_name);
-						errs++;
-					}
-				}
-				else
-				{
-					DebugPrintf( "RegQueryValueEx( %s\\%s ) failed\n", sp_name, GUID_NAME );
-					errs++;
-				}
-				RegCloseKey( DP_ServiceProvider );
-			}
-			else
-			{
-					DebugPrintf( "RegOpenKeyEx( %s ) failed\n", sp_name );
-				errs++;
-			}
-			sp_len = sizeof( sp_name );
-			service_providers++;
-		}
-		RegCloseKey( DP_ServiceProviders );
-	}
-	else
-	{
-		errs++;
-	}
+    if ( RegOpenKeyEx( REGISTRY_ROOT_KEY, REGISTRY_DIRECTPLAY_SERVICEPROVIDERS_KEY,
+            0, KEY_ENUMERATE_SUB_KEYS, &DP_ServiceProviders )
+        == ERROR_SUCCESS )
+    {
+        service_providers = 0;
+        sp_len = sizeof( sp_name );
+        while ( RegEnumKeyEx( DP_ServiceProviders, service_providers, sp_name, &sp_len, NULL, NULL, NULL, &filetime ) 
+            == ERROR_SUCCESS )
+        {
+            if ( RegOpenKeyEx( DP_ServiceProviders, sp_name,
+                0, KEY_QUERY_VALUE, &DP_ServiceProvider )
+                == ERROR_SUCCESS )
+            {
+                len = sizeof( sp_guidtext );
+                if ( RegQueryValueEx( DP_ServiceProvider, GUID_NAME,
+                    NULL, NULL, sp_guidtext, &len )
+                    == ERROR_SUCCESS )
+                {
+                    if ( GUIDFromString( sp_guidtext, &sp_guid ) == S_OK )
+                    {
+                        if ( IsEqualGuid( &sp_guid, lpServiceProvider_guid ) )
+                        {
+                            len = sizeof( sp_fname );
+                            if ( RegQueryValueEx( DP_ServiceProvider, PATH_NAME,
+                                NULL, NULL, sp_fname, &len )
+                                == ERROR_SUCCESS )
+                            {
+                                if ( current.version = FileGetVersion( sp_fname ) )
+                                {
+                                    comp.version = current.version - required.version;
+                                    DebugPrintf( "%s (%s) version is %hd.%hd.%hd.%hd %s\n",
+                                        sp_name, sp_fname,
+                                        current.ver[ 3 ], current.ver[ 2 ], current.ver[ 1 ], current.ver[ 0 ],
+                                        ( comp.version >= 0 ) ? "OK" : "out of date" );
+                                    if ( comp.version < 0 )
+                                        old++;
+                                }
+                                else
+                                {
+                                    DebugPrintf( "FileGetVersion( %s ) failed\n", sp_fname );
+                                    errs++;
+                                }
+                            }
+                            else
+                            {
+                                DebugPrintf( "RegQueryValueEx( %s\\%s ) failed\n", sp_name, PATH_NAME );
+                                errs++;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        DebugPrintf( "GUIDFromString( %s ) failed for %s\n", sp_guidtext, sp_name);
+                        errs++;
+                    }
+                }
+                else
+                {
+                    DebugPrintf( "RegQueryValueEx( %s\\%s ) failed\n", sp_name, GUID_NAME );
+                    errs++;
+                }
+                RegCloseKey( DP_ServiceProvider );
+            }
+            else
+            {
+                    DebugPrintf( "RegOpenKeyEx( %s ) failed\n", sp_name );
+                errs++;
+            }
+            sp_len = sizeof( sp_name );
+            service_providers++;
+        }
+        RegCloseKey( DP_ServiceProviders );
+    }
+    else
+    {
+        errs++;
+    }
 
-	return !old;
+    return !old;
 }
 
 
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
-	Procedure	:	Hosting a Server session ...
-	Input		:	nothing
-	Output		:	nothing
+    Procedure   :   Hosting a Server session ...
+    Input       :   nothing
+    Output      :   nothing
 컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
 BOOL StartAHostSessionServer( MENUITEM * Item )
 {
-	HRESULT hr;
-	int i;
-	DWORD		Temp;
-	BYTE		msg;
-	int			size;
-	LONGLONG	TempTime;
-	uint32		Seed;
-	uint32		PackedInfo[ MAX_PICKUPFLAGS ];
-	char		ServerName[256];
-	char		*pCh;
+    HRESULT hr;
+    int i;
+    DWORD       Temp;
+    BYTE        msg;
+    int         size;
+    LONGLONG    TempTime;
+    uint32      Seed;
+    uint32      PackedInfo[ MAX_PICKUPFLAGS ];
+    char        ServerName[256];
+    char        *pCh;
 
-	IsServer = TRUE;
-	IsServerGame = TRUE;
+    IsServer = TRUE;
+    IsServerGame = TRUE;
 
-	NoSFX = TRUE;
-//	d3dappi.Driver[d3dappi.CurrDriver].bDoesTextures = FALSE;
-	PolygonText = FALSE;
-	ServerRendering = FALSE;
-	
-	PreferedMaxPlayers = MaxServerPlayersSlider.value;
-	MaxPlayersSlider.value = MaxServerPlayersSlider.value;
-	SetMultiplayerPrefs();
-	SetServerPrefs();
+    NoSFX = TRUE;
+//  d3dappi.Driver[d3dappi.CurrDriver].bDoesTextures = FALSE;
+    PolygonText = FALSE;
+    ServerRendering = FALSE;
+    
+    PreferedMaxPlayers = MaxServerPlayersSlider.value;
+    MaxPlayersSlider.value = MaxServerPlayersSlider.value;
+    SetMultiplayerPrefs();
+    SetServerPrefs();
 
-	Seed = timeGetTime();
-	Seed1 = (uint16) ( ( Seed >> 16 ) & 0xffff );
-	Seed2 = (uint16) ( Seed & 0xffff );
-	CopyOfSeed1 = Seed1;
-	CopyOfSeed2 = Seed2;
+    Seed = timeGetTime();
+    Seed1 = (uint16) ( ( Seed >> 16 ) & 0xffff );
+    Seed2 = (uint16) ( Seed & 0xffff );
+    CopyOfSeed1 = Seed1;
+    CopyOfSeed2 = Seed2;
 
-	PlayDemo = FALSE;
-	IsHost = TRUE;
+    PlayDemo = FALSE;
+    IsHost = TRUE;
 
-	TeamGame = FALSE;
-	BombTag = FALSE;
-	CaptureTheFlag = FALSE;
-	BountyHunt = FALSE;
-	CTF = FALSE;
+    TeamGame = FALSE;
+    BombTag = FALSE;
+    CaptureTheFlag = FALSE;
+    BountyHunt = FALSE;
+    CTF = FALSE;
 
-	if ( ServerChoosesGameType )
-		SetUpGameType( GameType );
+    if ( ServerChoosesGameType )
+        SetUpGameType( GameType );
 
-	SetBikeMods( 0 );
+    SetBikeMods( 0 );
 
-	QueryPerformanceCounter((LARGE_INTEGER *) &TempTime);
-	RandomStartPosModify = (uint16) ( ( TempTime * 71.42857143 ) / Freq );
+    QueryPerformanceCounter((LARGE_INTEGER *) &TempTime);
+    RandomStartPosModify = (uint16) ( ( TempTime * 71.42857143 ) / Freq );
 
-	d3dappi.lpDD->lpVtbl->FlipToGDISurface(d3dappi.lpDD);
+    d3dappi.lpDD->lpVtbl->FlipToGDISurface(d3dappi.lpDD);
 
-	pCh = ServerName;
+    pCh = ServerName;
 
-	if( IPAddressExists )
-	{
-		pCh += sprintf( pCh , " %s's Server At %s~" , &biker_name[0],&IPAddressText );
-	}else{
-		pCh += sprintf( pCh , " %s's Server~" , &biker_name[0]);
-	}
+    if( IPAddressExists )
+    {
+        pCh += sprintf( pCh , " %s's Server At %s~" , &biker_name[0],&IPAddressText );
+    }else{
+        pCh += sprintf( pCh , " %s's Server~" , &biker_name[0]);
+    }
 
-	GetLevelName( pCh, MAX_LEVEL_NAME_LENGTH, LevelList.selected_item );
+    GetLevelName( pCh, MAX_LEVEL_NAME_LENGTH, LevelList.selected_item );
 
-	// create session
-//	if ((hr = DPlayCreateSessionServer( &MultiPlayerGameName.text[0])) != DP_OK)
-	if ((hr = DPlayCreateSessionServer( &ServerName[0])) != DP_OK)
-	{
-		return FALSE;
-	}
+    // create session
+//  if ((hr = DPlayCreateSessionServer( &MultiPlayerGameName.text[0])) != DP_OK)
+    if ((hr = DPlayCreateSessionServer( &ServerName[0])) != DP_OK)
+    {
+        return FALSE;
+    }
 
-	// create player
-	if ((hr = DPlayCreatePlayerServer(&dcoID, "Server", NULL, NULL, 0)) != DP_OK)
-	{
-		return FALSE;
-	}
-	sprintf( &biker_name[0] , "Server" );
+    // create player
+    if ((hr = DPlayCreatePlayerServer(&dcoID, "Server", NULL, NULL, 0)) != DP_OK)
+    {
+        return FALSE;
+    }
+    sprintf( &biker_name[0] , "Server" );
 
-	DPlayUpdateInterval	= 60.0F / PacketsSlider.value;
-	OldPPSValue = PacketsSlider.value;
-	
-	SetupDplayGame();
+    DPlayUpdateInterval = 60.0F / PacketsSlider.value;
+    OldPPSValue = PacketsSlider.value;
+    
+    SetupDplayGame();
 
-	for( i = 0 ; i < MAX_PLAYERS ; i++ )
-	{
-		GameStatus[i] = STATUS_Null;
-	}
-	
-	WhoIAm = 0;								// I was the first to join...
-	Ships[WhoIAm].dcoID = dcoID;
+    for( i = 0 ; i < MAX_PLAYERS ; i++ )
+    {
+        GameStatus[i] = STATUS_Null;
+    }
+    
+    WhoIAm = 0;                             // I was the first to join...
+    Ships[WhoIAm].dcoID = dcoID;
 
-	if ( !ServerChoosesGameType )
-	{
-		MenuChangeEx( &MENU_NEW_HostWaitingToStartServer );
-	}else
-	{
-		OKToProcessKeys = TRUE;
- 		DPlayGetSessionDesc();
-		if ( !glpdpSD )
-		{
-			return FALSE;
-		}
+    if ( !ServerChoosesGameType )
+    {
+        MenuChangeEx( &MENU_NEW_HostWaitingToStartServer );
+    }else
+    {
+        OKToProcessKeys = TRUE;
+        DPlayGetSessionDesc();
+        if ( !glpdpSD )
+        {
+            return FALSE;
+        }
 
-		glpdpSD->dwMaxPlayers = MaxServerPlayersSlider.value + 1;
+        glpdpSD->dwMaxPlayers = MaxServerPlayersSlider.value + 1;
 
-		glpdpSD->dwUser3 &= ~ServerGameStateBits;	// mask out old server state
-		glpdpSD->dwUser3 |=	SERVER_STATE_Joinable;
+        glpdpSD->dwUser3 &= ~ServerGameStateBits;   // mask out old server state
+        glpdpSD->dwUser3 |= SERVER_STATE_Joinable;
 
-		DPlaySetSessionDesc( 0 );
+        DPlaySetSessionDesc( 0 );
 
-		MenuAbort();
-	}
+        MenuAbort();
+    }
 
-	MyGameStatus = STATUS_StartingMultiplayer;
-	
-	Current_Camera_View = 0;				// set camera to that view
-	Ships[WhoIAm].Pickups = 0;
-	Ships[WhoIAm].RegenSlots = 0;
-	Ships[WhoIAm].Mines = 0;
-	Ships[WhoIAm].Triggers = 0;
-	Ships[WhoIAm].TrigVars = 0;
-	
-	memset(&Names, 0, sizeof(SHORTNAMETYPE) );
+    MyGameStatus = STATUS_StartingMultiplayer;
+    
+    Current_Camera_View = 0;                // set camera to that view
+    Ships[WhoIAm].Pickups = 0;
+    Ships[WhoIAm].RegenSlots = 0;
+    Ships[WhoIAm].Mines = 0;
+    Ships[WhoIAm].Triggers = 0;
+    Ships[WhoIAm].TrigVars = 0;
+    
+    memset(&Names, 0, sizeof(SHORTNAMETYPE) );
     strncpy( (char*) &Names[WhoIAm][0] , &biker_name[0] , 7 );
-	Names[WhoIAm][7] = 0;
-	Ships[ WhoIAm ].BikeNum = ( SelectedBike % MAXBIKETYPES );
-	NewLevelNum = LevelList.selected_item;	// I Select Which Level We Start on...
+    Names[WhoIAm][7] = 0;
+    Ships[ WhoIAm ].BikeNum = ( SelectedBike % MAXBIKETYPES );
+    NewLevelNum = LevelList.selected_item;  // I Select Which Level We Start on...
 
-	if( TimeLimit.value )
-	{
-		CountDownOn = TRUE;
-	}
-	else
-	{
-		CountDownOn = FALSE;
-	}
-	if( RecordDemo || RecordDemoToRam )
-	{
-		uint32 mp_version = MULTIPLAYER_VERSION;
-		uint32 flags;
-		time_t now_time;
-		struct tm *now;
+    if( TimeLimit.value )
+    {
+        CountDownOn = TRUE;
+    }
+    else
+    {
+        CountDownOn = FALSE;
+    }
+    if( RecordDemo || RecordDemoToRam )
+    {
+        uint32 mp_version = MULTIPLAYER_VERSION;
+        uint32 flags;
+        time_t now_time;
+        struct tm *now;
 
-		RecordDemo = TRUE;
-		time( &now_time );
-		now = localtime( &now_time );
+        RecordDemo = TRUE;
+        time( &now_time );
+        now = localtime( &now_time );
 #ifndef HOST_CHOOSES_DEMO_NAME
-		if ( now )
-		{
-			sprintf( DemoGameName.text, "%s's Demo %d.%02d %d-%d-%d",
-				biker_name,
-				now->tm_hour, now->tm_min,
+        if ( now )
+        {
+            sprintf( DemoGameName.text, "%s's Demo %d.%02d %d-%d-%d",
+                biker_name,
+                now->tm_hour, now->tm_min,
 #ifdef MARKET_USA
-				1 + now->tm_mon, now->tm_mday,
+                1 + now->tm_mon, now->tm_mday,
 #else
-				now->tm_mday, 1 + now->tm_mon,
+                now->tm_mday, 1 + now->tm_mon,
 #endif
-				1900 + now->tm_year );
-		}
-		else
-		{
-			sprintf( DemoGameName.text, "%s's Demo",
-				biker_name );
-		}
+                1900 + now->tm_year );
+        }
+        else
+        {
+            sprintf( DemoGameName.text, "%s's Demo",
+                biker_name );
+        }
 #endif
-		DemoFp = fopen( DemoFileName( DemoGameName.text ) , "wb" );
-		setvbuf( DemoFp, NULL, _IONBF , 0 );		// size of stream buffer...
+        DemoFp = fopen( DemoFileName( DemoGameName.text ) , "wb" );
+        setvbuf( DemoFp, NULL, _IONBF , 0 );        // size of stream buffer...
 
-		Demo_fwrite( &mp_version, sizeof( mp_version ), 1, DemoFp );
-		flags = 0;
-		if( TeamGame )
-			flags |= TeamGameBit;
-		if( BombTag )
-			flags |= BombGameBit;
-		if( CTF )
-			flags |= CTFGameBit;
-		if( CaptureTheFlag )
-			flags |= FlagGameBit;
-		if ( BountyHunt )
-			flags |= BountyGameBit;
+        Demo_fwrite( &mp_version, sizeof( mp_version ), 1, DemoFp );
+        flags = 0;
+        if( TeamGame )
+            flags |= TeamGameBit;
+        if( BombTag )
+            flags |= BombGameBit;
+        if( CTF )
+            flags |= CTFGameBit;
+        if( CaptureTheFlag )
+            flags |= FlagGameBit;
+        if ( BountyHunt )
+            flags |= BountyGameBit;
 
-		Demo_fwrite( &CopyOfSeed1, sizeof( CopyOfSeed1 ), 1, DemoFp );
-		Demo_fwrite( &CopyOfSeed2, sizeof( CopyOfSeed2 ), 1, DemoFp );
-		Demo_fwrite( &RandomPickups, sizeof( RandomPickups ), 1, DemoFp );
-		PackPickupInfo( &PackedInfo[ 0 ] );
-		Demo_fwrite( &PackedInfo[ 0 ], sizeof( PackedInfo ), 1, DemoFp );
+        Demo_fwrite( &CopyOfSeed1, sizeof( CopyOfSeed1 ), 1, DemoFp );
+        Demo_fwrite( &CopyOfSeed2, sizeof( CopyOfSeed2 ), 1, DemoFp );
+        Demo_fwrite( &RandomPickups, sizeof( RandomPickups ), 1, DemoFp );
+        PackPickupInfo( &PackedInfo[ 0 ] );
+        Demo_fwrite( &PackedInfo[ 0 ], sizeof( PackedInfo ), 1, DemoFp );
 
-		Demo_fwrite( &flags, sizeof( flags ), 1, DemoFp );
-		Demo_fwrite( &RandomStartPosModify, sizeof( RandomStartPosModify ), 1, DemoFp );
-		for( i = 0 ; i < 256 ; i++ )
-		{
-			Demo_fwrite( &ShortLevelNames[NewLevelNum][i], sizeof(char), 1, DemoFp );
-			if( ShortLevelNames[NewLevelNum][i] == 0 )
-			{
-				break;
-			}
-		}
+        Demo_fwrite( &flags, sizeof( flags ), 1, DemoFp );
+        Demo_fwrite( &RandomStartPosModify, sizeof( RandomStartPosModify ), 1, DemoFp );
+        for( i = 0 ; i < 256 ; i++ )
+        {
+            Demo_fwrite( &ShortLevelNames[NewLevelNum][i], sizeof(char), 1, DemoFp );
+            if( ShortLevelNames[NewLevelNum][i] == 0 )
+            {
+                break;
+            }
+        }
 
-		// Best way I can Think of to send the Host Name to the demo file...
-		Temp = 1;
-		TempTime = 1;
-		Demo_fwrite( &TempTime, sizeof(LONGLONG), 1, DemoFp );
-		size = sizeof( NAMEMSG );
-		Demo_fwrite( &size, sizeof(int), 1, DemoFp );
-		Demo_fwrite( &Temp, sizeof(DWORD), 1, DemoFp );
-		msg = MSG_NAME;
-		Demo_fwrite( &msg, sizeof(BYTE), 1, DemoFp );
-		msg = 0;
-		Demo_fwrite( &msg, sizeof(BYTE), 1, DemoFp );				// Whos Name it is..
-		Demo_fwrite( &biker_name[0], 7, 1, DemoFp );
-		msg = 0;
-		Demo_fwrite( &msg, sizeof(BYTE), 1, DemoFp );				// terminator for name..
-	}
-	
-	BrightShips = MyBrightShips;
+        // Best way I can Think of to send the Host Name to the demo file...
+        Temp = 1;
+        TempTime = 1;
+        Demo_fwrite( &TempTime, sizeof(LONGLONG), 1, DemoFp );
+        size = sizeof( NAMEMSG );
+        Demo_fwrite( &size, sizeof(int), 1, DemoFp );
+        Demo_fwrite( &Temp, sizeof(DWORD), 1, DemoFp );
+        msg = MSG_NAME;
+        Demo_fwrite( &msg, sizeof(BYTE), 1, DemoFp );
+        msg = 0;
+        Demo_fwrite( &msg, sizeof(BYTE), 1, DemoFp );               // Whos Name it is..
+        Demo_fwrite( &biker_name[0], 7, 1, DemoFp );
+        msg = 0;
+        Demo_fwrite( &msg, sizeof(BYTE), 1, DemoFp );               // terminator for name..
+    }
+    
+    BrightShips = MyBrightShips;
 
-	tracker_addr = 0;
-	DPStartThread();
+    tracker_addr = 0;
+    DPStartThread();
 
-	return TRUE;
+    return TRUE;
 }
 
 

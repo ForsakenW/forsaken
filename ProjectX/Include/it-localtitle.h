@@ -410,7 +410,7 @@ Notes for translator:
 #define LT_MENU_QuickTextSend0 "Messaggio: "
 
 #define LT_MENU_QuickTextSendWhisper0 "Messaggio sottovoce: "
-									  
+                                      
 #define LT_MENU_EditMacro10 "Componi messaggio 1"
 #define LT_MENU_EditMacro11 "Invia messaggio 1 "
 
@@ -570,7 +570,7 @@ Notes for translator:
 #define LT_MENU_NEW_ChangeBikeComputer0 "Selezione moto computer"
 #define LT_MENU_NEW_ChangeBikeComputer1 "Scegli moto computer..."
 #define LT_MENU_NEW_ChangeBikeComputer2 "lista..."
-					 
+                     
 #define LT_MENU_SelectScreenMode0 "Selezione modalità"
 #define LT_MENU_SelectScreenMode1 "Scegli fra..."
 
@@ -695,21 +695,21 @@ Notes for translator:
 
 #define LT_ToggleStatusOn "on"
 #define LT_ToggleStatusOff "off"
-#define LT_Undef "indef"	// ( short for undefined )
+#define LT_Undef "indef"    // ( short for undefined )
 #define LT_SelectWhenReady "Seleziona se pronto"
 #define LT_WaitingForReset "In attesa..."
 
-#define LT_PageNo "Pagina %d di %d"	// %d = number
-#define LT_PageDown	"  [Pag Giù]=altro"
+#define LT_PageNo "Pagina %d di %d" // %d = number
+#define LT_PageDown "  [Pag Giù]=altro"
 #define LT_PageUpDown "  [Pag Su/Giù]=altro"
 #define LT_PageUp "  [Pag Su]=altro"
-#define LT_PressKey "premi un tasto o un pulsante per %s"	// %s will be name of action
-#define LT_ViewAlternateKeys "[destra]=vedi tasto alternativo per %s"	// %s = action
-#define LT_ViewAlternateKeys2 "[sinistra]=vedi tasto alternativo per %s"	// %s = action
+#define LT_PressKey "premi un tasto o un pulsante per %s"   // %s will be name of action
+#define LT_ViewAlternateKeys "[destra]=vedi tasto alternativo per %s"   // %s = action
+#define LT_ViewAlternateKeys2 "[sinistra]=vedi tasto alternativo per %s"    // %s = action
 #define LT_SelectControl "[su/giù]=scegli controllo" 
 #define LT_Cancel "[esc]=annulla" 
-#define LT_Edit "[invio]=modifica, [del]=rimuovi tasto per %s"	// %s = action
-#define LT_Add "[invio]=aggiungi, [del]=rimuovi tasto per %s"	// %s = action
+#define LT_Edit "[invio]=modifica, [del]=rimuovi tasto per %s"  // %s = action
+#define LT_Add "[invio]=aggiungi, [del]=rimuovi tasto per %s"   // %s = action
 
 #define LT_Unconnected1 " non è connesso"
 #define LT_Unconnected2 " sconnesso"
@@ -721,34 +721,34 @@ Notes for translator:
 #define LT_QuitToLobby "torna alla lobby"   
 #define LT_QuitToMainMenu "esci al menu principale"
 
-#define LT_PlayersGame "Partita di %s"	// %s is player name   
-#define LT_PlayersGame2 "Partita di %s"	// %s is player name
+#define LT_PlayersGame "Partita di %s"  // %s is player name   
+#define LT_PlayersGame2 "Partita di %s" // %s is player name
 
-#define LT_SavedGameName "salvata il %d-%d-%d alle %2d:%02d"	// %d-%d-%d is day-month-year %2d:%02d is time
-#define LT_LevelName "nome livello: %s"	// %s is name of level
-#define LT_LevelPlayedFor1 "%s ha giocato per %hd minuti %hd secondi"	// %s = player name, %hd = num mins, %hd = num secs  
-#define LT_LevelPlayedFor2 "ha giocato per %hd minuti %hd secondi"		// %s = player name, %hd = num mins, %hd = num secs  
-#define LT_EnemiesKilled "nemici uccisi: %hd su %hd"	// %hd = number 
+#define LT_SavedGameName "salvata il %d-%d-%d alle %2d:%02d"    // %d-%d-%d is day-month-year %2d:%02d is time
+#define LT_LevelName "nome livello: %s" // %s is name of level
+#define LT_LevelPlayedFor1 "%s ha giocato per %hd minuti %hd secondi"   // %s = player name, %hd = num mins, %hd = num secs  
+#define LT_LevelPlayedFor2 "ha giocato per %hd minuti %hd secondi"      // %s = player name, %hd = num mins, %hd = num secs  
+#define LT_EnemiesKilled "nemici uccisi: %hd su %hd"    // %hd = number 
 
 #define LT_NoSavedGamesFound "nessuna partita salvata"
 
 #define LT_NoLimit "nessun limite"
 #define LT_OneMinute "1 min"
-#define LT_ManyMinutes "%d min"	// %d = num minutes 
+#define LT_ManyMinutes "%d min" // %d = num minutes 
 #define LT_NoValue "nessun valore" 
 
 #define LT_SpaceOrb "Utilizza il software in tuo possesso per settare gli assi dello SpaceOrb"
 
-#define LT_NoJoysticks "Nessun joystick connesso~~(non puoi connettere il joystick mentre il gioco è attivo)"	// ~~ = newline  
+#define LT_NoJoysticks "Nessun joystick connesso~~(non puoi connettere il joystick mentre il gioco è attivo)"   // ~~ = newline  
 
-#define LT_OneCrystalFound "%d cristallo recuperato"	// %d is number of crystals
-#define LT_CrystalsFound "%d cristalli recuperati"	// %d is number of crystals
+#define LT_OneCrystalFound "%d cristallo recuperato"    // %d is number of crystals
+#define LT_CrystalsFound "%d cristalli recuperati"  // %d is number of crystals
 
-#define	LT_OneSecretFoundOutOf "%d segreto recuperato su %d"
-#define	LT_SecretsFoundOutOf "%d segreti recuperati su %d"
+#define LT_OneSecretFoundOutOf "%d segreto recuperato su %d"
+#define LT_SecretsFoundOutOf "%d segreti recuperati su %d"
 
-#define LT_OneGoldBarFound "%d lingotto recuperato"	// %d is number of gold bars 
-#define LT_GoldBarsFound "%d lingotti recuperati"	// %d is number of gold bars 
+#define LT_OneGoldBarFound "%d lingotto recuperato" // %d is number of gold bars 
+#define LT_GoldBarsFound "%d lingotti recuperati"   // %d is number of gold bars 
 
 #define LT_OneEnemyKilled "%d nemico ucciso su %d" 
 #define LT_EnemysKilled "%d nemici uccisi su %d" 
@@ -861,6 +861,3 @@ Notes for translator:
 
 
 #endif // LOCALTITLE_INCLUDED
-
-
-

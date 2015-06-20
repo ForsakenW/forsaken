@@ -130,7 +130,7 @@
 
 
 extern DPSESSIONDESC2 Sessions[];
-extern BOOL	SessionsRefresh[];
+extern BOOL SessionsRefresh[];
 
 
 /*
@@ -138,7 +138,7 @@ extern BOOL	SessionsRefresh[];
  */
 
 BOOL WINAPI EnumServiceProviders(LPGUID lpGuid, LPTSTR lpSpName, DWORD dwMajorVersion,
-		                         DWORD dwMinorVersion, LPVOID lpv);
+                                 DWORD dwMinorVersion, LPVOID lpv);
 BOOL WINAPI EnumSessions(LPCDPSESSIONDESC2 lpDPSessionDesc, LPDWORD lpdwTimeOut, DWORD dwFlags, 
                         LPVOID lpContext);
 BOOL WINAPI EnumPlayers(DPID pidID, DWORD dwPlayerType, LPCDPNAME lpName,
@@ -192,4 +192,4 @@ HRESULT GUIDFromString( char *lpStr, GUID * pGuid);
 BOOL  IsEqualGuid(GUID *lpguid1, GUID *lpguid2);
 void ExitServerSetup( MENU *Menu );
 
-#endif	// MULTIPLAYER_INCLUDED
+#endif  // MULTIPLAYER_INCLUDED

@@ -8,14 +8,14 @@
 //  Copyright (c) 1992 - 1996  Microsoft Corporation.  All Rights Reserved.
 //
 //--------------------------------------------------------------------------;
-#define	INITGUID
+#define INITGUID
 #include "stdwin.h"
 #include "cplay.h"
 #include "media.h"
 #include <evcode.h>
 
 
-extern	Media media;
+extern  Media media;
 
 //
 //
@@ -41,8 +41,8 @@ extern	Media media;
 
 AppVars appVars;
 
-extern	BOOL QuitIt;
-BOOL	MoviePlaying;
+extern  BOOL QuitIt;
+BOOL    MoviePlaying;
 
 
 //
@@ -54,7 +54,7 @@ BOOL InitApplication()
 
     // Filter interface initialize?
     if( SUCCEEDED( CoInitialize( NULL )))
-		return TRUE;
+        return TRUE;
 
     return FALSE;
 }
@@ -103,12 +103,12 @@ UINT DoMainLoop()
                 if( Result == WAIT_OBJECT_0 ) {
                     OnGraphNotify();
                 }
-				if( QuitIt == TRUE )
-				{
-//					OnMediaPlay();
-//					QuitIt = FALSE;
-					return TRUE;
-				}
+                if( QuitIt == TRUE )
+                {
+//                  OnMediaPlay();
+//                  QuitIt = FALSE;
+                    return TRUE;
+                }
                 continue;
             }
         }
@@ -140,7 +140,7 @@ int PASCAL PlayMovie( HINSTANCE hInstance,
 {
     UINT nReturn;
 
-	QuitIt = FALSE;
+    QuitIt = FALSE;
     // Initialise COM and the application
     if ( InitApplication() == FALSE ) return 0;
 
@@ -148,17 +148,17 @@ int PASCAL PlayMovie( HINSTANCE hInstance,
     {
     OpenMediaFile( Hwnd, "data\\movies\\Bike1.avi" );
 
-	OnMediaPlay();
+    OnMediaPlay();
 
-	
-	nReturn = DoMainLoop();
+    
+    nReturn = DoMainLoop();
 
-	// Stop the graph if we can
-	if( CanStop() )
+    // Stop the graph if we can
+    if( CanStop() )
             OnMediaStop();
 
         // Release the filter graph
-	DeleteContents();
+    DeleteContents();
     }
 
     UnInitApplication();
@@ -181,12 +181,12 @@ void PlayVideoInWindow(HWND hTargetWindow)
     WCHAR wPath[MAX_PATH];
 
 
-	MultiByteToWideChar( CP_ACP, 0, "data\\movies\\cpc8mono.avi", -1, wPath, MAX_PATH );
-	
-	CoInitialize(NULL);
+    MultiByteToWideChar( CP_ACP, 0, "data\\movies\\cpc8mono.avi", -1, wPath, MAX_PATH );
+    
+    CoInitialize(NULL);
 
     // Create an empty filter graph object
-	hr = CoCreateInstance(&CLSID_FilterGraph,
+    hr = CoCreateInstance(&CLSID_FilterGraph,
         NULL,
         CLSCTX_INPROC_SERVER,
         &IID_IGraphBuilder,
@@ -206,7 +206,7 @@ void PlayVideoInWindow(HWND hTargetWindow)
     hr = pigb->lpVtbl->QueryInterface( pigb , &IID_IVideoWindow, (void **)&pivw);
     pivw->lpVtbl->put_Owner( pivw , (OAHWND)hTargetWindow);
 
-	// pass all messages on to the parent window...
+    // pass all messages on to the parent window...
     pivw->lpVtbl->put_MessageDrain( pivw , (OAHWND)hTargetWindow);
 
     // Here's the key: we must set the required flags, 
@@ -214,10 +214,10 @@ void PlayVideoInWindow(HWND hTargetWindow)
     pivw->lpVtbl->put_WindowStyle( pivw ,  WS_CHILD | WS_CLIPCHILDREN | WS_CLIPSIBLINGS );
 
     GetClientRect(hTargetWindow, &rc);
-//	rc.left = 0;
-//	rc.top = 0;
-//	rc.right = 320;
-//	rc.bottom = 200;
+//  rc.left = 0;
+//  rc.top = 0;
+//  rc.right = 320;
+//  rc.bottom = 200;
 
     pivw->lpVtbl->SetWindowPosition( pivw , rc.left, rc.top, rc.right, rc.bottom);
 
@@ -229,21 +229,21 @@ void PlayVideoInWindow(HWND hTargetWindow)
     hr = pime->lpVtbl->GetEventHandle(pime, (OAEVENT*) &hGraphNotifyEvent);
 
 
-	MoviePlaying = TRUE;
-#if 0	
+    MoviePlaying = TRUE;
+#if 0   
     pime->lpVtbl->WaitForCompletion( pime, INFINITE, &l);
 
 #else
-	NewDoMainLoop();
-#endif	
-	MoviePlaying = FALSE;
-	
-	// The following MUST be called otherwise nasty things can happen!
+    NewDoMainLoop();
+#endif  
+    MoviePlaying = FALSE;
+    
+    // The following MUST be called otherwise nasty things can happen!
 //    pivw->lpVtbl->put_Owner(pivw, (OAHWND) NULL);
 //    pime->lpVtbl->Release(pime);
 
     pimc->lpVtbl->Release(pimc);
-						      
+                              
     pivw->lpVtbl->Release(pivw);
     pigb->lpVtbl->Release(pigb);
 
@@ -254,7 +254,7 @@ void PlayVideoInWindow(HWND hTargetWindow)
 
 
 
-void	NewDoMainLoop( void )
+void    NewDoMainLoop( void )
 {
     long lEventCode, lParam1, lParam2;
     MSG msg;
@@ -282,16 +282,16 @@ void	NewDoMainLoop( void )
             if( Result != (WAIT_OBJECT_0 + cObjects) )
             {
 
-				lEventCode = !EC_COMPLETE;
+                lEventCode = !EC_COMPLETE;
                 
-				if( Result == WAIT_OBJECT_0 ) {
+                if( Result == WAIT_OBJECT_0 ) {
 
-					SUCCEEDED(pime->lpVtbl->GetEvent(pime, &lEventCode, &lParam1, &lParam2, 0));
-				}
-				if( lEventCode == EC_COMPLETE )
-				{
-					return;
-				}
+                    SUCCEEDED(pime->lpVtbl->GetEvent(pime, &lEventCode, &lParam1, &lParam2, 0));
+                }
+                if( lEventCode == EC_COMPLETE )
+                {
+                    return;
+                }
                continue;
             }
         }

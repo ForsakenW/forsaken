@@ -89,9 +89,9 @@
 /*
  * defines
  */
-#define	MAXXLIGHTS	256
-#define	POINT_LIGHT	0
-#define	SPOT_LIGHT	1
+#define MAXXLIGHTS  256
+#define POINT_LIGHT 0
+#define SPOT_LIGHT  1
  
  
 /*
@@ -99,21 +99,21 @@
  */
 
  typedef struct XLIGHT{
-	int		Type;
-	BOOL	Visible;
-	uint16	Index;
-	float	r;
-	float	g;
-	float	b;
-	float	Size;
-	float	SizeCount;
-	float	ColorCount;
-	float	CosArc;			// how wide is my light.......
-	uint16	Next;			// Next Free
-	uint16	Prev;			// Previous used...
-	VECTOR	Pos;
-	VECTOR	Dir;			// Normalised....
-	uint16	Group;
+    int     Type;
+    BOOL    Visible;
+    uint16  Index;
+    float   r;
+    float   g;
+    float   b;
+    float   Size;
+    float   SizeCount;
+    float   ColorCount;
+    float   CosArc;         // how wide is my light.......
+    uint16  Next;           // Next Free
+    uint16  Prev;           // Previous used...
+    VECTOR  Pos;
+    VECTOR  Dir;            // Normalised....
+    uint16  Group;
 struct XLIGHT * NextVisible;
  }XLIGHT;
 
@@ -121,21 +121,21 @@ struct XLIGHT * NextVisible;
  * fn prototypes
  */
 
-BOOL	ProcessXLights( MLOADHEADER * Mloadheader );
-void	InitXLights();
-uint16	FindFreeXLight();
-void	KillUsedXLight(uint16);
+BOOL    ProcessXLights( MLOADHEADER * Mloadheader );
+void    InitXLights();
+uint16  FindFreeXLight();
+void    KillUsedXLight(uint16);
 
-//BOOL	DoIEffectThisGroup( MLOADHEADER * MloadHeader , VECTOR * Pos , float size , uint16 group);
+//BOOL  DoIEffectThisGroup( MLOADHEADER * MloadHeader , VECTOR * Pos , float size , uint16 group);
 
-void	SetLightDie ( uint16 light );
-BOOL	XLight1Group( MLOADHEADER * Mloadheader, uint16 group );
+void    SetLightDie ( uint16 light );
+BOOL    XLight1Group( MLOADHEADER * Mloadheader, uint16 group );
 
-BOOL	XLightMxloadHeader( MXLOADHEADER * MXloadheader , VECTOR * Pos , float Radius , MATRIX * Matrix );
-BOOL	XLightMxaloadHeader( MXALOADHEADER * MXAloadheader , VECTOR * Pos , float Radius , MATRIX * Matrix );
+BOOL    XLightMxloadHeader( MXLOADHEADER * MXloadheader , VECTOR * Pos , float Radius , MATRIX * Matrix );
+BOOL    XLightMxaloadHeader( MXALOADHEADER * MXAloadheader , VECTOR * Pos , float Radius , MATRIX * Matrix );
 
 
-void	CreateCellColours( MLOADHEADER * Mloadheader );
+void    CreateCellColours( MLOADHEADER * Mloadheader );
 D3DCOLOR FindNearestCellColour( MLOADHEADER * Mloadheader,VECTOR * Pos, uint16 group );
 void BuildVisibleLightList( uint16 Group );
 FILE * SaveXLights( FILE * fp );

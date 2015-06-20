@@ -34,7 +34,7 @@
 #define MENU_FIRST_FORMAT               40
 #define MENU_FIRST_DRIVER               100
 #define MENU_FIRST_MODE                 200
-#define MENU_FIRST_LEVEL				300				// which message range to use for a level change
+#define MENU_FIRST_LEVEL                300             // which message range to use for a level change
 
 #define MENU_BIKEDETAIL1                50
 #define MENU_BIKEDETAIL2                51

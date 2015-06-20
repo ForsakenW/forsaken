@@ -125,40 +125,40 @@ typedef struct tagd3dmainglobals {
 } d3dmainglobals;
 
 #ifdef SUPER
-	extern HANDLE AVIThreadControlEvent;
-	extern	d3dmainglobals	myglobs;
-	extern	VECTOR Camera_Pos;
-	extern	uint16 NumGroupsVisible;
-	extern	uint16 GroupImIn;
-	extern	uint16 NumCollides;
-	extern	float ticksperframe;
-	extern	DWORD GroupPolyCol_timeMax;
-	extern	long debug_long;
-	extern	BOOL cursorclipped;
-	extern	RECT cursorclip;
-	extern	BYTE                    WhoIAm;
+    extern HANDLE AVIThreadControlEvent;
+    extern  d3dmainglobals  myglobs;
+    extern  VECTOR Camera_Pos;
+    extern  uint16 NumGroupsVisible;
+    extern  uint16 GroupImIn;
+    extern  uint16 NumCollides;
+    extern  float ticksperframe;
+    extern  DWORD GroupPolyCol_timeMax;
+    extern  long debug_long;
+    extern  BOOL cursorclipped;
+    extern  RECT cursorclip;
+    extern  BYTE                    WhoIAm;
 
-	extern	int16		NumLevels;
-	extern	char	ShortLevelNames[MAXLEVELS][32];
-	extern	int16		LevelNum;
-	extern	int16		NewLevelNum;
-	extern	BOOL		PrimaryLightDetail;
-	extern	BOOL		SecondaryLightDetail;
-	extern	BOOL		PickupLightDetail;
+    extern  int16       NumLevels;
+    extern  char    ShortLevelNames[MAXLEVELS][32];
+    extern  int16       LevelNum;
+    extern  int16       NewLevelNum;
+    extern  BOOL        PrimaryLightDetail;
+    extern  BOOL        SecondaryLightDetail;
+    extern  BOOL        PickupLightDetail;
 
-	extern	BYTE		MyGameStatus;
-	
-	void TestBlt();
-	void SetCursorClip( void );
-	void ReallyShowCursor( BOOL );
-	void EnablePrimaryLights( void );
-	void DisablePrimaryLights( void );
-	void EnableSecondaryLights( void );
-	void DisableSecondaryLights( void );
-	void EnablePickupLights( void );
-	void DisablePickupLights( void );
+    extern  BYTE        MyGameStatus;
+    
+    void TestBlt();
+    void SetCursorClip( void );
+    void ReallyShowCursor( BOOL );
+    void EnablePrimaryLights( void );
+    void DisablePrimaryLights( void );
+    void EnableSecondaryLights( void );
+    void DisableSecondaryLights( void );
+    void EnablePickupLights( void );
+    void DisablePickupLights( void );
 
-	extern	int		BikeDetail;
+    extern  int     BikeDetail;
 
 #endif
 void __cdecl Msg( LPSTR fmt, ... );

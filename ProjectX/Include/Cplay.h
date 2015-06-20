@@ -28,6 +28,6 @@ int PASCAL PlayMovie( HINSTANCE hInstance,
 
 
 void PlayVideoInWindow(HWND hTargetWindow);
-void	NewDoMainLoop( void );
+void    NewDoMainLoop( void );
 
-#endif	// CPLAY_INC
+#endif  // CPLAY_INC

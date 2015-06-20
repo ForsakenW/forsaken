@@ -22,8 +22,8 @@
 /*
  * Defines
  */
-#define	MAXMIPMAP 8
-#define	MIPMAPMIN 16
+#define MAXMIPMAP 8
+#define MIPMAPMIN 16
 
 #define ColorOf(data, x, y, c , width) ((data)[((y)*(width)+(x))*3+c])
 
@@ -32,10 +32,10 @@
  */
 typedef struct _MIPMAPDESC
 {
-	DWORD	Width;
-	DWORD	Height;
-	int		LOD;
-	uint8 * Data[MAXMIPMAP];
+    DWORD   Width;
+    DWORD   Height;
+    int     LOD;
+    uint8 * Data[MAXMIPMAP];
 } MIPMAPDESC;
 
 /*

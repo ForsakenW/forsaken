@@ -38,8 +38,8 @@
 
 #ifdef DEBUG_ON
 
-#define MakeDDSurf( A, B, C, D, E, F )	XMakeDDSurf( (A), (B), (C), (D), (E), (F), __FILE__, __LINE__ )
-#define ReleaseDDSurf( A )	{XReleaseDDSurf( (A), __FILE__, __LINE__ ); A = NULL;}
+#define MakeDDSurf( A, B, C, D, E, F )  XMakeDDSurf( (A), (B), (C), (D), (E), (F), __FILE__, __LINE__ )
+#define ReleaseDDSurf( A )  {XReleaseDDSurf( (A), __FILE__, __LINE__ ); A = NULL;}
 
 #define DDLoadBitmap( A, B, C, D ) DDLoadBitmapDebug( A, B, C, D, __FILE__, __LINE__ ) 
 /*
@@ -64,7 +64,7 @@ int UnMallocedDDSurfBlocks( void );
 
 #ifdef __cplusplus
 extern "C" {
-#endif			  RELEASE
+#endif            RELEASE
 
 BOOL MakeDDSurf(  IDirectDraw *pdd , LPDDSURFACEDESC lpDDSurfaceDesc , LPDIRECTDRAWSURFACE FAR *lplpDDSurface , IUnknown FAR *pUnkOuter );
 #ifdef __cplusplus

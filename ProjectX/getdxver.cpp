@@ -29,17 +29,17 @@
  *      GetDXVersion
  *
  *  This function returns two arguments:
- *	dwDXVersion:
- *	    0	    No DirectX installed
- *	    0x100   DirectX version 1 installed
- *	    0x200   DirectX 2 installed
- *	    0x300   DirectX 3 installed
- *	    0x500   At least DirectX 5 installed.
+ *  dwDXVersion:
+ *      0       No DirectX installed
+ *      0x100   DirectX version 1 installed
+ *      0x200   DirectX 2 installed
+ *      0x300   DirectX 3 installed
+ *      0x500   At least DirectX 5 installed.
  *      0x600   At least DirectX 6 installed.
- *	dwDXPlatform:
- *	    0	                            Unknown (This is a failure case. Should never happen)
- *	    VER_PLATFORM_WIN32_WINDOWS	    Windows 9X platform
- *	    VER_PLATFORM_WIN32_NT	    Windows NT platform
+ *  dwDXPlatform:
+ *      0                               Unknown (This is a failure case. Should never happen)
+ *      VER_PLATFORM_WIN32_WINDOWS      Windows 9X platform
+ *      VER_PLATFORM_WIN32_NT       Windows NT platform
  * 
  * Please note that this code is intended as a general guideline. Your app will
  * probably be able to simply query for functionality (via COM's QueryInterface)

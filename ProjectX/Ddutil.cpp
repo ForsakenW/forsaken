@@ -39,16 +39,16 @@
 /*
  * Defines
  */
-#define	MAXMIPMAP 8
-#define	MIPMAPMIN 16
+#define MAXMIPMAP 8
+#define MIPMAPMIN 16
 
 
 extern "C" void DebugPrintf( const char * format, ... );
 extern "C" void AddCommentToBat( const char * format, ... );
-extern "C" void	AddFileToBat( char * Filename );
+extern "C" void AddFileToBat( char * Filename );
 extern "C" void AddCommandToBat( const char * format, ... );
 extern "C" BOOL bPrimaryPalettized;
-extern "C" double	Gamma;
+extern "C" double   Gamma;
 
 /*
  *  DDLoadBitmap
@@ -65,7 +65,7 @@ IDirectDrawSurface * DDLoadBitmapDebug(IDirectDraw *pdd, LPCSTR szBitmap, int dx
     BITMAP              bm;
     DDSURFACEDESC       ddsd;
     IDirectDrawSurface *pdds;
-	static int			bitmaps;
+    static int          bitmaps;
 
     //
     //  try to load the bitmap as a resource, if that fails, try it as a file
@@ -73,14 +73,14 @@ IDirectDrawSurface * DDLoadBitmapDebug(IDirectDraw *pdd, LPCSTR szBitmap, int dx
 //    hbm = (HBITMAP)LoadImage(GetModuleHandle(NULL), szBitmap, IMAGE_BITMAP, dx, dy, LR_CREATEDIBSECTION);
 
 //    if (hbm == NULL)
-	hbm = (HBITMAP)LoadImage(NULL, szBitmap, IMAGE_BITMAP, dx, dy, LR_LOADFROMFILE|LR_CREATEDIBSECTION);
+    hbm = (HBITMAP)LoadImage(NULL, szBitmap, IMAGE_BITMAP, dx, dy, LR_LOADFROMFILE|LR_CREATEDIBSECTION);
 
     if (hbm == NULL)
         return NULL;
 
-	DebugPrintf( "DDLoadBitmap: bitmap %2d = %s\n", bitmaps++, szBitmap );
+    DebugPrintf( "DDLoadBitmap: bitmap %2d = %s\n", bitmaps++, szBitmap );
 
-	AddFileToBat( (char *) szBitmap );
+    AddFileToBat( (char *) szBitmap );
 
     //
     // get size of the bitmap
@@ -97,8 +97,8 @@ IDirectDrawSurface * DDLoadBitmapDebug(IDirectDraw *pdd, LPCSTR szBitmap, int dx
     ddsd.dwWidth = bm.bmWidth;
     ddsd.dwHeight = bm.bmHeight;
 
-	if ( !MakeDDSurf( pdd, &ddsd, &pdds, NULL, in_file, in_line ) )
-		return NULL;
+    if ( !MakeDDSurf( pdd, &ddsd, &pdds, NULL, in_file, in_line ) )
+        return NULL;
 
     DDCopyBitmap(pdds, hbm, 0, 0, 0, 0);
 
@@ -115,7 +115,7 @@ IDirectDrawSurface * DDLoadBitmap(IDirectDraw *pdd, LPCSTR szBitmap, int dx, int
     BITMAP              bm;
     DDSURFACEDESC       ddsd;
     IDirectDrawSurface *pdds;
-	static int			bitmaps;
+    static int          bitmaps;
 
     //
     //  try to load the bitmap as a resource, if that fails, try it as a file
@@ -123,14 +123,14 @@ IDirectDrawSurface * DDLoadBitmap(IDirectDraw *pdd, LPCSTR szBitmap, int dx, int
 //    hbm = (HBITMAP)LoadImage(GetModuleHandle(NULL), szBitmap, IMAGE_BITMAP, dx, dy, LR_CREATEDIBSECTION);
 
 //    if (hbm == NULL)
-	hbm = (HBITMAP)LoadImage(NULL, szBitmap, IMAGE_BITMAP, dx, dy, LR_LOADFROMFILE|LR_CREATEDIBSECTION);
+    hbm = (HBITMAP)LoadImage(NULL, szBitmap, IMAGE_BITMAP, dx, dy, LR_LOADFROMFILE|LR_CREATEDIBSECTION);
 
     if (hbm == NULL)
         return NULL;
 
-	DebugPrintf( "DDLoadBitmap: bitmap %2d = %s\n", bitmaps++, szBitmap );
+    DebugPrintf( "DDLoadBitmap: bitmap %2d = %s\n", bitmaps++, szBitmap );
 
-	AddFileToBat( (char *) szBitmap );
+    AddFileToBat( (char *) szBitmap );
 
     //
     // get size of the bitmap
@@ -147,7 +147,7 @@ IDirectDrawSurface * DDLoadBitmap(IDirectDraw *pdd, LPCSTR szBitmap, int dx, int
     ddsd.dwWidth = bm.bmWidth;
     ddsd.dwHeight = bm.bmHeight;
 
-	 if (pdd->CreateSurface(&ddsd, &pdds, NULL) != DD_OK)
+     if (pdd->CreateSurface(&ddsd, &pdds, NULL) != DD_OK)
         return NULL;
 
     DDCopyBitmap(pdds, hbm, 0, 0, 0, 0);
@@ -198,7 +198,7 @@ extern "C" IDirectDrawSurface * DDLoadBitmapOverlay(IDirectDraw *pdd, LPCSTR szB
     ddsd.dwWidth = bm.bmWidth;
     ddsd.dwHeight = bm.bmHeight;
 
-	ddsd.ddpfPixelFormat.dwSize = sizeof(DDPIXELFORMAT);
+    ddsd.ddpfPixelFormat.dwSize = sizeof(DDPIXELFORMAT);
     ddsd.ddpfPixelFormat.dwFlags = DDPF_RGB;
     ddsd.ddpfPixelFormat.dwFourCC = BI_RGB;
     ddsd.ddpfPixelFormat.dwRGBBitCount = 16;
@@ -256,8 +256,8 @@ HRESULT HBitmapToDirectDrawSurface(LPDIRECTDRAWSURFACE pdds, HBITMAP hbm)
 { 
     HRESULT hr;
 
-	hr = DDCopyTextureBitmap(pdds, hbm, 0, 0, 0, 0);
-	return hr;
+    hr = DDCopyTextureBitmap(pdds, hbm, 0, 0, 0, 0);
+    return hr;
 }
 /*
  *  DDCopyBitmap
@@ -272,34 +272,34 @@ extern "C" HRESULT DDCopyBitmap(IDirectDrawSurface *pdds, HBITMAP hbm, int x, in
     BITMAP              bm;
     DDSURFACEDESC       ddsd;
     HRESULT             hr;
-	RGBQUAD	Colours[256];
-	int		numofcolours;
-	int		i;
-	BYTE  GammaTab[256];
-	double k;
-	int r,g,b;
+    RGBQUAD Colours[256];
+    int     numofcolours;
+    int     i;
+    BYTE  GammaTab[256];
+    double k;
+    int r,g,b;
     unsigned long m;
     int s;
-	int red_shift, red_scale;
-	int green_shift, green_scale;
-	int blue_shift, blue_scale;
+    int red_shift, red_scale;
+    int green_shift, green_scale;
+    int blue_shift, blue_scale;
 
     if (hbm == NULL || pdds == NULL)
         return E_FAIL;
 
-	// recover in release build
-	if (Gamma <= 0)
-	    Gamma = 1.0;
-	k = 255.0/pow(255.0, 1.0/Gamma);
-	for (i = 0; i <= 255; i++)
-	{
-	    GammaTab[i] = (BYTE)(k*(pow((double)i, 1.0/Gamma)));
-		if( i )
-		{
-			if( !GammaTab[i] )
-				GammaTab[i] = 1;
-		}
-	}
+    // recover in release build
+    if (Gamma <= 0)
+        Gamma = 1.0;
+    k = 255.0/pow(255.0, 1.0/Gamma);
+    for (i = 0; i <= 255; i++)
+    {
+        GammaTab[i] = (BYTE)(k*(pow((double)i, 1.0/Gamma)));
+        if( i )
+        {
+            if( !GammaTab[i] )
+                GammaTab[i] = 1;
+        }
+    }
 
     //
     // make sure this surface is restored.
@@ -315,7 +315,7 @@ extern "C" HRESULT DDCopyBitmap(IDirectDrawSurface *pdds, HBITMAP hbm, int x, in
     SelectObject(hdcImage, hbm);
 
 
-	//
+    //
     // get size of the bitmap
     //
     GetObject(hbm, sizeof(bm), &bm);    // get size of bitmap
@@ -333,74 +333,74 @@ extern "C" HRESULT DDCopyBitmap(IDirectDrawSurface *pdds, HBITMAP hbm, int x, in
 
 
     if( ddsd.ddpfPixelFormat.dwRBitMask )
-	{
-		for (s = 0, m = ddsd.ddpfPixelFormat.dwRBitMask; !(m & 1);
-															   s++, m >>= 1);
-		red_shift = s;
-		red_scale = 255 / (ddsd.ddpfPixelFormat.dwRBitMask >> s);
-	}else{
-		red_scale = 0;
-	}
+    {
+        for (s = 0, m = ddsd.ddpfPixelFormat.dwRBitMask; !(m & 1);
+                                                               s++, m >>= 1);
+        red_shift = s;
+        red_scale = 255 / (ddsd.ddpfPixelFormat.dwRBitMask >> s);
+    }else{
+        red_scale = 0;
+    }
     if( ddsd.ddpfPixelFormat.dwGBitMask )
-	{
-		for (s = 0, m = ddsd.ddpfPixelFormat.dwGBitMask; !(m & 1);
-															   s++, m >>= 1);
-		green_shift = s;
-		green_scale = 255 / (ddsd.ddpfPixelFormat.dwGBitMask >> s);
-	}else{
-		green_scale = 0;
-	}
+    {
+        for (s = 0, m = ddsd.ddpfPixelFormat.dwGBitMask; !(m & 1);
+                                                               s++, m >>= 1);
+        green_shift = s;
+        green_scale = 255 / (ddsd.ddpfPixelFormat.dwGBitMask >> s);
+    }else{
+        green_scale = 0;
+    }
     if( ddsd.ddpfPixelFormat.dwBBitMask )
-	{
-		for (s = 0, m = ddsd.ddpfPixelFormat.dwBBitMask; !(m & 1);
-															   s++, m >>= 1);
-		blue_shift = s;
-		blue_scale = 255 / (ddsd.ddpfPixelFormat.dwBBitMask >> s);
-	}else{
-		blue_scale = 0;
-	}
-	blue_scale *= 2;
-	red_scale *= 2;
-	green_scale *= 2;
+    {
+        for (s = 0, m = ddsd.ddpfPixelFormat.dwBBitMask; !(m & 1);
+                                                               s++, m >>= 1);
+        blue_shift = s;
+        blue_scale = 255 / (ddsd.ddpfPixelFormat.dwBBitMask >> s);
+    }else{
+        blue_scale = 0;
+    }
+    blue_scale *= 2;
+    red_scale *= 2;
+    green_scale *= 2;
 
-	if( bm.bmBitsPixel <= 8 )
-	{
-		numofcolours = GetDIBColorTable( hdcImage,	// handle of device context whose DIB is of interest 
-										0,			// color table index of first entry to retrieve
-										256,			// number of color table entries to retrieve
-										&Colours[0]);		// pointer to buffer that receives color table entries
-		for( i = 0 ; i < numofcolours ; i ++ )
-		{
-			r = Colours[i].rgbRed;
-			g = Colours[i].rgbGreen;
-			b = Colours[i].rgbBlue;
+    if( bm.bmBitsPixel <= 8 )
+    {
+        numofcolours = GetDIBColorTable( hdcImage,  // handle of device context whose DIB is of interest 
+                                        0,          // color table index of first entry to retrieve
+                                        256,            // number of color table entries to retrieve
+                                        &Colours[0]);       // pointer to buffer that receives color table entries
+        for( i = 0 ; i < numofcolours ; i ++ )
+        {
+            r = Colours[i].rgbRed;
+            g = Colours[i].rgbGreen;
+            b = Colours[i].rgbBlue;
 
-			Colours[i].rgbRed = GammaTab[Colours[i].rgbRed];
-			Colours[i].rgbGreen = GammaTab[Colours[i].rgbGreen];
-			Colours[i].rgbBlue = GammaTab[Colours[i].rgbBlue];
+            Colours[i].rgbRed = GammaTab[Colours[i].rgbRed];
+            Colours[i].rgbGreen = GammaTab[Colours[i].rgbGreen];
+            Colours[i].rgbBlue = GammaTab[Colours[i].rgbBlue];
 
 
-			if( ( r + g + b ) != 0 )
-			{
-				if( ( Colours[i].rgbRed <= red_scale ) && ( Colours[i].rgbGreen <= green_scale ) && ( Colours[i].rgbBlue <= blue_scale )	)
-				{
-					Colours[i].rgbBlue = blue_scale;
-				}
-			}
-		}
-		SetDIBColorTable( hdcImage,	// handle of device context whose DIB is of interest 
-						  0,			// color table index of first entry to retrieve
-						  numofcolours,			// number of color table entries to retrieve
-						  &Colours[0]);		// pointer to buffer that receives color table entries
-	}
+            if( ( r + g + b ) != 0 )
+            {
+                if( ( Colours[i].rgbRed <= red_scale ) && ( Colours[i].rgbGreen <= green_scale ) && ( Colours[i].rgbBlue <= blue_scale )    )
+                {
+                    Colours[i].rgbBlue = blue_scale;
+                }
+            }
+        }
+        SetDIBColorTable( hdcImage, // handle of device context whose DIB is of interest 
+                          0,            // color table index of first entry to retrieve
+                          numofcolours,         // number of color table entries to retrieve
+                          &Colours[0]);     // pointer to buffer that receives color table entries
+    }
 
     if ((hr = pdds->GetDC(&hdc)) == DD_OK)
     {
-		SetStretchBltMode( hdc, HALFTONE  ); 
-		SetBrushOrgEx( hdc , 0 , 0 , NULL );
-		SetStretchBltMode( hdcImage, HALFTONE  ); 
-		SetBrushOrgEx( hdcImage , 0 , 0 , NULL );
-	    StretchBlt(hdc, 0, 0, ddsd.dwWidth, ddsd.dwHeight, hdcImage, x, y, dx, dy, SRCCOPY);
+        SetStretchBltMode( hdc, HALFTONE  ); 
+        SetBrushOrgEx( hdc , 0 , 0 , NULL );
+        SetStretchBltMode( hdcImage, HALFTONE  ); 
+        SetBrushOrgEx( hdcImage , 0 , 0 , NULL );
+        StretchBlt(hdc, 0, 0, ddsd.dwWidth, ddsd.dwHeight, hdcImage, x, y, dx, dy, SRCCOPY);
         pdds->ReleaseDC(hdc);
     }
 
@@ -415,7 +415,7 @@ extern "C" HRESULT DDCopyTextureBitmap(IDirectDrawSurface *pdds, HBITMAP hbm, in
     HDC                 hdc;
     DDSURFACEDESC       ddsd;
     HRESULT             hr;
-	DIBSECTION			dib;
+    DIBSECTION          dib;
 
     if (hbm == NULL || pdds == NULL)
         return E_FAIL;
@@ -521,7 +521,7 @@ extern "C" IDirectDrawPalette * DDLoadPalette(IDirectDraw *pdd, LPCSTR szBitmap)
     }
     else
 #endif
-	if (szBitmap && (fh = _lopen(szBitmap, OF_READ)) != -1)
+    if (szBitmap && (fh = _lopen(szBitmap, OF_READ)) != -1)
     {
         BITMAPFILEHEADER bf;
         BITMAPINFOHEADER bi;
@@ -549,7 +549,7 @@ extern "C" IDirectDrawPalette * DDLoadPalette(IDirectDraw *pdd, LPCSTR szBitmap)
             BYTE r = ape[i].peRed;
             ape[i].peRed  = ape[i].peBlue;
             ape[i].peBlue = r;
-		}
+        }
     }
 
     pdd->CreatePalette(DDPCAPS_8BIT | DDPCAPS_ALLOW256 , ape, &ddpal, NULL);
@@ -631,29 +631,29 @@ IDirectDrawSurface * DDLoadBitmapTexture(IDirectDraw *pdd, LPCSTR szBitmap, LPDD
     HBITMAP             hbm;
     BITMAP              bm;
     IDirectDrawSurface *pdds;
-	DDSURFACEDESC ddsd2;
+    DDSURFACEDESC ddsd2;
     DWORD dwWidth, dwHeight;
-	LPDIRECTDRAWPALETTE ddpal;
+    LPDIRECTDRAWPALETTE ddpal;
 
-	ddsd2 = *ddsd;
-	ddsd2.dwFlags |= DDSD_CAPS;
-	ddsd2.ddsCaps.dwCaps |=	DDSCAPS_SYSTEMMEMORY;
-	int XScale,YScale;
+    ddsd2 = *ddsd;
+    ddsd2.dwFlags |= DDSD_CAPS;
+    ddsd2.ddsCaps.dwCaps |= DDSCAPS_SYSTEMMEMORY;
+    int XScale,YScale;
 
-	hbm = (HBITMAP)LoadImage(NULL, szBitmap, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE|LR_CREATEDIBSECTION);
+    hbm = (HBITMAP)LoadImage(NULL, szBitmap, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE|LR_CREATEDIBSECTION);
 
     if (hbm == NULL)
         return NULL;
 
-	AddFileToBat( (char *) szBitmap );
+    AddFileToBat( (char *) szBitmap );
 
     //
     // get size of the bitmap
     //
     GetObject(hbm, sizeof(bm), &bm);      // get size of bitmap
 
-	dwWidth = bm.bmWidth;
-	dwHeight = bm.bmHeight;
+    dwWidth = bm.bmWidth;
+    dwHeight = bm.bmHeight;
     //
     // create a DirectDrawSurface for this bitmap
     //
@@ -663,35 +663,35 @@ IDirectDrawSurface * DDLoadBitmapTexture(IDirectDraw *pdd, LPCSTR szBitmap, LPDD
     ddsd2.ddsCaps.dwCaps = DDSCAPS_TEXTURE | DDSCAPS_SYSTEMMEMORY;
 
 
-	
-	XScale = Scale;
-	YScale = Scale;
-	// PowerVR Only Like Square Textures...
-	if( bSquareOnly )
-	{
-		if( dwHeight != dwWidth )
-		{
-			if( dwHeight > dwWidth )
-				YScale++;
-			if( dwWidth > dwHeight )
-				XScale++;
-		}
-	}
-	
-	ddsd2.dwHeight = dwHeight / ( 1 << YScale );
-	ddsd2.dwWidth = dwWidth / ( 1 << XScale );
-	
-	if (pdd->CreateSurface(&ddsd2, &pdds, NULL) != DD_OK)
-		return NULL;
+    
+    XScale = Scale;
+    YScale = Scale;
+    // PowerVR Only Like Square Textures...
+    if( bSquareOnly )
+    {
+        if( dwHeight != dwWidth )
+        {
+            if( dwHeight > dwWidth )
+                YScale++;
+            if( dwWidth > dwHeight )
+                XScale++;
+        }
+    }
+    
+    ddsd2.dwHeight = dwHeight / ( 1 << YScale );
+    ddsd2.dwWidth = dwWidth / ( 1 << XScale );
+    
+    if (pdd->CreateSurface(&ddsd2, &pdds, NULL) != DD_OK)
+        return NULL;
 
 
-	if (bPrimaryPalettized)
-	{
-		ddpal = DDLoadPalette( pdd ,"data\\pictures\\pal.bmp");
-	}else{
-		ddpal = DDLoadPalette( pdd , szBitmap );
-	}
-	pdds->SetPalette( ddpal );
+    if (bPrimaryPalettized)
+    {
+        ddpal = DDLoadPalette( pdd ,"data\\pictures\\pal.bmp");
+    }else{
+        ddpal = DDLoadPalette( pdd , szBitmap );
+    }
+    pdds->SetPalette( ddpal );
 
     DDCopyBitmap(pdds, hbm, 0, 0, 0, 0);
 
@@ -704,14 +704,14 @@ IDirectDrawSurface * DDLoadBitmapTexture(IDirectDraw *pdd, LPCSTR szBitmap, LPDD
 /*Build the MipMaps for a MIPMAPDESC structure with the toplevel filled*/
 int FindMipMapLod( int Width , int Height , int Count )
 {
-	Width /= 2;
-	Height /= 2;
+    Width /= 2;
+    Height /= 2;
 
-	if( Width < MIPMAPMIN || Height < MIPMAPMIN || Count >= MAXMIPMAP )
-		return Count;
+    if( Width < MIPMAPMIN || Height < MIPMAPMIN || Count >= MAXMIPMAP )
+        return Count;
 
 
-	return FindMipMapLod( Width , Height , Count+1 );
+    return FindMipMapLod( Width , Height , Count+1 );
 }
 
 
@@ -720,127 +720,127 @@ IDirectDrawSurface * DDLoadBitmapTextureMipMap(IDirectDraw *pdd, LPCSTR szBitmap
     HBITMAP             hbm;
     BITMAP              bm;
     IDirectDrawSurface *pdds;
-	DDSURFACEDESC ddsd2;
+    DDSURFACEDESC ddsd2;
     DWORD dwWidth, dwHeight;
-	LPDIRECTDRAWPALETTE ddpal;
-	int LodCount;
-	int LOD;
-	int XScale,YScale;
-	DDSCAPS ddscaps;
-	HRESULT ddrval;
-	LPDIRECTDRAWSURFACE lpDDS_top;    
+    LPDIRECTDRAWPALETTE ddpal;
+    int LodCount;
+    int LOD;
+    int XScale,YScale;
+    DDSCAPS ddscaps;
+    HRESULT ddrval;
+    LPDIRECTDRAWSURFACE lpDDS_top;    
 
-	ddsd2 = *ddsd;
-	ddsd2.dwFlags |= DDSD_CAPS;
-	ddsd2.ddsCaps.dwCaps |=	DDSCAPS_SYSTEMMEMORY;
-	hbm = (HBITMAP)LoadImage(NULL, szBitmap, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE|LR_CREATEDIBSECTION);
+    ddsd2 = *ddsd;
+    ddsd2.dwFlags |= DDSD_CAPS;
+    ddsd2.ddsCaps.dwCaps |= DDSCAPS_SYSTEMMEMORY;
+    hbm = (HBITMAP)LoadImage(NULL, szBitmap, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE|LR_CREATEDIBSECTION);
 
     if (hbm == NULL)
         return NULL;
 
-	AddFileToBat( (char *) szBitmap );
+    AddFileToBat( (char *) szBitmap );
 
     //
     // get size of the bitmap
     //
     GetObject(hbm, sizeof(bm), &bm);      // get size of bitmap
 
-	dwWidth = bm.bmWidth;
-	dwHeight = bm.bmHeight;
+    dwWidth = bm.bmWidth;
+    dwHeight = bm.bmHeight;
     //
     // create a DirectDrawSurface for this bitmap
     //
     ddsd2 = *ddsd;
     ddsd2.dwSize = sizeof(DDSURFACEDESC);
 
-	XScale = Scale;
-	YScale = Scale;
-	// PowerVR Only Like Square Textures...
-	if( bSquareOnly )
-	{
-		if( dwHeight != dwWidth )
-		{
-			if( dwHeight > dwWidth )
-				YScale++;
-			if( dwWidth > dwHeight )
-				XScale++;
-		}
-	}
-	
-	ddsd2.dwHeight = dwHeight / ( 1 << YScale );
-	ddsd2.dwWidth = dwWidth / ( 1 << XScale );
+    XScale = Scale;
+    YScale = Scale;
+    // PowerVR Only Like Square Textures...
+    if( bSquareOnly )
+    {
+        if( dwHeight != dwWidth )
+        {
+            if( dwHeight > dwWidth )
+                YScale++;
+            if( dwWidth > dwHeight )
+                XScale++;
+        }
+    }
+    
+    ddsd2.dwHeight = dwHeight / ( 1 << YScale );
+    ddsd2.dwWidth = dwWidth / ( 1 << XScale );
 
-	ddsd2.dwFlags = DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH | DDSD_PIXELFORMAT
-		| DDSD_MIPMAPCOUNT;
-	ddsd2.dwMipMapCount= LodCount = FindMipMapLod( ddsd2.dwWidth , ddsd2.dwHeight , 1 );
+    ddsd2.dwFlags = DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH | DDSD_PIXELFORMAT
+        | DDSD_MIPMAPCOUNT;
+    ddsd2.dwMipMapCount= LodCount = FindMipMapLod( ddsd2.dwWidth , ddsd2.dwHeight , 1 );
 
-	ddsd2.ddsCaps.dwCaps = DDSCAPS_TEXTURE | DDSCAPS_COMPLEX | DDSCAPS_MIPMAP | DDSCAPS_SYSTEMMEMORY;
-	ddsd2.dwHeight = dwHeight;
-	ddsd2.dwWidth = dwWidth;
+    ddsd2.ddsCaps.dwCaps = DDSCAPS_TEXTURE | DDSCAPS_COMPLEX | DDSCAPS_MIPMAP | DDSCAPS_SYSTEMMEMORY;
+    ddsd2.dwHeight = dwHeight;
+    ddsd2.dwWidth = dwWidth;
 
-	if (pdd->CreateSurface(&ddsd2, &pdds, NULL) != DD_OK)
-		return NULL;
+    if (pdd->CreateSurface(&ddsd2, &pdds, NULL) != DD_OK)
+        return NULL;
 
-	lpDDS_top = pdds;    
+    lpDDS_top = pdds;    
 
-	if (bPrimaryPalettized)
-	{
-		ddpal = DDLoadPalette( pdd ,"data\\pictures\\pal.bmp");
-	}else{
-		ddpal = DDLoadPalette( pdd , szBitmap );
-	}
-	pdds->SetPalette( ddpal );
+    if (bPrimaryPalettized)
+    {
+        ddpal = DDLoadPalette( pdd ,"data\\pictures\\pal.bmp");
+    }else{
+        ddpal = DDLoadPalette( pdd , szBitmap );
+    }
+    pdds->SetPalette( ddpal );
 
-	ddscaps.dwCaps=DDSCAPS_TEXTURE | DDSCAPS_MIPMAP;
+    ddscaps.dwCaps=DDSCAPS_TEXTURE | DDSCAPS_MIPMAP;
 
-	for(LOD=0;LOD<LodCount;LOD++)
-	{
+    for(LOD=0;LOD<LodCount;LOD++)
+    {
 #if 0
 
-		memset(&ddsd2, 0, sizeof(DDSURFACEDESC));
-		ddsd2.dwSize = sizeof(DDSURFACEDESC);
-		ddrval = pdds->Lock( NULL, &ddsd2, 0, NULL);
-		if (ddrval != DD_OK) 
-		{
-			switch( ddrval )
-			{
-			case DDERR_INVALIDOBJECT:
-				pdds->Release();
-				return NULL;
-			case DDERR_INVALIDPARAMS: 
-				pdds->Release();
-				return NULL;
-			case DDERR_OUTOFMEMORY: 
-				pdds->Release();
-				return NULL;
-			case DDERR_SURFACEBUSY: 
-				pdds->Release();
-				return NULL;
-			case DDERR_SURFACELOST: 
-				pdds->Release();
-				return NULL;
-			case DDERR_WASSTILLDRAWING:
-				pdds->Release();
-				return NULL;
-			}
+        memset(&ddsd2, 0, sizeof(DDSURFACEDESC));
+        ddsd2.dwSize = sizeof(DDSURFACEDESC);
+        ddrval = pdds->Lock( NULL, &ddsd2, 0, NULL);
+        if (ddrval != DD_OK) 
+        {
+            switch( ddrval )
+            {
+            case DDERR_INVALIDOBJECT:
+                pdds->Release();
+                return NULL;
+            case DDERR_INVALIDPARAMS: 
+                pdds->Release();
+                return NULL;
+            case DDERR_OUTOFMEMORY: 
+                pdds->Release();
+                return NULL;
+            case DDERR_SURFACEBUSY: 
+                pdds->Release();
+                return NULL;
+            case DDERR_SURFACELOST: 
+                pdds->Release();
+                return NULL;
+            case DDERR_WASSTILLDRAWING:
+                pdds->Release();
+                return NULL;
+            }
 
 
 
-			pdds->Release();
-			return NULL;
-		}
+            pdds->Release();
+            return NULL;
+        }
 #endif
 
-	    DDCopyBitmap(pdds, hbm, 0, 0, 0, 0);
-		/*Get the next mipmap level*/
-		ddrval=pdds->GetAttachedSurface( &ddscaps, &pdds);
-		
-		if(ddrval!=DD_OK && pdds!=NULL)
-		{
-			pdds->Release();
-			return NULL;
-		}
-	}
+        DDCopyBitmap(pdds, hbm, 0, 0, 0, 0);
+        /*Get the next mipmap level*/
+        ddrval=pdds->GetAttachedSurface( &ddscaps, &pdds);
+        
+        if(ddrval!=DD_OK && pdds!=NULL)
+        {
+            pdds->Release();
+            return NULL;
+        }
+    }
 
     DeleteObject(hbm);
     return lpDDS_top;
@@ -864,7 +864,7 @@ extern "C" BOOL HasBmpGotRealBlack( LPCSTR szBitmap)
 //    LPBITMAPINFOHEADER  lpbi;
     PALETTEENTRY        ape[256];
 //    RGBQUAD *           prgb;
-	BOOL	RealBlack = FALSE;
+    BOOL    RealBlack = FALSE;
 
     //
     // get a pointer to the bitmap resource.
@@ -900,7 +900,7 @@ extern "C" BOOL HasBmpGotRealBlack( LPCSTR szBitmap)
     }
     else
 #endif
-		if (szBitmap && (fh = _lopen(szBitmap, OF_READ)) != -1)
+        if (szBitmap && (fh = _lopen(szBitmap, OF_READ)) != -1)
     {
         BITMAPFILEHEADER bf;
         BITMAPINFOHEADER bi;
@@ -928,18 +928,15 @@ extern "C" BOOL HasBmpGotRealBlack( LPCSTR szBitmap)
             BYTE r = ape[i].peRed;
             ape[i].peRed  = ape[i].peBlue;
             ape[i].peBlue = r;
-		}
+        }
     }
-	// Only check the first colour...
-	if( n )
-		n = 1;
+    // Only check the first colour...
+    if( n )
+        n = 1;
     for(i=0; i<n; i++ )
-	{
-		if( ape[i].peRed == 0 && ape[i].peGreen == 0 && ape[i].peBlue == 0 )
-			return TRUE;
-	}
+    {
+        if( ape[i].peRed == 0 && ape[i].peGreen == 0 && ape[i].peBlue == 0 )
+            return TRUE;
+    }
     return FALSE;
 }
-
-
-

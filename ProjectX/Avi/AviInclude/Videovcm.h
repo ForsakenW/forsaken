@@ -30,8 +30,8 @@
 
 // Error codes
 
-#define VCMERR_OK		0L
-#define VCMERR_INTERNAL		-1L
+#define VCMERR_OK       0L
+#define VCMERR_INTERNAL     -1L
 
 ///////////////////////////////////////////////////////////////////////////////
 // CVideoVCM Defininition
@@ -39,78 +39,78 @@
 class CVideoVCM
 {
 public:
-	CVideoVCM ();
-	~CVideoVCM ();
+    CVideoVCM ();
+    ~CVideoVCM ();
 
 // Operations
 
-   long  vcmOpen (FOURCC fccHandler, BITMAPINFOHEADER * pbiSrc);	
-	long	vcmClose ();
+   long  vcmOpen (FOURCC fccHandler, BITMAPINFOHEADER * pbiSrc);    
+    long    vcmClose ();
 
-	long	vcmBegin (HDC hdc, float frate);
-	long	vcmEnd ();
+    long    vcmBegin (HDC hdc, float frate);
+    long    vcmEnd ();
 
-	long	vcmDrawStart (float frate);
-	long	vcmDrawStop ();
+    long    vcmDrawStart (float frate);
+    long    vcmDrawStop ();
 
-	long	vcmDraw (unsigned char * pbits, DWORD dwICflags = 0L);
-	long	vcmDrawIn (unsigned char *pbits, DWORD dwICflags = 0L);
+    long    vcmDraw (unsigned char * pbits, DWORD dwICflags = 0L);
+    long    vcmDrawIn (unsigned char *pbits, DWORD dwICflags = 0L);
 
-	inline FOURCC vcmGetFOURCC () { return m_fccHandler; }
+    inline FOURCC vcmGetFOURCC () { return m_fccHandler; }
 
 // Handles
 
-	HIC		m_hic;
-	HDC		m_hdc;
-	HDRAWDIB	m_hdd;
+    HIC     m_hic;
+    HDC     m_hdc;
+    HDRAWDIB    m_hdd;
 
-	FOURCC		m_fccHandler;
+    FOURCC      m_fccHandler;
 
 // Information
 
-	void vcmGetSrcRect (RECT * rect);
-	void vcmSetSrcRect (RECT * rect);
-	void vcmGetDestRect (RECT * rect);
-	void vcmSetDestRect (RECT * rect);
-	void vcmGetOutRect (RECT * rect);
-	void vcmSetOutRect (RECT * rect);
-	void vcmGetWndRect (RECT * rect);
+    void vcmGetSrcRect (RECT * rect);
+    void vcmSetSrcRect (RECT * rect);
+    void vcmGetDestRect (RECT * rect);
+    void vcmSetDestRect (RECT * rect);
+    void vcmGetOutRect (RECT * rect);
+    void vcmSetOutRect (RECT * rect);
+    void vcmGetWndRect (RECT * rect);
    long vcmGetBoundRect(RECT * rect);
 
-	void vcmGetSrcBi (BITMAPINFOHEADER * pbiSrc);
-	void vcmSetSrcBi (BITMAPINFOHEADER * pbiSrc);
-	void vcmGetDestBi (BITMAPINFOHEADER * pbiDst);
-	void vcmSetDestBi (BITMAPINFOHEADER * pbiDst);
-	
-	long vcmQueryDest (BITMAPINFOHEADER * pbiDst,
-	                   int x = 0, int y = 0, int dx = 0, int dy = 0);
+    void vcmGetSrcBi (BITMAPINFOHEADER * pbiSrc);
+    void vcmSetSrcBi (BITMAPINFOHEADER * pbiSrc);
+    void vcmGetDestBi (BITMAPINFOHEADER * pbiDst);
+    void vcmSetDestBi (BITMAPINFOHEADER * pbiDst);
+    
+    long vcmQueryDest (BITMAPINFOHEADER * pbiDst,
+                       int x = 0, int y = 0, int dx = 0, int dy = 0);
 
 // Indeo(R) Video Interactive operations
 
-	void vcmGetBSC (long *bval, long *sval, long *cval, BOOL fDefault); // -255 to +255
-	void vcmSetBSC (long bval, long sval, long cval, BOOL fDefault);    // -255 to +255
-	void vcmGetScalability (float frate, int *cpu_percentage, BOOL fDefault);
-	void vcmSetScalability (float frate, int cpu_percentage, BOOL fDefault);
+    void vcmGetBSC (long *bval, long *sval, long *cval, BOOL fDefault); // -255 to +255
+    void vcmSetBSC (long bval, long sval, long cval, BOOL fDefault);    // -255 to +255
+    void vcmGetScalability (float frate, int *cpu_percentage, BOOL fDefault);
+    void vcmSetScalability (float frate, int cpu_percentage, BOOL fDefault);
    BOOL vcmSetZoomMode(int altMode, BOOL fDefault);
    BOOL vcmSetPalette(LOGPALETTE* pLogPal);
    BOOL vcmSetBackground(DIB* pDIB);
 
-	void vcmSetAccessKey (DWORD dwKey);
+    void vcmSetAccessKey (DWORD dwKey);
 
 protected:
-	BOOL	m_bBegun;
-	// Source, Destination, and Output
-	BITMAPINFOHEADER * m_pbiSrc;
-	BITMAPINFOHEADER * m_pbiDst;
+    BOOL    m_bBegun;
+    // Source, Destination, and Output
+    BITMAPINFOHEADER * m_pbiSrc;
+    BITMAPINFOHEADER * m_pbiDst;
 
-	long	m_xsrc, m_ysrc, m_dxsrc, m_dysrc;
-	long	m_xdst, m_ydst, m_dxdst, m_dydst;
-	long	m_xout, m_yout, m_dxout, m_dyout;
-	long	m_xwnd, m_ywnd, m_dxwnd, m_dywnd;
+    long    m_xsrc, m_ysrc, m_dxsrc, m_dysrc;
+    long    m_xdst, m_ydst, m_dxdst, m_dydst;
+    long    m_xout, m_yout, m_dxout, m_dyout;
+    long    m_xwnd, m_ywnd, m_dxwnd, m_dywnd;
 
-	// Indeo(R) Video Interactive specific structures
-	R4_DEC_SEQ_DATA   m_r4seqCurrent, m_r4seqDefault;
-	R4_DEC_FRAME_DATA m_r4frameCurrent, m_r4frameDefault;
+    // Indeo(R) Video Interactive specific structures
+    R4_DEC_SEQ_DATA   m_r4seqCurrent, m_r4seqDefault;
+    R4_DEC_FRAME_DATA m_r4frameCurrent, m_r4frameDefault;
 
    // bounding rectangles for transparencies   
    R4_RECT m_r4BR;  
@@ -119,22 +119,22 @@ protected:
    // DIBs for transparency background
    DIB* m_pDIB;
    DIB* m_pBG;
-	
-	// DIB Section
-	HBITMAP m_hDIBSection;
-	unsigned char * m_pDIBSection;
+    
+    // DIB Section
+    HBITMAP m_hDIBSection;
+    unsigned char * m_pDIBSection;
 public:
-	HPALETTE	m_hpalSection;
+    HPALETTE    m_hpalSection;
 
 private:
-	
-	// Temporary buffer used internally
-	int		m_cbuf;
-	unsigned char *	m_pbuf;
+    
+    // Temporary buffer used internally
+    int     m_cbuf;
+    unsigned char * m_pbuf;
 
-	HDC		m_hmemDC;
-	HBITMAP		m_hbmOld;
-	HPALETTE	m_hpalOld_DC, m_hpalOld_MemDC;
+    HDC     m_hmemDC;
+    HBITMAP     m_hbmOld;
+    HPALETTE    m_hpalOld_DC, m_hpalOld_MemDC;
 };
 
 #endif // _AVIVCM_H_

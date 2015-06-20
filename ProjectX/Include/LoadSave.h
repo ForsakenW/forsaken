@@ -63,14 +63,14 @@
  */
 #define SAVEGAME_SLOTS
 
-#define SAVEGAME_FOLDER			"Savegame"
-#define SNAPSHOT_FOLDER			"Screenshots"
-#define FMVSNAPSHOT_FOLDER		"Screens"
-#define SAVEGAME_EXTENSION		".SAV"
-#define SAVEGAME_FILESPEC		"save??"
-#define SAVEGAMEPIC_EXTENSION	".PPM"
+#define SAVEGAME_FOLDER         "Savegame"
+#define SNAPSHOT_FOLDER         "Screenshots"
+#define FMVSNAPSHOT_FOLDER      "Screens"
+#define SAVEGAME_EXTENSION      ".SAV"
+#define SAVEGAME_FILESPEC       "save??"
+#define SAVEGAMEPIC_EXTENSION   ".PPM"
 
-#define	LOADSAVE_VERSION_NUMBER	5
+#define LOADSAVE_VERSION_NUMBER 5
 
 /*
  * fn prototypes
@@ -83,5 +83,5 @@ char *SaveGamePicFileName( int slot );
 char *SavedGameInfo( int slot );
 char *GetMissionName( char *levelname );
 BOOL SaveGameSlotUsed( int slot );
-#endif	// LOADSAVE_INCLUDED
+#endif  // LOADSAVE_INCLUDED
 

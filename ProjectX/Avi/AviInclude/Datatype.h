@@ -94,10 +94,10 @@ typedef double         Dbl;
 #define HUGE _huge
 
 #ifndef _INC_TCHAR
-typedef char far *			LPTSTR;
-typedef const char far *	LPCTSTR;
-typedef char				TCHAR;
-#define TEXT(quote)			quote
+typedef char far *          LPTSTR;
+typedef const char far *    LPCTSTR;
+typedef char                TCHAR;
+#define TEXT(quote)         quote
 #endif
 #ifndef BOOLEAN
 typedef char BOOLEAN;
@@ -243,18 +243,18 @@ typedef NaturalInt FAR *       FPNaturalInt;
 typedef NaturalUnsigned FAR *  FPNaturalUnsigned;
 
 /* logical types */
-typedef NaturalInt		Boo;    /* was U32 */
-typedef Boo				Boolean;
-typedef Boo*			pBoo;
+typedef NaturalInt      Boo;    /* was U32 */
+typedef Boo             Boolean;
+typedef Boo*            pBoo;
 
 /* BGR_ENTRY
  * The BGR_ENTRY structure is used to define one color.
  */
 typedef struct {
-	U8 u8B;
-	U8 u8G;
-	U8 u8R;
-	U8 u8Reserved;
+    U8 u8B;
+    U8 u8G;
+    U8 u8R;
+    U8 u8Reserved;
 } BGR_ENTRY;
 typedef BGR_ENTRY FAR * PTR_BGR_ENTRY;
 
@@ -273,7 +273,7 @@ typedef void HUGE * VOID_HUGE_PTR;
 typedef void NEAR * MUTEX_HANDLE;
 typedef void NEAR * VOID_INSTANCE_PTR;
 
-#define PChr	PU8
+#define PChr    PU8
 #define TRUE  1
 #define FALSE 0
 

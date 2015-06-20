@@ -81,9 +81,9 @@
 #include "typedefs.h"
 #include "d3dappi.h"
 
-int default_width	= 0;
-int default_height	= 0;
-int default_bpp		= 0;
+int default_width   = 0;
+int default_height  = 0;
+int default_bpp     = 0;
 
 
 /***************************************************************************/
@@ -235,26 +235,26 @@ D3DAppIPickDisplayMode(int *mode, DWORD depths)
 {
     int i, j;
 #if 1
-	int wmin, hmin, bppmin, default_mode;
+    int wmin, hmin, bppmin, default_mode;
 
-	wmin = hmin = bppmin = 9999;
-	default_mode = 0;
+    wmin = hmin = bppmin = 9999;
+    default_mode = 0;
     for (i = 0; i < d3dappi.NumModes; i++)
-	{
+    {
         if ( ( D3DAppIBPPToDDBD(d3dappi.Mode[i].bpp) & depths ) &&
-			d3dappi.Mode[i].bpp >= 16 &&
-			bppmin >= d3dappi.Mode[i].bpp &&
-			wmin >= d3dappi.Mode[i].w &&
-			hmin >= d3dappi.Mode[i].h )
-		{
-			wmin = d3dappi.Mode[i].w;
-			hmin = d3dappi.Mode[i].h;
-			bppmin = d3dappi.Mode[i].bpp;
-			default_mode = i;
-		}
-	}
-	j = default_mode;
-	wmin = hmin = bppmin = 9999;
+            d3dappi.Mode[i].bpp >= 16 &&
+            bppmin >= d3dappi.Mode[i].bpp &&
+            wmin >= d3dappi.Mode[i].w &&
+            hmin >= d3dappi.Mode[i].h )
+        {
+            wmin = d3dappi.Mode[i].w;
+            hmin = d3dappi.Mode[i].h;
+            bppmin = d3dappi.Mode[i].bpp;
+            default_mode = i;
+        }
+    }
+    j = default_mode;
+    wmin = hmin = bppmin = 9999;
 #else
     for (i = 0; i < d3dappi.NumModes; i++)
         if (D3DAppIBPPToDDBD(d3dappi.Mode[i].bpp) & depths)
@@ -269,31 +269,31 @@ D3DAppIPickDisplayMode(int *mode, DWORD depths)
         if (!(D3DAppIBPPToDDBD(d3dappi.Mode[i].bpp) & depths))
             continue;
 #if 1
-		if ( ( !default_bpp || d3dappi.Mode[i].bpp == default_bpp ) &&
-			 ( !default_width ||d3dappi.Mode[i].w == default_width ) &&
-			 ( !default_height || d3dappi.Mode[i].h == default_height ) )
-		{
-			if ( !default_width || !default_height || !default_bpp )
-			{
-				if ( ( default_width || wmin >= d3dappi.Mode[i].w ) &&
-					 ( default_height || hmin >= d3dappi.Mode[i].h ) &&
-					 ( default_bpp || bppmin >= d3dappi.Mode[i].bpp ) )
-				{
-					if ( !default_width )
-						wmin = d3dappi.Mode[i].w;
-					if ( !default_height )
-						hmin = d3dappi.Mode[i].h;
-					if ( !default_bpp )
-						bppmin = d3dappi.Mode[i].bpp;
-					j = i;
-				}
-			}
-			else
-			{
-				j = i;
-				break;
-			}
-		}
+        if ( ( !default_bpp || d3dappi.Mode[i].bpp == default_bpp ) &&
+             ( !default_width ||d3dappi.Mode[i].w == default_width ) &&
+             ( !default_height || d3dappi.Mode[i].h == default_height ) )
+        {
+            if ( !default_width || !default_height || !default_bpp )
+            {
+                if ( ( default_width || wmin >= d3dappi.Mode[i].w ) &&
+                     ( default_height || hmin >= d3dappi.Mode[i].h ) &&
+                     ( default_bpp || bppmin >= d3dappi.Mode[i].bpp ) )
+                {
+                    if ( !default_width )
+                        wmin = d3dappi.Mode[i].w;
+                    if ( !default_height )
+                        hmin = d3dappi.Mode[i].h;
+                    if ( !default_bpp )
+                        bppmin = d3dappi.Mode[i].bpp;
+                    j = i;
+                }
+            }
+            else
+            {
+                j = i;
+                break;
+            }
+        }
 #else
         if (d3dappi.Mode[i].w == default_width && d3dappi.Mode[i].h == default_height &&
             d3dappi.Mode[i].bpp == default_bpp) {
@@ -311,7 +311,7 @@ D3DAppIPickDisplayMode(int *mode, DWORD depths)
     return TRUE;
 }
 
-BOOL	FirstTime = TRUE;
+BOOL    FirstTime = TRUE;
 /*
  * D3DAppIVerifyDriverAndMode
  * Verifies the selected driver and mode combination.  If the driver is
@@ -389,11 +389,11 @@ D3DAppIVerifyDriverAndMode(int* lpdriver, int* lpmode)
     }
 
 #ifdef SELF_PLAY
-	if ( driver < 2 ) // only permit HAL for self-playing demo for hardware card manufacturers
-	{
-		D3DAppISetErrorString( "No D3D hardware driver found\n" );
-		goto exit_with_error;
-	}
+    if ( driver < 2 ) // only permit HAL for self-playing demo for hardware card manufacturers
+    {
+        D3DAppISetErrorString( "No D3D hardware driver found\n" );
+        goto exit_with_error;
+    }
 #endif
     /* 
      * At this stage, I have a driver I want to match the mode to.
@@ -409,7 +409,7 @@ D3DAppIVerifyDriverAndMode(int* lpdriver, int* lpmode)
                 goto ret_ok;
             }
         }
-		FirstTime = FALSE;
+        FirstTime = FALSE;
         /*
          * Either this is not a primary DD device or the driver cannot use
          * the Windows display depth

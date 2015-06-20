@@ -44,15 +44,15 @@
 #define MAXTRANSEXE 128
 
 typedef struct _TRANSEXE{
-	 int	UseIdentity;
-	 D3DMATRIX  Matrix;
-	LPDIRECT3DEXECUTEBUFFER	lpExBuf;
-	int16		NumVerts;
-	uint16		Model;
-	uint16		group;
+     int    UseIdentity;
+     D3DMATRIX  Matrix;
+    LPDIRECT3DEXECUTEBUFFER lpExBuf;
+    int16       NumVerts;
+    uint16      Model;
+    uint16      group;
 }TRANSEXE;
 
-extern int16	NumOfTransExe;
+extern int16    NumOfTransExe;
 
 /*
  * fn prototypes
@@ -62,4 +62,4 @@ void AddTransExe( LPD3DMATRIX Matrix , LPDIRECT3DEXECUTEBUFFER lpExBuf , int Use
 void ExecuteTransExe( uint16 group );
 void ExecuteTransExeUnclipped( uint16 group );
 
-#endif	// TRANSEXE_INCLUDED
+#endif  // TRANSEXE_INCLUDED

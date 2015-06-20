@@ -17,7 +17,7 @@
 // Current multimedia variables
 Media media;
 
-BOOL	QuitIt = FALSE;
+BOOL    QuitIt = FALSE;
 //
 // CanPlay
 //
@@ -100,32 +100,32 @@ BOOL CreateFilterGraph()
 //    ASSERT(media.pGraph == NULL);
 
     hr = CoCreateInstance(&CLSID_FilterGraph,           // CLSID of object
-			  NULL,                         // Outer unknown
-			  CLSCTX_INPROC_SERVER,         // Type of server
-			  &IID_IGraphBuilder,           // Interface wanted
-			  (void **) &media.pGraph);     // Returned object
+              NULL,                         // Outer unknown
+              CLSCTX_INPROC_SERVER,         // Type of server
+              &IID_IGraphBuilder,           // Interface wanted
+              (void **) &media.pGraph);     // Returned object
     if (FAILED(hr)){
-	media.pGraph = NULL;
-	return FALSE;
+    media.pGraph = NULL;
+    return FALSE;
     }
 
 
     
-	
-	// We use this to find out events sent by the filtergraph
+    
+    // We use this to find out events sent by the filtergraph
 
     hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph, &IID_IMediaEvent, (void **) &pME);
     if (FAILED(hr)) {
-	DeleteContents();
-	return FALSE;
+    DeleteContents();
+    return FALSE;
     }
 
     hr = pME->lpVtbl->GetEventHandle(pME, (OAEVENT*) &media.hGraphNotifyEvent);
     pME->lpVtbl->Release( pME );
 
     if (FAILED(hr)) {
-	DeleteContents();
-	return FALSE;
+    DeleteContents();
+    return FALSE;
     }
 
     return TRUE;
@@ -140,8 +140,8 @@ BOOL CreateFilterGraph()
 void DeleteContents()
 {
     if (media.pGraph != NULL) {
-	media.pGraph->lpVtbl->Release( media.pGraph );
-	media.pGraph = NULL;
+    media.pGraph->lpVtbl->Release( media.pGraph );
+    media.pGraph = NULL;
     }
 
     // this event is owned by the filter graph and is thus invalid
@@ -162,8 +162,8 @@ BOOL RenderFile( LPSTR szFileName )
     DeleteContents();
 
     if ( !CreateFilterGraph() ) {
-//	PlayerMessageBox( IDS_CANT_INIT_QUARTZ );
-	return FALSE;
+//  PlayerMessageBox( IDS_CANT_INIT_QUARTZ );
+    return FALSE;
     }
 
     MultiByteToWideChar( CP_ACP, 0, szFileName, -1, wPath, MAX_PATH );
@@ -173,8 +173,8 @@ BOOL RenderFile( LPSTR szFileName )
     SetCursor( LoadCursor( NULL, IDC_ARROW ) );
 
     if (FAILED( hr )) {
-//	PlayerMessageBox( IDS_CANT_RENDER_FILE );
-	return FALSE;
+//  PlayerMessageBox( IDS_CANT_RENDER_FILE );
+    return FALSE;
     }
     return TRUE;
 
@@ -192,15 +192,15 @@ void OpenMediaFile( HWND hwnd, LPSTR szFile )
 
     if( szFile != NULL && RenderFile( szFile ))
     {
-	LPSTR szTitle;
+    LPSTR szTitle;
 
-	// Work out the full path name and the file name from the
-	// specified file
-	GetFullPathName( szFile, _MAX_PATH, szFileName, &szTitle );
-	strncpy( szTitleName, szTitle, _MAX_FNAME + _MAX_EXT );
-	szTitleName[ _MAX_FNAME + _MAX_EXT -1 ] = '\0';
+    // Work out the full path name and the file name from the
+    // specified file
+    GetFullPathName( szFile, _MAX_PATH, szFileName, &szTitle );
+    strncpy( szTitleName, szTitle, _MAX_FNAME + _MAX_EXT );
+    szTitleName[ _MAX_FNAME + _MAX_EXT -1 ] = '\0';
 
-	ChangeStateTo( Stopped );
+    ChangeStateTo( Stopped );
 
     }
 
@@ -222,46 +222,46 @@ void OpenMediaFile( HWND hwnd, LPSTR szFile )
 void OnMediaPlay()
 {
     if( CanPlay() ){
-	HRESULT hr;
-	IMediaControl *pMC;
+    HRESULT hr;
+    IMediaControl *pMC;
 
-	// Obtain the interface to our filter graph
-	hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph, &IID_IMediaControl, (void **) &pMC);
+    // Obtain the interface to our filter graph
+    hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph, &IID_IMediaControl, (void **) &pMC);
 
-	if( SUCCEEDED(hr) ){
+    if( SUCCEEDED(hr) ){
 #ifdef REWIND
-	    IMediaPosition * pMP;
-	    hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph,
-		                                      &IID_IMediaPosition,
-		                                      (void**) &pMP);
-	    if (SUCCEEDED(hr)) {
-		// start from last position, but rewind if near the end
-		REFTIME tCurrent, tLength;
-		hr = pMP->lpVtbl->get_Duration(pMP, &tLength);
-		if (SUCCEEDED(hr)) {
-		    hr = pMP->lpVtbl->get_CurrentPosition(pMP, &tCurrent);
-		    if (SUCCEEDED(hr)) {
-			// within 1sec of end? (or past end?)
-			if ((tLength - tCurrent) < 1) {
-			    pMP->lpVtbl->put_CurrentPosition(pMP, 0);
-			}
-		    }
-		}
-		pMP->lpVtbl->Release(pMP);
-	    }
+        IMediaPosition * pMP;
+        hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph,
+                                              &IID_IMediaPosition,
+                                              (void**) &pMP);
+        if (SUCCEEDED(hr)) {
+        // start from last position, but rewind if near the end
+        REFTIME tCurrent, tLength;
+        hr = pMP->lpVtbl->get_Duration(pMP, &tLength);
+        if (SUCCEEDED(hr)) {
+            hr = pMP->lpVtbl->get_CurrentPosition(pMP, &tCurrent);
+            if (SUCCEEDED(hr)) {
+            // within 1sec of end? (or past end?)
+            if ((tLength - tCurrent) < 1) {
+                pMP->lpVtbl->put_CurrentPosition(pMP, 0);
+            }
+            }
+        }
+        pMP->lpVtbl->Release(pMP);
+        }
 #endif
-	    // Ask the filter graph to play and release the interface
-	    hr = pMC->lpVtbl->Run( pMC );
-	    pMC->lpVtbl->Release( pMC );
+        // Ask the filter graph to play and release the interface
+        hr = pMC->lpVtbl->Run( pMC );
+        pMC->lpVtbl->Release( pMC );
 
-	    if( SUCCEEDED(hr) ){
-		ChangeStateTo( Playing );
-		return;
-	    }
-	}
+        if( SUCCEEDED(hr) ){
+        ChangeStateTo( Playing );
+        return;
+        }
+    }
 
-	// Inform the user that an error occurred
-//	PlayerMessageBox( IDS_CANT_PLAY );
+    // Inform the user that an error occurred
+//  PlayerMessageBox( IDS_CANT_PLAY );
 
     }
 
@@ -274,25 +274,25 @@ void OnMediaPlay()
 void OnMediaPause()
 {
     if( CanPause() ){
-	HRESULT hr;
-	IMediaControl *pMC;
+    HRESULT hr;
+    IMediaControl *pMC;
 
-	// Obtain the interface to our filter graph
-	hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph, &IID_IMediaControl, (void **) &pMC);
+    // Obtain the interface to our filter graph
+    hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph, &IID_IMediaControl, (void **) &pMC);
 
-	if( SUCCEEDED(hr) ){
-	    // Ask the filter graph to pause and release the interface
-	    hr = pMC->lpVtbl->Pause( pMC );
-	    pMC->lpVtbl->Release( pMC );
+    if( SUCCEEDED(hr) ){
+        // Ask the filter graph to pause and release the interface
+        hr = pMC->lpVtbl->Pause( pMC );
+        pMC->lpVtbl->Release( pMC );
 
-	    if( SUCCEEDED(hr) ){
-		ChangeStateTo( Paused );
-		return;
-	    }
-	}
+        if( SUCCEEDED(hr) ){
+        ChangeStateTo( Paused );
+        return;
+        }
+    }
 
-	// Inform the user that an error occurred
-//	PlayerMessageBox( IDS_CANT_PAUSE );
+    // Inform the user that an error occurred
+//  PlayerMessageBox( IDS_CANT_PAUSE );
     }
 
 } // OnMediaPause
@@ -307,45 +307,45 @@ void OnMediaAbortStop(void)
 {
     if(CanStop())
     {
-	HRESULT hr;
-	IMediaControl *pMC;
+    HRESULT hr;
+    IMediaControl *pMC;
 
-	// Obtain the interface to our filter graph
-	hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph, &IID_IMediaControl, (void **) &pMC);
+    // Obtain the interface to our filter graph
+    hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph, &IID_IMediaControl, (void **) &pMC);
 
-	if( SUCCEEDED(hr) ){
+    if( SUCCEEDED(hr) ){
 #ifdef FROM_START
-	    IMediaPosition * pMP;
+        IMediaPosition * pMP;
 #endif
-	    // Ask the filter graph to stop and release the interface
-	    hr = pMC->lpVtbl->Stop( pMC );
-	    pMC->lpVtbl->Release( pMC );
+        // Ask the filter graph to stop and release the interface
+        hr = pMC->lpVtbl->Stop( pMC );
+        pMC->lpVtbl->Release( pMC );
 
 #ifdef FROM_START
 
-	    // if we want always to play from the beginning
-	    // then we should seek back to the start here
-	    // (on app or user stop request, and also after EC_COMPLETE).
-	    hr = media.pGraph->lpVtbl->QueryInterface(
-			media.pGraph,
-			&IID_IMediaPosition,
-			(void**) &pMP);
-	    if (SUCCEEDED(hr)) {
-		pMP->lpVtbl->put_CurrentPosition(pMP, 0);
-		pMP->lpVtbl->Release(pMP);
-	    }
+        // if we want always to play from the beginning
+        // then we should seek back to the start here
+        // (on app or user stop request, and also after EC_COMPLETE).
+        hr = media.pGraph->lpVtbl->QueryInterface(
+            media.pGraph,
+            &IID_IMediaPosition,
+            (void**) &pMP);
+        if (SUCCEEDED(hr)) {
+        pMP->lpVtbl->put_CurrentPosition(pMP, 0);
+        pMP->lpVtbl->Release(pMP);
+        }
 
-	    // no visible rewind or we will re-show the window!
+        // no visible rewind or we will re-show the window!
 
 #endif
 
-	    if( SUCCEEDED(hr) ){
-		ChangeStateTo( Stopped );
-		return;
-	    }
-	}
-	// Inform the user that an error occurred
-//	PlayerMessageBox( IDS_CANT_STOP );
+        if( SUCCEEDED(hr) ){
+        ChangeStateTo( Stopped );
+        return;
+        }
+    }
+    // Inform the user that an error occurred
+//  PlayerMessageBox( IDS_CANT_STOP );
     }
 
 } // OnMediaAbortStop
@@ -364,46 +364,46 @@ void OnMediaAbortStop(void)
 void OnMediaStop()
 {
     if( CanStop() ){
-	HRESULT hr;
-	IMediaControl *pMC;
+    HRESULT hr;
+    IMediaControl *pMC;
 
-	// Obtain the interface to our filter graph
-	hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph, &IID_IMediaControl, (void **) &pMC);
-	if( SUCCEEDED(hr) ){
+    // Obtain the interface to our filter graph
+    hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph, &IID_IMediaControl, (void **) &pMC);
+    if( SUCCEEDED(hr) ){
 
 #ifdef FROM_START
-	    IMediaPosition * pMP;
-	    OAFilterState state;
+        IMediaPosition * pMP;
+        OAFilterState state;
 
-	    // Ask the filter graph to pause
-	    hr = pMC->lpVtbl->Pause( pMC );
+        // Ask the filter graph to pause
+        hr = pMC->lpVtbl->Pause( pMC );
 
-	    // if we want always to play from the beginning
-	    // then we should seek back to the start here
-	    // (on app or user stop request, and also after EC_COMPLETE).
-	    hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph,
-						      &IID_IMediaPosition,
-						      (void**) &pMP);
-	    if (SUCCEEDED(hr)) {
-		pMP->lpVtbl->put_CurrentPosition(pMP, 0);
-		pMP->lpVtbl->Release(pMP);
-	    }
+        // if we want always to play from the beginning
+        // then we should seek back to the start here
+        // (on app or user stop request, and also after EC_COMPLETE).
+        hr = media.pGraph->lpVtbl->QueryInterface(media.pGraph,
+                              &IID_IMediaPosition,
+                              (void**) &pMP);
+        if (SUCCEEDED(hr)) {
+        pMP->lpVtbl->put_CurrentPosition(pMP, 0);
+        pMP->lpVtbl->Release(pMP);
+        }
 
-	    // wait for pause to complete
-	    pMC->lpVtbl->GetState(pMC, INFINITE, &state);
+        // wait for pause to complete
+        pMC->lpVtbl->GetState(pMC, INFINITE, &state);
 #endif
 
-	    // now really do the stop
-	    pMC->lpVtbl->Stop( pMC );
-	    pMC->lpVtbl->Release( pMC );
-	    ChangeStateTo( Stopped );
+        // now really do the stop
+        pMC->lpVtbl->Stop( pMC );
+        pMC->lpVtbl->Release( pMC );
+        ChangeStateTo( Stopped );
 
-		QuitIt = TRUE;
-		return;
-	}
+        QuitIt = TRUE;
+        return;
+    }
 
-	// Inform the user that an error occurred
-//	PlayerMessageBox( IDS_CANT_STOP );
+    // Inform the user that an error occurred
+//  PlayerMessageBox( IDS_CANT_STOP );
     }
 
 } // OnMediaStop
@@ -435,16 +435,16 @@ void OnGraphNotify()
 //    ASSERT( media.hGraphNotifyEvent != NULL );
 
     if( SUCCEEDED(media.pGraph->lpVtbl->QueryInterface(media.pGraph, &IID_IMediaEvent, (void **) &pME))){
-	if( SUCCEEDED(pME->lpVtbl->GetEvent(pME, &lEventCode, &lParam1, &lParam2, 0))) {
-	    if (lEventCode == EC_COMPLETE) {
-//		OnMediaAbortStop();
-		OnMediaStop();
-	    } else if ((lEventCode == EC_USERABORT) ||
-		       (lEventCode == EC_ERRORABORT)) {
-		OnMediaAbortStop();
-	    }
-	}
-	pME->lpVtbl->Release( pME );
+    if( SUCCEEDED(pME->lpVtbl->GetEvent(pME, &lEventCode, &lParam1, &lParam2, 0))) {
+        if (lEventCode == EC_COMPLETE) {
+//      OnMediaAbortStop();
+        OnMediaStop();
+        } else if ((lEventCode == EC_USERABORT) ||
+               (lEventCode == EC_ERRORABORT)) {
+        OnMediaAbortStop();
+        }
+    }
+    pME->lpVtbl->Release( pME );
     }
 }
 

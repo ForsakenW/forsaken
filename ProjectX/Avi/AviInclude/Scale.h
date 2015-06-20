@@ -11,8 +11,8 @@
 
 typedef struct tagPROCESSOR
 {
-	char text [128]; // text description
-	long mhz;        // mhz in terms of Pentium(R)
+    char text [128]; // text description
+    long mhz;        // mhz in terms of Pentium(R)
 }
 PROCESSOR;
 

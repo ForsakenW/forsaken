@@ -5,7 +5,7 @@
 #define POLYS_INCLUDED
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Includes
+    Includes
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 #include <math.h>
 #include "d3dmain.h"
@@ -24,72 +24,72 @@
 #include "tload.h"
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Defines
+    Defines
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
-#define MAXPOLYS			2000
-#define	MAXPOLYVERTS		800
+#define MAXPOLYS            2000
+#define MAXPOLYVERTS        800
 
-#define	POLY_FLAG_NOTHING	0
-#define	POLY_FLAG_TWOSIDED	1
-#define	POLY_FLAG_DONTCLIP	2
-#define	POLY_FLAG_SOLID		4
+#define POLY_FLAG_NOTHING   0
+#define POLY_FLAG_TWOSIDED  1
+#define POLY_FLAG_DONTCLIP  2
+#define POLY_FLAG_SOLID     4
 
-#define	POLY_NOTHING		0
-#define	POLY_LASER			1
-#define	POLY_PULSAR_TRAIL	2
-#define	POLY_SHIELD			3
-#define	POLY_AFTERBURNER	4
-#define	POLY_SCATTER_TRAIL	5
-#define	POLY_INVBITS		6
-#define	POLY_POWERLASER		7
+#define POLY_NOTHING        0
+#define POLY_LASER          1
+#define POLY_PULSAR_TRAIL   2
+#define POLY_SHIELD         3
+#define POLY_AFTERBURNER    4
+#define POLY_SCATTER_TRAIL  5
+#define POLY_INVBITS        6
+#define POLY_POWERLASER     7
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Structures
+    Structures
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
-typedef	struct POLY_RGB {
+typedef struct POLY_RGB {
 
-	uint8	R;
-	uint8	G;
-	uint8	B;
+    uint8   R;
+    uint8   G;
+    uint8   B;
 
 } POLY_RGB;
 
 typedef struct POLY {
 
-	uint16			Next;
-	uint16			Prev;
+    uint16          Next;
+    uint16          Prev;
 
-	uint16			NextInTPage;
-	uint16			PrevInTPage;
+    uint16          NextInTPage;
+    uint16          PrevInTPage;
 
-	VECTOR			Pos1;				// Position 1
-	VECTOR			Pos2;				// Position	2
-	VECTOR			Pos3;				// Position	3
-	VECTOR			Pos4;				// Position	4
-	POLY_RGB		Col1;				// Colour 1
-	POLY_RGB		Col2;				// Colour 2
-	POLY_RGB		Col3;				// Colour 3
-	POLY_RGB		Col4;				// Colour 4
-	uint8			Trans1;				// Amount of transparency 1
-	uint8			Trans2;				// Amount of transparency 2
-	uint8			Trans3;				// Amount of transparency 3
-	uint8			Trans4;				// Amount of transparency 4
-	int16			Flags;				// Flags
-	float			Scale;				// Scale Factor
-	float			Frame;				// Animation Frame
-	float			AnimSpeed;			// Animation Speed
-	FRAME_INFO	**	Frm_Info;			// Offset Info
-	int16			SeqNum;				// Process Sequence
-	uint16			Group;				// Group
-	float			TimeStep;			// Time step for interpolation
-	QUATLERP		Qlerp;				// Quaternion Interpolation 
-	QUAT			Quat;				// Quat
-	uint16			Ship;				// Ship
+    VECTOR          Pos1;               // Position 1
+    VECTOR          Pos2;               // Position 2
+    VECTOR          Pos3;               // Position 3
+    VECTOR          Pos4;               // Position 4
+    POLY_RGB        Col1;               // Colour 1
+    POLY_RGB        Col2;               // Colour 2
+    POLY_RGB        Col3;               // Colour 3
+    POLY_RGB        Col4;               // Colour 4
+    uint8           Trans1;             // Amount of transparency 1
+    uint8           Trans2;             // Amount of transparency 2
+    uint8           Trans3;             // Amount of transparency 3
+    uint8           Trans4;             // Amount of transparency 4
+    int16           Flags;              // Flags
+    float           Scale;              // Scale Factor
+    float           Frame;              // Animation Frame
+    float           AnimSpeed;          // Animation Speed
+    FRAME_INFO  **  Frm_Info;           // Offset Info
+    int16           SeqNum;             // Process Sequence
+    uint16          Group;              // Group
+    float           TimeStep;           // Time step for interpolation
+    QUATLERP        Qlerp;              // Quaternion Interpolation 
+    QUAT            Quat;               // Quat
+    uint16          Ship;               // Ship
 
 } POLY;
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Prototypes
+    Prototypes
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void InitPolys( void );
 void KillUsedPoly( uint16 i );
@@ -102,16 +102,16 @@ void InitPolyTPages( void );
 void AddPolyToTPage( uint16 i, int16 TPage );
 void RemovePolyFromTPage( uint16 i, int16 TPage );
 BOOL DisplayGroupClippedPolys( LPDIRECT3DEXECUTEBUFFER ExecBuff, uint16 Group,
-								LPDIRECT3DDEVICE D3D_Device, LPDIRECT3DVIEWPORT D3D_ViewPort );
+                                LPDIRECT3DDEVICE D3D_Device, LPDIRECT3DVIEWPORT D3D_ViewPort );
 BOOL DisplayGroupUnclippedPolys( LPDIRECT3DEXECUTEBUFFER ExecBuff,
-								   LPDIRECT3DDEVICE D3D_Device, LPDIRECT3DVIEWPORT D3D_ViewPort );
+                                   LPDIRECT3DDEVICE D3D_Device, LPDIRECT3DVIEWPORT D3D_ViewPort );
 BOOL PolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, uint16 * NextPoly );
 BOOL PolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, uint16 * NextPoly );
 
 BOOL DisplaySolidGroupClippedPolys( LPDIRECT3DEXECUTEBUFFER ExecBuff, uint16 Group,
-								LPDIRECT3DDEVICE D3D_Device, LPDIRECT3DVIEWPORT D3D_ViewPort );
+                                LPDIRECT3DDEVICE D3D_Device, LPDIRECT3DVIEWPORT D3D_ViewPort );
 BOOL DisplaySolidGroupUnclippedPolys( LPDIRECT3DEXECUTEBUFFER ExecBuff,
-								   LPDIRECT3DDEVICE D3D_Device, LPDIRECT3DVIEWPORT D3D_ViewPort );
+                                   LPDIRECT3DDEVICE D3D_Device, LPDIRECT3DVIEWPORT D3D_ViewPort );
 BOOL SolidPolyDispGroupClipped( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, uint16 * NextPoly );
 BOOL SolidPolyDispGroupUnclipped( LPDIRECT3DEXECUTEBUFFER ExecBuffer, int16 * TPage, uint16 * NextPoly );
 

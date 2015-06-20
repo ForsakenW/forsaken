@@ -10,6 +10,6 @@
 //--------------------------------------------------------------------------;
 
 // Precomplied header file
-#define	INITGUID
+#define INITGUID
 #include "stdwin.h"
 

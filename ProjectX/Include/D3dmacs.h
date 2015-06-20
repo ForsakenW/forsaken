@@ -35,9 +35,9 @@
 #ifndef __cplusplus
 #define MAKE_MATRIX(lpDev, handle, data) \
 {   if (lpDev->lpVtbl->CreateMatrix(lpDev, &handle) != D3D_OK) \
-    	return FALSE; \
+        return FALSE; \
     if (lpDev->lpVtbl->SetMatrix(lpDev, handle, &data) != D3D_OK) \
-    	return FALSE; \
+        return FALSE; \
 }
 #define RELEASE(x) {if (x != NULL) {x->lpVtbl->Release(x); x = NULL;}}
 #endif
@@ -45,9 +45,9 @@
 #ifdef __cplusplus
 #define MAKE_MATRIX(lpDev, handle, data) \
 {   if (lpDev->CreateMatrix(&handle) != D3D_OK) \
-    	return FALSE; \
+        return FALSE; \
     if (lpDev->SetMatrix(handle, &data) != D3D_OK) \
-    	return FALSE; \
+        return FALSE; \
 }
 #define RELEASE(x) {if (x != NULL) {x->Release(); x = NULL;}}
 #endif

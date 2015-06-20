@@ -55,10 +55,10 @@ void MakeRegionPresent(volatile BYTE *pb, UINT cb);
 #undef realloc
 #undef free
 
-#define malloc( S )		X_malloc( (S), __FILE__, __LINE__ )
-#define calloc( N, S )	X_calloc( (N), (S), __FILE__, __LINE__ )
-#define realloc( P, S )	X_realloc( (P), (S), __FILE__, __LINE__ )
-#define free( P )		X_free( (P), __FILE__, __LINE__ )
+#define malloc( S )     X_malloc( (S), __FILE__, __LINE__ )
+#define calloc( N, S )  X_calloc( (N), (S), __FILE__, __LINE__ )
+#define realloc( P, S ) X_realloc( (P), (S), __FILE__, __LINE__ )
+#define free( P )       X_free( (P), __FILE__, __LINE__ )
 
 void XMem_Init( void );
 void * X_calloc( size_t num,size_t size, char *in_file, int in_line );
@@ -71,5 +71,5 @@ int UnMallocedBlocks( void );
 #endif
 
 
-#endif	// XMEM_INCLUDED
+#endif  // XMEM_INCLUDED
 

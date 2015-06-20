@@ -138,24 +138,24 @@ extern int default_width;
 extern int default_height;
 extern int default_bpp;
 
-extern	int		ScreenMemory;
-extern	BOOL	Is3Dfx;
+extern  int     ScreenMemory;
+extern  BOOL    Is3Dfx;
 extern BOOL PreventFlips;
 
 BOOL CanDoStrechBlt = TRUE;
-BOOL	TripleBuffer = FALSE;
+BOOL    TripleBuffer = FALSE;
 BOOL CanRenderWindowed;
 
 #ifdef SOFTWARE_ENABLE
-extern	BOOL	SoftwareVersion;
+extern  BOOL    SoftwareVersion;
 #endif
 BOOL  IsEqualGuid(GUID *lpguid1, GUID *lpguid2);
 
-extern	LPGUID	DeviceGuidPnt;
-extern	GUID	DeviceGuid;
+extern  LPGUID  DeviceGuidPnt;
+extern  GUID    DeviceGuid;
 
-int ddcount3d = 0;	// number of 3D DD devices
-int ddchosen3d = 0;	// currently selected one
+int ddcount3d = 0;  // number of 3D DD devices
+int ddchosen3d = 0; // currently selected one
 
 /***************************************************************************/
 /*                         Direct Draw Creation                            */
@@ -173,14 +173,14 @@ BOOL FAR PASCAL D3DAppIDDEnumCallback(GUID FAR* lpGUID, LPSTR lpDriverDesc,
     LPDIRECTDRAW lpDD;
     DDCAPS DriverCaps, HELCaps;
 #ifdef FINAL_RELEASE
-	BOOL	ThisOne = FALSE;
+    BOOL    ThisOne = FALSE;
 #endif
     /*
      * A NULL GUID* indicates the DirectDraw HEL which we are not interested
      * in at the moment.
      */
 //    if (lpGUID)
-	{
+    {
         /*
          * Create the DirectDraw device using this driver.  If it fails,
          * just move on to the next driver.
@@ -202,42 +202,42 @@ BOOL FAR PASCAL D3DAppIDDEnumCallback(GUID FAR* lpGUID, LPSTR lpDriverDesc,
         }
 #ifdef FINAL_RELEASE
         if (DriverCaps.dwCaps & DDCAPS_3D )
-		{
-			if( !lpGUID && !DeviceGuidPnt)
-			{
-				ThisOne = TRUE;
-			}
-			if( DeviceGuidPnt && lpGUID )
-			{
-				if( IsEqualGuid( lpGUID, &DeviceGuid) )
-				{
-					ThisOne = TRUE;
-				}
-			}
-			if( ThisOne )
-			{
-				/*
-				 * We have found a 3d hardware device.  Return the DD object
-				 * and stop enumeration.
-				 */
-				d3dappi.bIsPrimary = FALSE;
-				*(LPDIRECTDRAW*)lpContext = lpDD;
-				return DDENUMRET_CANCEL;
-			}
-		}
+        {
+            if( !lpGUID && !DeviceGuidPnt)
+            {
+                ThisOne = TRUE;
+            }
+            if( DeviceGuidPnt && lpGUID )
+            {
+                if( IsEqualGuid( lpGUID, &DeviceGuid) )
+                {
+                    ThisOne = TRUE;
+                }
+            }
+            if( ThisOne )
+            {
+                /*
+                 * We have found a 3d hardware device.  Return the DD object
+                 * and stop enumeration.
+                 */
+                d3dappi.bIsPrimary = FALSE;
+                *(LPDIRECTDRAW*)lpContext = lpDD;
+                return DDENUMRET_CANCEL;
+            }
+        }
 #else
         if (DriverCaps.dwCaps & DDCAPS_3D )
-		{
-			if( ddcount3d++ == ddchosen3d )
-			{
-				/*
-				 * We have found a 3d hardware device.  Return the DD object
-				 * and stop enumeration.
-				 */
-				d3dappi.bIsPrimary = FALSE;
-				*(LPDIRECTDRAW*)lpContext = lpDD;
-				return DDENUMRET_CANCEL;
-			}
+        {
+            if( ddcount3d++ == ddchosen3d )
+            {
+                /*
+                 * We have found a 3d hardware device.  Return the DD object
+                 * and stop enumeration.
+                 */
+                d3dappi.bIsPrimary = FALSE;
+                *(LPDIRECTDRAW*)lpContext = lpDD;
+                return DDENUMRET_CANCEL;
+            }
         }
 #endif
         lpDD->lpVtbl->Release(lpDD);
@@ -260,75 +260,75 @@ D3DAppICreateDD(DWORD flags)
     HDC hdc;
     int i;
     LPDIRECTDRAW lpDD = NULL;
-	DDCAPS DriverCaps, HELCaps, ddcaps;
-	LPDIRECTDRAW4 pdd4 = NULL;
+    DDCAPS DriverCaps, HELCaps, ddcaps;
+    LPDIRECTDRAW4 pdd4 = NULL;
 
     /*
      * If we aren't forced to use the DirectDraw HEL, search for a 3D capable
      * DirectDraw hardware driver and create it.
      */
     if (!(flags & D3DAPP_ONLYDDEMULATION))
-	{
-		ddcount3d = 0;
+    {
+        ddcount3d = 0;
         LastError = DirectDrawEnumerate(D3DAppIDDEnumCallback, &lpDD);
         if (LastError != DD_OK) 
-		{
+        {
             D3DAppISetErrorString("DirectDrawEnumerate failed.\n%s",
                                   D3DAppErrorToString(LastError));
             return FALSE;
         }
     }
     if (!lpDD)
-	{
+    {
         /*
          * If we haven't created a hardware DD device by now, resort to HEL
          */
         d3dappi.bIsPrimary = TRUE;
         LastError = DirectDrawCreate(NULL, &d3dappi.lpDD, NULL);
         if (LastError != DD_OK) 
-		{
+        {
             D3DAppISetErrorString("DirectDrawCreate failed.\n%s",
                                   D3DAppErrorToString(LastError));
             return FALSE;
         }
     } else 
-	{
+    {
         d3dappi.lpDD = lpDD;
 
-	    memset (&DriverCaps, 0, sizeof(DDCAPS));
-		DriverCaps.dwSize = sizeof(DDCAPS);
-	    memset (&HELCaps, 0, sizeof(DDCAPS));
-		HELCaps.dwSize = sizeof(DDCAPS);
+        memset (&DriverCaps, 0, sizeof(DDCAPS));
+        DriverCaps.dwSize = sizeof(DDCAPS);
+        memset (&HELCaps, 0, sizeof(DDCAPS));
+        HELCaps.dwSize = sizeof(DDCAPS);
 
-		d3dappi.lpDD->lpVtbl->GetCaps(d3dappi.lpDD, &DriverCaps, &HELCaps);
+        d3dappi.lpDD->lpVtbl->GetCaps(d3dappi.lpDD, &DriverCaps, &HELCaps);
 
-		if (!((DriverCaps.dwCaps & DDCAPS_BLTSTRETCH) || (HELCaps.dwCaps & DDCAPS_BLTSTRETCH)))
-		{
-			CanDoStrechBlt = FALSE;
-		}
+        if (!((DriverCaps.dwCaps & DDCAPS_BLTSTRETCH) || (HELCaps.dwCaps & DDCAPS_BLTSTRETCH)))
+        {
+            CanDoStrechBlt = FALSE;
+        }
     }
 
-	// find out if current driver can do windowed mode ( need dx6 interface )
+    // find out if current driver can do windowed mode ( need dx6 interface )
 
-	// query for IDirectDraw4 ptr
-	IDirectDraw_QueryInterface( d3dappi.lpDD, &IID_IDirectDraw4, (LPVOID *)&pdd4 );
+    // query for IDirectDraw4 ptr
+    IDirectDraw_QueryInterface( d3dappi.lpDD, &IID_IDirectDraw4, (LPVOID *)&pdd4 );
 
-	if ( pdd4 )
-	{
-		// get caps
-		memset( &ddcaps, 0, sizeof( DDCAPS ) );
-		ddcaps.dwSize = sizeof( DDCAPS );
-		IDirectDraw4_GetCaps( pdd4, &ddcaps, NULL );
+    if ( pdd4 )
+    {
+        // get caps
+        memset( &ddcaps, 0, sizeof( DDCAPS ) );
+        ddcaps.dwSize = sizeof( DDCAPS );
+        IDirectDraw4_GetCaps( pdd4, &ddcaps, NULL );
 
-		// can do windowed??
-		if( ddcaps.dwCaps2 & DDCAPS2_CANRENDERWINDOWED )
-			CanRenderWindowed = TRUE;
-		else
-			CanRenderWindowed = FALSE;
+        // can do windowed??
+        if( ddcaps.dwCaps2 & DDCAPS2_CANRENDERWINDOWED )
+            CanRenderWindowed = TRUE;
+        else
+            CanRenderWindowed = FALSE;
 
-		// release dd4 interface
-		IDirectDraw4_Release( pdd4 );
-	}
+        // release dd4 interface
+        IDirectDraw4_Release( pdd4 );
+    }
 
     /*
      * Save the original palette for when we are paused.  Just in case we
@@ -353,60 +353,60 @@ D3DAppICreateDD(DWORD flags)
 static HRESULT
 CALLBACK EnumDisplayModesCallback(LPDDSURFACEDESC pddsd, LPVOID lpContext)
 {
-	int ScreenMemoryUsed = 0;
+    int ScreenMemoryUsed = 0;
 
     if( (pddsd->ddpfPixelFormat.dwFlags & DDPF_PALETTEINDEXED8) ||
-		(pddsd->ddpfPixelFormat.dwFlags & DDPF_PALETTEINDEXED4) ||
-		(pddsd->ddpfPixelFormat.dwRGBBitCount <= 8) )
+        (pddsd->ddpfPixelFormat.dwFlags & DDPF_PALETTEINDEXED4) ||
+        (pddsd->ddpfPixelFormat.dwRGBBitCount <= 8) )
         return DDENUMRET_OK;
 
-    if(	(pddsd->ddpfPixelFormat.dwFlags & DDPF_PALETTEINDEXED4) ||
-		(pddsd->ddpfPixelFormat.dwRGBBitCount < 8) )
+    if( (pddsd->ddpfPixelFormat.dwFlags & DDPF_PALETTEINDEXED4) ||
+        (pddsd->ddpfPixelFormat.dwRGBBitCount < 8) )
         return DDENUMRET_OK;
 
-	ScreenMemoryUsed = pddsd->dwWidth * pddsd->dwHeight * ( pddsd->ddpfPixelFormat.dwRGBBitCount / 8 );
-	if( TripleBuffer )
-	{
-		ScreenMemoryUsed *= 4; // 3 screens + zbuffer
-	}else{
-		ScreenMemoryUsed *= 3; // 2 screens + zbuffer
-	}
+    ScreenMemoryUsed = pddsd->dwWidth * pddsd->dwHeight * ( pddsd->ddpfPixelFormat.dwRGBBitCount / 8 );
+    if( TripleBuffer )
+    {
+        ScreenMemoryUsed *= 4; // 3 screens + zbuffer
+    }else{
+        ScreenMemoryUsed *= 3; // 2 screens + zbuffer
+    }
 #ifdef SOFTWARE_ENABLE
-	if ( ( SoftwareVersion ) && ( pddsd->dwWidth > 640 && pddsd->dwHeight > 480 ) )
+    if ( ( SoftwareVersion ) && ( pddsd->dwWidth > 640 && pddsd->dwHeight > 480 ) )
         return DDENUMRET_OK;
 #endif
 
 #ifdef SOFTWARE_ENABLE
-	if( SoftwareVersion )
-	{
-		if ( pddsd->ddpfPixelFormat.dwRGBBitCount > 16 )
-			return DDENUMRET_OK; // hack to prevent colourkeying messing up
-	}
+    if( SoftwareVersion )
+    {
+        if ( pddsd->ddpfPixelFormat.dwRGBBitCount > 16 )
+            return DDENUMRET_OK; // hack to prevent colourkeying messing up
+    }
 #endif
 
-	if( ScreenMemory )
-	{
-		if( ScreenMemoryUsed > (ScreenMemory * 1024 ) )
-		{
-//	        return DDENUMRET_OK; // There isnt enough screen memory for that display mode...
-		}
-	}
-	if( pddsd->dwWidth < 1024 || pddsd->dwHeight < 768 || pddsd->ddpfPixelFormat.dwRGBBitCount < 32 )
-		return DDENUMRET_OK;
+    if( ScreenMemory )
+    {
+        if( ScreenMemoryUsed > (ScreenMemory * 1024 ) )
+        {
+//          return DDENUMRET_OK; // There isnt enough screen memory for that display mode...
+        }
+    }
+    if( pddsd->dwWidth < 1024 || pddsd->dwHeight < 768 || pddsd->ddpfPixelFormat.dwRGBBitCount < 32 )
+        return DDENUMRET_OK;
 
 
-	/*
-		* Save this mode at the end of the mode array and increment mode count
-		*/
-	d3dappi.Mode[d3dappi.NumModes].w = pddsd->dwWidth;
-	d3dappi.Mode[d3dappi.NumModes].h = pddsd->dwHeight;
-	d3dappi.Mode[d3dappi.NumModes].bpp = pddsd->ddpfPixelFormat.dwRGBBitCount;
-	d3dappi.Mode[d3dappi.NumModes].bThisDriverCanDo = TRUE;
-	d3dappi.NumModes++;
-	if (d3dappi.NumModes == D3DAPP_MAXMODES)
-		return DDENUMRET_CANCEL;
-	else
-		return DDENUMRET_OK;
+    /*
+        * Save this mode at the end of the mode array and increment mode count
+        */
+    d3dappi.Mode[d3dappi.NumModes].w = pddsd->dwWidth;
+    d3dappi.Mode[d3dappi.NumModes].h = pddsd->dwHeight;
+    d3dappi.Mode[d3dappi.NumModes].bpp = pddsd->ddpfPixelFormat.dwRGBBitCount;
+    d3dappi.Mode[d3dappi.NumModes].bThisDriverCanDo = TRUE;
+    d3dappi.NumModes++;
+    if (d3dappi.NumModes == D3DAPP_MAXMODES)
+        return DDENUMRET_CANCEL;
+    else
+        return DDENUMRET_OK;
 }
 
 /*
@@ -445,13 +445,13 @@ BOOL
 D3DAppIEnumDisplayModes(void)
 {
     int i;
-	int mode;
+    int mode;
 #if 1
-	int wmin, hmin, bppmin, default_mode;
+    int wmin, hmin, bppmin, default_mode;
 
-	wmin = 1024;
-	hmin = 768;
-	bppmin = 32;
+    wmin = 1024;
+    hmin = 768;
+    bppmin = 32;
 #endif
     /*
      * Get a list of available display modes from DirectDraw
@@ -479,44 +479,44 @@ D3DAppIEnumDisplayModes(void)
      * created which cannot render in this mode.
      */
 #if 1
-	default_mode = 0;
+    default_mode = 0;
     for (i = 0; i < d3dappi.NumModes; i++)
-	{
-		if ( d3dappi.Mode[i].bpp >= 32 && bppmin >= d3dappi.Mode[i].bpp && wmin >= d3dappi.Mode[i].w && hmin >= d3dappi.Mode[i].h )
-		{
-			wmin = d3dappi.Mode[i].w;
-			hmin = d3dappi.Mode[i].h;
-			bppmin = d3dappi.Mode[i].bpp;
-			default_mode = i;
-		}
-	}
-	wmin = hmin = bppmin = 9999;
+    {
+        if ( d3dappi.Mode[i].bpp >= 32 && bppmin >= d3dappi.Mode[i].bpp && wmin >= d3dappi.Mode[i].w && hmin >= d3dappi.Mode[i].h )
+        {
+            wmin = d3dappi.Mode[i].w;
+            hmin = d3dappi.Mode[i].h;
+            bppmin = d3dappi.Mode[i].bpp;
+            default_mode = i;
+        }
+    }
+    wmin = hmin = bppmin = 9999;
 #endif
     mode = -1;
     for (i = 0; i < d3dappi.NumModes; i++) {
 #if 1
-		if ( ( !default_bpp || d3dappi.Mode[i].bpp == default_bpp ) &&
-			 ( !default_width ||d3dappi.Mode[i].w == default_width ) &&
-			 ( !default_height || d3dappi.Mode[i].h == default_height ) )
-		{
-			if ( !default_width || !default_height || !default_bpp )
-			{
-				if ( ( default_width || wmin >= d3dappi.Mode[i].w ) &&
-					 ( default_height || hmin >= d3dappi.Mode[i].h ) &&
-					 ( default_bpp || bppmin >= d3dappi.Mode[i].bpp ) )
-				{
-					if ( !default_width )
-						wmin = d3dappi.Mode[i].w;
-					if ( !default_height )
-						hmin = d3dappi.Mode[i].h;
-					if ( !default_bpp )
-						bppmin = d3dappi.Mode[i].bpp;
-					mode = i;
-				}
-			}
-			else
-				mode = i;
-		}
+        if ( ( !default_bpp || d3dappi.Mode[i].bpp == default_bpp ) &&
+             ( !default_width ||d3dappi.Mode[i].w == default_width ) &&
+             ( !default_height || d3dappi.Mode[i].h == default_height ) )
+        {
+            if ( !default_width || !default_height || !default_bpp )
+            {
+                if ( ( default_width || wmin >= d3dappi.Mode[i].w ) &&
+                     ( default_height || hmin >= d3dappi.Mode[i].h ) &&
+                     ( default_bpp || bppmin >= d3dappi.Mode[i].bpp ) )
+                {
+                    if ( !default_width )
+                        wmin = d3dappi.Mode[i].w;
+                    if ( !default_height )
+                        hmin = d3dappi.Mode[i].h;
+                    if ( !default_bpp )
+                        bppmin = d3dappi.Mode[i].bpp;
+                    mode = i;
+                }
+            }
+            else
+                mode = i;
+        }
 #else
         if (d3dappi.Mode[i].w == default_width && d3dappi.Mode[i].h == default_height &&
             d3dappi.Mode[i].bpp == default_bpp)
@@ -524,7 +524,7 @@ D3DAppIEnumDisplayModes(void)
 #endif
     }
 #if 1
-	d3dappi.CurrMode = ( mode >= 0 ) ? mode : default_mode;
+    d3dappi.CurrMode = ( mode >= 0 ) ? mode : default_mode;
 #endif
     memcpy(&d3dappi.ThisMode, &d3dappi.Mode[d3dappi.CurrMode],
            sizeof(D3DAppMode));
@@ -547,7 +547,7 @@ D3DAppICreateSurface(LPDDSURFACEDESC lpDDSurfDesc,
 
 //    if( (d3dapp->CurrDriver == 1) || (d3dapp->CurrDriver == 2))
 //        lpDDSurfDesc->ddsCaps.dwCaps |= DDSCAPS_SYSTEMMEMORY;
-	if (d3dappi.bOnlySystemMemory)
+    if (d3dappi.bOnlySystemMemory)
         lpDDSurfDesc->ddsCaps.dwCaps |= DDSCAPS_SYSTEMMEMORY;
     result = d3dappi.lpDD->lpVtbl->CreateSurface(d3dappi.lpDD, lpDDSurfDesc,
                                                  lpDDSurface, NULL);
@@ -607,12 +607,12 @@ D3DAppICreateBuffers(HWND hwnd, int w, int h, int bpp, BOOL bFullscreen)
         ddsd.dwFlags = DDSD_CAPS | DDSD_BACKBUFFERCOUNT;
         ddsd.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE | DDSCAPS_FLIP |
             DDSCAPS_3DDEVICE | DDSCAPS_COMPLEX;
-		if( !TripleBuffer )
-		{
-			ddsd.dwBackBufferCount = 1;
-		}else{
-	        ddsd.dwBackBufferCount = 2;
-		}
+        if( !TripleBuffer )
+        {
+            ddsd.dwBackBufferCount = 1;
+        }else{
+            ddsd.dwBackBufferCount = 2;
+        }
         LastError = D3DAppICreateSurface(&ddsd, &d3dappi.lpFrontBuffer);
         if(LastError != DD_OK) {
             D3DAppISetErrorString("CreateSurface for fullscreen flipping surface failed.\n%s",
@@ -624,16 +624,16 @@ D3DAppICreateBuffers(HWND hwnd, int w, int h, int bpp, BOOL bFullscreen)
          * can use it later.  For now, just check to see if it ended up in
          * video memory (FYI).
          */
-		if( TripleBuffer )
-		{
-			ddscaps.dwCaps = DDSCAPS_BACKBUFFER;
-			LastError = d3dappi.lpFrontBuffer->lpVtbl->GetAttachedSurface(d3dappi.lpFrontBuffer, &ddscaps, &d3dappi.lpBackBuffer);
-			if(LastError != DD_OK) {
-				D3DAppISetErrorString("GetAttachedSurface failed to get middle buffer.\n%s",
-									  D3DAppErrorToString(LastError));
-				goto exit_with_error;
-			}
-		}
+        if( TripleBuffer )
+        {
+            ddscaps.dwCaps = DDSCAPS_BACKBUFFER;
+            LastError = d3dappi.lpFrontBuffer->lpVtbl->GetAttachedSurface(d3dappi.lpFrontBuffer, &ddscaps, &d3dappi.lpBackBuffer);
+            if(LastError != DD_OK) {
+                D3DAppISetErrorString("GetAttachedSurface failed to get middle buffer.\n%s",
+                                      D3DAppErrorToString(LastError));
+                goto exit_with_error;
+            }
+        }
         ddscaps.dwCaps = DDSCAPS_BACKBUFFER;
         LastError = d3dappi.lpFrontBuffer->lpVtbl->GetAttachedSurface(d3dappi.lpFrontBuffer, &ddscaps, &d3dappi.lpBackBuffer);
         if(LastError != DD_OK) {
@@ -759,12 +759,12 @@ D3DAppICheckForPalettized(void)
         GetSystemPaletteEntries(hdc, 0, (1 << 8), ppe);
         ReleaseDC(NULL, hdc);
 
-		lpPalette = DDLoadPalette( d3dappi.lpDD , ".\\data\\pictures\\pal.bmp");
-		lpPalette->lpVtbl->GetEntries(lpPalette, 0, 0, 256,
-	                                  &ppe[0]);
+        lpPalette = DDLoadPalette( d3dappi.lpDD , ".\\data\\pictures\\pal.bmp");
+        lpPalette->lpVtbl->GetEntries(lpPalette, 0, 0, 256,
+                                      &ppe[0]);
 
         
-		/*
+        /*
          * Change the flags on the palette entries to allow D3D to change
          * some of them.  In the window case, we must not change the top and
          * bottom ten (system colors), but in a fullscreen mode we can have
@@ -939,7 +939,7 @@ D3DAppIHandleWM_SIZE(LRESULT* lresult, HWND hwnd, UINT message,
      * If we have minimzied, take note and call the default window proc
      */
     if (wParam == SIZE_MINIMIZED) {
-		StoreMyShieldHull();
+        StoreMyShieldHull();
 
         d3dappi.bMinimized = TRUE;
         *lresult = DefWindowProc(hwnd, message, wParam, lParam);
@@ -962,7 +962,7 @@ D3DAppIHandleWM_SIZE(LRESULT* lresult, HWND hwnd, UINT message,
         /*
          * Restore our surfaces
          */
-		ReStoreMyShieldHull();
+        ReStoreMyShieldHull();
         D3DAppCheckForLostSurfaces();
         d3dappi.bMinimized = FALSE;
         *lresult = DefWindowProc(hwnd, message, wParam, lParam);
@@ -1096,13 +1096,13 @@ D3DAppISetCoopLevel(HWND hwnd, BOOL bFullscreen)
 BOOL
 D3DAppISetDisplayMode(int w, int h, int bpp)
 {
-//	LPDIRECTDRAW2	lpDD2;
+//  LPDIRECTDRAW2   lpDD2;
 
     d3dappi.ThisMode.w = w; d3dappi.ThisMode.h = h;
     d3dappi.ThisMode.bpp = bpp;
     bIgnoreWM_SIZE = TRUE;
 
-//	IDirectDraw_QueryInterface(d3dappi.lpDD , &IID_IDirectDraw2, (LPVOID *)&lpDD2); 
+//  IDirectDraw_QueryInterface(d3dappi.lpDD , &IID_IDirectDraw2, (LPVOID *)&lpDD2); 
 
 
     LastError = d3dappi.lpDD->lpVtbl->SetDisplayMode(d3dappi.lpDD, w, h,
@@ -1175,8 +1175,8 @@ D3DAppIClearBuffers(void)
     RECT dst;
     DDBLTFX ddbltfx;
 
-	if ( PreventFlips )
-		return TRUE;
+    if ( PreventFlips )
+        return TRUE;
     /*
      * Find the width and height of the front buffer by getting its
      * DDSURFACEDESC
@@ -1270,7 +1270,7 @@ DWORD
 D3DAppTotalVideoMemory(void)
 {
 #if 0
-	DDCAPS DriverCaps, HELCaps;
+    DDCAPS DriverCaps, HELCaps;
     memset (&DriverCaps, 0, sizeof(DDCAPS));
     DriverCaps.dwSize = sizeof(DDCAPS);
     memset (&HELCaps, 0, sizeof(DDCAPS));
@@ -1288,33 +1288,33 @@ D3DAppTotalVideoMemory(void)
         return HELCaps.dwVidMemTotal;
 #endif
 
-	LPDIRECTDRAW4 lpdd4;
-	DDSCAPS2      ddsCaps2;
-	DWORD         dwTotal, dwFree;
-	DDSURFACEDESC2 dds2;
-	
-	// get dd4 ptr...
-	IDirectDraw4_QueryInterface( d3dappi.lpDD, &IID_IDirectDraw4, (LPVOID *)&lpdd4 );  
+    LPDIRECTDRAW4 lpdd4;
+    DDSCAPS2      ddsCaps2;
+    DWORD         dwTotal, dwFree;
+    DDSURFACEDESC2 dds2;
+    
+    // get dd4 ptr...
+    IDirectDraw4_QueryInterface( d3dappi.lpDD, &IID_IDirectDraw4, (LPVOID *)&lpdd4 );  
 
-	memset( &ddsCaps2, 0, sizeof( DDSCAPS2 ) );
-	ddsCaps2.dwCaps = DDSCAPS_LOCALVIDMEM;
+    memset( &ddsCaps2, 0, sizeof( DDSCAPS2 ) );
+    ddsCaps2.dwCaps = DDSCAPS_LOCALVIDMEM;
 
-	if ( IDirectDraw4_GetAvailableVidMem( lpdd4, &ddsCaps2, &dwTotal, &dwFree ) != DD_OK )
-		dwTotal = 0;
+    if ( IDirectDraw4_GetAvailableVidMem( lpdd4, &ddsCaps2, &dwTotal, &dwFree ) != DD_OK )
+        dwTotal = 0;
 
-	if ( dwTotal )
-	{
-		memset( &dds2, 0, sizeof( DDSURFACEDESC2 ) );
-		dds2.dwSize = sizeof( DDSURFACEDESC2 );
-		if ( IDirectDraw4_GetDisplayMode( lpdd4, &dds2  ) == DD_OK )
-		{
-			dwTotal += ( dds2.dwHeight * dds2.lPitch  );
-		}
-	}
+    if ( dwTotal )
+    {
+        memset( &dds2, 0, sizeof( DDSURFACEDESC2 ) );
+        dds2.dwSize = sizeof( DDSURFACEDESC2 );
+        if ( IDirectDraw4_GetDisplayMode( lpdd4, &dds2  ) == DD_OK )
+        {
+            dwTotal += ( dds2.dwHeight * dds2.lPitch  );
+        }
+    }
 
-	IDirectDraw4_Release( lpdd4 );
+    IDirectDraw4_Release( lpdd4 );
 
-	return dwTotal;
+    return dwTotal;
 }
 /*
  * D3DAppFreeVideoMemory

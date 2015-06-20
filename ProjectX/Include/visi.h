@@ -97,8 +97,8 @@
 
 typedef struct _GROUPLIST
 {
-	int groups;
-	uint16 *group;
+    int groups;
+    uint16 *group;
 } GROUPLIST;
 
 // indirectly visible groups seen by any active camera
@@ -108,18 +108,18 @@ uint16 IndirectVisible[ MAXGROUPS ];
 /*
  * fn prototypes
  */
-BOOL LightGroupDispGroup( MLOADHEADER	* Mloadheader);
+BOOL LightGroupDispGroup( MLOADHEADER   * Mloadheader);
 
-BOOL DispVisipolyModel( MLOADHEADER	* Mloadheader) ;
-void FindGroupImIn( MLOADHEADER	* Mloadheader);
-uint16 WhichGroupImIn( MLOADHEADER	* Mloadheader , VECTOR * Pos );
+BOOL DispVisipolyModel( MLOADHEADER * Mloadheader) ;
+void FindGroupImIn( MLOADHEADER * Mloadheader);
+uint16 WhichGroupImIn( MLOADHEADER  * Mloadheader , VECTOR * Pos );
 BOOL PortalTestTransformClip( MLOADHEADER * Mloadheader , uint16 group );
 void FindVisiblePortals( MLOADHEADER * Mloadheader , uint16 group );
 void BuildGroupList ( MLOADHEADER * Mloadheader , uint16 group );
 void  OurVispolyTransformVertices( DWORD VertexCount, D3DTRANSFORMDATA * Data );
-void FindVisible( CAMERA *cam, MLOADHEADER	* Mloadheader );
+void FindVisible( CAMERA *cam, MLOADHEADER  * Mloadheader );
 int ClipGroup( CAMERA *cam, uint16 group );
-BOOL DisplayBackground( MLOADHEADER	* Mloadheader, CAMERA *cam );
+BOOL DisplayBackground( MLOADHEADER * Mloadheader, CAMERA *cam );
 void InitVisiStats( MLOADHEADER *m );
 BOOL OutputVisiStats( MLOADHEADER *m, char *lname );
 
@@ -140,16 +140,16 @@ BOOL PointInGroupBoundingBox( MLOADHEADER * Mloadheader, VECTOR * Pos, uint16 gr
 
 #ifdef SOFTWARE_ENABLE
 /*---------------------------------------------------------------------------
-	Chris Walsh's code
+    Chris Walsh's code
 ---------------------------------------------------------------------------*/
 void  MyVispolyTransformVertices( DWORD VertexCount, D3DTRANSFORMDATA * Data );
-BOOL CWDisplayBackground( MLOADHEADER	* Mloadheader, CAMERA *cam );
-void	CWExecute( D3DEXECUTEBUFFERDESC *debDesc, long NumVertsToXform);
-void	CWExecute2(	LPDIRECT3DDEVICE lpDev,
-					LPDIRECT3DEXECUTEBUFFER execbuf,
-					LPDIRECT3DVIEWPORT lpView,
-					WORD cwFlags);
+BOOL CWDisplayBackground( MLOADHEADER   * Mloadheader, CAMERA *cam );
+void    CWExecute( D3DEXECUTEBUFFERDESC *debDesc, long NumVertsToXform);
+void    CWExecute2( LPDIRECT3DDEVICE lpDev,
+                    LPDIRECT3DEXECUTEBUFFER execbuf,
+                    LPDIRECT3DVIEWPORT lpView,
+                    WORD cwFlags);
 /*-------------------------------------------------------------------------*/
 #endif
 
-#endif	// VISI_INCLUDED
+#endif  // VISI_INCLUDED

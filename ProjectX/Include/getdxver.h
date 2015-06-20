@@ -11,4 +11,4 @@ void GetDXVersion(LPDWORD pdwDXVersion, LPDWORD pdwDXPlatform);
 }
 #endif
 
-#endif	// GETDXVER_H
+#endif  // GETDXVER_H

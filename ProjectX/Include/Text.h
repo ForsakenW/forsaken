@@ -82,8 +82,8 @@
  * Defines
  */
 
-#define	MAX_MESSAGES 4
-#define	MAXMESSAGETIME 480.0F
+#define MAX_MESSAGES 4
+#define MAXMESSAGETIME 480.0F
 //#define MAX_TEAMS 4
 #ifdef DEBUG_ON
 #define MAXTEXTMESSAGES (128+256)
@@ -102,18 +102,18 @@
  */
 typedef struct
 {
-	BOOL valid;
-	BOOL valid_this_time;
-	uint16 num_variations;
-	uint16 current_variation;
-	char text[MAX_STATS_MESSAGE_VARIATIONS][MAX_STATS_MESSAGE_LENGTH];
-	void *variable_ptr[MAX_STATS_MESSAGE_VARIATIONS][MAX_STATS_FORMATING_VARS];
+    BOOL valid;
+    BOOL valid_this_time;
+    uint16 num_variations;
+    uint16 current_variation;
+    char text[MAX_STATS_MESSAGE_VARIATIONS][MAX_STATS_MESSAGE_LENGTH];
+    void *variable_ptr[MAX_STATS_MESSAGE_VARIATIONS][MAX_STATS_FORMATING_VARS];
 } STATSMESSAGE;
 typedef struct
 {
-	BOOL	Activated;
-	int16	ActivatedOrder;
-	int16	Type;
+    BOOL    Activated;
+    int16   ActivatedOrder;
+    int16   Type;
 } TEXTMSGINFO;
 
 
@@ -125,7 +125,7 @@ void PrintScoreSort( void );
 void ScoreSort( void );
 void CenterPrint4x5Text( char * Text , int y , int col );
 void CenterPrint4x5Text2( char * Text , int x, int y, int col );
-int	 Print4x5Text( char * Text , int x , int y , int col );
+int  Print4x5Text( char * Text , int x , int y , int col );
 void PrintClipped4x5Text( char * Text , int x , int y , int col );
 void Printuint16( uint16 tempnum , int x , int y , int col );
 void MessageQuePrint( void );
@@ -159,6 +159,6 @@ void DisplayStatusMessages( void );
 void BuildReliabilityTab( void );
 void DisplayConnectionStatus( int num , int x , int y);
 
-#endif	// TEXT_INCLUDED
+#endif  // TEXT_INCLUDED
 
 

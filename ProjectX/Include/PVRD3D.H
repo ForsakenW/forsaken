@@ -5,9 +5,9 @@
 #ifndef _PVRD3D_
 
 #define _PVRD3D_
-#define BUILDFOURCC(a,b,c,d)	((a) | ((b) << 8) | ((c) << 16) | ((d) << 24))
+#define BUILDFOURCC(a,b,c,d)    ((a) | ((b) << 8) | ((c) << 16) | ((d) << 24))
 
-#define FOURCC_PVR_CTL			BUILDFOURCC ('P', 'V', 'R', 'C')
+#define FOURCC_PVR_CTL          BUILDFOURCC ('P', 'V', 'R', 'C')
 
 /**************************************************************************
  PVR feature control and shadow/light volume structure.
@@ -26,57 +26,57 @@
 **************************************************************************/
 typedef struct _PVR_CTL_
 {
-	DWORD	dwType;
-	PVOID	pvReserved;
-	union
-	{
-		DWORD		dwFeatureCTL;			/* if dwType = PVR_FCTL, Specifies feature CTL flags 	  */
-		float		fShadowBrightness;		/* if dwType = PVR_SHADOWVOL, Specifies shadow brightness */
-		D3DCOLOR	dcLightVolumeColour;	/* if dwType = PVR_LIGHTVOL, Specifies light vol colour   */
-	};
-	DWORD	dwBGColour;						/* See feature control flags below  */
-	DWORD	dwReserved[8];
+    DWORD   dwType;
+    PVOID   pvReserved;
+    union
+    {
+        DWORD       dwFeatureCTL;           /* if dwType = PVR_FCTL, Specifies feature CTL flags      */
+        float       fShadowBrightness;      /* if dwType = PVR_SHADOWVOL, Specifies shadow brightness */
+        D3DCOLOR    dcLightVolumeColour;    /* if dwType = PVR_LIGHTVOL, Specifies light vol colour   */
+    };
+    DWORD   dwBGColour;                     /* See feature control flags below  */
+    DWORD   dwReserved[8];
 } PVR_CTL, *PPVR_CTL;
 
 /**************************************************************************
  PVR control types.
 **************************************************************************/
-#define PVR_FCTL		0
-#define PVR_SHADOWVOL	1
-#define PVR_LIGHTVOL	2 
+#define PVR_FCTL        0
+#define PVR_SHADOWVOL   1
+#define PVR_LIGHTVOL    2 
 
 /**************************************************************************
  PVR feature control flags.
 **************************************************************************/
 /* 
-	Enable quads, use D3D strips/fans to specify 
+    Enable quads, use D3D strips/fans to specify 
 */
-#define PVR_FCTL_ENABLEQUADS		0x00000001
-	
+#define PVR_FCTL_ENABLEQUADS        0x00000001
+    
 /* 
-	Enable fast translucency, indicates translucent data will already be 
-	grouped for optimal performance/correctness.
+    Enable fast translucency, indicates translucent data will already be 
+    grouped for optimal performance/correctness.
 */
-#define PVR_FCTL_ENABLEFASTTRANS	0x00000002	
+#define PVR_FCTL_ENABLEFASTTRANS    0x00000002  
 
 /*
-	Enable texture alpha channel modulation, 4444 textures loaded when set
-	will have their alpha channel set to a value that is proportional to
-	each texels intensity. ** NOT IMPLEMENTED YET **
+    Enable texture alpha channel modulation, 4444 textures loaded when set
+    will have their alpha channel set to a value that is proportional to
+    each texels intensity. ** NOT IMPLEMENTED YET **
 */
-#define PVR_FCTL_ENABLEIBASEDALPHA	0x00000004
+#define PVR_FCTL_ENABLEIBASEDALPHA  0x00000004
 
 /*
-	Enable rendering of empty regions i.e render buffer background will 
-	be cleared to the value in dwBGColour (32 bit XRGB specifier). Saves 
-	the use of an explicit blit or polygons to clear background.
+    Enable rendering of empty regions i.e render buffer background will 
+    be cleared to the value in dwBGColour (32 bit XRGB specifier). Saves 
+    the use of an explicit blit or polygons to clear background.
 */ 
-#define PVR_FCTL_ENABLEBGCLEAR		0x00000008
+#define PVR_FCTL_ENABLEBGCLEAR      0x00000008
 
 /*
-	Disable driver deferal of 2D operations.
+    Disable driver deferal of 2D operations.
 */ 
-#define PVR_FCTL_DISABLEDEFERRED2D	0x00000010
+#define PVR_FCTL_DISABLEDEFERRED2D  0x00000010
 
 #endif
 /**************************************************************************

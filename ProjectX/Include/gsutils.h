@@ -27,7 +27,7 @@ size: size of the buffer
 OUT
 ---  
 result: pointer to buffer to store result. Size should be (4 * size) / 3 + 1
-	result will be null terminated.
+    result will be null terminated.
 **********/
 void gs_encode(unsigned char  *ins, int size, unsigned char  *result);
 
@@ -42,7 +42,7 @@ ins: a pointer to the buffer of data you want to decode
 OUT
 ---  
 result: pointer to buffer to store result. Size should be (3 * size) / 4 
-	result will NOT be null terminated unless you encoded a null character.
+    result will NOT be null terminated unless you encoded a null character.
 **********/
 void gs_decode(unsigned char  *ins, unsigned char  *result);
 

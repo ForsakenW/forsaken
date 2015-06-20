@@ -1,41 +1,41 @@
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	File	:	Credits.h
-	Content	:	Credits.c include file
+    File    :   Credits.h
+    Content :   Credits.c include file
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 #ifndef CREDITS_INCLUDED
 #define CREDITS_INCLUDED
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Defines
+    Defines
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
-#define		CREDIT_FADEINTITLE		0		// Fade In Title & Page
-#define		CREDIT_FADEINPAGE		1		// Fade In New Page, Same Title
-#define		CREDIT_FADEOUTPAGE		2		// Fade Out Page, Same Title
-#define		CREDIT_FADEOUTTITLE		3		// Fade Out Title & Page
-#define		CREDIT_PAGEPAUSE		4		// Pause 
-#define		CREDIT_BLANKPAUSE		5		// Blank Pause
-#define		CREDIT_INITIALPAUSE		6		// Initial Pause
+#define     CREDIT_FADEINTITLE      0       // Fade In Title & Page
+#define     CREDIT_FADEINPAGE       1       // Fade In New Page, Same Title
+#define     CREDIT_FADEOUTPAGE      2       // Fade Out Page, Same Title
+#define     CREDIT_FADEOUTTITLE     3       // Fade Out Title & Page
+#define     CREDIT_PAGEPAUSE        4       // Pause 
+#define     CREDIT_BLANKPAUSE       5       // Blank Pause
+#define     CREDIT_INITIALPAUSE     6       // Initial Pause
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Structures
+    Structures
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 typedef struct PAGE {
 
-	uint16		NumNames;
-	uint8	**	Names;
+    uint16      NumNames;
+    uint8   **  Names;
 
 } PAGE; 
 
 typedef struct CREDIT {
 
-	uint8	*	TitleString;
-	uint16		NumPages;
-	PAGE	*	FirstPage;
+    uint8   *   TitleString;
+    uint16      NumPages;
+    PAGE    *   FirstPage;
 
 } CREDIT; 
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Prototypes
+    Prototypes
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void SetupCredits( void );
 void SetupGameCompleteCredits( void );

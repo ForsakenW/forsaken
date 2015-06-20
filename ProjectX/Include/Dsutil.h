@@ -128,8 +128,8 @@
  *
  *
  ***************************************************************************/
-#ifndef	DSUTIL_INCLUDED
-#define	DSUTIL_INCLUDED
+#ifndef DSUTIL_INCLUDED
+#define DSUTIL_INCLUDED
 
 #ifdef __cplusplus
 extern "C" {
@@ -260,22 +260,22 @@ void * DSGetMultiWave( WAVEFORMATEX *pWaveHeaderStore, BYTE **ppbWaveData, DWORD
 ///////////////////////////////////////////////////////////////////////////////
 
 typedef struct SFXNAME{
-	char		*Name;			// Name of the Sfx...
-	int			Flags;
-	int			Priority;			// for compound sfx
-	int			SfxLookup;			// for biker / computer speech
+    char        *Name;          // Name of the Sfx...
+    int         Flags;
+    int         Priority;           // for compound sfx
+    int         SfxLookup;          // for biker / computer speech
 }SFXNAME;
 
-#define SFX_Dynamic			1	// sound is loaded up as required
-#define SFX_BikeComp		2	// bike computer speech 
-#define SFX_Biker			4	// biker speech
-#define SFX_LevelSpec		8	// level specific sfx
-#define SFX_Looping			16	// level specific sfx
-#define SFX_BikerSpeechOveride	32	// use when biker speech must play ( will cut off any existing speech )
-#define SFX_Title	64	// use when biker speech must play ( will cut off any existing speech )
-#define SFX_End	128	// end of sfx batch
-#define SFX_InGame	256	// sfx must be loaded in game, regardless of whether or not SFX_Title is set
-#define SFX_BikeCompNoOveride	512
+#define SFX_Dynamic         1   // sound is loaded up as required
+#define SFX_BikeComp        2   // bike computer speech 
+#define SFX_Biker           4   // biker speech
+#define SFX_LevelSpec       8   // level specific sfx
+#define SFX_Looping         16  // level specific sfx
+#define SFX_BikerSpeechOveride  32  // use when biker speech must play ( will cut off any existing speech )
+#define SFX_Title   64  // use when biker speech must play ( will cut off any existing speech )
+#define SFX_End 128 // end of sfx batch
+#define SFX_InGame  256 // sfx must be loaded in game, regardless of whether or not SFX_Title is set
+#define SFX_BikeCompNoOveride   512
 
 #define SFX_HOLDERTYPE_Static 0
 #define SFX_HOLDERTYPE_Compound 1
@@ -285,87 +285,87 @@ typedef struct SFXNAME{
 
 #define IS_COMPOUND( flags ) ( (!(flags & SFX_Looping)) && (!(flags & SFX_Dynamic)))
 
-#define SFX_BUFFER_HW 512	// use 9th bit of DWORD to indicate HW buffer
-#define SFX_BUFFER_SW 1024	// use 10th bit of DWORD to indicate SW buffer
+#define SFX_BUFFER_HW 512   // use 9th bit of DWORD to indicate HW buffer
+#define SFX_BUFFER_SW 1024  // use 10th bit of DWORD to indicate SW buffer
 
-#define	MAX_DUP_BUFFERS	4 // max num occurances of any one sfx
+#define MAX_DUP_BUFFERS 4 // max num occurances of any one sfx
 #define MAX_COMPOUND_SFX 256 // max number of individual sfx that can be stored in a compound buffer
-#define MAX_COMPOUND_BUFFERS 16	// max number of mixing channels
-#define MIN_COMPOUND_BUFFERS 8	// min number of mixing channels ( otherwise sw mixing will be used )
+#define MAX_COMPOUND_BUFFERS 16 // max number of mixing channels
+#define MIN_COMPOUND_BUFFERS 8  // min number of mixing channels ( otherwise sw mixing will be used )
 
 #define NUM_SFX_DETAIL_LEVELS 2
 
 typedef struct
 {
-	int SfxNum;
-	int Variant;
-	DWORD StartPos;
-	UINT Length;
-	DWORD Bytes;
+    int SfxNum;
+    int Variant;
+    DWORD StartPos;
+    UINT Length;
+    DWORD Bytes;
 } TEMPSFXINFO;
 
 typedef struct _SPOT_SFX_LIST
 {
-	//struct					_SPOT_SFX_LIST *next;	// next list item
-	//struct					_SPOT_SFX_LIST *prev;	// prev list item
-	BOOL					used;					// is sfx in use?
-	int16					sfxindex;					// sfx num, from enum list
-	int						variant;					// sfx num, from enum list
-	int						flags;
-	VECTOR					*pos;					// current sfx position vector
-	VECTOR					fixedpos;
-	int						type;					// fixed or variable group?
-	uint16					*group;					// current sfx group num
-	uint16					fixedgroup;				// current sfx group num
-	float					freq;					// frequency ( 0 for original frequency )
-	float					vol;					// vol ( 0 = zero volume, 1 = full volume )
-	BOOL					bufferloaded;			// flag to indicate if buffer is loaded ( or about to be loaded )
-	IDirectSoundBuffer		*buffer;				// buffer address
-	IDirectSound3DBuffer	*buffer3D;				// 3D buffer interface address
-	DWORD					buffersize;
-	float					distance;
-	int						SfxHolderIndex;
-	int						SfxThreadInfoIndex;
-	uint16					Effects;
-	uint32					uid;
+    //struct                    _SPOT_SFX_LIST *next;   // next list item
+    //struct                    _SPOT_SFX_LIST *prev;   // prev list item
+    BOOL                    used;                   // is sfx in use?
+    int16                   sfxindex;                   // sfx num, from enum list
+    int                     variant;                    // sfx num, from enum list
+    int                     flags;
+    VECTOR                  *pos;                   // current sfx position vector
+    VECTOR                  fixedpos;
+    int                     type;                   // fixed or variable group?
+    uint16                  *group;                 // current sfx group num
+    uint16                  fixedgroup;             // current sfx group num
+    float                   freq;                   // frequency ( 0 for original frequency )
+    float                   vol;                    // vol ( 0 = zero volume, 1 = full volume )
+    BOOL                    bufferloaded;           // flag to indicate if buffer is loaded ( or about to be loaded )
+    IDirectSoundBuffer      *buffer;                // buffer address
+    IDirectSound3DBuffer    *buffer3D;              // 3D buffer interface address
+    DWORD                   buffersize;
+    float                   distance;
+    int                     SfxHolderIndex;
+    int                     SfxThreadInfoIndex;
+    uint16                  Effects;
+    uint32                  uid;
 } SPOT_SFX_LIST;
 
 #define MAX_LOOPING_SFX 64
 
 typedef struct _SNDOBJ
 {
-	IDirectSoundBuffer		*Dup_Buffer[MAX_DUP_BUFFERS];
-	IDirectSound3DBuffer	*Dup_3DBuffer[MAX_DUP_BUFFERS];
-	BOOL					CompoundBuffer;	// is sound part of compound buffer?
-	DWORD					StartPos;			// start offset in buffer...
-	UINT					Length;			// length of sample (ms)...
-	int						CompoundBufferLookup[MAX_DUP_BUFFERS];
-	float					Buffer_Dist[MAX_DUP_BUFFERS];
-	clock_t					Buffer_TimeStamp[MAX_DUP_BUFFERS];
-	DWORD					TransferRate;	// bytes per second
-	DWORD					Bytes;
-	int						looping_sfx_index[MAX_DUP_BUFFERS];
-	int						SfxHolderIndex[MAX_DUP_BUFFERS];
+    IDirectSoundBuffer      *Dup_Buffer[MAX_DUP_BUFFERS];
+    IDirectSound3DBuffer    *Dup_3DBuffer[MAX_DUP_BUFFERS];
+    BOOL                    CompoundBuffer; // is sound part of compound buffer?
+    DWORD                   StartPos;           // start offset in buffer...
+    UINT                    Length;         // length of sample (ms)...
+    int                     CompoundBufferLookup[MAX_DUP_BUFFERS];
+    float                   Buffer_Dist[MAX_DUP_BUFFERS];
+    clock_t                 Buffer_TimeStamp[MAX_DUP_BUFFERS];
+    DWORD                   TransferRate;   // bytes per second
+    DWORD                   Bytes;
+    int                     looping_sfx_index[MAX_DUP_BUFFERS];
+    int                     SfxHolderIndex[MAX_DUP_BUFFERS];
 } SNDOBJ;
 
 typedef struct _GENERIC_SFX_INF0
 {
-	int					SfxNum;					// which sfx?
-	BOOL				Retain;					// retain info for this sound until explicitly deallocated?
-	float				Dist;					// distance of sound ( used for 2D sounds only )
-	uint16				*Group;					// address of group no. of sound
-	VECTOR				*pos;					// address of position vector of sound
-	DWORD				Freq;					// freq of sound ( 0 for original freq )
-	float				Volume;					// sound volume ( 0 = nothing, 1 = Max )
+    int                 SfxNum;                 // which sfx?
+    BOOL                Retain;                 // retain info for this sound until explicitly deallocated?
+    float               Dist;                   // distance of sound ( used for 2D sounds only )
+    uint16              *Group;                 // address of group no. of sound
+    VECTOR              *pos;                   // address of position vector of sound
+    DWORD               Freq;                   // freq of sound ( 0 for original freq )
+    float               Volume;                 // sound volume ( 0 = nothing, 1 = Max )
 } GENERIC_SFX_INFO;
 
 typedef struct _GENERIC_SFX
 {
-	GENERIC_SFX_INFO	*Info;					
-	BOOL				Allocated;				// is this slot occupied?
-	int					Flags;					// flags ( as copied from original list )
-	int					BufferIndex;			// index no. of sound buffer
-	IDirectSoundBuffer	*Buffer;				// buffer address
+    GENERIC_SFX_INFO    *Info;                  
+    BOOL                Allocated;              // is this slot occupied?
+    int                 Flags;                  // flags ( as copied from original list )
+    int                 BufferIndex;            // index no. of sound buffer
+    IDirectSoundBuffer  *Buffer;                // buffer address
 } GENERIC_SFX;
 
 #define _HSNDOBJ_DEFINED

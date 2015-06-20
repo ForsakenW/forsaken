@@ -1,52 +1,52 @@
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	File	:	Restart.h
-	Content	:	Restart.c include file
+    File    :   Restart.h
+    Content :   Restart.c include file
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 #ifndef RESTART_INCLUDED
 #define RESTART_INCLUDED
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Defines
+    Defines
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
-#define	ENABLE_RESTART		0
+#define ENABLE_RESTART      0
 
-#define	RESTARTTYPE_MODEL	0
-#define	RESTARTTYPE_FACEME	1
+#define RESTARTTYPE_MODEL   0
+#define RESTARTTYPE_FACEME  1
 
-#define MAXRESTARTPOINTS	128
+#define MAXRESTARTPOINTS    128
 
-#define	RESTARTSEQ_Inactive		0
-#define	RESTARTSEQ_Activating	1
-#define	RESTARTSEQ_Active		2
-#define	RESTARTSEQ_Deactivating	3
+#define RESTARTSEQ_Inactive     0
+#define RESTARTSEQ_Activating   1
+#define RESTARTSEQ_Active       2
+#define RESTARTSEQ_Deactivating 3
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Structures
+    Structures
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 typedef struct RESTART {
-	
-	uint16		Sequence;
-	uint16		Index;
-	uint16		Group;
-	VECTOR		Pos;
-	VECTOR		DirVector;
-	VECTOR		UpVector;
-	uint16		FmPoly;
-	MATRIX		Matrix;
-	float		Time;
-	float		OverallTime;
-	COMP_OBJ		*	Components;
-	struct	RESTART	*	PrevUsed;
-	struct	RESTART	*	NextUsed;
-	struct	RESTART	*	PrevFree;
-	struct	RESTART	*	NextFree;
-	struct	RESTART	*	NextInGroup;
-	struct	RESTART	*	PrevInGroup;
+    
+    uint16      Sequence;
+    uint16      Index;
+    uint16      Group;
+    VECTOR      Pos;
+    VECTOR      DirVector;
+    VECTOR      UpVector;
+    uint16      FmPoly;
+    MATRIX      Matrix;
+    float       Time;
+    float       OverallTime;
+    COMP_OBJ        *   Components;
+    struct  RESTART *   PrevUsed;
+    struct  RESTART *   NextUsed;
+    struct  RESTART *   PrevFree;
+    struct  RESTART *   NextFree;
+    struct  RESTART *   NextInGroup;
+    struct  RESTART *   PrevInGroup;
 
 } RESTART;
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Prototypes
+    Prototypes
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void InitRestartPoints( void );
 RESTART * FindFreeRestartPoint( void );
@@ -57,7 +57,7 @@ BOOL PreLoadRestartPoints( void );
 BOOL LoadRestartPoints( void );
 RESTART * InitOneFaceMeRestartPoint( uint16 Group, VECTOR * Pos, VECTOR * DirVector, VECTOR * UpVector );
 RESTART * InitOneRestartPoint( uint16 Group, VECTOR * Pos, VECTOR * DirVector, VECTOR * UpVector,
-							  COMP_OBJ * CompObj, float OverallTime );
+                              COMP_OBJ * CompObj, float OverallTime );
 void ProcessRestartPoints( void );
 void SetupRestartPointGroups( void );
 void AddRestartPointToGroup( RESTART * Object, uint16 Group );

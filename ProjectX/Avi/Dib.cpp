@@ -3,7 +3,7 @@
 // Portions (almost all) taken from Nigel Thompson's "Animation techniques
 // in Win32"
 //
-// Created:		10/27/95
+// Created:     10/27/95
 //
 
 #include <windows.h>
@@ -132,11 +132,11 @@ BOOL DIB::Create(int iWidth, int iHeight, int iBpp)
     if (m_pBMI != NULL) free (m_pBMI);
     if (m_pBits != NULL) free (m_pBits);
 
-	if (iBpp == 8)
-    	m_pBMI = (BITMAPINFO*) malloc((sizeof(BITMAPINFOHEADER)
-                                  	+ 256 * sizeof(RGBQUAD)));
-	else
-    	m_pBMI = (BITMAPINFO*) malloc( sizeof(BITMAPINFOHEADER) );
+    if (iBpp == 8)
+        m_pBMI = (BITMAPINFO*) malloc((sizeof(BITMAPINFOHEADER)
+                                    + 256 * sizeof(RGBQUAD)));
+    else
+        m_pBMI = (BITMAPINFO*) malloc( sizeof(BITMAPINFOHEADER) );
 
 
     if (!m_pBMI) {
@@ -193,11 +193,11 @@ BOOL DIB::Create(BITMAPINFO* pBMI, BYTE* pBits)
       free  (m_pBMI);
 
     // Allocate memory for the header.
-	if (pBMI->bmiHeader.biBitCount == 8)
-    	m_pBMI = (BITMAPINFO*) malloc( sizeof(BITMAPINFOHEADER)
-                                   	+ 256 * sizeof(RGBQUAD) );
-	else
-    	m_pBMI = (BITMAPINFO*) malloc( sizeof(BITMAPINFOHEADER) );
+    if (pBMI->bmiHeader.biBitCount == 8)
+        m_pBMI = (BITMAPINFO*) malloc( sizeof(BITMAPINFOHEADER)
+                                    + 256 * sizeof(RGBQUAD) );
+    else
+        m_pBMI = (BITMAPINFO*) malloc( sizeof(BITMAPINFOHEADER) );
 
     if (!m_pBMI) 
     {
@@ -284,8 +284,8 @@ BOOL DIB::Load
    if (bmih.biSize != sizeof(BITMAPINFOHEADER)) 
    {
       CloseHandle(hFile);
-      //MessageBox(hwnd, "Not a Windows DIB.", "KPlay error", MB_ICONEXCLAMATION	);
-	  Msg("Not a Windows DIB");
+      //MessageBox(hwnd, "Not a Windows DIB.", "KPlay error", MB_ICONEXCLAMATION    );
+      Msg("Not a Windows DIB");
       goto $abort;
    }
 
@@ -296,8 +296,8 @@ BOOL DIB::Load
    if (bmih.biBitCount != 8) 
    {
       CloseHandle(hFile);
-      //MessageBox(hwnd, "Not a 256 color bitmap.", "KPlay error", MB_ICONEXCLAMATION	);
-	  Msg("Not a 256 colour bitmap");
+      //MessageBox(hwnd, "Not a 256 color bitmap.", "KPlay error", MB_ICONEXCLAMATION   );
+      Msg("Not a 256 colour bitmap");
       goto $abort;
    }
 
@@ -369,66 +369,66 @@ BOOL DIB::Load
    **  the bits must be converted.
    */
 
-	if (bpp != bmih.biBitCount)  // bmih.biBitCount == 8 for now
+    if (bpp != bmih.biBitCount)  // bmih.biBitCount == 8 for now
    {
-		int x, y;
-		BYTE *pOld ;
-		RGBTRIPLE *pNew ;
-		RGBQUAD *lpRGB ;
+        int x, y;
+        BYTE *pOld ;
+        RGBTRIPLE *pNew ;
+        RGBQUAD *lpRGB ;
       unsigned short* p16New;
 
-		iBitsSize = ( (bmih.biWidth * bpp/8 + 3) & ~3 ) * bmih.biHeight;
-		pBits = (BYTE *)malloc( iBitsSize );
+        iBitsSize = ( (bmih.biWidth * bpp/8 + 3) & ~3 ) * bmih.biHeight;
+        pBits = (BYTE *)malloc( iBitsSize );
 
       switch(bpp)
       {
          case 24: /* Convert to 24-bit */
-      		pOld  = tempBits;
-      		pNew  = (RGBTRIPLE *)pBits;
-      		lpRGB = (RGBQUAD *)((LPBYTE)pBmpInfo + sizeof( BITMAPINFOHEADER ));
+            pOld  = tempBits;
+            pNew  = (RGBTRIPLE *)pBits;
+            lpRGB = (RGBQUAD *)((LPBYTE)pBmpInfo + sizeof( BITMAPINFOHEADER ));
             for (y=0; y<bmih.biHeight; y++ )
             {
-      			for (x=0; x<bmih.biWidth; x++ )
-      			{
-      				(*pNew).rgbtRed   = lpRGB[ *pOld ].rgbRed;
-      				(*pNew).rgbtGreen = lpRGB[ *pOld ].rgbGreen;
-      				(*pNew).rgbtBlue  = lpRGB[ *pOld ].rgbBlue;
-      				pOld++;
-      				pNew++;
-      			}
-      			pOld += ((bmih.biWidth + 3) & ~3) - bmih.biWidth ;
-      			pNew = (RGBTRIPLE *)((BYTE *)pNew + 
-      						(((bmih.biWidth * bpp/8 + 3) & ~3) - 
-      						   bmih.biWidth * bpp/8 ));
-      		}
+                for (x=0; x<bmih.biWidth; x++ )
+                {
+                    (*pNew).rgbtRed   = lpRGB[ *pOld ].rgbRed;
+                    (*pNew).rgbtGreen = lpRGB[ *pOld ].rgbGreen;
+                    (*pNew).rgbtBlue  = lpRGB[ *pOld ].rgbBlue;
+                    pOld++;
+                    pNew++;
+                }
+                pOld += ((bmih.biWidth + 3) & ~3) - bmih.biWidth ;
+                pNew = (RGBTRIPLE *)((BYTE *)pNew + 
+                            (((bmih.biWidth * bpp/8 + 3) & ~3) - 
+                               bmih.biWidth * bpp/8 ));
+            }
             break;
 
          case 16: /* Convert to 16-bit (555) */
-      		pOld  = tempBits;
-      		p16New  = (unsigned short*)pBits;
-      		lpRGB = (RGBQUAD *)((LPBYTE)pBmpInfo + sizeof( BITMAPINFOHEADER ));
+            pOld  = tempBits;
+            p16New  = (unsigned short*)pBits;
+            lpRGB = (RGBQUAD *)((LPBYTE)pBmpInfo + sizeof( BITMAPINFOHEADER ));
             for (y=0; y<bmih.biHeight; y++ )
             {
-      			for (x=0; x<bmih.biWidth; x++ )
-      			{
-      				(*p16New) = 0 |
-      				            (lpRGB[ *pOld ].rgbRed   >> 3) << 10 |
-      				            (lpRGB[ *pOld ].rgbGreen >> 3) << 5  |
-      				            (lpRGB[ *pOld ].rgbBlue  >> 3);
-      				pOld++;
-      				p16New++;
-      			}
-      			pOld += ((bmih.biWidth + 3) & ~3) - bmih.biWidth ;
-      			p16New = (unsigned short*)((BYTE *)p16New + 
-      						(((bmih.biWidth * bpp/8 + 3) & ~3) - 
-      						   bmih.biWidth * bpp/8 ));
-      		}
+                for (x=0; x<bmih.biWidth; x++ )
+                {
+                    (*p16New) = 0 |
+                                (lpRGB[ *pOld ].rgbRed   >> 3) << 10 |
+                                (lpRGB[ *pOld ].rgbGreen >> 3) << 5  |
+                                (lpRGB[ *pOld ].rgbBlue  >> 3);
+                    pOld++;
+                    p16New++;
+                }
+                pOld += ((bmih.biWidth + 3) & ~3) - bmih.biWidth ;
+                p16New = (unsigned short*)((BYTE *)p16New + 
+                            (((bmih.biWidth * bpp/8 + 3) & ~3) - 
+                               bmih.biWidth * bpp/8 ));
+            }
             break;
          }    
 
-		free (tempBits);		
+        free (tempBits);        
       bmih.biBitCount = bpp;
-	}
+    }
 
   
 
@@ -548,60 +548,60 @@ void DIB::CopyBits(DIB* pdibDest,
                    int w,  int h,
                    int xs, int ys)
 {
-	if ( xs < 0 )
-	{
-		w += xs;
-		xd -= xs;
-		xs = 0;
-	}
-	else if ( xs > DibWidth()-w )
-	{
-		if ( xs < DibWidth() )
-			w = DibWidth()-xs;
-		else
-			return;
-	}
+    if ( xs < 0 )
+    {
+        w += xs;
+        xd -= xs;
+        xs = 0;
+    }
+    else if ( xs > DibWidth()-w )
+    {
+        if ( xs < DibWidth() )
+            w = DibWidth()-xs;
+        else
+            return;
+    }
 
-	if ( xd < 0 )
-	{
-		w += xd;
-	 	xs -= xd;
-		xd = 0;
-	}
-	else if ( ( w > 0 ) && ( xd > pdibDest->DibWidth()-w ) )
-	{
-		w = pdibDest->DibWidth()-xd;
-	}
+    if ( xd < 0 )
+    {
+        w += xd;
+        xs -= xd;
+        xd = 0;
+    }
+    else if ( ( w > 0 ) && ( xd > pdibDest->DibWidth()-w ) )
+    {
+        w = pdibDest->DibWidth()-xd;
+    }
 
 
-	if ( ys < 0 )
-	{
-		h += ys;
-		yd -= ys;
-		ys = 0;
-	}
-	else if ( ys > DibHeight()-h )
-	{
-		if ( ys < DibHeight() )
-			h = DibHeight()-ys;
-		else
-			return;
-	}
-	if ( yd < 0 )
-	{
-		h += yd;
-		ys -= yd;
-		yd = 0;
-	}
-	else if ( ( h > 0 ) && ( yd > pdibDest->DibHeight()-h ) )
-	{
-		h = pdibDest->DibHeight()-yd;
-	}
+    if ( ys < 0 )
+    {
+        h += ys;
+        yd -= ys;
+        ys = 0;
+    }
+    else if ( ys > DibHeight()-h )
+    {
+        if ( ys < DibHeight() )
+            h = DibHeight()-ys;
+        else
+            return;
+    }
+    if ( yd < 0 )
+    {
+        h += yd;
+        ys -= yd;
+        yd = 0;
+    }
+    else if ( ( h > 0 ) && ( yd > pdibDest->DibHeight()-h ) )
+    {
+        h = pdibDest->DibHeight()-yd;
+    }
 
    if (w <= 0 || h <= 0) return;
 
-	h = min( h, DibHeight() - ys) ;
-	h = min( h, pdibDest->DibHeight() - yd );
+    h = min( h, DibHeight() - ys) ;
+    h = min( h, pdibDest->DibHeight() - yd );
 
    // Get pointers to the start points in the source and destination
    // DIBs. Note that the start points will be the bottom-left
@@ -613,9 +613,9 @@ void DIB::CopyBits(DIB* pdibDest,
    int iScanS = StorageWidth();
    int iScanD = pdibDest->StorageWidth();
 
-	w = min( w, DibWidth() - xs );
-	w = min( w, pdibDest->DibWidth() - xd );
-	if (w <= 0) return;
+    w = min( w, DibWidth() - xs );
+    w = min( w, pdibDest->DibWidth() - xd );
+    if (w <= 0) return;
 
    // Copy the lines.
    while (h--) 
@@ -624,21 +624,4 @@ void DIB::CopyBits(DIB* pdibDest,
       pSrc += iScanS;
       pDest += iScanD;
    }
-}          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

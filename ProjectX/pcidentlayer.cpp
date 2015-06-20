@@ -8,10 +8,10 @@
 
 extern "C" int IsAuthorised ( void )
 {
-	CString 		filename = "forsaken.aut";
-	BOOL			authorised;
-	BA_FingerPrint 	fingerprint;
+    CString         filename = "forsaken.aut";
+    BOOL            authorised;
+    BA_FingerPrint  fingerprint;
 
-	authorised = fingerprint.Verify(filename);
-	return(authorised == TRUE);
+    authorised = fingerprint.Verify(filename);
+    return(authorised == TRUE);
 }

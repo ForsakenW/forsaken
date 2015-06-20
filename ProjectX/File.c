@@ -73,746 +73,746 @@
  */
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Header files
+    Header files
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
-#include	<fcntl.h>
-#include	<sys/types.h>
-#include	<sys/stat.h>
-#include	<io.h>
-#include	<stdio.h>
-#include	<stdlib.h>
-#include	<malloc.h>
-#include	<string.h>
-#include	<dplay.h>
-#include	"typedefs.h"
-#include	"d3dmain.h"
-#include	"file.h"
+#include    <fcntl.h>
+#include    <sys/types.h>
+#include    <sys/stat.h>
+#include    <io.h>
+#include    <stdio.h>
+#include    <stdlib.h>
+#include    <malloc.h>
+#include    <string.h>
+#include    <dplay.h>
+#include    "typedefs.h"
+#include    "d3dmain.h"
+#include    "file.h"
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Defines
+    Defines
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
-//#define	DEBUG_DATAPATH	1
+//#define   DEBUG_DATAPATH  1
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	External Variables
+    External Variables
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
-extern	int	 use_data_path;
-extern	char data_path[ 128 ];
-extern	char normdata_path[ 128 ];
+extern  int  use_data_path;
+extern  char data_path[ 128 ];
+extern  char normdata_path[ 128 ];
 
 void DebugPrintf( const char * format, ... );
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Globals
+    Globals
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
-LONGLONG	LevelCheckSum = 0;
-BOOL	CreateBatchFile = FALSE;
-BOOL	CreateLogFile = FALSE;
+LONGLONG    LevelCheckSum = 0;
+BOOL    CreateBatchFile = FALSE;
+BOOL    CreateLogFile = FALSE;
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Return Size of File given Filename
-	Input		:		char	*	Filename
-	Output		:		long		Size of File
+    Procedure   :       Return Size of File given Filename
+    Input       :       char    *   Filename
+    Output      :       long        Size of File
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 long Get_File_Size( char * Filename )
 {
-	int		Handle = -1;
-	long	Read_Size = 0;
-#ifdef	WATCOM
-	Handle = open( Filename, O_RDONLY | O_BINARY );
-	if( Handle != -1 )
-	{
-		Read_Size = filelength( Handle );
-		close( Handle );
-	}
+    int     Handle = -1;
+    long    Read_Size = 0;
+#ifdef  WATCOM
+    Handle = open( Filename, O_RDONLY | O_BINARY );
+    if( Handle != -1 )
+    {
+        Read_Size = filelength( Handle );
+        close( Handle );
+    }
 
 #else
-	Handle = _open( Filename, _O_RDONLY | _O_BINARY );
-	if( Handle != -1 )
-	{
-		Read_Size = _filelength( Handle );
-		_close( Handle );
-	}
+    Handle = _open( Filename, _O_RDONLY | _O_BINARY );
+    if( Handle != -1 )
+    {
+        Read_Size = _filelength( Handle );
+        _close( Handle );
+    }
 #endif
 
-	return ( Read_Size );
+    return ( Read_Size );
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		See if file exists
-	Input		:		char	*	Filename
-	Output		:		BOOL		TRUE if exists
+    Procedure   :       See if file exists
+    Input       :       char    *   Filename
+    Output      :       BOOL        TRUE if exists
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 BOOL File_Exists( char * Filename )
 {
-	/*
-	int		Handle = -1;
-#ifdef	WATCOM
-	Handle = open( Filename, O_RDONLY | O_BINARY );
-	if( Handle != -1 )
-	{
-		close( Handle );
-		return TRUE;
-	}
+    /*
+    int     Handle = -1;
+#ifdef  WATCOM
+    Handle = open( Filename, O_RDONLY | O_BINARY );
+    if( Handle != -1 )
+    {
+        close( Handle );
+        return TRUE;
+    }
 
 #else
-	Handle = _open( Filename, _O_RDONLY | _O_BINARY );
-	if( Handle != -1 )
-	{
-		close( Handle );
-		return TRUE;
-	}
+    Handle = _open( Filename, _O_RDONLY | _O_BINARY );
+    if( Handle != -1 )
+    {
+        close( Handle );
+        return TRUE;
+    }
 #endif
-	*/
-	if ( !_access( Filename, 00 ) )
-		return TRUE;
-	else
-		return FALSE;
+    */
+    if ( !_access( Filename, 00 ) )
+        return TRUE;
+    else
+        return FALSE;
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Read Part or All of File Into Memory
-	Input		:		char	*	Filename
-				:		char	*	Buffer to Load into
-				:		long		Bytes to Read ( 0 = All )
-	Output		:		long		Number of bytes Read
+    Procedure   :       Read Part or All of File Into Memory
+    Input       :       char    *   Filename
+                :       char    *   Buffer to Load into
+                :       long        Bytes to Read ( 0 = All )
+    Output      :       long        Number of bytes Read
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 long Read_File( char * Filename, char * File_Buffer, long Read_Size )
 {
-	int		Handle = -1;
-	long	Bytes_Read = 0;
+    int     Handle = -1;
+    long    Bytes_Read = 0;
 
-#ifdef	WATCOM
-	Handle = open( Filename, O_RDONLY | O_BINARY );
-	if( Handle != -1 )
-	{
-		if( Read_Size == 0 ) Read_Size = filelength( Handle );
-		Bytes_Read = read( Handle, File_Buffer, Read_Size );
-		if( Bytes_Read == -1 ) Bytes_Read = 0;
-		close( Handle );
-	}
+#ifdef  WATCOM
+    Handle = open( Filename, O_RDONLY | O_BINARY );
+    if( Handle != -1 )
+    {
+        if( Read_Size == 0 ) Read_Size = filelength( Handle );
+        Bytes_Read = read( Handle, File_Buffer, Read_Size );
+        if( Bytes_Read == -1 ) Bytes_Read = 0;
+        close( Handle );
+    }
 #else
-	Handle = _open( Filename, _O_RDONLY | _O_BINARY );
-	if( Handle != -1 )
-	{
-		if( Read_Size == 0 ) Read_Size = _filelength( Handle );
-		Bytes_Read = _read( Handle, File_Buffer, Read_Size );
-		if( Bytes_Read == -1 ) Bytes_Read = 0;
-		_close( Handle );
-	}
+    Handle = _open( Filename, _O_RDONLY | _O_BINARY );
+    if( Handle != -1 )
+    {
+        if( Read_Size == 0 ) Read_Size = _filelength( Handle );
+        Bytes_Read = _read( Handle, File_Buffer, Read_Size );
+        if( Bytes_Read == -1 ) Bytes_Read = 0;
+        _close( Handle );
+    }
 #endif
 
-	return ( Bytes_Read );
+    return ( Bytes_Read );
 }
 
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Write File ( Creating file if non exists )
-	Input		:		char	*	Filename
-				:		char	*	Buffer to Write
-				:		long		Bytes to Write ( 0 = All )
-	Output		:		long		Number of bytes Written
+    Procedure   :       Write File ( Creating file if non exists )
+    Input       :       char    *   Filename
+                :       char    *   Buffer to Write
+                :       long        Bytes to Write ( 0 = All )
+    Output      :       long        Number of bytes Written
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 long Write_File( char * Filename, char * File_Buffer, long Write_Size )
 {
-	int		Handle = -1;
-	long	Bytes_Written = 0;
+    int     Handle = -1;
+    long    Bytes_Written = 0;
 
-#ifdef	WATCOM
-	Handle = open( Filename, O_CREAT | O_TRUNC | O_BINARY | O_RDWR);
-	if( Handle != -1 ) {
-		Bytes_Written = write( Handle, File_Buffer, Write_Size );
-		close( Handle );
-	}
+#ifdef  WATCOM
+    Handle = open( Filename, O_CREAT | O_TRUNC | O_BINARY | O_RDWR);
+    if( Handle != -1 ) {
+        Bytes_Written = write( Handle, File_Buffer, Write_Size );
+        close( Handle );
+    }
 #else
-	Handle = _open( Filename, _O_CREAT | _O_TRUNC | _O_BINARY | _O_RDWR ,
-							  _S_IREAD | _S_IWRITE );
-	if( Handle != -1 ) {
-		Bytes_Written = _write( Handle, File_Buffer, Write_Size );
-		_close( Handle );
-	}
+    Handle = _open( Filename, _O_CREAT | _O_TRUNC | _O_BINARY | _O_RDWR ,
+                              _S_IREAD | _S_IWRITE );
+    if( Handle != -1 ) {
+        Bytes_Written = _write( Handle, File_Buffer, Write_Size );
+        _close( Handle );
+    }
 #endif
-	return ( Bytes_Written );
+    return ( Bytes_Written );
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Change Extension of Filename
-	Input		:		uint8	*	Src Filename
-				:		uint8	*	Dest Filename
-				:		uint8	*	Extension to add
-	Output		:		Nothing
+    Procedure   :       Change Extension of Filename
+    Input       :       uint8   *   Src Filename
+                :       uint8   *   Dest Filename
+                :       uint8   *   Extension to add
+    Output      :       Nothing
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void Change_Ext( uint8 * Src, uint8 * Dest, uint8 * Ext )
 {
-	uint8	*	Char_Ptr;
+    uint8   *   Char_Ptr;
 
-	Char_Ptr = ( Src + strlen( Src ) ) -1;
+    Char_Ptr = ( Src + strlen( Src ) ) -1;
 
-	while( Char_Ptr != Src && *Char_Ptr != '\\' && *Char_Ptr != ':' && *Char_Ptr != '.' ) Char_Ptr--;
+    while( Char_Ptr != Src && *Char_Ptr != '\\' && *Char_Ptr != ':' && *Char_Ptr != '.' ) Char_Ptr--;
 
-	if( *Char_Ptr == '.' )
-	{
-		while( Src != Char_Ptr ) *Dest++ = *Src++;
-		strcpy( Dest, Ext );
-	}
-	else
-	{
-		strcpy( Dest, Src );
-		Dest += strlen( Src );
-		strcpy( Dest, Ext );
-	}
+    if( *Char_Ptr == '.' )
+    {
+        while( Src != Char_Ptr ) *Dest++ = *Src++;
+        strcpy( Dest, Ext );
+    }
+    else
+    {
+        strcpy( Dest, Src );
+        Dest += strlen( Src );
+        strcpy( Dest, Ext );
+    }
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Get Filename from path\filename
-	Input		:		uint8	*	Src path\Filename
-				:		uint8	*	Dest Filename
-				:		uint8	*	Extension to add
-	Output		:		Nothing
+    Procedure   :       Get Filename from path\filename
+    Input       :       uint8   *   Src path\Filename
+                :       uint8   *   Dest Filename
+                :       uint8   *   Extension to add
+    Output      :       Nothing
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void GetFilename( uint8 * Src, uint8 * Dest )
 {
-	uint8	*	Char_Ptr;
+    uint8   *   Char_Ptr;
 
-	Char_Ptr = ( Src + strlen( Src ) ) -1;
+    Char_Ptr = ( Src + strlen( Src ) ) -1;
 
-	while( Char_Ptr != Src && *Char_Ptr != '\\' && *Char_Ptr != ':' ) Char_Ptr--;
+    while( Char_Ptr != Src && *Char_Ptr != '\\' && *Char_Ptr != ':' ) Char_Ptr--;
 
-	if( Char_Ptr == Src )
-	{
-		strcpy( Dest, Src );
-		return;
-	}
+    if( Char_Ptr == Src )
+    {
+        strcpy( Dest, Src );
+        return;
+    }
 
-	if( Char_Ptr != ( Src + strlen( Src ) - 1 ) )
-	{
-		strcpy( Dest, ( Char_Ptr + 1 ) );
-	}
-	else
-	{
-		*Dest = 0;
-	}
+    if( Char_Ptr != ( Src + strlen( Src ) - 1 ) )
+    {
+        strcpy( Dest, ( Char_Ptr + 1 ) );
+    }
+    else
+    {
+        *Dest = 0;
+    }
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Change Extension of Filename
-	Input		:		uint8	*	Src Filename
-				:		uint8	*	Dest to put ext
-	Output		:		Nothing
+    Procedure   :       Change Extension of Filename
+    Input       :       uint8   *   Src Filename
+                :       uint8   *   Dest to put ext
+    Output      :       Nothing
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void Get_Ext( uint8 * Src, uint8 * Dest )
 {
-	uint8	*	Char_Ptr;
+    uint8   *   Char_Ptr;
 
-	Char_Ptr = ( Src + strlen( Src ) ) -1;
+    Char_Ptr = ( Src + strlen( Src ) ) -1;
 
-	while( Char_Ptr != Src && *Char_Ptr != '\\' && *Char_Ptr != ':' && *Char_Ptr != '.' ) Char_Ptr--;
+    while( Char_Ptr != Src && *Char_Ptr != '\\' && *Char_Ptr != ':' && *Char_Ptr != '.' ) Char_Ptr--;
 
-	if( *Char_Ptr == '.' )
-	{
-		Char_Ptr++;
-		while( *Char_Ptr ) *Dest++ = *Char_Ptr++;
-		*Dest = 0;
-	}
-	else
-	{
-		*Dest = 0;
-	}
+    if( *Char_Ptr == '.' )
+    {
+        Char_Ptr++;
+        while( *Char_Ptr ) *Dest++ = *Char_Ptr++;
+        *Dest = 0;
+    }
+    else
+    {
+        *Dest = 0;
+    }
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Add path to filename
-	Input		:		uint8	*	Path\
-				:		uint8	*	Src Filename
-				:		uint8	*	Dest Path\Filename
-	Output		:		Nothing
+    Procedure   :       Add path to filename
+    Input       :       uint8   *   Path\
+                :       uint8   *   Src Filename
+                :       uint8   *   Dest Path\Filename
+    Output      :       Nothing
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void Add_Path( uint8 * Path, uint8 * Src, uint8 * Dest )
 {
-	strcpy( Dest, Path );
-	Dest = ( Dest + strlen( Path ) );
-	strcpy( Dest, Src );
+    strcpy( Dest, Path );
+    Dest = ( Dest + strlen( Path ) );
+    strcpy( Dest, Src );
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Return Size of File given Filename
-				:		data\ as base directory
-				:		scan override dir first, then normal
-	Input		:		char	*	Filename
-	Output		:		long		Size of File
+    Procedure   :       Return Size of File given Filename
+                :       data\ as base directory
+                :       scan override dir first, then normal
+    Input       :       char    *   Filename
+    Output      :       long        Size of File
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 long DataPath_Get_File_Size( char * Filename )
 {
-	int		Handle = -1;
-	long	Read_Size = 0;
-	char	TempFilename[ 256 ];
-#ifdef	WATCOM
+    int     Handle = -1;
+    long    Read_Size = 0;
+    char    TempFilename[ 256 ];
+#ifdef  WATCOM
 
-	if( use_data_path )
-	{
-		Add_Path( &data_path[ 0 ], Filename, &TempFilename[0] );
-		Handle = open( &TempFilename[ 0 ], O_RDONLY | O_BINARY );
+    if( use_data_path )
+    {
+        Add_Path( &data_path[ 0 ], Filename, &TempFilename[0] );
+        Handle = open( &TempFilename[ 0 ], O_RDONLY | O_BINARY );
 
-		if( Handle != -1 )
-		{
+        if( Handle != -1 )
+        {
 #ifdef DEBUG_DATAPATH
-			DebugPrintf( "DataPath_Get_File_Size() : %s\n", &TempFilename[ 0 ] );
+            DebugPrintf( "DataPath_Get_File_Size() : %s\n", &TempFilename[ 0 ] );
 #endif
 
-			Read_Size = filelength( Handle );
-			close( Handle );
-			return( Read_Side );
-		}
-	}
+            Read_Size = filelength( Handle );
+            close( Handle );
+            return( Read_Side );
+        }
+    }
 
-	Add_Path( &normdata_path[ 0 ], Filename, &TempFilename[0] );
-	Handle = open( &TempFilename[ 0 ], O_RDONLY | O_BINARY );
-	if( Handle != -1 )
-	{
+    Add_Path( &normdata_path[ 0 ], Filename, &TempFilename[0] );
+    Handle = open( &TempFilename[ 0 ], O_RDONLY | O_BINARY );
+    if( Handle != -1 )
+    {
 #ifdef DEBUG_DATAPATH
-		DebugPrintf( "Get_File_Size() : %s\n", &TempFilename[ 0 ] );
+        DebugPrintf( "Get_File_Size() : %s\n", &TempFilename[ 0 ] );
 #endif
-		Read_Size = filelength( Handle );
-		close( Handle );
-	}
-	
+        Read_Size = filelength( Handle );
+        close( Handle );
+    }
+    
 #else
 
-	if( use_data_path )
-	{
-		Add_Path( &data_path[ 0 ], Filename, &TempFilename[0] );
-		Handle = _open( &TempFilename[ 0 ], _O_RDONLY | _O_BINARY );
+    if( use_data_path )
+    {
+        Add_Path( &data_path[ 0 ], Filename, &TempFilename[0] );
+        Handle = _open( &TempFilename[ 0 ], _O_RDONLY | _O_BINARY );
 
-		if( Handle != -1 )
-		{
+        if( Handle != -1 )
+        {
 #ifdef DEBUG_DATAPATH
-			DebugPrintf( "DataPath_Get_File_Size() : %s\n", &TempFilename[ 0 ] );
+            DebugPrintf( "DataPath_Get_File_Size() : %s\n", &TempFilename[ 0 ] );
 #endif
-			Read_Size = _filelength( Handle );
-			_close( Handle );
-			return( Read_Size );
-		}
-	}
+            Read_Size = _filelength( Handle );
+            _close( Handle );
+            return( Read_Size );
+        }
+    }
 
-	Add_Path( &normdata_path[ 0 ], Filename, &TempFilename[0] );
-	Handle = _open( &TempFilename[ 0 ], _O_RDONLY | _O_BINARY );
-	if( Handle != -1 )
-	{
+    Add_Path( &normdata_path[ 0 ], Filename, &TempFilename[0] );
+    Handle = _open( &TempFilename[ 0 ], _O_RDONLY | _O_BINARY );
+    if( Handle != -1 )
+    {
 #ifdef DEBUG_DATAPATH
-		DebugPrintf( "Get_File_Size() : %s\n", &TempFilename[ 0 ] );
+        DebugPrintf( "Get_File_Size() : %s\n", &TempFilename[ 0 ] );
 #endif
-		Read_Size = _filelength( Handle );
-		_close( Handle );
-	}
+        Read_Size = _filelength( Handle );
+        _close( Handle );
+    }
 
 #endif
 
-	return ( Read_Size );
+    return ( Read_Size );
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Read Part or All of File Into Memory
-				:		data\ as base directory
-				:		read from override dir first, then normal
-	Input		:		char	*	Filename
-				:		char	*	Buffer to Load into
-				:		long		Bytes to Read ( 0 = All )
-	Output		:		long		Number of bytes Read
+    Procedure   :       Read Part or All of File Into Memory
+                :       data\ as base directory
+                :       read from override dir first, then normal
+    Input       :       char    *   Filename
+                :       char    *   Buffer to Load into
+                :       long        Bytes to Read ( 0 = All )
+    Output      :       long        Number of bytes Read
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 long DataPath_Read_File( char * Filename, char * File_Buffer, long Read_Size )
 {
-	int		Handle = -1;
-	long	Bytes_Read = 0;
-	char	TempFilename[ 256 ];
+    int     Handle = -1;
+    long    Bytes_Read = 0;
+    char    TempFilename[ 256 ];
 
-#ifdef	WATCOM
-	if( use_data_path )
-	{
-		Add_Path( &data_path[ 0 ], Filename, &TempFilename[0] );
-		Handle = open( &TempFilename[ 0 ], O_RDONLY | O_BINARY );
-	
-		if( Handle != -1 )
-		{
+#ifdef  WATCOM
+    if( use_data_path )
+    {
+        Add_Path( &data_path[ 0 ], Filename, &TempFilename[0] );
+        Handle = open( &TempFilename[ 0 ], O_RDONLY | O_BINARY );
+    
+        if( Handle != -1 )
+        {
 #ifdef DEBUG_DATAPATH
-			DebugPrintf( "DataPath_Read_File() : %s\n", &TempFilename[ 0 ] );
+            DebugPrintf( "DataPath_Read_File() : %s\n", &TempFilename[ 0 ] );
 #endif
-			if( Read_Size == 0 ) Read_Size = filelength( Handle );
-			Bytes_Read = read( Handle, File_Buffer, Read_Size );
-			if( Bytes_Read == -1 ) Bytes_Read = 0;
-			close( Handle );
-			return ( Bytes_Read );
-		}
-	}
+            if( Read_Size == 0 ) Read_Size = filelength( Handle );
+            Bytes_Read = read( Handle, File_Buffer, Read_Size );
+            if( Bytes_Read == -1 ) Bytes_Read = 0;
+            close( Handle );
+            return ( Bytes_Read );
+        }
+    }
 
-	Add_Path( &normdata_path[ 0 ], Filename, &TempFilename[0] );
-	Handle = open( &TempFilename[ 0 ], O_RDONLY | O_BINARY );
+    Add_Path( &normdata_path[ 0 ], Filename, &TempFilename[0] );
+    Handle = open( &TempFilename[ 0 ], O_RDONLY | O_BINARY );
 
-	if( Handle != -1 )
-	{
+    if( Handle != -1 )
+    {
 #ifdef DEBUG_DATAPATH
-		DebugPrintf( "Read_File() : %s\n", &TempFilename[ 0 ] );
+        DebugPrintf( "Read_File() : %s\n", &TempFilename[ 0 ] );
 #endif
-		if( Read_Size == 0 ) Read_Size = filelength( Handle );
-		Bytes_Read = read( Handle, File_Buffer, Read_Size );
-		if( Bytes_Read == -1 ) Bytes_Read = 0;
-		close( Handle );
-	}
+        if( Read_Size == 0 ) Read_Size = filelength( Handle );
+        Bytes_Read = read( Handle, File_Buffer, Read_Size );
+        if( Bytes_Read == -1 ) Bytes_Read = 0;
+        close( Handle );
+    }
 
 #else
-	if( use_data_path )
-	{
-		Add_Path( &data_path[ 0 ], Filename, &TempFilename[0] );
-		Handle = _open( &TempFilename[ 0 ], _O_RDONLY | _O_BINARY );
+    if( use_data_path )
+    {
+        Add_Path( &data_path[ 0 ], Filename, &TempFilename[0] );
+        Handle = _open( &TempFilename[ 0 ], _O_RDONLY | _O_BINARY );
 
-		if( Handle != -1 )
-		{
+        if( Handle != -1 )
+        {
 #ifdef DEBUG_DATAPATH
-			DebugPrintf( "DataPath_Read_File() : %s\n", &TempFilename[ 0 ] );
+            DebugPrintf( "DataPath_Read_File() : %s\n", &TempFilename[ 0 ] );
 #endif
-			if( Read_Size == 0 ) Read_Size = _filelength( Handle );
-			Bytes_Read = _read( Handle, File_Buffer, Read_Size );
-			if( Bytes_Read == -1 ) Bytes_Read = 0;
-			_close( Handle );
-			return ( Bytes_Read );
-		}
-	}
+            if( Read_Size == 0 ) Read_Size = _filelength( Handle );
+            Bytes_Read = _read( Handle, File_Buffer, Read_Size );
+            if( Bytes_Read == -1 ) Bytes_Read = 0;
+            _close( Handle );
+            return ( Bytes_Read );
+        }
+    }
 
-	Add_Path( &normdata_path[ 0 ], Filename, &TempFilename[0] );
-	Handle = _open( &TempFilename[ 0 ], _O_RDONLY | _O_BINARY );
+    Add_Path( &normdata_path[ 0 ], Filename, &TempFilename[0] );
+    Handle = _open( &TempFilename[ 0 ], _O_RDONLY | _O_BINARY );
 
-	if( Handle != -1 )
-	{
+    if( Handle != -1 )
+    {
 #ifdef DEBUG_DATAPATH
-		DebugPrintf( "Read_File() : %s\n", &TempFilename[ 0 ] );
+        DebugPrintf( "Read_File() : %s\n", &TempFilename[ 0 ] );
 #endif
-		if( Read_Size == 0 ) Read_Size = _filelength( Handle );
-		Bytes_Read = _read( Handle, File_Buffer, Read_Size );
-		if( Bytes_Read == -1 ) Bytes_Read = 0;
-		_close( Handle );
-	}
+        if( Read_Size == 0 ) Read_Size = _filelength( Handle );
+        Bytes_Read = _read( Handle, File_Buffer, Read_Size );
+        if( Bytes_Read == -1 ) Bytes_Read = 0;
+        _close( Handle );
+    }
 #endif
 
-	return ( Bytes_Read );
+    return ( Bytes_Read );
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Open file using fopen
-				:		data\ as base directory
-				:		read from override dir first, then normal
-	Input		:		char	*	Filename
-				:		char	*	Access right
-	Output		:		FILE	*	FilePtr
+    Procedure   :       Open file using fopen
+                :       data\ as base directory
+                :       read from override dir first, then normal
+    Input       :       char    *   Filename
+                :       char    *   Access right
+    Output      :       FILE    *   FilePtr
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 FILE * DataPath_fopen( char * Filename, char * Rights )
 {
-	FILE	*	fp;
-	char		TempFilename[ 256 ];
-	char		TempFilename2[ 256 ];
+    FILE    *   fp;
+    char        TempFilename[ 256 ];
+    char        TempFilename2[ 256 ];
 
-	if( use_data_path )
-	{
-		Add_Path( &data_path[ 0 ], Filename, &TempFilename[ 0 ] );
-		fp = fopen( &TempFilename[ 0 ], Rights );
-		if( fp != NULL ) return( fp );
-	}
+    if( use_data_path )
+    {
+        Add_Path( &data_path[ 0 ], Filename, &TempFilename[ 0 ] );
+        fp = fopen( &TempFilename[ 0 ], Rights );
+        if( fp != NULL ) return( fp );
+    }
 
-	Add_Path( &normdata_path[ 0 ], Filename, &TempFilename2[ 0 ] );
-	fp = fopen( &TempFilename2[ 0 ], Rights );
+    Add_Path( &normdata_path[ 0 ], Filename, &TempFilename2[ 0 ] );
+    fp = fopen( &TempFilename2[ 0 ], Rights );
 
 #if 0
-	if( !fp )
-	{
-		Msg( "Cannot open /n%s/n%s/n", &TempFilename[ 0 ], &TempFilename2[ 0 ] );
-	}
+    if( !fp )
+    {
+        Msg( "Cannot open /n%s/n%s/n", &TempFilename[ 0 ], &TempFilename2[ 0 ] );
+    }
 #endif
 
-	return( fp );
+    return( fp );
 }
 
 char * LogFilename = "projectx.log";
 char * BatchFilename = "filesused.bat";
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Add Comment to log
-	Input		:		const char * format, .....
-	Output		:		Nothing
+    Procedure   :       Add Comment to log
+    Input       :       const char * format, .....
+    Output      :       Nothing
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void AddCommentToLog( const char * format, ... )
 {
 #ifndef FINAL_RELEASE
-	FILE	*	fp;
+    FILE    *   fp;
     static char buf1[256], buf2[512];
-	va_list		args;
+    va_list     args;
 
-	if( !CreateLogFile ) return;
+    if( !CreateLogFile ) return;
 
-	fp = fopen( LogFilename, "a" );
+    fp = fopen( LogFilename, "a" );
 
-	if( fp )
-	{
-		va_start( args, format );
-		vsprintf( buf1, format, args );
-		wsprintf( buf2, "%hs", buf1 );
-		fprintf( fp, "%s", buf2 );
-		va_end( args );
-		fclose( fp );
-	}
+    if( fp )
+    {
+        va_start( args, format );
+        vsprintf( buf1, format, args );
+        wsprintf( buf2, "%hs", buf1 );
+        fprintf( fp, "%s", buf2 );
+        va_end( args );
+        fclose( fp );
+    }
 #endif
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Add Comment to Batch file
-	Input		:		const char * format, .....
-	Output		:		Nothing
+    Procedure   :       Add Comment to Batch file
+    Input       :       const char * format, .....
+    Output      :       Nothing
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void AddCommentToBat( const char * format, ... )
 {
 #ifndef FINAL_RELEASE
-	FILE	*	fp;
+    FILE    *   fp;
     static char buf1[256], buf2[512];
-	va_list		args;
+    va_list     args;
 
-	if( !CreateBatchFile ) return;
+    if( !CreateBatchFile ) return;
 
-	fp = fopen( BatchFilename, "a" );
+    fp = fopen( BatchFilename, "a" );
 
-	if( fp )
-	{
-		va_start( args, format );
-		vsprintf( buf1, format, args );
-		wsprintf( buf2, "%hs", buf1 );
+    if( fp )
+    {
+        va_start( args, format );
+        vsprintf( buf1, format, args );
+        wsprintf( buf2, "%hs", buf1 );
 
-		fprintf( fp, "\nREM %s\n\n", buf2 );
+        fprintf( fp, "\nREM %s\n\n", buf2 );
 
-		va_end( args );
-		fclose( fp );
-	}
+        va_end( args );
+        fclose( fp );
+    }
 #endif
 }
 
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Add DataPath Filename to batch file
-	Input		:		char	*	Filename
-	Output		:		Nothing
+    Procedure   :       Add DataPath Filename to batch file
+    Input       :       char    *   Filename
+    Output      :       Nothing
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void AddDataPathFileToBat( char * Filename )
 {
 #ifndef FINAL_RELEASE
-	FILE	*	fp = NULL;
-	FILE	*	fp2 = NULL;
-	char		TempFilename[ 512 ];
+    FILE    *   fp = NULL;
+    FILE    *   fp2 = NULL;
+    char        TempFilename[ 512 ];
 
-	if( !Filename ) return;
-	if( !Filename[ 0 ] ) return;
-	if( !CreateBatchFile ) return;
+    if( !Filename ) return;
+    if( !Filename[ 0 ] ) return;
+    if( !CreateBatchFile ) return;
 
-	fp = fopen( BatchFilename, "a" );
+    fp = fopen( BatchFilename, "a" );
 
-	if( fp )
-	{
-		if( use_data_path )
-		{
-			Add_Path( &data_path[ 0 ], Filename, &TempFilename[ 0 ] );
-			fp2 = fopen( &TempFilename[ 0 ], "r" );
+    if( fp )
+    {
+        if( use_data_path )
+        {
+            Add_Path( &data_path[ 0 ], Filename, &TempFilename[ 0 ] );
+            fp2 = fopen( &TempFilename[ 0 ], "r" );
 
-			if( !fp2 )
-			{
-				Add_Path( &normdata_path[ 0 ], Filename, &TempFilename[ 0 ] );
-				fp2 = fopen( &TempFilename[ 0 ], "r" );
-			}
-		}
-		else
-		{
-			Add_Path( &normdata_path[ 0 ], Filename, &TempFilename[ 0 ] );
-			fp2 = fopen( &TempFilename[ 0 ], "r" );
-		}
+            if( !fp2 )
+            {
+                Add_Path( &normdata_path[ 0 ], Filename, &TempFilename[ 0 ] );
+                fp2 = fopen( &TempFilename[ 0 ], "r" );
+            }
+        }
+        else
+        {
+            Add_Path( &normdata_path[ 0 ], Filename, &TempFilename[ 0 ] );
+            fp2 = fopen( &TempFilename[ 0 ], "r" );
+        }
 
-		if( fp2 )
-		{
-			fprintf( fp, "copy %%1\\%s %%2\\%s\n", &TempFilename[ 0 ], &TempFilename[ 0 ] );
-			fclose( fp2 );
-		}
+        if( fp2 )
+        {
+            fprintf( fp, "copy %%1\\%s %%2\\%s\n", &TempFilename[ 0 ], &TempFilename[ 0 ] );
+            fclose( fp2 );
+        }
 
-		fclose( fp );
-	}
+        fclose( fp );
+    }
 #endif
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Add Filename to batch file
-	Input		:		char	*	Filename
-	Output		:		Nothing
+    Procedure   :       Add Filename to batch file
+    Input       :       char    *   Filename
+    Output      :       Nothing
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void AddFileToBat( char * Filename )
 {
 #ifndef FINAL_RELEASE
-	FILE	*	fp = NULL;
+    FILE    *   fp = NULL;
 
-	if( !Filename ) return;
-	if( !Filename[ 0 ] ) return;
-	if( !CreateBatchFile ) return;
+    if( !Filename ) return;
+    if( !Filename[ 0 ] ) return;
+    if( !CreateBatchFile ) return;
 
-	fp = fopen( BatchFilename, "a" );
+    fp = fopen( BatchFilename, "a" );
 
-	if( fp )
-	{
-		fprintf( fp, "copy %%1\\%s %%2\\%s\n", Filename, Filename );
+    if( fp )
+    {
+        fprintf( fp, "copy %%1\\%s %%2\\%s\n", Filename, Filename );
 
-		fclose( fp );
-	}
+        fclose( fp );
+    }
 #endif
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Add Comment to Batch file
-	Input		:		const char * format, .....
-	Output		:		Nothing
+    Procedure   :       Add Comment to Batch file
+    Input       :       const char * format, .....
+    Output      :       Nothing
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void AddCommandToBat( const char * format, ... )
 {
 #ifndef FINAL_RELEASE
-	FILE	*	fp;
+    FILE    *   fp;
     static char buf1[256], buf2[512];
-	va_list		args;
+    va_list     args;
 
-	if( !CreateBatchFile ) return;
+    if( !CreateBatchFile ) return;
 
-	fp = fopen( BatchFilename, "a" );
+    fp = fopen( BatchFilename, "a" );
 
-	if( fp )
-	{
-		va_start( args, format );
-		vsprintf( buf1, format, args );
-		wsprintf( buf2, "%hs", buf1 );
-		fprintf( fp, "%s", buf2 );
-		va_end( args );
-		fclose( fp );
-	}
+    if( fp )
+    {
+        va_start( args, format );
+        vsprintf( buf1, format, args );
+        wsprintf( buf2, "%hs", buf1 );
+        fprintf( fp, "%s", buf2 );
+        va_end( args );
+        fclose( fp );
+    }
 #endif
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Compute checksum for file
-	Input		:		const char * fname
-	Output		:		Nothing
-	Side effect :		LevelCheckSum updated
+    Procedure   :       Compute checksum for file
+    Input       :       const char * fname
+    Output      :       Nothing
+    Side effect :       LevelCheckSum updated
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void DataPath_FileCheckSum( char *fname )
 {
-	FILE	*	fp = NULL;
-	FILE	*	fp2 = NULL;
-	char		TempFilename[ 512 ];
+    FILE    *   fp = NULL;
+    FILE    *   fp2 = NULL;
+    char        TempFilename[ 512 ];
 
-	if( use_data_path )
-	{
-		Add_Path( &data_path[ 0 ], fname, &TempFilename[ 0 ] );
-		fp2 = fopen( &TempFilename[ 0 ], "r" );
+    if( use_data_path )
+    {
+        Add_Path( &data_path[ 0 ], fname, &TempFilename[ 0 ] );
+        fp2 = fopen( &TempFilename[ 0 ], "r" );
 
-		if( !fp2 )
-		{
-			Add_Path( &normdata_path[ 0 ], fname, &TempFilename[ 0 ] );
-			fp2 = fopen( &TempFilename[ 0 ], "r" );
-		}
-	}
-	else
-	{
-		Add_Path( &normdata_path[ 0 ], fname, &TempFilename[ 0 ] );
-		fp2 = fopen( &TempFilename[ 0 ], "r" );
-	}
+        if( !fp2 )
+        {
+            Add_Path( &normdata_path[ 0 ], fname, &TempFilename[ 0 ] );
+            fp2 = fopen( &TempFilename[ 0 ], "r" );
+        }
+    }
+    else
+    {
+        Add_Path( &normdata_path[ 0 ], fname, &TempFilename[ 0 ] );
+        fp2 = fopen( &TempFilename[ 0 ], "r" );
+    }
 
-	if( fp2 )
-	{
-		fclose( fp2 );
-		FileCheckSum( &TempFilename[ 0 ] );
-	}
+    if( fp2 )
+    {
+        fclose( fp2 );
+        FileCheckSum( &TempFilename[ 0 ] );
+    }
 }
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Compute checksum for file
-	Input		:		const char * fname
-	Output		:		Nothing
-	Side effect :		LevelCheckSum updated
+    Procedure   :       Compute checksum for file
+    Input       :       const char * fname
+    Output      :       Nothing
+    Side effect :       LevelCheckSum updated
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void FileCheckSum( char *fname )
 {
-	FILE *f;
-	char buf[ 4096 ];
-	uint32 *pdata;
-	LONGLONG data;
-	uint32 current, size, shift;
-	uint32 mask[] = {
-		0x00000000L,
-		0x000000FFL,
-		0x0000FFFFL,
-		0x00FFFFFFL };
+    FILE *f;
+    char buf[ 4096 ];
+    uint32 *pdata;
+    LONGLONG data;
+    uint32 current, size, shift;
+    uint32 mask[] = {
+        0x00000000L,
+        0x000000FFL,
+        0x0000FFFFL,
+        0x00FFFFFFL };
 
-	if( !fname ) return;
-	if( !fname[ 0 ] ) return;
+    if( !fname ) return;
+    if( !fname[ 0 ] ) return;
 
-	strncpy( buf, fname, sizeof( buf ) );
-	_strlwr( buf );
-	if ( !strstr( buf, "data\\levels\\" ) )
-		return;
-	f = fopen( fname, "rb" );
-	if ( !f )
-		return;
+    strncpy( buf, fname, sizeof( buf ) );
+    _strlwr( buf );
+    if ( !strstr( buf, "data\\levels\\" ) )
+        return;
+    f = fopen( fname, "rb" );
+    if ( !f )
+        return;
 
-	while ( !feof( f ) && !ferror( f ) )
-	{
-		size = fread( (void *) buf, 1, sizeof( buf ), f );
-		for ( current = shift = 0; current < size; current += 3 )
-		{
-			pdata = (uint32 *) &buf[ current ];
-			data = *pdata & mask[ ( size - current < 3 ) ? size - current : 3 ];
-			LevelCheckSum += data << shift;
-			shift = ( shift + 7 ) & 31;
-		}
-	}
+    while ( !feof( f ) && !ferror( f ) )
+    {
+        size = fread( (void *) buf, 1, sizeof( buf ), f );
+        for ( current = shift = 0; current < size; current += 3 )
+        {
+            pdata = (uint32 *) &buf[ current ];
+            data = *pdata & mask[ ( size - current < 3 ) ? size - current : 3 ];
+            LevelCheckSum += data << shift;
+            shift = ( shift + 7 ) & 31;
+        }
+    }
 
-	fclose( f );
+    fclose( f );
 
-	pdata = (uint32 *) &LevelCheckSum;
-	DebugPrintf( "FileCheckSum() : %s : 0x%08X%08X\n", fname, pdata[ 1 ], pdata[ 0 ] );
+    pdata = (uint32 *) &LevelCheckSum;
+    DebugPrintf( "FileCheckSum() : %s : 0x%08X%08X\n", fname, pdata[ 1 ], pdata[ 0 ] );
 }
 
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Procedure	:		Initialise checksum
-	Input		:		LPGUID lpguid
-	Output		:		Nothing
-	Side effect :		LevelCheckSum reset using lpguid
+    Procedure   :       Initialise checksum
+    Input       :       LPGUID lpguid
+    Output      :       Nothing
+    Side effect :       LevelCheckSum reset using lpguid
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void InitCheckSum( LPGUID lpguid )
 {
-	uint8 *buf;
-	uint32 *pdata;
-	LONGLONG data;
-	uint32 current, size, shift;
-	uint32 mask[] = {
-		0x00000000L,
-		0x000000FFL,
-		0x0000FFFFL,
-		0x00FFFFFFL };
+    uint8 *buf;
+    uint32 *pdata;
+    LONGLONG data;
+    uint32 current, size, shift;
+    uint32 mask[] = {
+        0x00000000L,
+        0x000000FFL,
+        0x0000FFFFL,
+        0x00FFFFFFL };
 
-	buf = (uint8 *) lpguid;
-	LevelCheckSum = 0;
-	size = sizeof( *lpguid );
-	for ( current = shift = 0; current < size; current += 3 )
-	{
-		pdata = (uint32 *) &buf[ current ];
-		data = *pdata & mask[ ( size - current < 3 ) ? size - current : 3 ];
-		LevelCheckSum += data << shift;
-		shift = ( shift + 7 ) & 31;
-	}
+    buf = (uint8 *) lpguid;
+    LevelCheckSum = 0;
+    size = sizeof( *lpguid );
+    for ( current = shift = 0; current < size; current += 3 )
+    {
+        pdata = (uint32 *) &buf[ current ];
+        data = *pdata & mask[ ( size - current < 3 ) ? size - current : 3 ];
+        LevelCheckSum += data << shift;
+        shift = ( shift + 7 ) & 31;
+    }
 
-	DebugPrintf( "InitCheckSum() : 0x" );
-	for ( current = 1; current <= size; current++ )
-	{
-		DebugPrintf( "%02X", buf[ size - current ] );
-	}
-	pdata = (uint32 *) &LevelCheckSum;
-	DebugPrintf( " : 0x%08X%08X\n", pdata[ 1 ], pdata[ 0 ] );
+    DebugPrintf( "InitCheckSum() : 0x" );
+    for ( current = 1; current <= size; current++ )
+    {
+        DebugPrintf( "%02X", buf[ size - current ] );
+    }
+    pdata = (uint32 *) &LevelCheckSum;
+    DebugPrintf( " : 0x%08X%08X\n", pdata[ 1 ], pdata[ 0 ] );
 }
 
 

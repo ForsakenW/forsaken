@@ -86,8 +86,8 @@ HRESULT DPlaySetSessionDesc(DWORD flags);
 
 
 HRESULT DPlayCreateLobby( void );
-HRESULT	CreateServiceProviderAddress( LPGUID lpGuid ,LPDIRECTPLAYLOBBY2A lpDPlayLobby, LPVOID *lplpAddress, LPDWORD lpdwAddressSize , char * TCPIPAddress);
-HRESULT	OnceServiceProviderChosen( LPGUID lpGuid ,LPDIRECTPLAYLOBBY2A lpDPlayLobby, LPDIRECTPLAY4A *lplpDPlay , char * TCPIPAddress);
+HRESULT CreateServiceProviderAddress( LPGUID lpGuid ,LPDIRECTPLAYLOBBY2A lpDPlayLobby, LPVOID *lplpAddress, LPDWORD lpdwAddressSize , char * TCPIPAddress);
+HRESULT OnceServiceProviderChosen( LPGUID lpGuid ,LPDIRECTPLAYLOBBY2A lpDPlayLobby, LPDIRECTPLAY4A *lplpDPlay , char * TCPIPAddress);
 
 
 HRESULT DPLobbyGetConnectionSettings(void);
@@ -100,7 +100,7 @@ BOOL LaunchedByLobby(void);
 
 HRESULT DPlayCreateSessionServer( LPTSTR lptszSessionName );
 HRESULT DPlayCreatePlayerServer(LPDPID lppidID, LPTSTR lptszPlayerName, HANDLE hEvent, 
-		                        LPVOID lpData, DWORD dwDataSize);
+                                LPVOID lpData, DWORD dwDataSize);
 
 void StoreSessionUserFields( LPDPSESSIONDESC2 lpDesc );
 BOOL GetIPFromDP( char *add, DPID dpid );

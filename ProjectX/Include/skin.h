@@ -2,7 +2,7 @@
 #define SKIN_INCLUDED
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Includes
+    Includes
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 #include <math.h>
 #include "d3dmain.h"
@@ -22,17 +22,17 @@
 #include "trigarea.h"
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Defines
+    Defines
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
-#define	MAXSKINEXECS		MAXGROUPS
-#define	MAXPORTALEXECS		MAXGROUPS
-#define	MAX_TRIS_PER_EXEC	300
+#define MAXSKINEXECS        MAXGROUPS
+#define MAXPORTALEXECS      MAXGROUPS
+#define MAX_TRIS_PER_EXEC   300
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Prototypes
+    Prototypes
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 BOOL CreateSkinExecList( MCLOADHEADER * MCloadheader, int16 NumVisible );
-BOOL MakeNewSkinExec( LPD3DLVERTEX Verts, LPD3DTRIANGLE Tris, int16	NumVerts, int16 NumTris );
+BOOL MakeNewSkinExec( LPD3DLVERTEX Verts, LPD3DTRIANGLE Tris, int16 NumVerts, int16 NumTris );
 void ReleaseSkinExecs( void );
 void DisplayBSPNode( BSP_NODE * Node );
 void DisplayNewBSPNode( BSP_NODE * Node );
@@ -50,10 +50,10 @@ void InitPortalExecs( void );
 int GimmeTriggerZoneVertices( TRIGGER_ZONE * plane_ptr, TRIGGER_ZONE * space_ptr, int NumSides, int side, VECTOR * out_ptr );
 int GimmeColZoneVertices( ZONESIDE * plane_ptr, ZONESIDE * space_ptr, int NumSides, int side, VECTOR * out_ptr );
 void DisplayTriggerZone( TRIGGER_ZONE * Sides, int16 NumSides, uint16 Group,
-						 uint8 Red, uint8 Green, uint8 Blue, uint8 Trans );
+                         uint8 Red, uint8 Green, uint8 Blue, uint8 Trans );
 void DisplayColZone( ZONESIDE * Sides, int16 NumSides, uint16 Group, int16 Sensitive );
 void DisplaySphereZone( VECTOR * Pos, float Radius, uint16 Group,
-					   uint8 Red, uint8 Green, uint8 Blue, uint8 Trans );
+                       uint8 Red, uint8 Green, uint8 Blue, uint8 Trans );
 void KillAllSphereZones( void );
 void DisplayZoneDirection( VECTOR * Pos, VECTOR * Dir, uint16 Group );
 #endif

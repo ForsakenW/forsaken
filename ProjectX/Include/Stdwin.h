@@ -11,7 +11,7 @@
 
 // Allows Visual C++ to precompile the standard header files
 
-#ifndef	STDWIN_INC
+#ifndef STDWIN_INC
 #define STDWIN_INC
 
 #ifdef NDEBUG

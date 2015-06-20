@@ -108,16 +108,16 @@
 #include "typedefs.h"
 
 #include "d3dappi.h"
-extern	BOOL MipMap;
-extern	BOOL	Is3Dfx2;
-BOOL	TriLinear;
-extern	BOOL	DontColourKey;
-extern	int		TexturePalettized;
-extern	int		TextureRedBPP;
-extern	int		TextureGreenBPP;
-extern	int		TextureBlueBPP;
-extern	int		TextureAlphaBPP;
-extern	int		TextureIndexBPP;
+extern  BOOL MipMap;
+extern  BOOL    Is3Dfx2;
+BOOL    TriLinear;
+extern  BOOL    DontColourKey;
+extern  int     TexturePalettized;
+extern  int     TextureRedBPP;
+extern  int     TextureGreenBPP;
+extern  int     TextureBlueBPP;
+extern  int     TextureAlphaBPP;
+extern  int     TextureIndexBPP;
 
 /***************************************************************************/
 /*                            Creation of D3D                              */
@@ -128,10 +128,10 @@ BOOL
 D3DAppICreateD3D(void)
 {
 
-//	LastError = d3dappi.lpDD->lpVtbl->QueryInterface(d3dappi.lpDD,
+//  LastError = d3dappi.lpDD->lpVtbl->QueryInterface(d3dappi.lpDD,
 //                                    &IID_IDirect3D2, (LPVOID*)&lpD3D2);
     
-	LastError = d3dappi.lpDD->lpVtbl->QueryInterface(d3dappi.lpDD,
+    LastError = d3dappi.lpDD->lpVtbl->QueryInterface(d3dappi.lpDD,
                                     &IID_IDirect3D, (LPVOID*)&d3dappi.lpD3D);
     if (LastError != DD_OK) {
         D3DAppISetErrorString("Creation of IDirect3D failed.\n%s",
@@ -243,23 +243,23 @@ D3DAppIEnumDrivers(void)
 
 static BOOL TextureFormatMatch( D3DAppTextureFormat *t )
 {
-	if ( t && TexturePalettized >= 0 )
-	{
-		if ( t->bPalettized && TexturePalettized
-			&& t->IndexBPP == TextureIndexBPP ) 
-			return TRUE;
-		if ( !t->bPalettized && !TexturePalettized
-			&& t->RedBPP == TextureRedBPP
-			&& t->GreenBPP == TextureGreenBPP
-			&& t->BlueBPP == TextureBlueBPP
-			&& t->AlphaBPP == TextureAlphaBPP )
-			return TRUE;
-	}
-	return FALSE;
+    if ( t && TexturePalettized >= 0 )
+    {
+        if ( t->bPalettized && TexturePalettized
+            && t->IndexBPP == TextureIndexBPP ) 
+            return TRUE;
+        if ( !t->bPalettized && !TexturePalettized
+            && t->RedBPP == TextureRedBPP
+            && t->GreenBPP == TextureGreenBPP
+            && t->BlueBPP == TextureBlueBPP
+            && t->AlphaBPP == TextureAlphaBPP )
+            return TRUE;
+    }
+    return FALSE;
 }
 
 
-int	LowestTexFormat;		// used to  select the lowest bit depth for  textures;
+int LowestTexFormat;        // used to  select the lowest bit depth for  textures;
 /***************************************************************************/
 /*                    Enumeration of texure format                         */
 /***************************************************************************/
@@ -275,11 +275,11 @@ CALLBACK EnumTextureFormatsCallback(LPDDSURFACEDESC lpDDSD, LPVOID lpContext)
     unsigned long m;
     int r, g, b, a;
     int *lpStartFormat = (int *)lpContext;
-	D3DAppTextureFormat *tf_default, *tf_this;
+    D3DAppTextureFormat *tf_default, *tf_this;
 
 
-	if (lpDDSD->ddpfPixelFormat.dwFlags & DDPF_ALPHAPIXELS)
-		return DDENUMRET_OK;
+    if (lpDDSD->ddpfPixelFormat.dwFlags & DDPF_ALPHAPIXELS)
+        return DDENUMRET_OK;
 
     /*
      * Record the DDSURFACEDESC of this texture format
@@ -293,14 +293,14 @@ CALLBACK EnumTextureFormatsCallback(LPDDSURFACEDESC lpDDSD, LPVOID lpContext)
      * bits?
      */
     if (lpDDSD->ddpfPixelFormat.dwFlags & DDPF_PALETTEINDEXED8) {
-		// 8 bit palettized is fine if you dont have mipmaps....
-		if( MipMap )
-			return DDENUMRET_OK;
+        // 8 bit palettized is fine if you dont have mipmaps....
+        if( MipMap )
+            return DDENUMRET_OK;
         d3dappi.TextureFormat[d3dappi.NumTextureFormats].bPalettized = TRUE;
         d3dappi.TextureFormat[d3dappi.NumTextureFormats].IndexBPP = 8;
     } else if (lpDDSD->ddpfPixelFormat.dwFlags & DDPF_PALETTEINDEXED4) {
-		// We dont want 4 bit palettized!!!!!
-		return DDENUMRET_OK;
+        // We dont want 4 bit palettized!!!!!
+        return DDENUMRET_OK;
 //        d3dappi.TextureFormat[d3dappi.NumTextureFormats].bPalettized = TRUE;
 //        d3dappi.TextureFormat[d3dappi.NumTextureFormats].IndexBPP = 4;
     }else{
@@ -316,15 +316,15 @@ CALLBACK EnumTextureFormatsCallback(LPDDSURFACEDESC lpDDSD, LPVOID lpContext)
                                                                b++, m >>= 1);
         for (b = 0; m & 1; b++, m >>= 1);
 
-		a = 0;
-		if (lpDDSD->ddpfPixelFormat.dwFlags & DDPF_ALPHAPIXELS) {
-			for (a = 0, m = lpDDSD->ddpfPixelFormat.dwRGBAlphaBitMask; !(m & 1);
+        a = 0;
+        if (lpDDSD->ddpfPixelFormat.dwFlags & DDPF_ALPHAPIXELS) {
+            for (a = 0, m = lpDDSD->ddpfPixelFormat.dwRGBAlphaBitMask; !(m & 1);
                                                                a++, m >>= 1);
-			for (a = 0; m & 1; a++, m >>= 1);
-		} 
-		// we dont want less than 4 bits per gun...
-		if( r+g+b <= 8 )
-			return DDENUMRET_OK;
+            for (a = 0; m & 1; a++, m >>= 1);
+        } 
+        // we dont want less than 4 bits per gun...
+        if( r+g+b <= 8 )
+            return DDENUMRET_OK;
         d3dappi.TextureFormat[d3dappi.NumTextureFormats].RedBPP = r;
         d3dappi.TextureFormat[d3dappi.NumTextureFormats].GreenBPP = g;
         d3dappi.TextureFormat[d3dappi.NumTextureFormats].BlueBPP = b;
@@ -333,51 +333,51 @@ CALLBACK EnumTextureFormatsCallback(LPDDSURFACEDESC lpDDSD, LPVOID lpContext)
     /*
      * If lpStarFormat is -1, this is the first format.  Select it.
      */
-	tf_default = ( *lpStartFormat >= 0 && *lpStartFormat < d3dappi.NumTextureFormats ) ? &d3dappi.TextureFormat[*lpStartFormat] : NULL;
+    tf_default = ( *lpStartFormat >= 0 && *lpStartFormat < d3dappi.NumTextureFormats ) ? &d3dappi.TextureFormat[*lpStartFormat] : NULL;
     if (*lpStartFormat == -1)
-	{
+    {
         *lpStartFormat = d3dappi.NumTextureFormats;
-		LowestTexFormat	= r+g+b ;				// makes a note of the bit depths...
-		if( LowestTexFormat	< 15 )
-			LowestTexFormat = 32;
-	}else if ( !TextureFormatMatch( tf_default ) ) {
-		tf_this = &d3dappi.TextureFormat[d3dappi.NumTextureFormats];
-		/* 
-		 * If this format is paletted and at least 8 bit, select it . but not if MipMap is enabled....
-		 */
-		if ( (	(d3dappi.TextureFormat[d3dappi.NumTextureFormats].bPalettized ) &&
-				(d3dappi.TextureFormat[d3dappi.NumTextureFormats].IndexBPP == 8 ) && !MipMap ) )
-		{
-			if ( TextureFormatMatch( tf_this ) )
-			{
-				*lpStartFormat = d3dappi.NumTextureFormats; // only select 8-bit palettized if chosen by user
-			}
-		}else{
-			if ( TextureFormatMatch( tf_this ) )
-			{
-				*lpStartFormat = d3dappi.NumTextureFormats;
-				LowestTexFormat	= r+g+b ;	   // makes a note of the lowest bit depth so far...
-			}
-			else if( d3dappi.Driver[d3dappi.CurrDriver].bTransparency && !DontColourKey )
-			{
-				// Driver does do Colourkey Transparency...
-				if ( ( r+g+b < LowestTexFormat && r+g+b >= 15 && a == 0 ) ) // is this the lowest bit depth????...
-				{
-					*lpStartFormat = d3dappi.NumTextureFormats;
-					LowestTexFormat	= r+g+b ;	   // makes a note of the lowest bit depth so far...
-				}
-				
-			}else{
-				// Driver does not do Colour key so we need a texture format with some alpha control...
-				// or it messes up when we do colourkey...
-				if ( ( r+g+b <= LowestTexFormat && r+g+b >= 12 && a != 0 ) ) // is this the lowest bit depth????...
-				{
-					*lpStartFormat = d3dappi.NumTextureFormats;
-					LowestTexFormat	= r+g+b ;	   // makes a note of the lowest bit depth so far...
-				}
-			}
-		}
-	}
+        LowestTexFormat = r+g+b ;               // makes a note of the bit depths...
+        if( LowestTexFormat < 15 )
+            LowestTexFormat = 32;
+    }else if ( !TextureFormatMatch( tf_default ) ) {
+        tf_this = &d3dappi.TextureFormat[d3dappi.NumTextureFormats];
+        /* 
+         * If this format is paletted and at least 8 bit, select it . but not if MipMap is enabled....
+         */
+        if ( (  (d3dappi.TextureFormat[d3dappi.NumTextureFormats].bPalettized ) &&
+                (d3dappi.TextureFormat[d3dappi.NumTextureFormats].IndexBPP == 8 ) && !MipMap ) )
+        {
+            if ( TextureFormatMatch( tf_this ) )
+            {
+                *lpStartFormat = d3dappi.NumTextureFormats; // only select 8-bit palettized if chosen by user
+            }
+        }else{
+            if ( TextureFormatMatch( tf_this ) )
+            {
+                *lpStartFormat = d3dappi.NumTextureFormats;
+                LowestTexFormat = r+g+b ;      // makes a note of the lowest bit depth so far...
+            }
+            else if( d3dappi.Driver[d3dappi.CurrDriver].bTransparency && !DontColourKey )
+            {
+                // Driver does do Colourkey Transparency...
+                if ( ( r+g+b < LowestTexFormat && r+g+b >= 15 && a == 0 ) ) // is this the lowest bit depth????...
+                {
+                    *lpStartFormat = d3dappi.NumTextureFormats;
+                    LowestTexFormat = r+g+b ;      // makes a note of the lowest bit depth so far...
+                }
+                
+            }else{
+                // Driver does not do Colour key so we need a texture format with some alpha control...
+                // or it messes up when we do colourkey...
+                if ( ( r+g+b <= LowestTexFormat && r+g+b >= 12 && a != 0 ) ) // is this the lowest bit depth????...
+                {
+                    *lpStartFormat = d3dappi.NumTextureFormats;
+                    LowestTexFormat = r+g+b ;      // makes a note of the lowest bit depth so far...
+                }
+            }
+        }
+    }
     d3dappi.NumTextureFormats++;
     return DDENUMRET_OK;
 }
@@ -409,12 +409,12 @@ D3DAppIEnumTextureFormats(void)
     memcpy(&d3dappi.ThisTextureFormat, &d3dappi.TextureFormat[StartFormat],
            sizeof(D3DAppTextureFormat));
     d3dappi.CurrTextureFormat = StartFormat;
-	TexturePalettized = d3dappi.ThisTextureFormat.bPalettized;
-	TextureRedBPP = d3dappi.ThisTextureFormat.RedBPP;
-	TextureGreenBPP = d3dappi.ThisTextureFormat.GreenBPP;
-	TextureBlueBPP = d3dappi.ThisTextureFormat.BlueBPP;
-	TextureAlphaBPP = d3dappi.ThisTextureFormat.AlphaBPP;
-	TextureIndexBPP = d3dappi.ThisTextureFormat.IndexBPP;
+    TexturePalettized = d3dappi.ThisTextureFormat.bPalettized;
+    TextureRedBPP = d3dappi.ThisTextureFormat.RedBPP;
+    TextureGreenBPP = d3dappi.ThisTextureFormat.GreenBPP;
+    TextureBlueBPP = d3dappi.ThisTextureFormat.BlueBPP;
+    TextureAlphaBPP = d3dappi.ThisTextureFormat.AlphaBPP;
+    TextureIndexBPP = d3dappi.ThisTextureFormat.IndexBPP;
     return TRUE;
 }
 
@@ -470,13 +470,13 @@ exit_with_error:
  */
 static BOOL SetUpZBuf( DWORD type )
 {
-	D3DEXECUTEBUFFERDESC debDesc;
+    D3DEXECUTEBUFFERDESC debDesc;
     D3DEXECUTEDATA d3dExData;
     LPVOID lpBuffer, lpInsStart;
     size_t size;
-	LPDIRECT3DEXECUTEBUFFER lpD3DExCmdBuf;
+    LPDIRECT3DEXECUTEBUFFER lpD3DExCmdBuf;
 
-	lpD3DExCmdBuf = NULL;
+    lpD3DExCmdBuf = NULL;
 
     /*
      * If there is no D3D Viewport, we must return true because it is not
@@ -520,7 +520,7 @@ static BOOL SetUpZBuf( DWORD type )
      */
     OP_STATE_RENDER(1, lpBuffer);
 
-	STATE_DATA(D3DRENDERSTATE_ZFUNC, type, lpBuffer);
+    STATE_DATA(D3DRENDERSTATE_ZFUNC, type, lpBuffer);
 
     OP_EXIT(lpBuffer);
 
@@ -565,15 +565,15 @@ extern BOOL g_OddFrame;
 
 BOOL SetZCompare( void )
 {
-	if( !ZClearsOn && g_OddFrame )
-	{
-		if( !SetUpZBuf( D3DCMP_GREATEREQUAL ) )
-			return FALSE;
-	}else
-	{
-		if( !SetUpZBuf( D3DCMP_LESSEQUAL ) )
-			return FALSE;
-	}
+    if( !ZClearsOn && g_OddFrame )
+    {
+        if( !SetUpZBuf( D3DCMP_GREATEREQUAL ) )
+            return FALSE;
+    }else
+    {
+        if( !SetUpZBuf( D3DCMP_LESSEQUAL ) )
+            return FALSE;
+    }
 
     return TRUE;
 }
@@ -639,24 +639,24 @@ D3DAppISetRenderState()
 
 
 #ifdef TRILINEAR_MENU_OPTION
-	    STATE_DATA(D3DRENDERSTATE_TEXTUREMAG, d3dapprs.TextureFilter,lpBuffer);
-	    STATE_DATA(D3DRENDERSTATE_TEXTUREMIN, d3dapprs.TextureFilter,lpBuffer);
+        STATE_DATA(D3DRENDERSTATE_TEXTUREMAG, d3dapprs.TextureFilter,lpBuffer);
+        STATE_DATA(D3DRENDERSTATE_TEXTUREMIN, d3dapprs.TextureFilter,lpBuffer);
 #else
-	  if( !MipMap )
-	  {
-		  STATE_DATA(D3DRENDERSTATE_TEXTUREMAG, d3dapprs.TextureFilter,lpBuffer);
-		  STATE_DATA(D3DRENDERSTATE_TEXTUREMIN, d3dapprs.TextureFilter,lpBuffer);
-	  }else if( !Is3Dfx2 && !TriLinear )
-	  {
-		  STATE_DATA(D3DRENDERSTATE_TEXTUREMAG, D3DFILTER_MIPLINEAR,lpBuffer);
-		  STATE_DATA(D3DRENDERSTATE_TEXTUREMIN, D3DFILTER_MIPLINEAR,lpBuffer);
-	  }else{
-		  STATE_DATA(D3DRENDERSTATE_TEXTUREMAG, D3DFILTER_LINEARMIPLINEAR,lpBuffer);
-		  STATE_DATA(D3DRENDERSTATE_TEXTUREMIN, D3DFILTER_LINEARMIPLINEAR,lpBuffer);
-	  }
+      if( !MipMap )
+      {
+          STATE_DATA(D3DRENDERSTATE_TEXTUREMAG, d3dapprs.TextureFilter,lpBuffer);
+          STATE_DATA(D3DRENDERSTATE_TEXTUREMIN, d3dapprs.TextureFilter,lpBuffer);
+      }else if( !Is3Dfx2 && !TriLinear )
+      {
+          STATE_DATA(D3DRENDERSTATE_TEXTUREMAG, D3DFILTER_MIPLINEAR,lpBuffer);
+          STATE_DATA(D3DRENDERSTATE_TEXTUREMIN, D3DFILTER_MIPLINEAR,lpBuffer);
+      }else{
+          STATE_DATA(D3DRENDERSTATE_TEXTUREMAG, D3DFILTER_LINEARMIPLINEAR,lpBuffer);
+          STATE_DATA(D3DRENDERSTATE_TEXTUREMIN, D3DFILTER_LINEARMIPLINEAR,lpBuffer);
+      }
 #endif
-	  
-	  STATE_DATA(D3DRENDERSTATE_TEXTUREMAPBLEND, d3dapprs.TextureBlend,
+      
+      STATE_DATA(D3DRENDERSTATE_TEXTUREMAPBLEND, d3dapprs.TextureBlend,
                  lpBuffer);
       STATE_DATA(D3DRENDERSTATE_FILLMODE, d3dapprs.FillMode, lpBuffer);
       STATE_DATA(D3DRENDERSTATE_DITHERENABLE, d3dapprs.bDithering, lpBuffer);
@@ -664,12 +664,12 @@ D3DAppISetRenderState()
       STATE_DATA(D3DRENDERSTATE_ANTIALIAS, d3dapprs.bAntialiasing, lpBuffer);
       STATE_DATA(D3DRENDERSTATE_FOGENABLE, d3dapprs.bFogEnabled, lpBuffer);
       STATE_DATA(D3DRENDERSTATE_FOGCOLOR, d3dapprs.FogColor, lpBuffer);
-	  STATE_DATA(D3DRENDERSTATE_FOGTABLEMODE , D3DFOG_LINEAR , lpBuffer);
-	  STATE_DATA(D3DRENDERSTATE_FOGTABLESTART , *(unsigned long*)&d3dapprs.FogStart , lpBuffer);
-	  STATE_DATA(D3DRENDERSTATE_FOGTABLEEND , *(unsigned long*)&d3dapprs.FogEnd , lpBuffer);
+      STATE_DATA(D3DRENDERSTATE_FOGTABLEMODE , D3DFOG_LINEAR , lpBuffer);
+      STATE_DATA(D3DRENDERSTATE_FOGTABLESTART , *(unsigned long*)&d3dapprs.FogStart , lpBuffer);
+      STATE_DATA(D3DRENDERSTATE_FOGTABLEEND , *(unsigned long*)&d3dapprs.FogEnd , lpBuffer);
 
 #if 0
-	 /*
+     /*
      * Set light state
      */
     OP_STATE_LIGHT(3, lpBuffer);
@@ -745,13 +745,13 @@ BOOL FogOn( float Start , float End )
     LPDIRECT3DEXECUTEBUFFER lpD3DExCmdBuf = NULL;
     LPVOID lpBuffer, lpInsStart;
     size_t size;
-	long lStart;
-	long lEnd;
+    long lStart;
+    long lEnd;
 
-	lStart = (long)Start;
-	lEnd = (long)End;
+    lStart = (long)Start;
+    lEnd = (long)End;
     
-	/*
+    /*
      * If there is no D3D Viewport, we must return true because it is not
      * required.
      */
@@ -794,11 +794,11 @@ BOOL FogOn( float Start , float End )
     OP_STATE_RENDER(2, lpBuffer);
       STATE_DATA(D3DRENDERSTATE_FOGENABLE, 1, lpBuffer);
       STATE_DATA(D3DRENDERSTATE_FOGCOLOR, d3dapprs.FogColor, lpBuffer);
-//	  STATE_DATA(D3DRENDERSTATE_FOGTABLEMODE , D3DFOG_LINEAR , lpBuffer);
-//	  STATE_DATA(D3DRENDERSTATE_FOGTABLESTART , *(unsigned long*)&lStart , lpBuffer);
-//	  STATE_DATA(D3DRENDERSTATE_FOGTABLEEND , *(unsigned long*)&lEnd , lpBuffer);
+//    STATE_DATA(D3DRENDERSTATE_FOGTABLEMODE , D3DFOG_LINEAR , lpBuffer);
+//    STATE_DATA(D3DRENDERSTATE_FOGTABLESTART , *(unsigned long*)&lStart , lpBuffer);
+//    STATE_DATA(D3DRENDERSTATE_FOGTABLEEND , *(unsigned long*)&lEnd , lpBuffer);
 #if 1
-	 /*
+     /*
      * Set light state
      */
     OP_STATE_LIGHT(3, lpBuffer);
@@ -873,7 +873,7 @@ BOOL FogOff( void )
     LPDIRECT3DEXECUTEBUFFER lpD3DExCmdBuf = NULL;
     LPVOID lpBuffer, lpInsStart;
     size_t size;
-	/*
+    /*
      * If there is no D3D Viewport, we must return true because it is not
      * required.
      */
@@ -963,6 +963,3 @@ exit_with_error:
     RELEASE(lpD3DExCmdBuf);
     return FALSE;
 }
-
-
-

@@ -59,8 +59,8 @@
 static void D3DAppIAddPathList(const char *path);
 static void D3DAppIInitialisePathList();
 
-extern	int use_data_path;
-extern	char data_path[ 128 ];
+extern  int use_data_path;
+extern  char data_path[ 128 ];
 
 /***************************************************************************/
 /*                         Finding Textures                                */
@@ -149,14 +149,14 @@ D3DAppIInitialisePathList()
         return;
     }
 
-	if( use_data_path )
-	{
-	    D3DAppIAddPathList( &data_path[ 0 ] );
-	    if (path != NULL) {
-	        D3DAppIAddPathList(path);
-	        return;
-	    }
-	}
+    if( use_data_path )
+    {
+        D3DAppIAddPathList( &data_path[ 0 ] );
+        if (path != NULL) {
+            D3DAppIAddPathList(path);
+            return;
+        }
+    }
 
 }
 

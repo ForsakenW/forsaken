@@ -1,35 +1,35 @@
-#ifndef	QUAT_DEFS
-#define	QUAT_DEFS
+#ifndef QUAT_DEFS
+#define QUAT_DEFS
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Quaternion Structures
+    Quaternion Structures
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 typedef struct QUAT {
-	float	w;
-	float	x;
-	float	y;
-	float	z;
+    float   w;
+    float   x;
+    float   y;
+    float   z;
 } QUAT;
 typedef struct SHORTQUAT {
-	int16	w;
-	int16	x;
-	int16	y;
-	int16	z;
+    int16   w;
+    int16   x;
+    int16   y;
+    int16   z;
 } SHORTQUAT;
 
 
 typedef struct {
 
-	QUAT		start;		// Starting QUATERNION
-	QUAT		end;		// Ending QUATERNION
-	QUAT *		crnt;		// Current QUATERNION to change
-	float		time;		// Time
-	float		dir;		// Direction
+    QUAT        start;      // Starting QUATERNION
+    QUAT        end;        // Ending QUATERNION
+    QUAT *      crnt;       // Current QUATERNION to change
+    float       time;       // Time
+    float       dir;        // Direction
 
 } QUATLERP;
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Prototypes
+    Prototypes
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void MakeQuat( float XRot, float YRot, float ZRot, QUAT * qxyz );
 void QuatMultiply( QUAT * q1, QUAT * q2, QUAT * q1q2 );

@@ -410,7 +410,7 @@ Notes for translator:
 #define LT_MENU_QuickTextSend0 "Message : "
 
 #define LT_MENU_QuickTextSendWhisper0 "Message murmuré : "
-									  
+                                      
 #define LT_MENU_EditMacro10 "Modif. message 1"
 #define LT_MENU_EditMacro11 "Entrer message 1"
 
@@ -570,7 +570,7 @@ Notes for translator:
 #define LT_MENU_NEW_ChangeBikeComputer0 "Sélec. ordi moto"
 #define LT_MENU_NEW_ChangeBikeComputer1 "Choisir ordi moto..."
 #define LT_MENU_NEW_ChangeBikeComputer2 "liste..."
-					 
+                     
 #define LT_MENU_SelectScreenMode0 "Sélec. mode écran"
 #define LT_MENU_SelectScreenMode1 "Choisir parmi..."
 
@@ -695,21 +695,21 @@ Notes for translator:
 
 #define LT_ToggleStatusOn "on"
 #define LT_ToggleStatusOff "off"
-#define LT_Undef "indéf"	// ( short for undefined )
+#define LT_Undef "indéf"    // ( short for undefined )
 #define LT_SelectWhenReady "Sélec. quand prêt"
 #define LT_WaitingForReset "En attente..."
 
-#define LT_PageNo "Page %d sur %d"	// %d = number
-#define LT_PageDown	"  [Page suiv]=plus"
+#define LT_PageNo "Page %d sur %d"  // %d = number
+#define LT_PageDown "  [Page suiv]=plus"
 #define LT_PageUpDown "  [Page préc/suiv]=plus"
 #define LT_PageUp "  [Page suiv]=plus"
-#define LT_PressKey "app. sur touche ou bouton pour %s"	// %s will be name of action
-#define LT_ViewAlternateKeys "[dte]=voir autres touches pour %s"	// %s = action
-#define LT_ViewAlternateKeys2 "[gche]=voir autres touches pour %s"	// %s = action
+#define LT_PressKey "app. sur touche ou bouton pour %s" // %s will be name of action
+#define LT_ViewAlternateKeys "[dte]=voir autres touches pour %s"    // %s = action
+#define LT_ViewAlternateKeys2 "[gche]=voir autres touches pour %s"  // %s = action
 #define LT_SelectControl "[préc/suiv]=sélec. commande" 
 #define LT_Cancel "[échap]=annuler" 
-#define LT_Edit "[entrée]=modifier, [suppr]=suppr. touche pour %s"	// %s = action
-#define LT_Add "[entrée]=ajouter, [suppr]=suppr. touche pour %s"	// %s = action
+#define LT_Edit "[entrée]=modifier, [suppr]=suppr. touche pour %s"  // %s = action
+#define LT_Add "[entrée]=ajouter, [suppr]=suppr. touche pour %s"    // %s = action
 
 #define LT_Unconnected1 " n'est pas connecté"
 #define LT_Unconnected2 " déconnecté"
@@ -717,39 +717,39 @@ Notes for translator:
 
 #define LT_ToggleOn " ON"  
 #define LT_ToggleOff " OFF"
-#define LT_Undef "indéf"	// short for undefined 
+#define LT_Undef "indéf"    // short for undefined 
 
 #define LT_QuitToLobby "retour vers hall"   
 #define LT_QuitToMainMenu "Retour vers menu princ."
 
-#define LT_PlayersGame "Partie de %s"	// %s is player name   
-#define LT_PlayersGame2 "Partie de %s"	// %s is player name
+#define LT_PlayersGame "Partie de %s"   // %s is player name   
+#define LT_PlayersGame2 "Partie de %s"  // %s is player name
 
-#define LT_SavedGameName "sauvegarde le %d-%d-%d à %2d:%02d"	// %d-%d-%d is day-month-year %2d:%02d is time
-#define LT_LevelName "nom niveau : %s"	// %s is name of level
-#define LT_LevelPlayedFor1 "%s a joué pdt %hd min %hd sec"	// %s = player name, %hd = num mins, %hd = num secs  
-#define LT_LevelPlayedFor2 "a joué pdt %hd min %hd sec"		// %s = player name, %hd = num mins, %hd = num secs  
-#define LT_EnemiesKilled "ennemis tués : %hd sur %hd"	// %hd = number 
+#define LT_SavedGameName "sauvegarde le %d-%d-%d à %2d:%02d"    // %d-%d-%d is day-month-year %2d:%02d is time
+#define LT_LevelName "nom niveau : %s"  // %s is name of level
+#define LT_LevelPlayedFor1 "%s a joué pdt %hd min %hd sec"  // %s = player name, %hd = num mins, %hd = num secs  
+#define LT_LevelPlayedFor2 "a joué pdt %hd min %hd sec"     // %s = player name, %hd = num mins, %hd = num secs  
+#define LT_EnemiesKilled "ennemis tués : %hd sur %hd"   // %hd = number 
 
 #define LT_NoSavedGamesFound "pas de partie sauvegardée"
 
 #define LT_NoLimit "pas de limite"
 #define LT_OneMinute "1 min"
-#define LT_ManyMinutes "%d min"	// %d = num minutes 
+#define LT_ManyMinutes "%d min" // %d = num minutes 
 #define LT_NoValue "pas de valeur" 
 
 #define LT_SpaceOrb "Vous devez utiliser le matériel fourni pour config. l'axe du spaceball"
 
-#define LT_NoJoysticks "Aucun joystick connecté~~(imposs. connecter joystick pendant partie)"	// ~~ = newline  
+#define LT_NoJoysticks "Aucun joystick connecté~~(imposs. connecter joystick pendant partie)"   // ~~ = newline  
 
-#define LT_OneCrystalFound "%d cristal trouvé"	// %d is number of crystals
-#define LT_CrystalsFound "%d cristaux trouvés"	// %d is number of crystals
+#define LT_OneCrystalFound "%d cristal trouvé"  // %d is number of crystals
+#define LT_CrystalsFound "%d cristaux trouvés"  // %d is number of crystals
 
-#define	LT_OneSecretFoundOutOf "%d secret trouvé sur %d"
-#define	LT_SecretsFoundOutOf "%d secrets trouvés sur  %d"
+#define LT_OneSecretFoundOutOf "%d secret trouvé sur %d"
+#define LT_SecretsFoundOutOf "%d secrets trouvés sur  %d"
 
-#define LT_OneGoldBarFound "%d lingot d'or trouvé"	// %d is number of gold bars 
-#define LT_GoldBarsFound "%d lingots d'or trouvés"	// %d is number of gold bars 
+#define LT_OneGoldBarFound "%d lingot d'or trouvé"  // %d is number of gold bars 
+#define LT_GoldBarsFound "%d lingots d'or trouvés"  // %d is number of gold bars 
 
 #define LT_OneEnemyKilled "%d ennemi tué sur %d" 
 #define LT_EnemysKilled "%d ennemis tués sur %d" 
@@ -777,21 +777,21 @@ Notes for translator:
 *********************************************************************/
 #define LT_MENU_Keyboard1a "Feux avants"
 #define LT_MENU_Keyboard1b "Vue arrière complète"
-			
+            
 #define LT_MENU_InGame1a "Menu du serveur"
-			
+            
 #define LT_MENU_ServerMenu0 "Options du serveur"
 #define LT_MENU_ServerMenu1 "Rendu"
 #define LT_MENU_ServerMenu2 "Enlever un joueur"
-			
+            
 #define MENU_NEW_CreateGamePseudoHost0 "Le serveur détecte des collisions"
-			
+            
 #define LT_GameCompleteWin98Shareware "Bien joué, vous avez terminé la démo de forsaken. Si vous l'avez apprécier, pourquoi n'achèteriez vous pas le jeu complet ?"
-			
+            
 #define LT_MENU_NEW_ChooseConnectionToStart1 "Appuyer sur esc pour quitter"
-			
+            
 #define LT_MENU_NEW_MoreMultiplayerOptions21 "Armes primaires"
-			
+            
 #define LT_Extra1 "Le serveur est vide - sélectionnez un hôte sur ce serveur"
 #define LT_Extra2 "L'hôte sélectionne le type de partie"
 #define LT_Extra3 "Séance créée %d-%d-%d-%d à %02d :%02d"
@@ -808,41 +808,41 @@ Notes for translator:
 #define LT_Extra14 "La moto s'épuise : %s"
 
 #define QUERYING_SERVER_FOR_LEVELS "Interrogation du serveur pour les niveaux"
-			
+            
 #define LT_NoLevelsInstalled "Aucun niveau installé !veuillez insérer le CD Rom, ou installez les niveaux à partir du CD Rom"
-			
+            
 #define LT_NoSinglePlayerLevelsInstalled "Pas de niveau à un seul joueur installé, veuillez insérer le CD rom"
-			
+            
 #define SERVER_FUCKED "Erreur grave du serveur - le serveur va s'arrêter"
-			 
+             
 #define LT_MENU_NEW_CreateGameServer1 "L'hôte peut mettre en place le maximum de joueurs"
 #define LT_MENU_NEW_CreateGameServer2 "L'hôte met trop de temps à installer la partie"
 #define LT_MENU_NEW_CreateGameServer3 "L'hôte met trop de temps à démarrer la partie"
 #define LT_MENU_NEW_CreateGameServer4 "Le serveur ne trouve pas le réseau"
-			
+            
 #define LT_Extra1b "%d paquets par secondes"
-			
+            
 #define UNABLE_TO_CONNECT_TO_SERVICE_PROVIDER "Impossibilité de se connecter au fournisseur du serveur"
-			
+            
 #define UNABLE_TO_JOIN_SESSION "Incapable de rejoindre la séance"
-			
+            
 #define SEARCHING_FOR_GAME "Recherche de la partie en cours"
-			
+            
 #define CANNOT_FIND_SESSION "Impossibilité de trouver la séance"
-			
+            
 #define LT_MENU_Detail1a "Filtration tri linéaire"
-			
+            
 #define LT_MENU_NEW_CreateGameServer5 "Création d'un serveur"
-			
+            
 #define LT_MENU_NEW_ServerHasQuit1 "Vous avez quitté le serveur"
 #define LT_MENU_NEW_ServerHasQuit2 "ok"
-			
+            
 #define LT_MENU_NEW_ServerWaitingToStartGame1 "Serveur - veuillez attendre que l'hôte démarre la partie"
-			
+            
 #define LT_MENU_NEW_ServerWaitingForGameParameters1 "Serveur - veuillez attendre que l'hôte sélectionne le type de partie"
-			
+            
 #define LT_MENU_NEW_HostWaitingToStartServer1 "Serveur - veuillez attendre que l'hôte soit localisé"
-			
+            
 
 #endif // LOCALTITLE_INCLUDED
 

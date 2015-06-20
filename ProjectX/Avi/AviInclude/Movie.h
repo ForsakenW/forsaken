@@ -18,20 +18,20 @@ extern CAviMovie * gpMovie;
 
 // Critical Section gPlayKey and var gbPlay for synchronization
 extern BOOL gbPlay;
-	
+    
 // Stores information for file properties
 typedef struct tagKFILEINFO
 {
-	FOURCC fcc;
-	// General
-	char szFileName [128];
-	char szMediaLen [128];
-	char szAudioFmt [128];
-	char szVideoRes [128];
-	char szVideoNFm [128];
-	char szVideoFPS [128];
-	char szVideoFmt [128];
-	char szDataRate [128];
+    FOURCC fcc;
+    // General
+    char szFileName [128];
+    char szMediaLen [128];
+    char szAudioFmt [128];
+    char szVideoRes [128];
+    char szVideoNFm [128];
+    char szVideoFPS [128];
+    char szVideoFmt [128];
+    char szDataRate [128];
 } KFILEINFO;
 
 
@@ -46,7 +46,7 @@ extern "C" BOOL MovieThreadProc (void * pParm);
 extern "C" void MovieInitialize (HWND hwnd);
 extern "C" void MovieTerminate (HWND hwnd);
 
-// File	ops
+// File ops
 
 extern "C" BOOL MovieFileOpen (HWND hwnd, LPSTR lpszPathName);
 extern "C" void MovieFileClose (HWND hwnd);

@@ -106,7 +106,7 @@ typedef struct tagD3DAppD3DDriver {
     BOOL bDoesZBuffer;  /* can this driver use a z-buffer? */
     BOOL bSquareOnly;  /* can this driver only have Square Texures.. */
     BOOL bCanDoWindow;  /* can it render to Window's display depth? */
-	BOOL bTransparency; // Does this Driver do Colour Key Transparency on Textures?
+    BOOL bTransparency; // Does this Driver do Colour Key Transparency on Textures?
 } D3DAppD3DDriver;
 
 /*

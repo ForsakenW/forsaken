@@ -5,7 +5,7 @@
 #define LINES_INCLUDED
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Includes
+    Includes
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 #include <math.h>
 #include "d3dmain.h"
@@ -22,38 +22,38 @@
 #include "tload.h"
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Defines
+    Defines
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
-#define MAXLINES			2000
+#define MAXLINES            2000
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Structures
+    Structures
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 typedef struct MY_RGB {
 
-	uint8		R;
-	uint8		G;
-	uint8		B;
+    uint8       R;
+    uint8       G;
+    uint8       B;
 
 } MY_RGB;
 
 typedef struct LINE {
 
-	uint16		Next;
-	uint16		Prev;
-	VECTOR		StartPos;			// Start Position
-	VECTOR		EndPos;				// End Position
-	MY_RGB		StartCol;			// Start Colour
-	MY_RGB		EndCol;				// End Colour
-	uint8		StartTrans;			// Start Transparency
-	uint8		EndTrans;			// End Transparency
-	uint16		Group;				// Group ImIn
+    uint16      Next;
+    uint16      Prev;
+    VECTOR      StartPos;           // Start Position
+    VECTOR      EndPos;             // End Position
+    MY_RGB      StartCol;           // Start Colour
+    MY_RGB      EndCol;             // End Colour
+    uint8       StartTrans;         // Start Transparency
+    uint8       EndTrans;           // End Transparency
+    uint16      Group;              // Group ImIn
 
 } LINE;
 
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Protptypes
+    Protptypes
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void InitLines( void );
 BOOL LinesDispGroup( uint16 Group, LPDIRECT3DEXECUTEBUFFER ExecBuffer, uint16 * StartLine );

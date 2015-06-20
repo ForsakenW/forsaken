@@ -51,9 +51,9 @@
 
 #ifdef DEBUG_ON
 
-#define MakeSoundBuffer( A, B, C, D )	XMakeSoundBuffer( (A), (B), (C), (D), __FILE__, __LINE__, from_file, from_line )
-#define SoundBufferRelease( A )	XSoundBufferRelease( (A), __FILE__, __LINE__ )
-#define SoundBufferDuplicate( A, B, C )	XSoundBufferDuplicate( (A), (B), (C), __FILE__, __LINE__ )
+#define MakeSoundBuffer( A, B, C, D )   XMakeSoundBuffer( (A), (B), (C), (D), __FILE__, __LINE__, from_file, from_line )
+#define SoundBufferRelease( A ) XSoundBufferRelease( (A), __FILE__, __LINE__ )
+#define SoundBufferDuplicate( A, B, C ) XSoundBufferDuplicate( (A), (B), (C), __FILE__, __LINE__ )
 
 /*
  * fn prototypes

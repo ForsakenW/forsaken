@@ -2,32 +2,32 @@
 #define CDAUDIO_INCLUDED
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Includes
+    Includes
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 #include "typedefs.h"
 #include "d3dmain.h"
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Structures
+    Structures
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 #define MAX_AUDIO_TRACKS 16
 
 typedef struct CDInfo {
 
-    UINT			DeviceID;
-	unsigned long	current_track; 
-	DWORD			current_position;
-	long			paused;
-	long			loop;
-	long			volume_id;
-	long			IsPlaying;
-	DWORD			num_tracks;
-	DWORD			track_length[ MAX_AUDIO_TRACKS ];	// milliseconds
+    UINT            DeviceID;
+    unsigned long   current_track; 
+    DWORD           current_position;
+    long            paused;
+    long            loop;
+    long            volume_id;
+    long            IsPlaying;
+    DWORD           num_tracks;
+    DWORD           track_length[ MAX_AUDIO_TRACKS ];   // milliseconds
 } CDInfo;
 
 typedef struct CDSound {
 
-	uint32			OriginalMusicVolume;
+    uint32          OriginalMusicVolume;
 
 } CDSound;
 
@@ -35,7 +35,7 @@ typedef struct CDSound {
 #define CD_TITLE_TRACK 7
 
 /*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
-	Prototypes
+    Prototypes
 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void SoundInit( void );
 void CloseCD( void );
