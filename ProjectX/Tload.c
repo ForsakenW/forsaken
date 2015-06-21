@@ -192,6 +192,7 @@ BOOL Tload( TLOADHEADER * Tloadheader  )
         if ( Tloadheader->PlaceHolder[ i ] )
         {
             Tloadheader->PlaceHolderFile[ i ] = ( char * )malloc( sizeof( char ) * 256 );
+            Tloadheader->PlaceHolderFile[ i ][ 0 ] = '\0';
 //          DebugPrintf( "Tload: Placeholder ( texture %2d ) xsize %d ysize %d\n", i, Tloadheader->Xsize[ i ], Tloadheader->Ysize[ i ] );
         }
     }
@@ -699,6 +700,7 @@ TloadReleaseTexture(TLOADHEADER * Tloadheader, int n)
     {
         free( Tloadheader->PlaceHolderFile[ n ] );
         Tloadheader->PlaceHolderFile[ n ] = NULL;
+        Tloadheader->PlaceHolder[ n ] = FALSE;
     }
 
     Tloadheader->hTex[n] = 0;

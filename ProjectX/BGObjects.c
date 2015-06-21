@@ -2712,7 +2712,6 @@ int NakedGirls( char *cheat )
             if ( !Tloadheader.PlaceHolder[ i ] )
             {
                 Tloadheader.PlaceHolderFile[ i ] = ( char * )malloc( 256 );
-                Tloadheader.PlaceHolder[ i ] = TRUE;
             }
 
             strcpy( Tloadheader.PlaceHolderFile[ i ], "Data\\Textures\\NBUTGRID.BMP" );

@@ -2955,6 +2955,7 @@ InitView( void )
         if ( DummyTextureIndex != -1 )
         {
             Tloadheader.PlaceHolderFile[ DummyTextureIndex ] = ( char * )malloc( sizeof( char ) * 256 );
+            Tloadheader.PlaceHolderFile[ DummyTextureIndex ][ 0 ] = '\0';
             Tloadheader.PlaceHolder[ DummyTextureIndex ] = TRUE;
         }
 
