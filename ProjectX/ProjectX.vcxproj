@@ -79,29 +79,34 @@
     <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug DX6|Win32'">
-    <OutDir>.\temp\ProjectX___Win32_Debug_DX6\</OutDir>
-    <IntDir>.\temp\ProjectX___Win32_Debug_DX6\trash\</IntDir>
+    <OutDir>..\skeleton\</OutDir>
+    <IntDir>.\temp\$(ProjectName)___Win32_$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)___Win32_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug with OPT_ON|Win32'">
-    <OutDir>.\temp\ProjectX___Win32_Debug_OPT_ON\</OutDir>
-    <IntDir>.\temp\ProjectX___Win32_Debug_OPT_ON\</IntDir>
+    <OutDir>..\skeleton\</OutDir>
+    <IntDir>.\temp\$(ProjectName)___Win32_$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)___Win32_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\temp\ProjectX___Win32_Debug\</OutDir>
-    <IntDir>.\temp\ProjectX___Win32_Debug\trash\</IntDir>
+    <OutDir>..\skeleton\</OutDir>
+    <IntDir>.\temp\$(ProjectName)___Win32_$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)___Win32_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>.\temp\ProjectX___Win32_Release\</OutDir>
-    <IntDir>.\temp\ProjectX___Win32_Releas\Xtrash\</IntDir>
+    <OutDir>..\skeleton\</OutDir>
+    <IntDir>.\temp\$(ProjectName)___Win32_$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)___Win32_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release DX6|Win32'">
-    <OutDir>.\temp\ProjectX___Win32_Release_DX6\</OutDir>
-    <IntDir>.\temp\ProjectX___Win32_Release_DX6\</IntDir>
+    <OutDir>..\skeleton\</OutDir>
+    <IntDir>.\temp\$(ProjectName)___Win32_$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)___Win32_$(Configuration)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DX6|Win32'">
     <Midl>
@@ -117,10 +122,10 @@
       <AdditionalIncludeDirectories>..\..\external\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;USEASM;PROTECT_IP;BSP;DEBUG_ON;MANUAL_SESSIONDESC_PROPAGATE;_CRT_SECURE_NO_WARNINGS;DIRECTINPUT_VERSION=0x0500;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader />
-      <PrecompiledHeaderOutputFile>.\temp\ProjectX___Win32_Debug_DX6\trash\ProjectX.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\temp\ProjectX___Win32_Debug_DX6\trash\</AssemblerListingLocation>
-      <ObjectFileName>.\temp\ProjectX___Win32_Debug_DX6\trash\</ObjectFileName>
-      <ProgramDataBaseFileName>.\temp\ProjectX___Win32_Debug_DX6\trash\</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(IntDir)\$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -133,12 +138,12 @@
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput8.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\skeleton\ProjectX___Win32_Debug_DX6.exe</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\external\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\temp\ProjectX___Win32_Debug_DX6\ProjectX.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\$(ProjectName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
@@ -156,10 +161,10 @@
       <AdditionalIncludeDirectories>..\..\external\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;USEASM;PROTECT_IP;BSP;OPT_ON;DEBUG_ON;_CRT_SECURE_NO_WARNINGS;DIRECTINPUT_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader />
-      <PrecompiledHeaderOutputFile>.\temp\ProjectX___Win32_Debug_OPT_ON\ProjectX.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\temp\ProjectX___Win32_Debug_OPT_ON\</AssemblerListingLocation>
-      <ObjectFileName>.\temp\ProjectX___Win32_Debug_OPT_ON\</ObjectFileName>
-      <ProgramDataBaseFileName>.\temp\ProjectX___Win32_Debug_OPT_ON\</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(IntDir)\$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -172,11 +177,11 @@
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput8.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\skeleton\ProjectX___Win32_Debug_OPT_ON.exe</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\temp\ProjectX___Win32_Debug_OPT_ON\ProjectX_Opton.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\$(ProjectName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <AdditionalLibraryDirectories>..\..\external\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -194,12 +199,12 @@
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>..\..\external\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;USEASM;PROTECT_IP;BSP;DEBUG_ON;MANUAL_SESSIONDESC_PROPAGATE;FINAL_RELEASE;_CRT_SECURE_NO_WARNINGS;DIRECTINPUT_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;USEASM;PROTECT_IP;BSP;DEBUG_ON;MANUAL_SESSIONDESC_PROPAGATE;xxxFINAL_RELEASE;_CRT_SECURE_NO_WARNINGS;DIRECTINPUT_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader />
-      <PrecompiledHeaderOutputFile>.\temp\ProjectX___Win32_Debug\trash\ProjectX.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\temp\ProjectX___Win32_Debug\trash\</AssemblerListingLocation>
-      <ObjectFileName>.\temp\ProjectX___Win32_Debug\trash\</ObjectFileName>
-      <ProgramDataBaseFileName>.\temp\ProjectX___Win32_Debug\trash\</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(IntDir)\$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -212,12 +217,12 @@
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput8.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\skeleton\ProjectX___Win32_Debug.exe</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\external\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\temp\ProjectX___Win32_Debug\ProjectX.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\$(ProjectName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
@@ -237,10 +242,10 @@
       <StringPooling>true</StringPooling>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader />
-      <PrecompiledHeaderOutputFile>.\temp\ProjectX___Win32_Release\ProjectX.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\temp\ProjectX___Win32_Release\Xtrash\</AssemblerListingLocation>
-      <ObjectFileName>.\temp\ProjectX___Win32_Release\Xtrash\</ObjectFileName>
-      <ProgramDataBaseFileName>.\temp\ProjectX___Win32_Release\Xtrash\</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(IntDir)\$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <CallingConvention>FastCall</CallingConvention>
       <CompileAs>Default</CompileAs>
@@ -252,10 +257,10 @@
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput8.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\skeleton\ProjectX___Win32_Release.exe</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
-      <ProgramDatabaseFile>.\temp\ProjectX___Win32_Release\Xrelease.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\$(ProjectName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <AdditionalLibraryDirectories>..\..\external\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -276,10 +281,10 @@
       <StringPooling>true</StringPooling>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader />
-      <PrecompiledHeaderOutputFile>.\temp\ProjectX___Win32_Release_DX6\ProjectX.pch</PrecompiledHeaderOutputFile>
-      <AssemblerListingLocation>.\temp\ProjectX___Win32_Release_DX6\</AssemblerListingLocation>
-      <ObjectFileName>.\temp\ProjectX___Win32_Release_DX6\</ObjectFileName>
-      <ProgramDataBaseFileName>.\temp\ProjectX___Win32_Release_DX6\</ProgramDataBaseFileName>
+      <PrecompiledHeaderOutputFile>$(IntDir)\$(ProjectName).pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <CompileAs>Default</CompileAs>
@@ -291,12 +296,12 @@
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput8.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\skeleton\ProjectX___Win32_Release_DX6.exe</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\external\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>.\temp\ProjectX___Win32_Release_DX6\ProjectX.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(IntDir)\$(ProjectName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
