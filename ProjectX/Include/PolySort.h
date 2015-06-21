@@ -3,17 +3,7 @@
  * Copyright (c) 1997 Probe Entertainment Limited
  * All Rights Reserved
  *
- * $Revision: 3 $
- *
- * $Header: /PcProjectX/Include/PolySort.h 3     5/20/97 2:20p Phillipd $
- *
- * $Log: /PcProjectX/Include/PolySort.h $
- * 
- * 3     5/20/97 2:20p Phillipd
- * 
- * 2     5/17/97 5:17p Phillipd
- * 
- * 1     5/17/97 2:15p Phillipd
+ * Authors: Phillipd
  */
 #ifndef POLYSORT_INCLUDED
 #define POLYSORT_INCLUDED

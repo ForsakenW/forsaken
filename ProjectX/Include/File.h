@@ -5,34 +5,7 @@
  * Copyright (c) 1996 Probe Entertainment Limited
  * All Rights Reserved
  *
- * $Revision: 8 $
- *
- * $Header: /PcProjectX/Include/file.h 8     25/08/98 2:53p Oliverc $
- *
- * $Log: /PcProjectX/Include/file.h $
- * 
- * 8     25/08/98 2:53p Oliverc
- * Added InitCheckSum() routine and modified checksum calculation to be
- * more position/order-sensistive than before
- * 
- * 7     25/08/98 8:51 Collinsd
- * Added checksum call to all loaded files.
- * 
- * 6     28/01/98 16:10 Oliverc
- * 
- * 5     5/01/98 10:38 Philipy
- * speech sfx implemented - currently defaults to 1 biker & computer only,
- * none selectable
- * 
- * 4     15/10/97 9:37 Collinsd
- * Added logfile/batchfile creation code.
- * 
- * 3     11/08/97 10:12 Collinsd
- * Added override data directory option. ( SFX don't work yet! )
- * 
- * 2     6/25/96 11:37a Phillipd
- * First SS update
- * 
+ * Authors: Collinsd, Oliverc, Philipy, Phillipd
  */
 
 /*-------------------------------------------------------------------

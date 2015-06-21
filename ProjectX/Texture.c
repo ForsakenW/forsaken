@@ -3,32 +3,7 @@
  * Copyright (c) 1996 Probe Entertainment Limited
  * All Rights Reserved
  *
- * $Revision: 8 $
- *
- * $Header: /PcProjectX/Texture.c 8     11/29/97 4:35p Phillipd $
- *
- * $Log: /PcProjectX/Texture.c $
- * 
- * 8     11/29/97 4:35p Phillipd
- * Xmem is now in effect...use it allways....
- * 
- * 7     11/08/97 10:12 Collinsd
- * Added override data directory option. ( SFX don't work yet! )
- * 
- * 6     10/30/96 2:55p Phillipd
- * 
- * 5     10/23/96 4:24p Phillipd
- * Lots of crap taken out of D3dapp and its associated functions and
- * files....
- * 
- * 4     18/10/96 17:46 Collinsd
- * Changed all file loading to load from tidy directories.
- * 
- * 3     10/18/96 2:21p Phillipd
- * 
- * 2     6/25/96 11:37a Phillipd
- * First SS update
- * 
+ * Authors: Phillipd, Collinsd
  */
 
 /*

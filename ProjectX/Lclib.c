@@ -3,17 +3,7 @@
  * Copyright (c) 1996 Probe Entertainment Limited
  * All Rights Reserved
  *
- * $Revision: 4 $
- *
- * $Header: /PcProjectX/Lclib.c 4     10/24/96 3:01p Phillipd $
- *
- * $Log: /PcProjectX/Lclib.c $
- * 
- * 4     10/24/96 3:01p Phillipd
- * 
- * 3     6/25/96 11:37a Phillipd
- * First SS update
- * 
+ * Authors: Phillipd
  */
 
 #define WIN32_EXTRA_LEAN

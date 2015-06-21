@@ -3,34 +3,7 @@
  * Copyright (c) 1996 Probe Entertainment Limited
  * All Rights Reserved
  *
- * $Revision: 9 $
- *
- * $Header: /PcProjectX/Include/Ddutil.h 9     3/26/98 4:59p Phillipd $
- *
- * $Log: /PcProjectX/Include/Ddutil.h $
- * 
- * 9     3/26/98 4:59p Phillipd
- * 
- * 8     3/14/98 3:32p Phillipd
- * 
- * 7     28/01/98 12:57 Oliverc
- * Changed allocation checking to working on DEBUG_ON flag instead of the
- * generic _DEBUG
- * 
- * 6     26/01/98 18:23 Philipy
- * fixed video memory leaks
- * splash screens now display after release view, and call InitScene,
- * InitView after  completion
- * 
- * 5     16/10/97 18:13 Philipy
- * 
- * 4     8/15/96 4:46p Phillipd
- * 
- * 3     7/24/96 2:11p Phillipd
- * 
- * 2     6/25/96 11:37a Phillipd
- * First SS update
- * 
+ * Authors: Phillipd, Philipy, Oliverc
  */
 
 /*==========================================================================

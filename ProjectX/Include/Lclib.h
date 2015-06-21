@@ -3,15 +3,7 @@
  * Copyright (c) 1996 Probe Entertainment Limited
  * All Rights Reserved
  *
- * $Revision: 2 $
- *
- * $Header: /PcProjectX/Include/Lclib.h 2     6/25/96 11:37a Phillipd $
- *
- * $Log: /PcProjectX/Include/Lclib.h $
- * 
- * 2     6/25/96 11:37a Phillipd
- * First SS update
- * 
+ * Authors: Phillipd
  */
 
 

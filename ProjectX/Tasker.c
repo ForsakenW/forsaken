@@ -7,20 +7,7 @@
  * Copyright (c) 1996 Probe Entertainment Limited
  * All Rights Reserved
  *
- * $Revision: 3 $
- *
- * $Header: /PcProjectX/Tasker.c 3     11/29/97 4:35p Phillipd $
- *
- * $Log: /PcProjectX/Tasker.c $
- * 
- * 3     11/29/97 4:35p Phillipd
- * Xmem is now in effect...use it allways....
- * 
- * 2     11/26/96 4:33p Phillipd
- * 
- * 1     11/25/96 5:07p Phillipd
- * New working tasker system...
- * 
+ * Authors: Phillipd
  */
 
 #include "tasker.h"

@@ -3,73 +3,7 @@
  * Copyright (c) 1996 Probe Entertainment Limited
  * All Rights Reserved
  *
- * $Revision: 23 $
- *
- * $Header: /PcProjectX/File.c 23    25/08/98 4:10p Oliverc $
- *
- * $Log: /PcProjectX/File.c $
- * 
- * 23    25/08/98 4:10p Oliverc
- * Modified checksum routine again to make even better (I hope)
- * 
- * 22    25/08/98 15:44 Phillipd
- * 
- * 21    25/08/98 3:01p Oliverc
- * 
- * 20    25/08/98 2:53p Oliverc
- * Added InitCheckSum() routine and modified checksum calculation to be
- * more position/order-sensistive than before
- * 
- * 19    25/08/98 9:45 Collinsd
- * Added debug info
- * 
- * 18    25/08/98 8:50 Collinsd
- * Added checksum call to all loaded files.
- * 
- * 17    24/08/98 5:53p Oliverc
- * Added FileCheckSum() routine for multiplayer levels
- * 
- * 16    11/04/98 16:44 Collinsd
- * 
- * 15    14/01/98 10:12 Collinsd
- * Add logfile and batchfile works again.
- * 
- * 14    9/01/98 16:02 Philipy
- * 
- * 13    9/01/98 15:57 Philipy
- * fixed FileExists bug
- * 
- * 12    9/01/98 11:48 Collinsd
- * 
- * 11    9/01/98 11:01 Collinsd
- * Stuff back to normal and goldbars not get carried over levels.
- * 
- * 10    5/01/98 10:37 Philipy
- * speech sfx implemented - currently defaults to 1 biker & computer only,
- * none selectable
- * 
- * 9     6/12/97 16:35 Collinsd
- * Debuginfo put on #define
- * 
- * 8     5/12/97 14:11 Collinsd
- * Allocated ships fixed.
- * 
- * 7     15/10/97 9:37 Collinsd
- * Added logfile/batchfile creation code.
- * 
- * 6     13/10/97 19:36 Collinsd
- * 
- * 5     13/08/97 15:09 Collinsd
- * Taken out debug messages.
- * 
- * 4     11/08/97 10:12 Collinsd
- * Added override data directory option. ( SFX don't work yet! )
- * 
- * 3     11/25/96 5:14p Phillipd
- * 
- * 2     6/25/96 11:37a Phillipd
- * First SS update
- * 
+ * Authors: Collinsd, Oliverc, Philipy, Phillipd
  */
 
 /*-------------------------------------------------------------------
