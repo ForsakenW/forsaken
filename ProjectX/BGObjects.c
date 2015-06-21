@@ -2725,7 +2725,6 @@ int NakedGirls( char *cheat )
             if ( !Tloadheader.PlaceHolder[ i ] )
             {
                 Tloadheader.PlaceHolderFile[ i ] = ( char * )malloc( 256 );
-                Tloadheader.PlaceHolder[ i ] = TRUE;
             }
 
             strcpy( Tloadheader.PlaceHolderFile[ i ], "Data\\Textures\\NNGRID8BT.BMP" );
@@ -2746,7 +2745,6 @@ int NakedGirls( char *cheat )
             if ( !Tloadheader.PlaceHolder[ i ] )
             {
                 Tloadheader.PlaceHolderFile[ i ] = ( char * )malloc( 256 );
-                Tloadheader.PlaceHolder[ i ] = TRUE;
             }
             strcpy( Tloadheader.PlaceHolderFile[ i ], "Data\\Textures\\BUTGRID.BMP" );
             Tloadheader.PlaceHolder[ i ] = TRUE;
@@ -2759,7 +2757,6 @@ int NakedGirls( char *cheat )
             if ( !Tloadheader.PlaceHolder[ i ] )
             {
                 Tloadheader.PlaceHolderFile[ i ] = ( char * )malloc( 256 );
-                Tloadheader.PlaceHolder[ i ] = TRUE;
             }
             strcpy( Tloadheader.PlaceHolderFile[ i ], "Data\\Textures\\NGRID8BT.BMP" );
             Tloadheader.PlaceHolder[ i ] = TRUE;

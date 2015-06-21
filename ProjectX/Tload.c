@@ -537,7 +537,6 @@ TloadTextureSurf( TLOADHEADER * Tloadheader , int n)
     }
 
 
-
     /*
      * Create an empty texture surface to load the source texture into.
      * The DDSCAPS_ALLOCONLOAD flag allows the DD driver to wait until the
@@ -607,12 +606,12 @@ TloadTextureSurf( TLOADHEADER * Tloadheader , int n)
     if (LastError != DD_OK) {
         goto exit_with_error;
     }
+
     /*
      * Load the source texture into the destination.  During this call, a
      * driver could compress or reformat the texture surface and put it in
      * video memory.
      */
-
     
     if ( !Tloadheader->PlaceHolder[ n ] )
     {
@@ -700,7 +699,6 @@ TloadReleaseTexture(TLOADHEADER * Tloadheader, int n)
     {
         free( Tloadheader->PlaceHolderFile[ n ] );
         Tloadheader->PlaceHolderFile[ n ] = NULL;
-        Tloadheader->PlaceHolder[ n ] = FALSE;
     }
 
     Tloadheader->hTex[n] = 0;
@@ -1986,7 +1984,6 @@ TloadReloadPlaceHolder( TLOADHEADER *Tloadheader, int16 n )
     {
         if( MipMap && Tloadheader->MipMap[n] )
         {
-            
             lpSrcTextureSurf = DDLoadBitmapTextureMipMap( d3dappi.lpDD , &NewName2[0], &d3dappi.ThisTextureFormat.ddsd , (int) Tloadheader->CurScale[n] , d3dappi.Driver[d3dappi.CurrDriver].bSquareOnly );
         }else{
             lpSrcTextureSurf = DDLoadBitmapTexture( d3dappi.lpDD , &NewName2[0], &d3dappi.ThisTextureFormat.ddsd , (int) Tloadheader->CurScale[n] , d3dappi.Driver[d3dappi.CurrDriver].bSquareOnly );
@@ -2076,7 +2073,6 @@ TloadReloadTextureSurf(TLOADHEADER * Tloadheader , int16 n)
     {
         if( MipMap && Tloadheader->MipMap[n] )
         {
-            
             lpSrcTextureSurf = DDLoadBitmapTextureMipMap( d3dappi.lpDD , &NewName2[0], &d3dappi.ThisTextureFormat.ddsd , (int) Tloadheader->CurScale[n] , d3dappi.Driver[d3dappi.CurrDriver].bSquareOnly );
         }else{
             lpSrcTextureSurf = DDLoadBitmapTexture( d3dappi.lpDD , &NewName2[0], &d3dappi.ThisTextureFormat.ddsd , (int) Tloadheader->CurScale[n] , d3dappi.Driver[d3dappi.CurrDriver].bSquareOnly );
