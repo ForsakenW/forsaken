@@ -25,10 +25,14 @@
 #ifndef DATATYPES
 #define DATATYPES
 
-#define DIRECT3D_VERSION    0x0700
-#define DIRECTSOUND_VERSION 0x0700
-#define DIRECTDRAW_VERSION  0x0700
-#define DIRECTINPUT_VERSION 0x0700
+// These should either be defined at the project level, or the defaults
+// should be used (as defined in DX headers). This is because they aren't
+// just used within this code, but may also select header-level features.
+// #define DIRECT3D_VERSION    0x0700 // Header default
+// #define DIRECTSOUND_VERSION 0x0700 // Conditional depending on OS version
+// #define DIRECTDRAW_VERSION  0x0700 // Header default
+// #define DIRECTINPUT_VERSION 0x0700
+
 
 
 #ifndef TRUE

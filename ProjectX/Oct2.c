@@ -6187,7 +6187,11 @@ BOOL InitDInput(void)
     int i, j, k;
     BOOL failjoystick;
 
+#if DIRECTINPUT_VERSION > 0x0700
+    err = DirectInput8Create(myglobs.hInstApp, DIRECTINPUT_VERSION, &IID_IDirectInput8, &lpdi, NULL);
+#else
     err = DirectInputCreateA(myglobs.hInstApp, DIRECTINPUT_VERSION, &lpdi, NULL);
+#endif
 
     if(err != DI_OK)
     {

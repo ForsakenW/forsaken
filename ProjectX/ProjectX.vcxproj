@@ -114,8 +114,8 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(MSSDK_DIR)\include;$(MSSDK_DIR)\include\mfc;$(DXSDK_DIR)\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;USEASM;PROTECT_IP;BSP;DEBUG_ON;MANUAL_SESSIONDESC_PROPAGATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\external\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;USEASM;PROTECT_IP;BSP;DEBUG_ON;MANUAL_SESSIONDESC_PROPAGATE;_CRT_SECURE_NO_WARNINGS;DIRECTINPUT_VERSION=0x0500;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader />
       <PrecompiledHeaderOutputFile>.\temp\ProjectX___Win32_Debug_DX6\trash\ProjectX.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\temp\ProjectX___Win32_Debug_DX6\trash\</AssemblerListingLocation>
@@ -132,14 +132,15 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput8.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>..\skeleton\ProjectX___Win32_Debug_DX6.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(DXSDK_DIR)\lib;$(MSSDK_DIR)\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\external\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\temp\ProjectX___Win32_Debug_DX6\ProjectX.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug with OPT_ON|Win32'">
@@ -152,8 +153,8 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(MSSDK_DIR)\include;$(MSSDK_DIR)\include\mfc;$(DXSDK_DIR)\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;USEASM;PROTECT_IP;BSP;OPT_ON;DEBUG_ON;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\external\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;USEASM;PROTECT_IP;BSP;OPT_ON;DEBUG_ON;_CRT_SECURE_NO_WARNINGS;DIRECTINPUT_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader />
       <PrecompiledHeaderOutputFile>.\temp\ProjectX___Win32_Debug_OPT_ON\ProjectX.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\temp\ProjectX___Win32_Debug_OPT_ON\</AssemblerListingLocation>
@@ -170,13 +171,15 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput8.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>..\skeleton\ProjectX___Win32_Debug_OPT_ON.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\temp\ProjectX___Win32_Debug_OPT_ON\ProjectX_Opton.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalLibraryDirectories>..\..\external\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -190,8 +193,8 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(MSSDK_DIR)\include;$(MSSDK_DIR)\include\mfc;$(DXSDK_DIR)\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;USEASM;PROTECT_IP;BSP;DEBUG_ON;MANUAL_SESSIONDESC_PROPAGATE;FINAL_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\external\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;USEASM;PROTECT_IP;BSP;DEBUG_ON;MANUAL_SESSIONDESC_PROPAGATE;FINAL_RELEASE;_CRT_SECURE_NO_WARNINGS;DIRECTINPUT_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader />
       <PrecompiledHeaderOutputFile>.\temp\ProjectX___Win32_Debug\trash\ProjectX.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\temp\ProjectX___Win32_Debug\trash\</AssemblerListingLocation>
@@ -208,14 +211,15 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput8.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>..\skeleton\ProjectX___Win32_Debug.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(DXSDK_DIR)\lib;$(MSSDK_DIR)\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\external\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\temp\ProjectX___Win32_Debug\ProjectX.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -228,8 +232,8 @@
     </Midl>
     <ClCompile>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(MSSDK_DIR)\include;$(MSSDK_DIR)\include\mfc;$(DXSDK_DIR)\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;BSP;USEASM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\external\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;BSP;USEASM;_CRT_SECURE_NO_WARNINGS;DIRECTINPUT_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader />
@@ -247,12 +251,14 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput8.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>..\skeleton\ProjectX___Win32_Release.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <ProgramDatabaseFile>.\temp\ProjectX___Win32_Release\Xrelease.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalLibraryDirectories>..\..\external\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release DX6|Win32'">
@@ -265,8 +271,8 @@
     </Midl>
     <ClCompile>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>$(MSSDK_DIR)\include;$(MSSDK_DIR)\include\mfc;$(DXSDK_DIR)\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;USEASM;PROTECT_IP;BSP;MANUAL_SESSIONDESC_PROPAGATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\external\include;.\include;.\AI\AIinclude;.\Avi\AviInclude;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;D3DDEMO;SUPER;USEINLINE;USEASM;PROTECT_IP;BSP;MANUAL_SESSIONDESC_PROPAGATE;_CRT_SECURE_NO_WARNINGS;DIRECTINPUT_VERSION=0x0500;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader />
@@ -284,14 +290,15 @@
     </ResourceCompile>
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gdi32.lib;advapi32.lib;ole32.lib;kernel32.lib;user32.lib;odbc32.lib;odbccp32.lib;winmm.lib;ddraw.lib;dplayx.lib;dsound.lib;dinput8.lib;comctl32.lib;wsock32.lib;dxguid.lib;vfw32.lib;version.lib;amstrmid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>..\skeleton\ProjectX___Win32_Release_DX6.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>$(DXSDK_DIR)\lib;$(MSSDK_DIR)\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\external\lib;.\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\temp\ProjectX___Win32_Release_DX6\ProjectX.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
