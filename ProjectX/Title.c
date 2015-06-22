@@ -14372,13 +14372,11 @@ void RedrawFlatMenuList( MENUITEM *Item )
 #endif
 }
 
-
-
 void DrawFlatMenuListText ( MENUITEM *Item )
 {
     LIST *l;
     TEXTINFO *TextInfo;
-    int i, current;
+    int i, current = -1;
 
     l = (LIST *)(Item->Variable);
 
@@ -14387,7 +14385,6 @@ void DrawFlatMenuListText ( MENUITEM *Item )
 
     for (i=0; i < l->display_items; i++)
     {
-
         TextInfo = Item->TextInfo[i];
 
         if (current == l->selected_item)
@@ -14409,9 +14406,7 @@ void DrawFlatMenuListText ( MENUITEM *Item )
 
         //format text item...
         PrintTextItem(TextInfo);
-
     }
-
 }
 
 void AddToFlatMenuList( MENUITEM *Item )
@@ -14424,7 +14419,6 @@ void AddToFlatMenuList( MENUITEM *Item )
 
     for (i=0; i < Item->numtextitems; i++)
     {
-
         TextInfo = Item->TextInfo[i];
 
         current = l->top_item + i;
@@ -16568,7 +16562,7 @@ BOOL VduFinished( MENU *Menu )
 void DisplayTextItem (TEXTINFO *TextInfo)
 {
     int i, j, font, num_invalid_chars, skip, UpToChar;
-    float totalheight;
+    float totalheight = 0;
     TEXTINFO TempTextInfo;
     TEXT *t;
     BOOL DoForceFit;

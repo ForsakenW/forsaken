@@ -7264,7 +7264,7 @@ void BuildCurrentServerAck( void )
           ( (GameStatus[i]!=STATUS_GetPlayerNum)&& (GameStatus[i]!=STATUS_LeftCrashed) && (GameStatus[i]!=STATUS_Left) && (GameStatus[i]!=STATUS_Null) ) &&
           (i!=WhoIAm) )
         {
-            Ack |= 1<<i;
+            Ack |= ((LONGLONG)1)<<i;
             ServerPlayersActive++;
         }
     }

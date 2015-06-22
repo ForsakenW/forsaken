@@ -72,6 +72,19 @@ extern "C" void GetDXVersion(LPDWORD pdwDXVersion, LPDWORD pdwDXPlatform)
     /*
      * First get the windows platform
      */
+#if 1
+    UNREFERENCED_PARAMETER(osVer);
+
+    /*
+    * We only consider NT-based platforms now
+    */
+    *pdwDXPlatform = VER_PLATFORM_WIN32_NT;
+
+    /*
+    * We can assume we are at least DX6 now
+    */
+    *pdwDXVersion = 0x600;
+#else
     osVer.dwOSVersionInfoSize = sizeof(osVer);
     if (!GetVersionEx(&osVer))
     {
@@ -146,6 +159,7 @@ extern "C" void GetDXVersion(LPDWORD pdwDXVersion, LPDWORD pdwDXPlatform)
          */
         *pdwDXPlatform = VER_PLATFORM_WIN32_WINDOWS;
     }
+#endif
 
     /*
      * Now we know we are in Windows 9x (or maybe 3.1), so anything's possible.

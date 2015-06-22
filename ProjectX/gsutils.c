@@ -150,6 +150,11 @@ static void swap_byte(uchar *a, uchar *b)
     *b = swapByte;
 }
 
+// Disable this warning. This code is obsolete because GameSpy shut down.
+// warning C4293: '>>' : shift count negative or too big, undefined behavior
+#pragma warning(push)
+#pragma warning(disable: 4293)
+
 static void trip2kwart(trip_t trip, kwart_t kwart)
 {
     kwart[0] = (trip[0]) >> 2;
@@ -158,6 +163,7 @@ static void trip2kwart(trip_t trip, kwart_t kwart)
     kwart[3] = (trip[2]) & 63;
 }
 
+#pragma warning(pop)
 
 static uchar encode_ct(uchar c)
 {
