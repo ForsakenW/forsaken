@@ -3,21 +3,7 @@
  * Copyright (c) 1996 Probe Entertainment Limited
  * All Rights Reserved
  *
- * $Revision: 14 $
- *
- * $Header: /PcProjectX/Ddutil.cpp 14    26/01/98 18:23 Philipy $
- *
- * $Log: /PcProjectX/Ddutil.cpp $
-//
-//14    26/01/98 18:23 Philipy
-//fixed video memory leaks
-//splash screens now display after release view, and call InitScene,
-//InitView after  completion
-//
-//12    23/10/97 16:49 Philipy
-//added tggle (number key 1) for playing AVI on texture.
-//(no texture conversion yet, could appear corrupted)
- * 
+ * Authors: Philipy
  */
 
 /*==========================================================================

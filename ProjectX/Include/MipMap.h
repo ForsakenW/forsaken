@@ -3,17 +3,7 @@
  * Copyright (c) 1996 Probe Entertainment Limited
  * All Rights Reserved
  *
- * $Revision: 2 $
- *
- * $Header: /PcProjectX/Include/MipMap.h 2     11/10/97 4:08p Phillipd $
- *
- * $Log: /PcProjectX/Include/MipMap.h $
- * 
- * 2     11/10/97 4:08p Phillipd
- * 
- * 1     11/10/97 4:08p Phillipd
- * 
- * 
+ * Authors: Phillipd
  */
 
 #ifndef MIPMAP_INCLUDED
