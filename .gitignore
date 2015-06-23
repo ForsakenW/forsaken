@@ -1,0 +1,39 @@
+# Ignore file for Visual Studio
+
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.ncb
+*.nlb
+*.suo
+*.aps
+*.clw
+*_i.c
+*_p.c
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.scc
+*.vspscc
+*.pyc
+*.tmp
+bin/
+obj/
+Debug/
+Release/
+temp/
+
+# Tests
+*.mdf
+*.ldf
+
+# Exclude NuGet packages
+packages/
