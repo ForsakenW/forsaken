@@ -127,7 +127,11 @@ BOOL FAR PASCAL D3DAppIDDEnumCallback(GUID FAR* lpGUID, LPSTR lpDriverDesc,
                  * We have found a 3d hardware device.  Return the DD object
                  * and stop enumeration.
                  */
+#if ORIGINAL
                 d3dappi.bIsPrimary = FALSE;
+#else
+                d3dappi.bIsPrimary = TRUE; // This is no longer a DD limitation.
+#endif
                 *(LPDIRECTDRAW*)lpContext = lpDD;
                 return DDENUMRET_CANCEL;
             }

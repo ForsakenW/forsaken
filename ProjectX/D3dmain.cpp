@@ -487,6 +487,7 @@ CreateD3DApp(LPSTR lpCmdLine)
     int i;
     LPSTR option;
     BOOL bOnlySystemMemory, bOnlyEmulation;
+    BOOL bWindowed;
     DWORD flags;
     Defaults defaults;
 #if defined( SHAREWARE_MAGAZINE ) || defined( SHAREWARE_RETAIL ) || defined( SHAREWARE_INTERNET ) || defined( SHAREWARE_TCP )
@@ -549,6 +550,7 @@ CreateD3DApp(LPSTR lpCmdLine)
     NoSplash = FALSE;
     SessionGuidExists = FALSE;
     UseSendAsync = FALSE;
+    bWindowed = FALSE;
 
     DPlayUpdateIntervalCmdLine = 0;
 
@@ -678,6 +680,10 @@ CreateD3DApp(LPSTR lpCmdLine)
 #ifdef SOFTWARE_ENABLE
         } else if ( !_stricmp( option, "UseDDrawFlip" ) ) {
             UseDDrawFlip = TRUE;
+#endif
+#ifndef ORIGINAL
+        } else if (!_stricmp(option, "Windowed")) {
+            bWindowed = TRUE;
 #endif
         } else {
 #if 1
@@ -858,7 +864,7 @@ CreateD3DApp(LPSTR lpCmdLine)
      * AfterDeviceCreated callback function is called by D3DApp to create the
      * viewport and the example's execute buffers.
      */
-    if (!D3DAppCreateFromHWND(flags, myglobs.hWndMain, AfterDeviceCreated,
+    if (!D3DAppCreateFromHWND(flags, myglobs.hWndMain, bWindowed, AfterDeviceCreated,
                               NULL, BeforeDeviceDestroyed, NULL, &d3dapp)) {
         ReportD3DAppError();
         return FALSE;

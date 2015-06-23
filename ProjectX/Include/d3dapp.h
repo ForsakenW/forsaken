@@ -245,7 +245,7 @@ typedef struct tagD3DAppRenderState {
 #define D3DAPP_ONLYSYSTEMMEMORY 0x00000001
 #define D3DAPP_ONLYD3DEMULATION 0x00000002
 #define D3DAPP_ONLYDDEMULATION  0x00000004
-BOOL D3DAppCreateFromHWND(DWORD flags, HWND hwnd,
+BOOL D3DAppCreateFromHWND(DWORD flags, HWND hwnd, BOOL windowed,
                           BOOL(*DeviceCreateCallback)(int, int,
                                                       LPDIRECT3DVIEWPORT*,
                                                       LPVOID),

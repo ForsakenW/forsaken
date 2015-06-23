@@ -130,7 +130,7 @@ int CallbackRefCount;          /* How many times DeviceCreateCallback has
 /*
  * D3DAppCreateFromHWND
  */
-BOOL D3DAppCreateFromHWND(DWORD flags, HWND hwnd,
+BOOL D3DAppCreateFromHWND(DWORD flags, HWND hwnd, BOOL windowed,
                           BOOL(*DeviceCreateCallback)(int, int,
                                                       LPDIRECT3DVIEWPORT*,
                                                       LPVOID),
@@ -178,7 +178,11 @@ BOOL D3DAppCreateFromHWND(DWORD flags, HWND hwnd,
      * level and create the front and back buffers for this mode.
      */
     driver = D3DAPP_YOUDECIDE;
-    mode = D3DAPP_YOUDECIDE;
+    if (windowed) {
+        mode = D3DAPP_USEWINDOW;
+    } else {
+        mode = D3DAPP_YOUDECIDE;
+    }
     ATTEMPT(D3DAppIVerifyDriverAndMode(&driver, &mode));
     D3DAppIGetClientWin(hwnd);
     if (mode == D3DAPP_USEWINDOW) {

@@ -28,9 +28,15 @@
 #include "d3dres.h"         /* defines constants used in d3dmain.rc */
 #include "d3ddemo.h"        /* prototypes for functions to communicate with
                                each sample */
+#if ORIGINAL
 #define START_WIN_SIZE 320  /* initial size of the window */
 #define START_WIN_SIZE_X 320+8  /* initial size of the window */
 #define START_WIN_SIZE_Y 200+46  /* initial size of the window */
+#else
+#define START_WIN_SIZE 640  /* initial size of the window */
+#define START_WIN_SIZE_X 640+8  /* initial size of the window */
+#define START_WIN_SIZE_Y 400+46  /* initial size of the window */
+#endif
 
 #include "new3d.h"
 #include "main.h"
