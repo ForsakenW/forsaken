@@ -9381,8 +9381,10 @@ void    MenuProcess()
 
 #endif
 
+#ifdef ORIGINAL
     sprintf( str, "Dans Special patch release %1.2fa beta 5", PATCH_VERSION );
     CenterPrint4x5Text( str, d3dapp->szClient.cy - FontHeight * 3, 2 );
+#endif
 
     //sprintf( str, "ColPerspective %d", ColPerspective );
     //CenterPrint4x5Text( str, d3dapp->szClient.cy - FontHeight * 4, 2 );

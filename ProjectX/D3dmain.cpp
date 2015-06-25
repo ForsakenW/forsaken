@@ -422,11 +422,18 @@ AppInit(HINSTANCE hInstance, LPSTR lpCmdLine)
      */
 
     myglobs.hWndMain = CreateWindowEx(
+#ifdef ORIGINAL
          WS_EX_APPWINDOW,
          "Example",
          "Forsaken",
          WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU |
          WS_THICKFRAME | WS_MINIMIZEBOX,
+#else
+         0,
+         "Example",
+         "Forsaken",
+         WS_POPUP | WS_VISIBLE,
+#endif
          0, 0,                              // start position of Window..
          START_WIN_SIZE_X, START_WIN_SIZE_Y,
          NULL,                              /* parent window */

@@ -49,6 +49,9 @@ extern BOOL CanRenderWindowed;
 extern d3dmainglobals myglobs;     /* collection of global variables */
 //#define INITGUID
 
+void D3DAppAddWindowChrome();
+void D3DAppRemoveWindowChrome();
+
 #ifdef SOFTWARE_ENABLE
 /*---------------------------------------------------------------------------
     Chris Walsh's code
@@ -295,6 +298,11 @@ BOOL D3DAppFullscreen(int mode)
 
     InitModeCase();
 
+    /*
+    * Remove windowed styles in preparation for pseudo fullscreen.
+    */
+    D3DAppRemoveWindowChrome();
+
     ATTEMPT(D3DAppISetCoopLevel(d3dappi.hwnd, TRUE));
     ATTEMPT(D3DAppISetDisplayMode(w, h, bpp));
     d3dappi.CurrMode = mode;
@@ -395,6 +403,10 @@ D3DAppWindow(int w, int h)
     if (b) {
         D3DAppIRestoreDispMode();
     }
+    /*
+     * Add back windowed styles.
+     */
+    D3DAppAddWindowChrome();
     /* 
      * Set the cooperative level and create front and back buffers
      */
@@ -431,6 +443,41 @@ exit_with_error:
     return FALSE;  
 }
 
+/*
+* D3DAppAddWindowChrome
+*/
+void
+D3DAppAddWindowChrome()
+{
+    LONG lStyle;
+    LONG lExStyle;
+
+    lStyle = GetWindowLong(d3dappi.hwnd, GWL_STYLE);
+    lStyle |= WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX;
+    SetWindowLong(d3dappi.hwnd, GWL_STYLE, lStyle);
+
+    SetWindowPos(d3dappi.hwnd, NULL, 0, 0, 0, 0, SWP_FRAMECHANGED | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_NOOWNERZORDER);
+}
+
+/*
+* D3DAppRemoveWindowChrome
+*/
+void
+D3DAppRemoveWindowChrome()
+{
+    LONG lStyle;
+    LONG lExStyle;
+
+    lStyle = GetWindowLong(d3dappi.hwnd, GWL_STYLE);
+    lStyle &= ~(WS_CAPTION | WS_THICKFRAME | WS_MINIMIZE | WS_MAXIMIZE | WS_SYSMENU);
+    SetWindowLong(d3dappi.hwnd, GWL_STYLE, lStyle);
+
+    lExStyle = GetWindowLong(d3dappi.hwnd, GWL_EXSTYLE);
+    lExStyle &= ~(WS_EX_DLGMODALFRAME | WS_EX_CLIENTEDGE | WS_EX_STATICEDGE);
+    SetWindowLong(d3dappi.hwnd, GWL_EXSTYLE, lExStyle);
+
+    SetWindowPos(d3dappi.hwnd, NULL, 0, 0, 0, 0, SWP_FRAMECHANGED | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_NOOWNERZORDER);
+}
 
 /*
  * D3DAppChangeDriver 
