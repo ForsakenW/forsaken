@@ -500,6 +500,7 @@
     <ClInclude Include="Include\visi.h" />
     <ClInclude Include="Include\Water.h" />
     <ClInclude Include="Include\XMem.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Projectx.ico" />

@@ -1,5 +1,6 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
+#include <windows.h>
 #include "resource.h"
 #include "include\d3dres.h"
 
@@ -8,19 +9,17 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "afxres.h"
+// #include "afxres.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -28,29 +27,29 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE 
 BEGIN
     "\r\n"
     "\0"
 END
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""d3dres.h""\r\n"
     "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
@@ -61,7 +60,7 @@ BEGIN
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE 
 BEGIN
     "\r\n"
     "\0"
@@ -77,14 +76,14 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-APPICON                 ICON    DISCARDABLE     "Projectx.ico"
+APPICON                 ICON                    "Projectx.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Menu
 //
 
-APPMENU MENU DISCARDABLE 
+APPMENU MENU
 BEGIN
     POPUP "&File"
     BEGIN
@@ -187,7 +186,7 @@ END
 // Accelerator
 //
 
-APPACCEL ACCELERATORS DISCARDABLE 
+APPACCEL ACCELERATORS
 BEGIN
     VK_F1,          MENU_ABOUT,             VIRTKEY, NOINVERT
     VK_F2,          MENU_FLAT,              VIRTKEY, NOINVERT
@@ -218,19 +217,18 @@ END
 // Dialog
 //
 
-APPABOUT DIALOG DISCARDABLE  0, 0, 188, 96
-STYLE DS_MODALFRAME | WS_POPUP
+APPABOUT DIALOG 0, 0, 188, 96
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,76,75,35,14
     CTEXT           "Condemned Demo",IDC_STATIC,61,5,65,15
-    CTEXT           "Copyright (c) 1996 Probe Entertainment",IDC_STATIC,21,
-                    55,145,12
+    CTEXT           "Copyright (c) 1996 Probe Entertainment",IDC_STATIC,21,55,145,12
     ICON            "AppIcon",IDC_STATIC,86,25,18,20
 END
 
-IDD_REMCONNABORTDLG DIALOG DISCARDABLE  0, 0, 183, 20
-STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+IDD_REMCONNABORTDLG DIALOG 0, 0, 183, 20
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 CAPTION "Waiting for connection"
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -238,8 +236,8 @@ BEGIN
     LTEXT           "Press Cancel to abort",IDC_STATIC,28,5,75,8
 END
 
-IDD_DIALOG1 DIALOG DISCARDABLE  0, 0, 187, 95
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_DIALOG1 DIALOG 0, 0, 187, 95
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Dialog"
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -248,14 +246,13 @@ BEGIN
 END
 
 
-
 /////////////////////////////////////////////////////////////////////////////
 //
 // DESIGNINFO
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO DISCARDABLE 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_DIALOG1, DIALOG
     BEGIN
@@ -270,16 +267,10 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Bitmap
-//
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
 // String Table
 //
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_WIZARD_TITLE_JS     "Join Session (3/3)"
     IDS_WIZARD_TITLE_HS     "Host Session (3/3)"
@@ -292,7 +283,7 @@ BEGIN
     IDS_DPLAY_ERROR_GPRD    "Get player remote data failed"
 END
 
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
